@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xyx6.top/"/>
-  <updated>2020-07-02T05:04:02.798Z</updated>
+  <updated>2020-07-02T05:08:59.754Z</updated>
   <id>http://xyx6.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://xyx6.top/2020/07/02/hello-world/"/>
     <id>http://xyx6.top/2020/07/02/hello-world/</id>
     <published>2020-07-02T04:22:07.000Z</published>
-    <updated>2020-07-02T05:04:02.798Z</updated>
+    <updated>2020-07-02T05:08:59.754Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p><a id="more"></a><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>Git</li><li>Nginx</li><li>Nodejs</li><li>搭载环境<ol><li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li><li>域名（在万网根据个人喜欢挑选一个心仪的）</li><li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li></ol></li><li>hexo<ol><li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li><li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li></ol></li></ul><h5 id="域名和服务器大概是在5月20号左右买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。"><a href="#域名和服务器大概是在5月20号左右买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。" class="headerlink" title="域名和服务器大概是在5月20号左右买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。"></a>域名和服务器大概是在5月20号左右买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</h5>]]></content>
+    <content type="html"><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p><a id="more"></a><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>Git</li><li>Nginx</li><li>Nodejs</li><li>搭载环境<ol><li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li><li>域名（在万网根据个人喜欢挑选一个心仪的）</li><li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li></ol></li><li>hexo<ol><li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li><li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li></ol></li></ul><p><strong><em>域名和服务器大概是在5月20号左右买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>]]></content>
     
     <summary type="html">
     
