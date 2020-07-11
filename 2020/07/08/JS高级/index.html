@@ -8,8 +8,8 @@
     noSupport: '浏览器不支持'
   }
 } </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XYX's Blog" type="application/atom+xml">
-</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS基础总结深入"><span class="toc-number">1.</span> <span class="toc-text">JS基础总结深入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型的分类和判断"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型的分类和判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据-变量-内存的理解"><span class="toc-number">1.2.</span> <span class="toc-text">数据,变量, 内存的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的理解和使用"><span class="toc-number">1.3.</span> <span class="toc-text">对象的理解和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的理解和使用"><span class="toc-number">1.4.</span> <span class="toc-text">函数的理解和使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数高级"><span class="toc-number">2.</span> <span class="toc-text">函数高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型与原型链"><span class="toc-number">2.1.</span> <span class="toc-text">原型与原型链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文与执行上下文栈"><span class="toc-number">2.2.</span> <span class="toc-text">执行上下文与执行上下文栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域与作用域链"><span class="toc-number">2.3.</span> <span class="toc-text">作用域与作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.4.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存溢出与内存泄露"><span class="toc-number">2.5.</span> <span class="toc-text">内存溢出与内存泄露</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象高级"><span class="toc-number">3.</span> <span class="toc-text">面向对象高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的创建模式"><span class="toc-number">3.1.</span> <span class="toc-text">对象的创建模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承模式"><span class="toc-number">3.2.</span> <span class="toc-text">继承模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程机制与事件机制"><span class="toc-number">4.</span> <span class="toc-text">线程机制与事件机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程与进程"><span class="toc-number">4.1.</span> <span class="toc-text">线程与进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器内核模块组成"><span class="toc-number">4.2.</span> <span class="toc-text">浏览器内核模块组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定时器问题"><span class="toc-number">4.3.</span> <span class="toc-text">定时器问题:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js线程"><span class="toc-number">4.4.</span> <span class="toc-text">js线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件循环模型"><span class="toc-number">4.5.</span> <span class="toc-text">事件循环模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H5-Web-Workers-多线程"><span class="toc-number">4.6.</span> <span class="toc-text">H5 Web Workers(多线程)</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">5</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">4</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">JS高级</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-07-08</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%A4%A7%E5%9D%97/">前端三大块</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
-<p>序<br><br>js进阶-&gt;上流JS</p>
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS基础总结深入"><span class="toc-number">1.</span> <span class="toc-text">JS基础总结深入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型的分类和判断"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型的分类和判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据-变量-内存的理解"><span class="toc-number">1.2.</span> <span class="toc-text">数据-变量-内存的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的理解和使用"><span class="toc-number">1.3.</span> <span class="toc-text">对象的理解和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的理解和使用"><span class="toc-number">1.4.</span> <span class="toc-text">函数的理解和使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数高级"><span class="toc-number">2.</span> <span class="toc-text">函数高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型与原型链"><span class="toc-number">2.1.</span> <span class="toc-text">原型与原型链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文与执行上下文栈"><span class="toc-number">2.2.</span> <span class="toc-text">执行上下文与执行上下文栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域与作用域链"><span class="toc-number">2.3.</span> <span class="toc-text">作用域与作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.4.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存溢出与内存泄露"><span class="toc-number">2.5.</span> <span class="toc-text">内存溢出与内存泄露</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象高级"><span class="toc-number">3.</span> <span class="toc-text">面向对象高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的创建模式"><span class="toc-number">3.1.</span> <span class="toc-text">对象的创建模式</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">6</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">JS高级</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-07-08</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%A4%A7%E5%9D%97/">前端三大块</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+<p>序<br><br><br><br>js进阶-&gt;上流JS</p>
 </blockquote>
 <a id="more"></a>
 <h1 id="JS基础总结深入"><a href="#JS基础总结深入" class="headerlink" title="JS基础总结深入"></a>JS基础总结深入</h1><h2 id="数据类型的分类和判断"><a href="#数据类型的分类和判断" class="headerlink" title="数据类型的分类和判断"></a>数据类型的分类和判断</h2><table>
@@ -72,7 +72,8 @@
 </tr>
 </tbody></table>
 <ul>
-<li>判断<ul>
+<li><p>判断</p>
+<ul>
 <li>typeof:<ul>
 <li>可以区别: 数值, 字符串, 布尔值, undefined, function</li>
 <li>不能区别: null与对象, 一般对象与数组</li>
@@ -88,9 +89,8 @@
 </li>
 </ul>
 </li>
-</ul>
-<ul>
-<li><strong>相关问题</strong></li>
+<li><p><strong>相关问题</strong></p>
+</li>
 </ul>
 <ol>
 <li>undefined与null的区别?</li>
@@ -103,7 +103,7 @@
 <li>什么时候给变量赋值为null呢?</li>
 </ol>
 <ul>
-<li>var a = null //初始赋值为null，表明将要赋值为对象，a将指向一个对象, 但对象此时还没有确定</li>
+<li>var a = null //初始赋值为null，表明将要赋值为对象，a将指向一个对象,<br>但对象此时还没有确定</li>
 <li>a = null //让a指向的对象成为垃圾对象(被垃圾回收器回收)</li>
 </ul>
 <ol start="3">
@@ -122,8 +122,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据-变量-内存的理解"><a href="#数据-变量-内存的理解" class="headerlink" title="数据,变量, 内存的理解"></a>数据,变量, 内存的理解</h2><ol>
-<li>什么是数据?<ul>
+<h2 id="数据-变量-内存的理解"><a href="#数据-变量-内存的理解" class="headerlink" title="数据-变量-内存的理解"></a>数据-变量-内存的理解</h2><ol>
+<li><p>什么是数据?</p>
+<ul>
 <li>存储于内存中代表特定信息的’东东’, 本质就是0101二进制</li>
 <li>具有可读和可传递的基本特性</li>
 <li>万物(一切)皆数据, 函数也是数据</li>
@@ -136,9 +137,10 @@
 </li>
 </ul>
 </li>
-<li>什么是内存?<ul>
+<li><p>什么是内存?</p>
+<ul>
 <li>内存条通电后产生的存储空间(临时的)</li>
-<li>产生和死亡: 内存条(集成电路板)==&gt;通电==&gt;产生一定容量的存储空间==&gt;存储各种数据==&gt;断电==&gt;内存全部消失</li>
+<li>产生和死亡:<br>内存条(集成电路板)==&gt;通电==&gt;产生一定容量的存储空间==&gt;存储各种数据==&gt;断电==&gt;内存全部消失</li>
 <li>内存的空间是临时的, 而硬盘的空间是持久的</li>
 <li>一块内存包含2个数据<ul>
 <li>内部存储的数据(一般数据/地址数据)</li>
@@ -152,14 +154,16 @@
 </li>
 </ul>
 </li>
-<li>什么是变量?<ul>
+<li><p>什么是变量?</p>
+<ul>
 <li>值可以变化的量, 由变量名与变量值组成</li>
-<li>一个变量对应一块小内存, 变量名用来查找到内存, 变量值就是内存中保存的内容</li>
+<li>一个变量对应一块小内存, 变量名用来查找到内存,<br>变量值就是内存中保存的内容</li>
 </ul>
 </li>
-<li>内存,数据, 变量三者之间的关系<ul>
+<li><p>内存,数据, 变量三者之间的关系</p>
+<ul>
 <li>内存是一个容器, 用来存储程序运行需要操作的数据</li>
-<li>变量是内存的标识, 我们通过变量找到对应的内存, 进而操作(读/写)内存中的数据</li>
+<li>变量是内存的标识, 我们通过变量找到对应的内存,<br>进而操作(读/写)内存中的数据</li>
 </ul>
 </li>
 </ol>
@@ -176,44 +180,49 @@
 </li>
 <li><p>关于引用变量赋值问题</p>
 <ul>
-<li>2个引用变量指向同一个对象, 通过一个引用变量修改对象内部数据, 另一个引用变量看到的是修改之后的数据</li>
-<li>2个引用变量指向同一个对象,让一个引用变量指向另一个对象, 另一个引用变量还是指向前面的对象</li>
+<li>2个引用变量指向同一个对象, 通过一个引用变量修改对象内部数据,<br>另一个引用变量看到的是修改之后的数据</li>
+<li>2个引用变量指向同一个对象,让一个引用变量指向另一个对象,<br>另一个引用变量还是指向前面的对象</li>
 </ul>
 </li>
 <li><p>在js调用函数时传递变量参数时, 是值传递还是引用传递?</p>
 <ul>
-<li>只有值传递, 没有引用传递, 传递的都是变量的值, 只是这个值可能是基本数据, 也可能是地址(引用)数据</li>
+<li>只有值传递, 没有引用传递, 传递的都是变量的值,<br>只是这个值可能是基本数据, 也可能是地址(引用)数据</li>
 <li>如果后一种看成是引用传递, 那就值传递和引用传递都可以有</li>
 </ul>
 </li>
 <li><p>JS引擎如何管理内存?</p>
 <ol>
-<li>内存生命周期<ol>
+<li><p>内存生命周期</p>
+<ol>
 <li>分配小内存空间，得到他的使用权</li>
 <li>存储数据。进行反复操作</li>
 <li>不需要时将其释放/归还</li>
 </ol>
 </li>
-<li>释放内存<ul>
+<li><p>释放内存</p>
+<ul>
 <li>为执行函数分配的栈空间内存: 函数执行完自动释放</li>
-<li>存储对象的堆空间内存: 当内存没有引用指向时, 对象成为垃圾对象, 垃圾回收器后面就会回收释放此内存</li>
+<li>存储对象的堆空间内存: 当内存没有引用指向时,<br>对象成为垃圾对象, 垃圾回收器后面就会回收释放此内存</li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
 <h2 id="对象的理解和使用"><a href="#对象的理解和使用" class="headerlink" title="对象的理解和使用"></a>对象的理解和使用</h2><ol>
-<li>什么是对象?<ul>
+<li><p>什么是对象?</p>
+<ul>
 <li>代表现实中的某个事物, 是该事物在编程中的抽象</li>
 <li>多个数据的集合体(封装体)</li>
 <li>用于保存多个数据的容器</li>
 </ul>
 </li>
-<li>为什么要用对象?<ul>
+<li><p>为什么要用对象?</p>
+<ul>
 <li>便于对多个数据进行统一管理</li>
 </ul>
 </li>
-<li>对象的组成<ul>
+<li><p>对象的组成</p>
+<ul>
 <li>属性<ul>
 <li>代表现实事物的状态数据</li>
 <li>由属性名和属性值组成</li>
@@ -227,7 +236,8 @@
 </li>
 </ul>
 </li>
-<li>如何访问对象内部数据?<ul>
+<li><p>如何访问对象内部数据?</p>
+<ul>
 <li>.属性名: 编码简单, 但有时不能用</li>
 <li>[‘属性名’]: 编码麻烦, 但通用</li>
 </ul>
@@ -244,41 +254,48 @@
 </li>
 </ol>
 <h2 id="函数的理解和使用"><a href="#函数的理解和使用" class="headerlink" title="函数的理解和使用"></a>函数的理解和使用</h2><ul>
-<li>什么是函数?<ul>
+<li><p>什么是函数?</p>
+<ul>
 <li>用来实现特定功能的, n条语句的封装体</li>
 <li>只有函数类型的数据是可以执行的, 其它的都不可以</li>
 </ul>
 </li>
-<li>为什么要用函数?<ul>
+<li><p>为什么要用函数?</p>
+<ul>
 <li>提高复用性</li>
 <li>便于阅读交流</li>
 </ul>
 </li>
-<li>函数也是对象<ul>
+<li><p>函数也是对象</p>
+<ul>
 <li>instanceof Object===true</li>
 <li>函数有属性: prototype</li>
 <li>函数有方法: call()/apply()</li>
 <li>可以添加新的属性/方法</li>
 </ul>
 </li>
-<li>函数的3种不同角色<ul>
+<li><p>函数的3种不同角色</p>
+<ul>
 <li>一般函数 : 直接调用</li>
 <li>构造函数 : 通过new调用</li>
 <li>对象 : 通过.调用内部的属性/方法</li>
 </ul>
 </li>
-<li>匿名函数自调用:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(w, obj)&#123;</span><br><span class="line">  &#x2F;&#x2F;实现代码</span><br><span class="line">&#125;)(window, obj)</span><br></pre></td></tr></table></figure>
+<li><p>匿名函数自调用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(w, obj)&#123;</span><br><span class="line">&#x2F;&#x2F;实现代码</span><br><span class="line">&#125;)(window, obj)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>专业术语为: IIFE (Immediately Invoked Function Expression) 立即调用函数表达式</li>
+<li>专业术语为: IIFE (Immediately Invoked Function Expression)<br>立即调用函数表达式</li>
 <li>作用<ul>
 <li>隐藏内部实现</li>
 <li>不污染外部命名空间</li>
-<li>用它来编写js模块                          </li>
+<li>用它来编写js模块</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>回调函数的理解<ul>
+<li><p>回调函数的理解</p>
+<ul>
 <li>什么函数才是回调函数?<ul>
 <li>你定义的</li>
 <li>你没有调用</li>
@@ -294,7 +311,8 @@
 </li>
 </ul>
 </li>
-<li>函数中的this<ul>
+<li><p>函数中的this</p>
+<ul>
 <li>显式指定谁:obj.xxx()</li>
 <li>通过call/apply指定谁调用: xxx.call(obj)</li>
 <li>不指定谁调用: xxx(): window</li>
@@ -304,12 +322,14 @@
 </ul>
 <h1 id="函数高级"><a href="#函数高级" class="headerlink" title="函数高级"></a>函数高级</h1><h2 id="原型与原型链"><a href="#原型与原型链" class="headerlink" title="原型与原型链"></a>原型与原型链</h2><blockquote>
 <ol>
-<li>函数的prototype属性<ul>
-<li>每个函数都有一个prototype属性, 它默认指向一个Object空对象(即称为: 原型对象)</li>
+<li><p>函数的prototype属性</p>
+<ul>
+<li>每个函数都有一个prototype属性,<br>它默认指向一个Object空对象(即称为: 原型对象)</li>
 <li>原型对象中有一个属性constructor, 它指向函数对象</li>
 </ul>
 </li>
-<li>给原型对象添加属性(一般都是方法)<ul>
+<li><p>给原型对象添加属性(一般都是方法)</p>
+<ul>
 <li>作用: 函数的所有实例对象自动拥有原型中的属性(方法)</li>
 </ul>
 </li>
@@ -328,8 +348,8 @@
 </li>
 <li><p>显式原型与隐式原型的关系</p>
 <ul>
-<li>函数的prototype: 定义函数时被自动赋值, 值默认为{}, 即用为原型对象</li>
-<li>实例对象的<strong>proto</strong>: 在创建实例对象时被自动添加, 并赋值为构造函数的prototype值</li>
+<li>函数的prototype: 定义函数时被自动赋值, 值默认为{},<br>即用为原型对象</li>
+<li>实例对象的<strong>proto</strong>: 在创建实例对象时被自动添加,<br>并赋值为构造函数的prototype值</li>
 <li>原型对象即为当前实例对象的父对象</li>
 <li>例子:<br><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt></li>
 </ul>
@@ -339,7 +359,7 @@
 <li>访问一个对象的属性时，<ul>
 <li>先在自身属性中查找，找到返回</li>
 <li>如果没有, 再沿着<strong>proto</strong>这条链向上查找, 找到返回</li>
-<li>如果最终没找到, 返回undefined(下图中函数列表的尽头<strong>proto</strong>=null就表示没找到返回undefined)</li>
+<li>如果最终没找到,<br>返回undefined(下图中函数列表的尽头<strong>proto</strong>=null就表示没找到返回undefined)</li>
 </ul>
 </li>
 <li>别名: 隐式原型链</li>
@@ -355,17 +375,17 @@
 <li><p>instanceof是如何判断的?</p>
 <ul>
 <li>表达式: A instanceof B</li>
-<li>如果B函数的显式原型对象在A对象的原型链上, 返回true, 否则返回false</li>
+<li>如果B函数的显式原型对象在A对象的原型链上, 返回true,<br>否则返回false</li>
 </ul>
 </li>
 <li><p>测试题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">原型测试题：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  测试题1</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  A.prototype.n = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> b = <span class="keyword">new</span> A()</span><br><span class="line"></span><br><span class="line">  A.prototype = &#123;</span><br><span class="line">    n: <span class="number">2</span>,</span><br><span class="line">    m: <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> c = <span class="keyword">new</span> A()</span><br><span class="line">  <span class="built_in">console</span>.log(b.n, b.m, c.n, c.m)</span><br><span class="line"><span class="comment">//1 undefined 2 3 </span></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">   测试题2</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  <span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a()'</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b()'</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br><span class="line">  f.a()</span><br><span class="line">  f.b()</span><br><span class="line">  F.a()</span><br><span class="line">  F.b()</span><br><span class="line">  <span class="comment">//a() </span></span><br><span class="line">  <span class="comment">// f.b is not a function</span></span><br><span class="line">  <span class="comment">//a()</span></span><br><span class="line">  <span class="comment">//b()</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    原型测试题：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">测试题1</span><br><span class="line">*&#x2F;</span><br><span class="line">var A &#x3D; function() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">A.prototype.n &#x3D; 1</span><br><span class="line"></span><br><span class="line">var b &#x3D; new A()</span><br><span class="line"></span><br><span class="line">A.prototype &#x3D; &#123;</span><br><span class="line">    n: 2,</span><br><span class="line">    m: 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c &#x3D; new A()</span><br><span class="line">console.log(b.n, b.m, c.n, c.m)</span><br><span class="line">&#x2F;&#x2F;1 undefined 2 3 </span><br><span class="line">&#x2F;*</span><br><span class="line">测试题2</span><br><span class="line">*&#x2F;</span><br><span class="line">var F &#x3D; function()&#123;&#125;;</span><br><span class="line">Object.prototype.a &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;a()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">Function.prototype.b &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;b()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">var f &#x3D; new F();</span><br><span class="line">f.a()</span><br><span class="line">f.b()</span><br><span class="line">F.a()</span><br><span class="line">F.b()</span><br><span class="line">&#x2F;&#x2F;a() </span><br><span class="line">&#x2F;&#x2F; f.b is not a function</span><br><span class="line">&#x2F;&#x2F;a()</span><br><span class="line">&#x2F;&#x2F;b()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
 </li>
 </ul>
 <h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><ul>
 <li>变量提升与函数提升<ul>
-<li>变量提升: 在变量定义语句之前, 就可以访问到这个变量(undefined)，只是还没有赋值</li>
+<li>变量提升: 在变量定义语句之前,<br>就可以访问到这个变量(undefined)，只是还没有赋值</li>
 <li>函数提升: 在函数定义语句之前, 就可执行该函数</li>
 <li>先有变量提升, 再有函数提升</li>
 </ul>
@@ -422,14 +442,17 @@
 <li><p>例子：<br><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt></p>
 </li>
 <li><p>测试题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">执行上下文栈测试题：</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'global begin: '</span>+ i)</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">1</span></span><br><span class="line">  foo(<span class="number">1</span>);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">4</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'foo() begin:'</span> + i);</span><br><span class="line">    foo(i + <span class="number">1</span>);<span class="comment">//递归调用：在函数内部调用自己，一般会设置条件来终止函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'foo() end:'</span> + i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'global end: '</span> + i)</span><br><span class="line">  <span class="comment">// global begin: undefined</span></span><br><span class="line"><span class="comment">// foo() begin:1 由于递归输出1.2.3</span></span><br><span class="line"><span class="comment">// foo() begin:2</span></span><br><span class="line"><span class="comment">// foo() begin:3</span></span><br><span class="line"><span class="comment">// foo() end:3   因为foo begin执行完后要将栈顶的对象移除出栈</span></span><br><span class="line"><span class="comment">// foo() end:2</span></span><br><span class="line"><span class="comment">// foo() end:1</span></span><br><span class="line"><span class="comment">// global end: 1</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  测试题1: 先预处理变量, 后预处理函数</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)<span class="comment">//function</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  测试题2: 变量预处理, in操作符</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (!(b <span class="keyword">in</span> <span class="built_in">window</span>)) &#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(b)<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  测试题3: 预处理, 顺序执行</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="number">1</span><span class="comment">//var c;</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(c)</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//c=1</span></span><br><span class="line">  c(<span class="number">2</span>)<span class="comment">//报错 会把c识别成变量而不是函数</span></span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">执行上下文栈测试题：</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">console.log(&#39;global begin: &#39;+ i)</span><br><span class="line">var i &#x3D; 1</span><br><span class="line">foo(1);</span><br><span class="line">function foo(i) &#123;</span><br><span class="line">    if (i &#x3D;&#x3D; 4) &#123;</span><br><span class="line">    return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;foo() begin:&#39; + i);</span><br><span class="line">    foo(i + 1);&#x2F;&#x2F;递归调用：在函数内部调用自己，一般会设置条件来终止函数</span><br><span class="line">    console.log(&#39;foo() end:&#39; + i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(&#39;global end: &#39; + i)</span><br><span class="line">&#x2F;&#x2F; global begin: undefined</span><br><span class="line">&#x2F;&#x2F; foo() begin:1 由于递归输出1.2.3</span><br><span class="line">&#x2F;&#x2F; foo() begin:2</span><br><span class="line">&#x2F;&#x2F; foo() begin:3</span><br><span class="line">&#x2F;&#x2F; foo() end:3   因为foo begin执行完后要将栈顶的对象移除出栈</span><br><span class="line">&#x2F;&#x2F; foo() end:2</span><br><span class="line">&#x2F;&#x2F; foo() end:1</span><br><span class="line">&#x2F;&#x2F; global end: 1</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">测试题1: 先预处理变量, 后预处理函数</span><br><span class="line">*&#x2F;</span><br><span class="line">function a() &#123;&#125;</span><br><span class="line">var a;</span><br><span class="line">console.log(typeof a)&#x2F;&#x2F;function</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">测试题2: 变量预处理, in操作符</span><br><span class="line">*&#x2F;</span><br><span class="line">if (!(b in window)) &#123;</span><br><span class="line">    var b &#x3D; 1;</span><br><span class="line">&#125;</span><br><span class="line">console.log(b)&#x2F;&#x2F;undefined</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">测试题3: 预处理, 顺序执行</span><br><span class="line">*&#x2F;</span><br><span class="line">var c &#x3D; 1&#x2F;&#x2F;var c;</span><br><span class="line">function c(c) &#123;</span><br><span class="line">    console.log(c)</span><br><span class="line">    var c &#x3D; 3</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;c&#x3D;1</span><br><span class="line">c(2)&#x2F;&#x2F;报错 会把c识别成变量而不是函数</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2><ul>
 <li><p>理解:</p>
 <ul>
 <li>作用域: 一块代码区域, 在编码时就确定了, 不会再变化</li>
 <li>作用域链:<ul>
-<li>多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外)</li>
+<li>多个上下级关系的作用域形成的链,<br>它的方向是从下向上的(从内到外)</li>
 <li>查找变量时就是沿着作用域链来查找的</li>
 </ul>
 </li>
@@ -450,18 +473,21 @@
 </li>
 <li><p>区别作用域与执行上下文</p>
 <ol>
-<li>区别1<ul>
+<li><p>区别1</p>
+<ul>
 <li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了，而不是在函数调用时</li>
-<li>全局执行上下文环境是在全局作用域确定之后, js代码马上执行之前创建</li>
+<li>全局执行上下文环境是在全局作用域确定之后,<br>js代码马上执行之前创建</li>
 <li>函数执行上下文环境是在调用函数时, 函数体代码执行之前创建</li>
 </ul>
 </li>
-<li>区别2<ul>
+<li><p>区别2</p>
+<ul>
 <li>作用域是静态的, 只要函数定义好了就一直存在, 且不会再变化</li>
-<li>上下文环境是动态的, 调用函数时创建, 函数调用结束时上下文环境就会被释放</li>
+<li>上下文环境是动态的, 调用函数时创建,<br>函数调用结束时上下文环境就会被释放</li>
 </ul>
 </li>
-<li>联系<ul>
+<li><p>联系</p>
+<ul>
 <li>上下文环境(对象)是从属于所在的作用域</li>
 <li>全局上下文环境==&gt;全局作用域</li>
 <li>函数上下文环境==&gt;对应的函数使用域</li>
@@ -470,26 +496,29 @@
 </ol>
 </li>
 <li><p>测试题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">   问题: 结果输出多少?</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">20</span>;</span><br><span class="line">    f();</span><br><span class="line">  &#125;</span><br><span class="line">  show(fn);</span><br><span class="line">  <span class="comment">//10</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">   说说它们的输出情况</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">  &#125;</span><br><span class="line">  fn()<span class="comment">//函数作用域找不到，去外部作用域能找到fn</span></span><br><span class="line">  <span class="comment">//ƒ () &#123;</span></span><br><span class="line">  <span class="comment">//  console.log(fn)</span></span><br><span class="line">  <span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> obj = &#123;</span><br><span class="line">    fn2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fn2)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  obj.fn2()<span class="comment">//函数作用域找不到，全局作用域也找不到（只有obj，没有fn2）；修改为this.fn2或obj.fn2为正确</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">问题: 结果输出多少?</span><br><span class="line">*&#x2F;</span><br><span class="line">var x &#x3D; 10;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">function show(f) &#123;</span><br><span class="line">    var x &#x3D; 20;</span><br><span class="line">    f();</span><br><span class="line">&#125;</span><br><span class="line">show(fn);</span><br><span class="line">&#x2F;&#x2F;10</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">说说它们的输出情况</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">var fn &#x3D; function () &#123;</span><br><span class="line">    console.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn()&#x2F;&#x2F;函数作用域找不到，去外部作用域能找到fn</span><br><span class="line">&#x2F;&#x2F;ƒ () &#123;</span><br><span class="line">&#x2F;&#x2F;  console.log(fn)</span><br><span class="line">&#x2F;&#x2F;&#125;</span><br><span class="line"></span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    fn2: function () &#123;</span><br><span class="line">    console.log(fn2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn2()&#x2F;&#x2F;函数作用域找不到，全局作用域也找不到（只有obj，没有fn2）；修改为this.fn2或obj.fn2为正确</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
 <li><p>理解</p>
 <ul>
-<li>当一个嵌套的内部(子)函数引用了嵌套的外部(父)函数的变量(函数)时, 就产生了闭包</li>
-<li>通过chrome工具得知: 闭包本质是内部函数中的一个对象, 这个对象中包含引用的变量属性</li>
+<li>当一个嵌套的内部(子)函数引用了嵌套的外部(父)函数的变量(函数)时,<br>就产生了闭包</li>
+<li>通过chrome工具得知: 闭包本质是内部函数中的一个对象,<br>这个对象中包含引用的变量属性</li>
 <li>闭包的数量取决于调用外部函数的次数，只有调用外部函数的时候才会创建内部函数对象</li>
 </ul>
 </li>
 <li><p>作用</p>
 <ol>
-<li>使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
+<li>使用函数内部的变量在函数执行完后,<br>仍然存活在内存中(延长了局部变量的生命周期)</li>
 <li>让函数外部可以操作(读写)到函数内部的数据(变量/函数)</li>
 </ol>
 </li>
 <li><p>生命周期</p>
 <ol>
 <li>产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)</li>
-<li>死亡: 在嵌套的内部函数成为垃圾对象时<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//此处闭包已经产生(函数提升，内部函数对象已经创建了)</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      a++;</span><br><span class="line">      <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fun2;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> f = fun1();</span><br><span class="line">  f();</span><br><span class="line">  f();</span><br><span class="line">  f = <span class="literal">null</span> <span class="comment">//此时闭包对象死亡</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>死亡: 在嵌套的内部函数成为垃圾对象时<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">function fun1() &#123;</span><br><span class="line">    &#x2F;&#x2F;此处闭包已经产生(函数提升，内部函数对象已经创建了)</span><br><span class="line">    var a &#x3D; 3;</span><br><span class="line">    function fun2() &#123;</span><br><span class="line">    a++;</span><br><span class="line">    console.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    return fun2;</span><br><span class="line">&#125;</span><br><span class="line">var f &#x3D; fun1();</span><br><span class="line">f();</span><br><span class="line">f();</span><br><span class="line">f &#x3D; null &#x2F;&#x2F;此时闭包对象死亡</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>应用</p>
@@ -504,29 +533,34 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//Module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义模块1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">coolModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//私有的数据</span></span><br><span class="line">  <span class="keyword">var</span> msg = <span class="string">'atguigu'</span></span><br><span class="line">  <span class="keyword">var</span> names = [<span class="string">'I'</span>, <span class="string">'Love'</span>, <span class="string">'you'</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment">//私有的操作数据的函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(msg.toUpperCase())</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doOtherthing</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(names.join(<span class="string">' '</span>))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//向外暴露包含多个方法的对象，也可以用return(还需在调用时创建对象)</span></span><br><span class="line">  <span class="built_in">window</span>.module &#123;</span><br><span class="line">    doSomething: doSomething,</span><br><span class="line">    doOtherthing: doOtherthing</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用闭包</span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"Module.js"</span>&gt;&lt;<span class="regexp">/script&gt;/</span><span class="regexp">/引入</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  module.doSomething()</span></span><br><span class="line"><span class="string">  module.doOtherthing()</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;Module.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;自定义模块1</span><br><span class="line">function coolModule() &#123;</span><br><span class="line">  &#x2F;&#x2F;私有的数据</span><br><span class="line">  var msg &#x3D; &#39;atguigu&#39;</span><br><span class="line">  var names &#x3D; [&#39;I&#39;, &#39;Love&#39;, &#39;you&#39;]</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;私有的操作数据的函数</span><br><span class="line">  function doSomething() &#123;</span><br><span class="line">    console.log(msg.toUpperCase())</span><br><span class="line">  &#125;</span><br><span class="line">  function doOtherthing() &#123;</span><br><span class="line">    console.log(names.join(&#39; &#39;))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;向外暴露包含多个方法的对象，也可以用return(还需在调用时创建对象)</span><br><span class="line">  window.module &#123;</span><br><span class="line">    doSomething: doSomething,</span><br><span class="line">    doOtherthing: doOtherthing</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;调用闭包</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;Module.js&quot;&gt;&lt;&#x2F;script&gt;&#x2F;&#x2F;引入</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">  module.doSomething()</span><br><span class="line">  module.doOtherthing()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>缺点及解决方案</li>
 </ul>
 <ol>
-<li>缺点<ul>
+<li><p>缺点</p>
+<ul>
 <li>函数执行完后, 函数内的局部变量没有释放, 占用内存时间会变长</li>
 <li>容易造成内存泄露</li>
 </ul>
 </li>
-<li>解决<ul>
+<li><p>解决</p>
+<ul>
 <li>能不用闭包就不用</li>
 <li>及时释放: f = null; //让内部函数对象成为垃圾对象</li>
 </ul>
 </li>
 </ol>
 <h2 id="内存溢出与内存泄露"><a href="#内存溢出与内存泄露" class="headerlink" title="内存溢出与内存泄露"></a>内存溢出与内存泄露</h2><ol>
-<li>内存溢出<ul>
+<li><p>内存溢出</p>
+<ul>
 <li>一种程序运行出现的错误</li>
 <li>当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误</li>
 </ul>
 </li>
-<li>内存泄露<ul>
+<li><p>内存泄露</p>
+<ul>
 <li>占用的内存没有及时释放</li>
 <li>内存泄露积累多了就容易导致内存溢出</li>
 <li>常见的内存泄露:<ul>
@@ -543,237 +577,47 @@
 <ul>
 <li>套路: 先创建空Object对象, 再动态添加属性/方法</li>
 <li>适用场景: 起始时不确定对象内部数据</li>
-<li>问题: 语句太多<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.name = <span class="string">'Tom'</span></span><br><span class="line">obj.setName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="keyword">this</span>.name=name&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>问题: 语句太多<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj &#x3D; &#123;&#125;;</span><br><span class="line">obj.name &#x3D; &#39;Tom&#39;</span><br><span class="line">obj.setName &#x3D; function(name)&#123;this.name&#x3D;name&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>对象字面量模式</p>
 <ul>
 <li>套路: 使用{}创建对象, 同时指定属性/方法</li>
 <li>适用场景: 起始时对象内部数据是确定的</li>
-<li>问题: 如果创建多个对象, 有重复代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name : <span class="string">'Tom'</span>,</span><br><span class="line">  setName : <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="keyword">this</span>.name = name&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>问题: 如果创建多个对象, 有重复代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj &#x3D; &#123;</span><br><span class="line">name : &#39;Tom&#39;,</span><br><span class="line">setName : function(name)&#123;this.name &#x3D; name&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>工厂模式</p>
 <ul>
 <li>套路: 通过工厂函数动态创建对象并返回</li>
 <li>适用场景: 需要创建多个对象</li>
-<li>问题: 对象没有一个具体的类型, 都是Object类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 工厂函数: 返回一个需要的数据的函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = &#123;</span><br><span class="line">      name: name,</span><br><span class="line">      age: age,</span><br><span class="line">      setName: <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> p1=createPerson(name, age);</span><br><span class="line">  <span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">* 构造函数模式</span></span><br><span class="line"><span class="string">    * 套路: 自定义构造函数, 通过new创建对象</span></span><br><span class="line"><span class="string">    * 适用场景: 需要创建多个类型确定的对象</span></span><br><span class="line"><span class="string">    * 问题: 每个对象都有相同的数据, 浪费内存</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  `</span><span class="string">``</span>javascript</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="keyword">this</span>.name=name;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">new</span> Person(<span class="string">'tom'</span>, <span class="number">12</span>);</span><br></pre></td></tr></table></figure>
-</li>
+<li>问题: 对象没有一个具体的类型, 都是Object类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">         &#x2F;&#x2F; 工厂函数: 返回一个需要的数据的函数</span><br><span class="line">    function createPerson(name, age) &#123;</span><br><span class="line">        var p &#x3D; &#123;</span><br><span class="line">        name: name,</span><br><span class="line">        age: age,</span><br><span class="line">        setName: function (name) &#123;</span><br><span class="line">            this.name &#x3D; name</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return p</span><br><span class="line">    &#125;</span><br><span class="line">    var p1&#x3D;createPerson(name, age);</span><br><span class="line">    &#96;&#96;&#96;  </span><br><span class="line">* 构造函数模式</span><br><span class="line">    * 套路: 自定义构造函数, 通过new创建对象</span><br><span class="line">    * 适用场景: 需要创建多个类型确定的对象</span><br><span class="line">    * 问题: 每个对象都有相同的数据, 浪费内存</span><br></pre></td></tr></table></figure>
+function Person(name, age) {<br>this.name = name;<br>this.age = age;<br>this.setName = function(name){this.name=name;};<br>}<br>new Person(‘tom’, 12);<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-   构造函数+原型的组合模式</span><br><span class="line"></span><br><span class="line">    -   套路: 自定义构造函数, 属性在函数中初始化, 方法添加到原型上</span><br><span class="line">    -   适用场景: 需要创建多个类型确定的对象</span><br></pre></td></tr></table></figure>
+function Person(name, age) {<br>this.name = name;<br>this.age = age;<br>}<br>Person.prototype.setName = function(name){this.name=name;};<br>new Person(‘tom’, 12);<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 继承模式  </span><br><span class="line"></span><br><span class="line">-   **原型链继承** : 得到方法</span><br><span class="line"></span><br><span class="line">    -   套路</span><br><span class="line">        1.  定义父类型构造函数</span><br><span class="line">        2.  给父类型的原型添加方法</span><br><span class="line">        3.  定义子类型的构造函数</span><br><span class="line">        4.  创建父类型的对象赋值给子类型的原型</span><br><span class="line">        5.  将子类型原型的构造属性设置为子类型</span><br><span class="line">        6.  给子类型原型添加方法</span><br><span class="line">        7.  创建子类型的对象: 可以调用父类型的方法</span><br><span class="line">    -   关键</span><br><span class="line">        1.  子类型的原型为父类型的一个实例对象</span><br></pre></td></tr></table></figure>
+function Parent(){}<br>Parent.prototype.test = function(){};<br>function Child(){}<br>Child.prototype = new Parent(); // 子类型的原型指向父类型实例(让子类的原型成为父类的实例对象)<br>Child.prototype.constructor = Child//让子类型的原型的constructor指向子类型<br>var child = new Child(); //有test()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        -   例子</span><br><span class="line">                ![](&#x2F;JS高级&#x2F;原型链继承.png)</span><br><span class="line">-   借用构造函数 : 得到属性</span><br><span class="line"></span><br><span class="line">    -   套路:</span><br><span class="line">        1.  定义父类型构造函数</span><br><span class="line">        2.  定义子类型构造函数</span><br><span class="line">        3.  在子类型构造函数中调用父类型构造</span><br><span class="line">    -   关键:</span><br><span class="line">        1.  在子类型构造函数中通用super()调用父类型构造函数</span><br></pre></td></tr></table></figure>
+function Parent(xxx){this.xxx = xxx}<br>Parent.prototype.test = function(){};<br>function Child(xxx,yyy){<pre><code>Parent.call(this, xxx);//借用构造函数  this.Parent(xxx)不能这样写，但是意思相同</code></pre>}<br>var child = new Child(‘a’, ‘b’);  //child.xxx为’a’, 但child没有test()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-   原型链+借用构造函数的组合继承</span><br><span class="line"></span><br><span class="line">    1.  利用原型链实现对父类型对象的方法继承</span><br><span class="line">    2.  利用call()借用父类型构建函数初始化相同属性</span><br></pre></td></tr></table></figure>
+function Parent(xxx){this.xxx = xxx}<br>Parent.prototype.test = function(){};<br>function Child(xxx,yyy){<br>Parent.call(this, xxx);//借用构造函数 this.Parent(xxx)<br>}<br>Child.prototype = new Parent(); //得到test()<br>var child = new Child(); //child.xxx为’a’, 也有test()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">-   new一个对象背后做了些什么?</span><br><span class="line"></span><br><span class="line">    -   创建一个空对象</span><br><span class="line">    -   给对象设置**proto**, 值为构造函数对象的prototype属性值</span><br><span class="line">        this.**proto** &#x3D; Fn.prototype</span><br><span class="line">    -   执行构造函数体(给对象添加属性&#x2F;方法)</span><br><span class="line"></span><br><span class="line"># 线程机制与事件机制  </span><br><span class="line"></span><br><span class="line">## 线程与进程  </span><br><span class="line"></span><br><span class="line">-   进程:</span><br><span class="line">    -   程序的一次执行, 它占有一片独有的内存空间</span><br><span class="line">    -   可以通过windows任务管理器查看进程</span><br><span class="line">-   线程:</span><br><span class="line">    -   是进程内的一个独立执行单元</span><br><span class="line">    -   是程序执行的一个完整流程</span><br><span class="line">    -   是CPU的最小的调度单元</span><br><span class="line">-   关系</span><br><span class="line">    -   程序是在某个进程中的某个线程执行的</span><br><span class="line">    -   一个进程中一般至少有一个运行的线程: 主线程</span><br><span class="line">    -   一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的</span><br><span class="line">    -   一个进程内的数据可以供其中的多个线程直接共享</span><br><span class="line">    -   多个进程之间的数据是不能直接共享的</span><br><span class="line">    -   线程池：保存多个线程对象的容器，实现线程对象的反复利用</span><br><span class="line"></span><br><span class="line">## 浏览器内核模块组成 </span><br><span class="line"></span><br><span class="line">1.  什么是浏览器内核?</span><br><span class="line"></span><br><span class="line">    -   支持浏览器运行的最核心的程序</span><br><span class="line"></span><br><span class="line">2.  不同的浏览器可能不太一样</span><br><span class="line"></span><br><span class="line">    -   Chrome, Safari: webkit</span><br><span class="line">    -   firefox: Gecko</span><br><span class="line">    -   IE: Trident</span><br><span class="line">    -   360,搜狗等国内浏览器: Trident + webkit</span><br><span class="line"></span><br><span class="line">3.  内核由很多模块组成</span><br><span class="line"></span><br><span class="line">    -   主线程</span><br><span class="line">        -   js引擎模块 : 负责js程序的编译与运行</span><br><span class="line">        -   html,css文档解析模块 : 负责页面文本的解析</span><br><span class="line">        -   DOM&#x2F;CSS模块 : 负责dom&#x2F;css在内存中的相关处理</span><br><span class="line">        -   布局和渲染模块 : 负责页面的布局和效果的绘制(内存中的对象)</span><br><span class="line">    -   分线程</span><br><span class="line">        -   定时器模块 : 负责定时器的管理</span><br><span class="line">        -   DOM事件模块 : 负责事件的管理</span><br><span class="line">        -   网络请求模块 : 负责Ajax请求</span><br><span class="line"></span><br><span class="line">## 定时器问题  </span><br><span class="line"></span><br><span class="line">1.  定时器真是定时执行的吗?</span><br><span class="line">    -   定时器并不能保证真正定时执行</span><br><span class="line">    -   一般会延迟一丁点(可以接受), 也有可能延迟很长时间(不能接受)</span><br><span class="line"></span><br><span class="line">2.  定时器回调函数是在分线程执行的吗?</span><br><span class="line">    -   在主线程执行的, js是单线程的</span><br><span class="line"></span><br><span class="line">3.  定时器是如何实现的?</span><br><span class="line">    -   事件循环模型</span><br><span class="line"></span><br><span class="line">## js线程  </span><br><span class="line"></span><br><span class="line">-   js是单线程执行的(回调函数也是在主线程)</span><br><span class="line">-   H5提出了实现多线程的方案: Web Workers</span><br><span class="line">-   只能是主线程更新界面</span><br><span class="line"></span><br><span class="line">1.  如何证明js执行是单线程的?</span><br><span class="line"></span><br><span class="line">    -   setTimeout()的回调函数是在主线程执行的</span><br><span class="line">    -   定时器回调函数只有在运行栈中的代码全部执行完后才有可能执行</span><br><span class="line"></span><br><span class="line">2.  为什么js要用单线程模式, 而不用多线程模式?</span><br><span class="line"></span><br><span class="line">    -   JavaScript的单线程，与它的用途有关。</span><br><span class="line">    -   作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。</span><br><span class="line">    -   这决定了它只能是单线程，否则会带来很复杂的同步问题</span><br><span class="line"></span><br><span class="line">3.  代码的分类:</span><br><span class="line"></span><br><span class="line">    -   初始化代码</span><br><span class="line">    -   回调代码</span><br><span class="line"></span><br><span class="line">4.  js引擎执行代码的基本流程</span><br><span class="line"></span><br><span class="line">    -   先执行初始化代码: 包含一些特别的代码</span><br><span class="line">        -   设置定时器</span><br><span class="line">        -   绑定监听</span><br><span class="line">        -   发送ajax请求</span><br><span class="line">    -   后面在某个时刻才会执行回调代码</span><br><span class="line"></span><br><span class="line">## 事件循环模型  </span><br><span class="line"></span><br><span class="line">1.  所有代码分类</span><br><span class="line">    -   初始化执行代码(同步代码): 包含绑定dom事件监听, 设置定时器,</span><br><span class="line">        发送ajax请求的代码</span><br><span class="line">    -   回调执行代码(异步代码): 处理回调逻辑</span><br><span class="line"></span><br><span class="line">2.  js引擎执行代码的基本流程:</span><br><span class="line">    -   初始化代码&#x3D;&#x3D;&#x3D;\&gt;回调代码</span><br><span class="line"></span><br><span class="line">3.  模型的2个重要组成部分:</span><br><span class="line">    -   事件管理模块</span><br><span class="line">    -   回调队列</span><br><span class="line"></span><br><span class="line">4.  模型的运转流程</span><br><span class="line">    -   执行初始化代码, 将事件回调函数交给对应模块管理</span><br><span class="line">    -   当事件发生时, 管理模块会将回调函数及其数据添加到回调列队中</span><br><span class="line">    -   只有当初始化代码执行完后(可能要一定时间),</span><br><span class="line">        才会遍历读取回调队列中的回调函数执行\</span><br><span class="line">        ![](&#x2F;JS高级&#x2F;事件循环模型.png)</span><br><span class="line"></span><br><span class="line">## H5-Web-Workers-多线程  </span><br><span class="line"></span><br><span class="line">1.  H5规范提供了js分线程的实现, 取名为: Web Workers</span><br><span class="line"></span><br><span class="line">-   Worker</span><br></pre></td></tr></table></figure>
+var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){event.data} : 用来接收另一个线程发送过来的数据的回调//用来绑定消息监听（主线程接收分线程返回的数据）<br>worker.postMessage(data1) : 主线程向分线程发送数据<pre><code></code></pre></li>
 </ul>
 </li>
-<li><p>构造函数+原型的组合模式</p>
-<ul>
-<li>套路: 自定义构造函数, 属性在函数中初始化, 方法添加到原型上</li>
-<li>适用场景: 需要创建多个类型确定的对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="keyword">this</span>.name=name;&#125;;</span><br><span class="line"><span class="keyword">new</span> Person(<span class="string">'tom'</span>, <span class="number">12</span>);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="继承模式"><a href="#继承模式" class="headerlink" title="继承模式"></a>继承模式</h2><ul>
-<li><p><strong>原型链继承</strong> : 得到方法</p>
-<ul>
-<li>套路<ol>
-<li>定义父类型构造函数</li>
-<li>给父类型的原型添加方法</li>
-<li>定义子类型的构造函数</li>
-<li>创建父类型的对象赋值给子类型的原型</li>
-<li>将子类型原型的构造属性设置为子类型</li>
-<li>给子类型原型添加方法</li>
-<li>创建子类型的对象: 可以调用父类型的方法</li>
-</ol>
-</li>
-<li>关键<ol>
-<li>子类型的原型为父类型的一个实例对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Parent.prototype.test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent(); <span class="comment">// 子类型的原型指向父类型实例(让子类的原型成为父类的实例对象)</span></span><br><span class="line">Child.prototype.constructor = Child<span class="comment">//让子类型的原型的constructor指向子类型</span></span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child(); <span class="comment">//有test()</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>例子<br><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF.png" alt></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>借用构造函数 : 得到属性</p>
-<ul>
-<li>套路:<ol>
-<li>定义父类型构造函数</li>
-<li>定义子类型构造函数</li>
-<li>在子类型构造函数中调用父类型构造</li>
-</ol>
-</li>
-<li>关键:<ol>
-<li>在子类型构造函数中通用super()调用父类型构造函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">xxx</span>)</span>&#123;<span class="keyword">this</span>.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">xxx,yyy</span>)</span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>, xxx);<span class="comment">//借用构造函数  this.Parent(xxx)不能这样写，但是意思相同</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child(<span class="string">'a'</span>, <span class="string">'b'</span>);  <span class="comment">//child.xxx为'a', 但child没有test()</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>原型链+借用构造函数的组合继承</p>
-<ol>
-<li>利用原型链实现对父类型对象的方法继承</li>
-<li>利用call()借用父类型构建函数初始化相同属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">xxx</span>)</span>&#123;<span class="keyword">this</span>.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">xxx,yyy</span>)</span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>, xxx);<span class="comment">//借用构造函数 this.Parent(xxx)</span></span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent(); <span class="comment">//得到test()</span></span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child(); <span class="comment">//child.xxx为'a', 也有test()</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>new一个对象背后做了些什么?</p>
-<ul>
-<li>创建一个空对象</li>
-<li>给对象设置<strong>proto</strong>, 值为构造函数对象的prototype属性值   this.<strong>proto</strong> = Fn.prototype</li>
-<li>执行构造函数体(给对象添加属性/方法)</li>
-</ul>
-</li>
-</ul>
-<h1 id="线程机制与事件机制"><a href="#线程机制与事件机制" class="headerlink" title="线程机制与事件机制"></a>线程机制与事件机制</h1><h2 id="线程与进程"><a href="#线程与进程" class="headerlink" title="线程与进程"></a>线程与进程</h2><ul>
-<li>进程:<ul>
-<li>程序的一次执行, 它占有一片独有的内存空间</li>
-<li>可以通过windows任务管理器查看进程</li>
-</ul>
-</li>
-<li>线程:<ul>
-<li>是进程内的一个独立执行单元</li>
-<li>是程序执行的一个完整流程</li>
-<li>是CPU的最小的调度单元</li>
-</ul>
-</li>
-<li>关系<ul>
-<li>程序是在某个进程中的某个线程执行的</li>
-<li>一个进程中一般至少有一个运行的线程: 主线程</li>
-<li>一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的</li>
-<li>一个进程内的数据可以供其中的多个线程直接共享</li>
-<li>多个进程之间的数据是不能直接共享的</li>
-<li>线程池：保存多个线程对象的容器，实现线程对象的反复利用</li>
-</ul>
-</li>
-</ul>
-<h2 id="浏览器内核模块组成"><a href="#浏览器内核模块组成" class="headerlink" title="浏览器内核模块组成"></a>浏览器内核模块组成</h2><ol>
-<li><p>什么是浏览器内核?</p>
-<ul>
-<li>支持浏览器运行的最核心的程序</li>
-</ul>
-</li>
-<li><p>不同的浏览器可能不太一样</p>
-<ul>
-<li>Chrome, Safari: webkit</li>
-<li>firefox: Gecko</li>
-<li>IE: Trident</li>
-<li>360,搜狗等国内浏览器: Trident + webkit</li>
-</ul>
-</li>
-<li><p>内核由很多模块组成 </p>
-<ul>
-<li>主线程<ul>
-<li>js引擎模块 : 负责js程序的编译与运行</li>
-<li>html,css文档解析模块 : 负责页面文本的解析</li>
-<li>DOM/CSS模块 : 负责dom/css在内存中的相关处理 </li>
-<li>布局和渲染模块 : 负责页面的布局和效果的绘制(内存中的对象)</li>
-</ul>
-</li>
-<li>分线程<ul>
-<li>定时器模块 : 负责定时器的管理</li>
-<li>DOM事件模块 : 负责事件的管理</li>
-<li>网络请求模块 : 负责Ajax请求</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="定时器问题"><a href="#定时器问题" class="headerlink" title="定时器问题:"></a>定时器问题:</h2><ol>
-<li>定时器真是定时执行的吗?<ul>
-<li>定时器并不能保证真正定时执行</li>
-<li>一般会延迟一丁点(可以接受), 也有可能延迟很长时间(不能接受)</li>
-</ul>
-</li>
-<li>定时器回调函数是在分线程执行的吗?<ul>
-<li>在主线程执行的, js是单线程的</li>
-</ul>
-</li>
-<li>定时器是如何实现的?<ul>
-<li>事件循环模型</li>
-</ul>
-</li>
-</ol>
-<h2 id="js线程"><a href="#js线程" class="headerlink" title="js线程"></a>js线程</h2><ul>
-<li>js是单线程执行的(回调函数也是在主线程)</li>
-<li>H5提出了实现多线程的方案: Web Workers</li>
-<li>只能是主线程更新界面</li>
-</ul>
-<ol>
-<li><p>如何证明js执行是单线程的?</p>
-<ul>
-<li>setTimeout()的回调函数是在主线程执行的</li>
-<li>定时器回调函数只有在运行栈中的代码全部执行完后才有可能执行</li>
-</ul>
-</li>
-<li><p>为什么js要用单线程模式, 而不用多线程模式?</p>
-<ul>
-<li>JavaScript的单线程，与它的用途有关。</li>
-<li>作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。</li>
-<li>这决定了它只能是单线程，否则会带来很复杂的同步问题</li>
-</ul>
-</li>
-<li><p>代码的分类:</p>
-<ul>
-<li>初始化代码</li>
-<li>回调代码</li>
-</ul>
-</li>
-<li><p>js引擎执行代码的基本流程</p>
-<ul>
-<li>先执行初始化代码: 包含一些特别的代码<ul>
-<li>设置定时器</li>
-<li>绑定监听</li>
-<li>发送ajax请求</li>
-</ul>
-</li>
-<li>后面在某个时刻才会执行回调代码</li>
-</ul>
-</li>
-</ol>
-<h2 id="事件循环模型"><a href="#事件循环模型" class="headerlink" title="事件循环模型"></a>事件循环模型</h2><ol>
-<li>所有代码分类<ul>
-<li>初始化执行代码(同步代码): 包含绑定dom事件监听, 设置定时器, 发送ajax请求的代码</li>
-<li>回调执行代码(异步代码): 处理回调逻辑</li>
-</ul>
-</li>
-<li>js引擎执行代码的基本流程:<ul>
-<li>初始化代码===&gt;回调代码</li>
-</ul>
-</li>
-<li>模型的2个重要组成部分:<ul>
-<li>事件管理模块</li>
-<li>回调队列</li>
-</ul>
-</li>
-<li>模型的运转流程<ul>
-<li>执行初始化代码, 将事件回调函数交给对应模块管理</li>
-<li>当事件发生时, 管理模块会将回调函数及其数据添加到回调列队中</li>
-<li>只有当初始化代码执行完后(可能要一定时间), 才会遍历读取回调队列中的回调函数执行<br><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%A8%A1%E5%9E%8B.png" alt></li>
-</ul>
-</li>
-</ol>
-<h2 id="H5-Web-Workers-多线程"><a href="#H5-Web-Workers-多线程" class="headerlink" title="H5 Web Workers(多线程)"></a>H5 Web Workers(多线程)</h2><ol>
-<li>H5规范提供了js分线程的实现, 取名为: Web Workers</li>
-</ol>
-<ul>
-<li>Worker<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'worker.js'</span>);</span><br><span class="line">worker.onMessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;event.data&#125; : 用来接收另一个线程发送过来的数据的回调<span class="comment">//用来绑定消息监听（主线程接收分线程返回的数据）</span></span><br><span class="line">worker.postMessage(data1) : 主线程向分线程发送数据</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ol start="2">
-<li>相关API<ul>
+<li><p>相关API</p>
+<ul>
 <li>Worker: 构造函数, 加载分线程执行的js文件</li>
 <li>Worker.prototype.onmessage: 用于接收另一个线程的回调函数</li>
 <li>Worker.prototype.postMessage: 向另一个线程发送消息</li>
 </ul>
 </li>
-<li>不足<ul>
+<li><p>不足</p>
+<ul>
 <li>worker内代码不能操作DOM(更新UI)</li>
 <li>不能跨域加载JS</li>
-<li>不是每个浏览器都支持这个新特性</li>
+<li>不是每个浏览器都支持这个新特性<br><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></li>
 </ul>
 </li>
 </ol>
-<p><img src="/2020/07/08/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></p>
-</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/07/10/jQuery/"><i class="fa fa-chevron-left">  </i><span>jQuery</span></a></div><div class="next-post pull-right"><a href="/2020/07/05/JavaScript/"><span>JavaScript</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/07/10/jQuery/"><i class="fa fa-chevron-left">  </i><span>jQuery</span></a></div><div class="next-post pull-right"><a href="/2020/07/04/htmlcss/"><span>HTMLCSS基础</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
 var verify = 'true' == true ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
