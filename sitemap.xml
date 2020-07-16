@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xyx6.top/2020/07/16/Ajax/</loc>
+    
+    <lastmod>2020-07-16T13:44:38.952Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/14/ES6-ES11/</loc>
+    
+    <lastmod>2020-07-16T08:37:08.174Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/07/JavaScript/</loc>
+    
+    <lastmod>2020-07-16T07:27:26.907Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xyx6.top/2020/07/13/MongoDB/</loc>
     
-    <lastmod>2020-07-13T19:05:40.574Z</lastmod>
+    <lastmod>2020-07-14T05:12:26.827Z</lastmod>
     
   </url>
   
@@ -26,13 +47,6 @@
     <loc>http://xyx6.top/2020/07/10/jQuery/</loc>
     
     <lastmod>2020-07-11T16:20:21.253Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2020/07/07/JavaScript/</loc>
-    
-    <lastmod>2020-07-11T16:20:18.135Z</lastmod>
     
   </url>
   
