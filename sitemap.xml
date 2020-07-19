@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xyx6.top/2020/07/16/Ajax/</loc>
+    <loc>http://xyx6.top/2020/07/18/Webpack/</loc>
     
-    <lastmod>2020-07-16T14:32:16.283Z</lastmod>
+    <lastmod>2020-07-19T09:59:57.895Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/17/Git-Github/</loc>
+    
+    <lastmod>2020-07-18T18:08:44.864Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/18/Gulp/</loc>
+    
+    <lastmod>2020-07-18T10:52:30.939Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/18/Grunt/</loc>
+    
+    <lastmod>2020-07-18T06:46:44.844Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/11/NodeJS/</loc>
+    
+    <lastmod>2020-07-18T05:09:54.365Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/13/MongoDB/</loc>
+    
+    <lastmod>2020-07-18T05:09:54.363Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://xyx6.top/2020/07/14/ES6-ES11/</loc>
     
-    <lastmod>2020-07-16T14:30:49.870Z</lastmod>
+    <lastmod>2020-07-18T05:09:54.332Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/07/16/Ajax/</loc>
+    
+    <lastmod>2020-07-18T05:09:54.331Z</lastmod>
     
   </url>
   
@@ -19,20 +61,6 @@
     <loc>http://xyx6.top/2020/07/07/JavaScript/</loc>
     
     <lastmod>2020-07-16T07:27:26.907Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2020/07/13/MongoDB/</loc>
-    
-    <lastmod>2020-07-14T05:12:26.827Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2020/07/11/NodeJS/</loc>
-    
-    <lastmod>2020-07-13T07:57:53.458Z</lastmod>
     
   </url>
   
