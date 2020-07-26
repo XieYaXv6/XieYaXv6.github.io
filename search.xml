@@ -5552,7 +5552,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>用git pull拉取线上的最新版本</li>
 </ol>
 <ul>
-<li>如果要同步到其他仓库<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先建立连接</span><br><span class="line">git remote add name http:&#x2F;&#x2F;xxxxxxxx.git   (如果是clone下来的可以省略) </span><br><span class="line"></span><br><span class="line">然后拉取最新版</span><br><span class="line">git pull  name branch</span><br><span class="line"></span><br><span class="line">然后推送到仓库</span><br><span class="line">git push name branch</span><br></pre></td></tr></table></figure>
+<li>如果要同步到其他仓库<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先建立连接</span><br><span class="line">git remote add name http:&#x2F;&#x2F;xxxxxxxx.git   (如果是clone下来的可以省略) </span><br><span class="line"></span><br><span class="line">然后拉取最新版</span><br><span class="line">git pull  name branch &#x2F;&#x2F;有一种情况是因为readme.md文件不在本地会报错 只需要git pull --rebase name branch本地生成readme文件</span><br><span class="line"></span><br><span class="line">然后推送到仓库</span><br><span class="line">git push name branch</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -6005,7 +6005,9 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>axios</title>
     <url>/2020/07/25/axios/</url>
-    <content><![CDATA[<p>axios</p>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>前端最流行的ajax请求库</p>
+</blockquote>
 <a id="more"></a>
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
 <li>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</a></li>
@@ -6229,6 +6231,7 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
 <ul>
 <li>点击按钮, 取消某个正在请求中的请求</li>
 <li>在请求一个接口前, 取消前面一个未完成的请求</li>
+<li>可以用请求拦截器统一取消发送请求前未完成的请求，并且保存取消函数；用响应拦截器对结果统一处理</li>
 </ul>
 <ul>
 <li>源码：<a href="https://github.com/XieYaXv6/Learn-axios" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios</a></li>
@@ -6245,7 +6248,9 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>Vue</title>
     <url>/2020/07/22/Vue/</url>
-    <content><![CDATA[<p>JS高级框架</p>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>中国最火的一套构建用户界面的渐进式框架</p>
+</blockquote>
 <a id="more"></a>
 <h1 id="Vue基本认识"><a href="#Vue基本认识" class="headerlink" title="Vue基本认识"></a>Vue基本认识</h1><p><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">中文官网</a></p>
 <h2 id="Vue特点"><a href="#Vue特点" class="headerlink" title="Vue特点"></a>Vue特点</h2><ol>
