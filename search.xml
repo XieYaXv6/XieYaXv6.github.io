@@ -5604,6 +5604,44 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 </li>
 </ul>
+<h1 id="日常开发流程"><a href="#日常开发流程" class="headerlink" title="日常开发流程"></a>日常开发流程</h1><ol>
+<li>git remote add &lt;名字&gt; &lt;链接&gt;<ul>
+<li>先建立连接</li>
+</ul>
+</li>
+<li>git checkout -b 新分支名称<ul>
+<li>创建新分支并切换到新分支</li>
+</ul>
+</li>
+<li>git status<ul>
+<li>查看当前工作状态</li>
+</ul>
+</li>
+<li>git add *<ul>
+<li>将工作区文件添加到缓存区</li>
+</ul>
+</li>
+<li>git commit -m “注释内容”<ul>
+<li>暂存区内容提交至版本库</li>
+</ul>
+</li>
+<li>git push<ul>
+<li>将该分支提交到远程仓库</li>
+</ul>
+</li>
+<li>git checkout master<ul>
+<li>切换回主分支</li>
+</ul>
+</li>
+<li>git merge 新分支<ul>
+<li>将新分支的代码合并到主分支上</li>
+</ul>
+</li>
+<li>git push  连接名字 分支<ul>
+<li>这样分支和主分支就都提交到远程仓库上了</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>版本控制工具</category>
