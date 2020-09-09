@@ -5613,6 +5613,10 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>创建新分支并切换到新分支</li>
 </ul>
 </li>
+<li>git push -u 连接名字 云端分支名字<ul>
+<li>将新创建的分支push到云端，并且起相同的名字和本地的分支对应起来</li>
+</ul>
+</li>
 <li>git status<ul>
 <li>查看当前工作状态</li>
 </ul>
