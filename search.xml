@@ -6854,7 +6854,9 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>Vue生命周期函数</title>
     <url>/2020/09/14/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h1><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h1><ul>
 <li>从 Vue 实例的创建，运行，到销毁期间，总是伴随着各种各样的事件，这些事件，被称为生命周期</li>
 <li>生命周期函数=生命周期钩子=生命周期事件<br><img src="/2020/09/14/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/live.png" alt></li>
 </ul>
@@ -6881,7 +6883,9 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>节流和防抖动</title>
     <url>/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
 <li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
 <li><strong>节流是固定时间内只触发一次函数</strong></li>
 <li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cthrottling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
