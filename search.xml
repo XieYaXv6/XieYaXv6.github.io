@@ -6854,7 +6854,8 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>Vue生命周期函数</title>
     <url>/2020/09/14/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
 
 <h1 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h1><ul>
 <li>从 Vue 实例的创建，运行，到销毁期间，总是伴随着各种各样的事件，这些事件，被称为生命周期</li>
@@ -6883,7 +6884,7 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>节流和防抖动</title>
     <url>/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<p>。</p>
+    <content><![CDATA[<p>-</p>
 <a id="more"></a>
 
 <h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
