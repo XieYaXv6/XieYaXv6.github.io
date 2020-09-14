@@ -6883,7 +6883,8 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
   <entry>
     <title>节流和防抖动</title>
     <url>/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p>。</p>
+<a id="more"></a>
 
 <h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
 <li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
