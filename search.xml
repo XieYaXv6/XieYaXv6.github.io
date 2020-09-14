@@ -6830,4 +6830,72 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
         <tag>Mongoose</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue实战之电商后台管理系统</title>
+    <url>/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>纯前端的项目，后端接口是提供好的，这次用的element-ui来开发，功能好强大，都是封装好的组件，太方便了！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Clogin.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cwelcome.png" alt></p>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cuser.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cuseredit.png" alt></p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Crole.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Crole2.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cright.png" alt></p>
+<h2 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cgoods.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Ccategories.png" alt></p>
+<h2 id="订单管理"><a href="#订单管理" class="headerlink" title="订单管理"></a>订单管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Corder.png" alt></p>
+<h2 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%5CVue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%5Cecharts.png" alt></p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue生命周期函数</title>
+    <url>/2020/09/14/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h1><ul>
+<li>从 Vue 实例的创建，运行，到销毁期间，总是伴随着各种各样的事件，这些事件，被称为生命周期</li>
+<li>生命周期函数=生命周期钩子=生命周期事件<br><img src="/2020/09/14/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/live.png" alt></li>
+</ul>
+<h1 id="主要的生命周期函数分类"><a href="#主要的生命周期函数分类" class="headerlink" title="主要的生命周期函数分类"></a>主要的生命周期函数分类</h1><h2 id="创建期间的生命周期函数："><a href="#创建期间的生命周期函数：" class="headerlink" title="创建期间的生命周期函数："></a>创建期间的生命周期函数：</h2><ul>
+<li>beforeCreate：实例在内存中刚被创建出来，此时还没有初始化好data和methods</li>
+<li>created：实例已经在内存中创建完成，此时data和methods已经创建完成，此时还没有开始编译模板</li>
+<li>beforeMount：此时已经完成模板的编译，但是还没有挂载到页面中</li>
+<li>mounted：此时已经将编译好的模板，挂载到页面指定的容器中显示</li>
+</ul>
+<h2 id="运行期间的生命周期函数："><a href="#运行期间的生命周期函数：" class="headerlink" title="运行期间的生命周期函数："></a>运行期间的生命周期函数：</h2><ul>
+<li>beforeUpdate：状态更新之前执行此函数，此时data中的状态值是新的，但是界面上显示的数据还是旧的，因为此时还没有开始重新渲染DOM节点</li>
+<li>updated：实例更新完成后调用此函数，此时data中的状态值和界面上显示的数据都是已经完成更新了的，界面已经被重新渲染好了</li>
+</ul>
+<h2 id="销毁期间的生命周期函数："><a href="#销毁期间的生命周期函数：" class="headerlink" title="销毁期间的生命周期函数："></a>销毁期间的生命周期函数：</h2><ul>
+<li>beforeDestroy：实例销毁之前调用，在这一步，实例依然完全可用</li>
+<li>destroyed：Vue实例销毁调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器都会被移除，所有的子实例也会被销毁</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue生命周期</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>节流和防抖动</title>
+    <url>/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
+    <content><![CDATA[<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
+<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
+<li><strong>节流是固定时间内只触发一次函数</strong></li>
+<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cthrottling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
+<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2020/09/14/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cdebounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>节流</tag>
+        <tag>防抖动</tag>
+      </tags>
+  </entry>
 </search>
