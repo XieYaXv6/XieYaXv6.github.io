@@ -6904,4 +6904,104 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
         <tag>防抖动</tag>
       </tags>
   </entry>
+  <entry>
+    <title>小本本</title>
+    <url>/2020/09/14/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>用来记录一些繁杂的东西</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
+<li>通过 verticle-align:middle 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">vertical-align:middle;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过 display:flex 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 display:table-cell 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:table;</span><br><span class="line">子元素display：table-cell;</span><br></pre></td></tr></table></figure>
+
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
+<li><p>通过 margin: 0 auto; text-align: center 实现</p>
+</li>
+<li><p>通过 display:flex 实现</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">     flex-direction:column;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 width:fit-content 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">width:fit-content;</span><br><span class="line">margin: 0 auto ;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
+
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><h2 id="1-JSONP-跨域"><a href="#1-JSONP-跨域" class="headerlink" title="1. JSONP 跨域"></a>1. JSONP 跨域</h2><ul>
+<li>jsonp 的原理就是利用&lt;script&gt;标签没有跨域限制，通过&lt;script&gt;标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span><br><span class="line">    script.src &#x3D; &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login?user&#x3D;admin&amp;callback&#x3D;handleCallback&#39;;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 回调执行函数</span><br><span class="line">    function handleCallback(res) &#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">handleCallback(&#123;&quot;success&quot;: true, &quot;user&quot;: &quot;admin&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-CORS-跨域"><a href="#2-CORS-跨域" class="headerlink" title="2. CORS 跨域"></a>2. CORS 跨域</h2><ul>
+<li>普通跨域请求：只服务端设置 Access-Control-Allow-Origin 即可，前端无须设置，若要带 cookie 请求：前后端都需要设置</li>
+<li>跨域到哪个服务器就在哪个服务器上配置响应头</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest(); &#x2F;&#x2F; IE8&#x2F;9需用window.XDomainRequest兼容</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials &#x3D; true;</span><br><span class="line"></span><br><span class="line">xhr.open(&#39;post&#39;, &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login&#39;, true);</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line">xhr.send(&#39;user&#x3D;admin&#39;);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
+<li>利用 node + webpack + webpack-dev-server 代理接口跨域。在开发环境下，由于 vue 渲染服务和接口代理服务都是 webpack-dev-server 同一个，所以页面与代理接口之间不再跨域，无须设置 headers 跨域信息了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        proxy: [&#123;</span><br><span class="line">            context: &#39;&#x2F;login&#39;,</span><br><span class="line">            target: &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#39;,  &#x2F;&#x2F; 代理跨域目标接口</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">            cookieDomainRewrite: &#39;www.domain1.com&#39;  &#x2F;&#x2F; 可以为false，表示不修改</span><br><span class="line">        &#125;],</span><br><span class="line">        noInfo: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接</li>
+<li>TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付</li>
+<li>TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的，UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）</li>
+<li>每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信</li>
+<li>TCP首部开销20字节;UDP的首部开销小，只有8个字节</li>
+<li>TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</li>
+</ol>
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><ul>
+<li>第一次握手<ul>
+<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。</li>
+</ul>
+</li>
+<li>第二次握手<ul>
+<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。</li>
+</ul>
+</li>
+<li>第三次握手<ul>
+<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。</li>
+</ul>
+</li>
+</ul>
+<h1 id="http和https"><a href="#http和https" class="headerlink" title="http和https"></a>http和https</h1><ul>
+<li>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</li>
+<li>HTTPS：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</li>
+<li>HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</li>
+</ul>
+<h2 id="HTTP与HTTPS有什么区别？"><a href="#HTTP与HTTPS有什么区别？" class="headerlink" title="HTTP与HTTPS有什么区别？"></a>HTTP与HTTPS有什么区别？</h2><ul>
+<li>HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。简单来说，HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全。</li>
+</ul>
+<h1 id="两边固定中间自适应的布局"><a href="#两边固定中间自适应的布局" class="headerlink" title="两边固定中间自适应的布局"></a>两边固定中间自适应的布局</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float实现：</span><br><span class="line">&lt;div style&#x3D;&quot;width:100%; margin:0 auto;&quot;&gt; </span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:200px; float:right; background-color:#960&quot;&gt;这是右侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:150px; float:left; background:#6FF&quot;&gt;这是左侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;margin-left:150px;margin-right:200px; background-color:#9F3&quot;&gt;中间内容，自适应宽度&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">flex实现</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left, .right &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    background:  #090;</span><br><span class="line">&#125;</span><br><span class="line">.middle &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: #f00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;middle&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输入url地址按下回车会发生什么"><a href="#输入url地址按下回车会发生什么" class="headerlink" title="输入url地址按下回车会发生什么"></a>输入url地址按下回车会发生什么</h1><p>1.输入url地址后，首先进行DNS解析，将相应的域名解析为IP地址；<br>2.客户端根据IP地址去寻找相应的服务器；<br>3.与服务器进行TCP的三次握手；</p>
+<ul>
+<li>所谓三次握手就是客户端在请求与服务器相连接时，彼此共计发送了三次数据包，就好比以下的对话：<ul>
+<li>首先，需要明确的是，三次握手是客户端先发起请求。</li>
+<li>（第一次）客户端：hi，服务器，在吗？我想和你建立连接，你能收到我的消息吗？（此时客户端给服务端发送了一个数据包和发送序号，即SYN=1，Seq=X）</li>
+<li>（第二次）服务器：hi，客户端，我在呢，我收到你的消息了，我们可以建立连接，你能收到我答复的消息吗？（此时服务端发送syn+ack报文，并置发送序号为Y，再确认序号为X+1）</li>
+<li>（第三次）客户端：我收到你的答复了，很开心能和你建立连接。（此时客户端发送ack报文，并置发送序号为Z，再确认序号为Y+1）</li>
+</ul>
+</li>
+</ul>
+<p>4.客户端找到相应的资源库；</p>
+<p>5.根据资源库返回页面信息；</p>
+<p>6.浏览器根据自身的执行机制解析页面；</p>
+<p>7.最后服务器将解析信息返回给客户端,客户端显示自己请求，即服务端返回的东西</p>
+]]></content>
+  </entry>
 </search>
