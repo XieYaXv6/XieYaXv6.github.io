@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Vue实战之外卖平台"><meta name="keywords" content="MongoDB,Node.js,Vue,Vuex,Mongoose"><meta name="author" content="XYX"><meta name="copyright" content="XYX"><title>Vue实战之外卖平台 | XYX's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?42b25629bbf1fae4313b2d989bcab163";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XYX's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#项目展示"><span class="toc-number">1.</span> <span class="toc-text">项目展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#首页"><span class="toc-number">1.1.</span> <span class="toc-text">首页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#商家详情页"><span class="toc-number">1.2.</span> <span class="toc-text">商家详情页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#菜品列表"><span class="toc-number">1.2.1.</span> <span class="toc-text">菜品列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#购物车"><span class="toc-number">1.2.2.</span> <span class="toc-text">购物车</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#评价"><span class="toc-number">1.2.3.</span> <span class="toc-text">评价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#商家信息"><span class="toc-number">1.2.4.</span> <span class="toc-text">商家信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索"><span class="toc-number">1.3.</span> <span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登陆注册"><span class="toc-number">1.4.</span> <span class="toc-text">登陆注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库"><span class="toc-number">1.5.</span> <span class="toc-text">数据库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#技术"><span class="toc-number">2.1.</span> <span class="toc-text">技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-number">2.1.1.</span> <span class="toc-text">前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-number">2.1.2.</span> <span class="toc-text">后端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感想"><span class="toc-number">2.2.</span> <span class="toc-text">感想</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#taking-my-time-step-by-step"><span class="toc-number">3.</span> <span class="toc-text">taking my time,step by step!</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">23</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">28</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">我的朋友们</div><a class="author-info-links__name text-center" href="https://www.ntutn.top/" target="_blank" rel="noopener">归零幻想</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Vue实战之外卖平台</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-02</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Vue/">Vue</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">642</span><span class="post-meta__separator">|</span><span>阅读时长: 2 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
+<ul>
+<li>router：路由器页面跳转，开发单页应用</li>
+<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
+<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
+</ul>
+</li>
+<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
+<ul>
+<li>Bscroll: 实现页面滑动</li>
+<li>swiper：实现轮播图</li>
+<li>mint-ui：构建界面</li>
+<li>moment：处理日期格式</li>
+</ul>
+</li>
+<li><p>数据：ajax, axios, mock, vuex, postman</p>
+<ul>
+<li>ajax,axios: 实现前后台交互</li>
+<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
+<li>vuex：对数据进行全局的统一管理</li>
+<li>postman：测试后端接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li>Node+Express <ul>
+<li>用express搭建后台路由</li>
+</ul>
+</li>
+<li>Mongodb+Mongoose<ul>
+<li>用mongoose操作mongodb数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
+<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<ul>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+</ul>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MongoDB/">MongoDB</a><a class="post-meta__tags" href="/tags/Node-js/">Node.js</a><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/Vuex/">Vuex</a><a class="post-meta__tags" href="/tags/Mongoose/">Mongoose</a></div><div class="social-share pull-right" data-disabled="Linkedin,点点,Facebook,Twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/01/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"><i class="fa fa-chevron-left">  </i><span>Vue实战之电商后台管理系统</span></a></div><div class="next-post pull-right"><a href="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/"><span>服务器竟然被挖矿程序攻击！？</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YiMuUS8mJ9iQH4i0HKdegAjN-gzGzoHsz',
+  appKey:'S42xmXqdEnhtc3ibq7F71WYu',
+  placeholder:'Just go go',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'5',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div class="layout" id="footer"><div class="copyright">&copy;2020 By XYX</div><div class="framework-info"></div><div class="footer_custom_text">hitokoto</div><div class="icp"><a><span>鲁ICP备20021450号</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span></span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;"></a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Node.js"><meta name="keywords" content="Node.js"><meta name="author" content="XYX"><meta name="copyright" content="XYX"><title>Node.js | XYX's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?42b25629bbf1fae4313b2d989bcab163";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XYX's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node"><span class="toc-number">1.</span> <span class="toc-text">Node</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http"><span class="toc-number">2.</span> <span class="toc-text">http</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的http服务"><span class="toc-number">2.1.</span> <span class="toc-text">简单的http服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模块化"><span class="toc-number">3.</span> <span class="toc-text">模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块的引用"><span class="toc-number">3.1.</span> <span class="toc-text">模块的引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块的定义"><span class="toc-number">3.2.</span> <span class="toc-text">模块的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块的标识"><span class="toc-number">3.3.</span> <span class="toc-text">模块的标识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#包"><span class="toc-number">4.</span> <span class="toc-text">包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#package-json"><span class="toc-number">4.1.</span> <span class="toc-text">package.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm（Node-Package-Manager-node的包管理器）"><span class="toc-number">4.2.</span> <span class="toc-text">npm（Node Package Manager node的包管理器）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件系统"><span class="toc-number">5.</span> <span class="toc-text">文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer（缓冲区）"><span class="toc-number">5.1.</span> <span class="toc-text">Buffer（缓冲区）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fs模块"><span class="toc-number">5.2.</span> <span class="toc-text">fs模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他操作"><span class="toc-number">5.3.</span> <span class="toc-text">其他操作</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">23</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">28</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">我的朋友们</div><a class="author-info-links__name text-center" href="https://www.ntutn.top/" target="_blank" rel="noopener">归零幻想</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Node.js</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-11</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF/">后台服务器端</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">3.3k</span><span class="post-meta__separator">|</span><span>阅读时长: 11 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+<p>序<br><br> Node.js是一个能够在服务器端运行js的开放源代码，跨平台的js运行平台</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><ul>
+<li>Node是对ES标准一个实现，Node也是一个JS引擎</li>
+<li>通过Node可以使js代码在服务器端执行</li>
+<li>Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM    </li>
+<li>Node中可以使用所有的内建对象</li>
+</ul>
+<ul>
+<li>String Number Boolean Math Date RegExp Function Object Array</li>
+<li>而BOM和DOM都不能使用</li>
+<li>但是可以使用 console 也可以使用定时器（setTimeout() setInterval()）</li>
+</ul>
+<ul>
+<li>node为js提供了许多服务器级别的API：<a href="http://nodejs.cn/api/" target="_blank" rel="noopener">http://nodejs.cn/api/</a><ul>
+<li>文件操作的能力</li>
+<li>http 服务的能力<br><img src="/2018/11/11/NodeJS/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%BB%91%E7%9B%92%E5%AD%90.png" alt></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Node可以在后台来编写服务器<br>Node编写服务器都是单线程的服务器</p>
+<ul>
+<li>进程<ul>
+<li>进程就是一个一个的工作计划（工厂中的车间）</li>
+</ul>
+</li>
+<li>线程<ul>
+<li>线程是计算机最小的运算单位（工厂中的工人）<br>线程是干活的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>传统的服务器都是多线程的</p>
+<ul>
+<li>每进来一个请求，就创建一个线程去处理请求</li>
+</ul>
+</li>
+<li><p>Node的服务器单线程的</p>
+<ul>
+<li>Node处理请求时是单线程，但是在后台拥有一个I/O线程池</li>
+</ul>
+</li>
+</ul>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><ul>
+<li>require</li>
+<li>端口号<ul>
+<li>ip 地址定位计算机</li>
+<li>端口号定位具体的应用程序</li>
+<li>端口号的范围从0-65536之间</li>
+<li>可以同时开启多个服务，但是要确保端口号不一致才行</li>
+</ul>
+</li>
+<li>Content-Type<ul>
+<li>服务器最好把每次响应的数据是什么内容类型都告诉客户端，而且要正确的告诉</li>
+<li>不同的资源对应的 Content-Type 是不一样，具体参照：<a href="http://tool.oschina.net/commons" target="_blank" rel="noopener">http://tool.oschina.net/commons</a></li>
+<li>对于文本类型的数据，最好都加上编码，<strong>目的是为了防止中文解析乱码问题</strong></li>
+</ul>
+</li>
+<li>通过网络发送文件<ul>
+<li>发送的并不是文件，本质上来讲发送是文件的内容</li>
+<li>当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理<br><img src="/2018/11/11/NodeJS/ip%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7.png" alt></li>
+</ul>
+</li>
+</ul>
+<h2 id="简单的http服务"><a href="#简单的http服务" class="headerlink" title="简单的http服务"></a>简单的http服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 加载 http 核心模块</span><br><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 使用 http.createServer() 方法创建一个 Web 服务器</span><br><span class="line">&#x2F;&#x2F;    返回一个 Server 实例</span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 服务器要干嘛？</span><br><span class="line">&#x2F;&#x2F;    提供服务：对 数据的服务</span><br><span class="line">&#x2F;&#x2F;    发请求</span><br><span class="line">&#x2F;&#x2F;    接收请求</span><br><span class="line">&#x2F;&#x2F;    处理请求</span><br><span class="line">&#x2F;&#x2F;    给个反馈（发送响应）</span><br><span class="line">&#x2F;&#x2F;    注册 request 请求事件</span><br><span class="line">&#x2F;&#x2F;    当客户端请求过来，就会自动触发服务器的 request 请求事件，然后执行第二个参数：回调处理函数</span><br><span class="line">server.on(&#39;request&#39;, function () &#123;</span><br><span class="line">  console.log(&#39;收到客户端的请求了&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 绑定端口号，启动服务器</span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>打开终端使用node执行<br><img src="NodeJS/http.png" alt></p>
+</li>
+<li><p>停止服务</p>
+<ul>
+<li>可以ctrl + v</li>
+<li>还可以找到端口的进程并taskkill掉</li>
+<li>netstat -ano | find “:3000”</li>
+<li>taskkill /F /PID 找到的pid</li>
+</ul>
+</li>
+<li><p>发送请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; request 请求事件处理函数，需要接收两个参数：</span><br><span class="line">&#x2F;&#x2F;    Request 请求对象</span><br><span class="line">&#x2F;&#x2F;        请求对象可以用来获取客户端的一些请求信息，例如请求路径</span><br><span class="line">&#x2F;&#x2F;    Response 响应对象</span><br><span class="line">&#x2F;&#x2F;        响应对象可以用来给客户端发送响应消息</span><br><span class="line">server.on(&#39;request&#39;, function (request, response) &#123;</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; </span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;a 返回&#x2F;a</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;foo&#x2F;b 返回&#x2F;foo&#x2F;b</span><br><span class="line">  &#x2F;&#x2F; 在浏览器中的端口号后面输入什么，请求路径就返回什么</span><br><span class="line">  console.log(&#39;收到客户端的请求了，请求路径是：&#39; + request.url)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; response 对象有一个方法：write 可以用来给客户端发送响应数据</span><br><span class="line">  &#x2F;&#x2F; write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待</span><br><span class="line">  response.write(&#39;hello&#39;)</span><br><span class="line">  response.write(&#39; nodejs&#39;)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 告诉客户端，我的话说完了，你可以呈递给用户了</span><br><span class="line">  response.end()</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>改完代码后要重启服务才生效</strong></p>
+</li>
+</ul>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><ul>
+<li>ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化</li>
+<li>在node中为了对模块管理，引入了CommonJS规范</li>
+</ul>
+<h2 id="模块的引用"><a href="#模块的引用" class="headerlink" title="模块的引用"></a>模块的引用</h2><ul>
+<li>使用 require()函数来引入一个模块</li>
+<li>例子：<br>var 变量 = require(“模块的标识”);</li>
+</ul>
+<h2 id="模块的定义"><a href="#模块的定义" class="headerlink" title="模块的定义"></a>模块的定义</h2><ul>
+<li><p>在node中一个js文件就是一个模块</p>
+</li>
+<li><p>默认情况下在js文件中编写的内容，都是运行在一个独立的函数中，<br>外部的模块无法访问</p>
+</li>
+<li><p>导出变量和函数</p>
+<ul>
+<li><p>使用 exports </p>
+</li>
+<li><p>通过exports只能使用.的方式来向外暴露内部变量</p>
+<ul>
+<li>例子：<ul>
+<li>exports.属性 = 属性值;</li>
+<li>exports.方法 = 函数;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用module.exports</p>
+</li>
+<li><p>而module.exports既可以通过.的形式，也可以直接赋值</p>
+<ul>
+<li>例子：<ul>
+<li>module.exports.属性 = 属性值;</li>
+<li>module.exports.方法 = 函数;</li>
+<li>module.exports = {};</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模块的标识"><a href="#模块的标识" class="headerlink" title="模块的标识"></a>模块的标识</h2><ul>
+<li><p>模块的标识就是模块的名字或路径</p>
+</li>
+<li><p>我们node通过模块的标识来寻找模块的</p>
+</li>
+<li><p>模块分成两大类</p>
+<ul>
+<li><p>核心模块</p>
+<ul>
+<li>由node引擎提供的模块</li>
+<li>核心模块的标识就是，模块的名字</li>
+</ul>
+<ul>
+<li>对于核心模块（npm中下载的模块），直接使用模块的名字对其进行引入<ul>
+<li>var fs = require(“fs”);</li>
+<li>var express = require(“express”);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件模块</p>
+<ul>
+<li>由用户自己创建的模块   </li>
+<li>对于自定义的文件模块，需要通过文件的路径来对模块进行引入,路径可以是绝对路径，如果是相对路径必须以./或 ../开头<br>var router = require(“./router”);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>当node在执行模块中的代码时，它会首先在代码的最顶部，添加如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function (exports, require, module, __filename, __dirname) &#123;</span><br><span class="line">在代码的最底部，添加如下代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参</p>
+<ul>
+<li><p>exports</p>
+<ul>
+<li>该对象用来将变量或函数暴露到外部</li>
+</ul>
+</li>
+<li><p>require</p>
+<ul>
+<li>函数，用来引入外部的模块</li>
+</ul>
+</li>
+<li><p>module</p>
+<ul>
+<li>module代表的是当前模块本身</li>
+<li>exports就是module的属性</li>
+<li>既可以使用 exports 导出，也可以使用module.exports导出</li>
+</ul>
+</li>
+<li><p>__filename</p>
+<ul>
+<li>当前模块的完整路径</li>
+</ul>
+</li>
+<li><p>__dirname</p>
+<ul>
+<li>当前模块所在文件夹的完整路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><ul>
+<li>将多个模块组合为一个完整的功能，就是一个包</li>
+<li>包结构<ul>
+<li>bin<ul>
+<li>二进制的可执行文件，一般都是一些工具包中才有</li>
+</ul>
+</li>
+<li>lib<ul>
+<li>js文件</li>
+</ul>
+</li>
+<li>doc<ul>
+<li>文档</li>
+</ul>
+</li>
+<li>test<ul>
+<li>测试代码</li>
+</ul>
+</li>
+<li>package.json<ul>
+<li>包的描述文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><ul>
+<li>它是一个json格式的文件，在它里面保存了包各种相关的信息<ul>
+<li>name 包名</li>
+<li>version 版本</li>
+<li>dependencies 依赖</li>
+<li>main 包的主要的文件</li>
+<li>bin 可执行文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="npm（Node-Package-Manager-node的包管理器）"><a href="#npm（Node-Package-Manager-node的包管理器）" class="headerlink" title="npm（Node Package Manager node的包管理器）"></a>npm（Node Package Manager node的包管理器）</h2><ul>
+<li>通过npm可以对node中的包进行上传、下载、搜索等操作</li>
+<li>npm会在安装完node以后，自动安装</li>
+<li>npm的常用指令<ul>
+<li>npm -v 查看npm的版本</li>
+<li>npm version 查看所有模块的版本</li>
+<li>npm init 初始化项目（创建package.json）</li>
+<li>npm i/install 包名 安装指定的包</li>
+<li>npm i/install 包名 –save 安装指定的包并添加依赖(写在json文件里，下次下载自动下载依赖的包)</li>
+<li>npm i/install 包名 -g 全局安装（一般都是一些工具）</li>
+<li>npm i/install 安装当前项目所依赖的包</li>
+<li>npm s/search 包名 搜索包    </li>
+<li>npm r/remove 包名 删除一个包</li>
+<li>$ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> 淘宝镜像（从国外的npm服务器复制一份作为镜像来供国内使用，提高下载速度，以后使用淘宝镜像就是执行cnpm指令，使用npm连接的是国外服务器）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>通过npm下载的包都放到node_modules文件夹中</p>
+<ul>
+<li>我们通过npm下载的包，直接通过包名引入即可</li>
+</ul>
+</li>
+<li><p>node在使用模块名字来引入模块时，它会首先在当前目录的node_modules中寻找是否含有该模块</p>
+<ul>
+<li>如果有则直接使用，如果没有则去上一级目录的node_modules中寻找</li>
+<li>如果有则直接使用，如果没有则再去上一级目录寻找，直到找到为止</li>
+<li>直到找到磁盘的根目录，如果依然没有，则报错</li>
+</ul>
+</li>
+</ul>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="Buffer（缓冲区）"><a href="#Buffer（缓冲区）" class="headerlink" title="Buffer（缓冲区）"></a>Buffer（缓冲区）</h2><ul>
+<li>Buffer和数组的结构的非常类似，Buffer是用来存储二进制数据的</li>
+<li>数组中不能存储二进制的文件，而buffer就是专门用来存储二进制数据</li>
+<li>使用buffer不需要引入模块，直接使用即可</li>
+<li>在buffer中存储的都是二进制数据，但是在显示时都是以16进制的形式显示</li>
+<li>Buffer的方法<ul>
+<li>Buffer.from(字符串)<ul>
+<li>将一个字符串中内容保存到一个buffer中</li>
+</ul>
+</li>
+<li>buf.toString()<ul>
+<li>将buffer转换为一个字符串</li>
+</ul>
+</li>
+<li>Buffer.alloc(size)<ul>
+<li>创建一个指定大小的buffer对象</li>
+</ul>
+</li>
+<li>Buffer.allocUnsafe(size)<ul>
+<li>创建一个指定大小的buffer对象，可以包含敏感数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h2><ul>
+<li><p>在Node通过fs模块来对系统中的文件进行操作，fs模块是node中已经继承好了，不需要在使用npm下载，直接引入即可</p>
+</li>
+<li><p>引入fs</p>
+<ul>
+<li>var fs = require(“fs”);</li>
+</ul>
+</li>
+<li><p>fs模块中的大部分操作都提供了两种方法，同步方法和异步方法</p>
+<ul>
+<li>同步方法带sync</li>
+<li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码</li>
+<li>异步方法没有sync，都需要回调函数</li>
+<li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回</li>
+</ul>
+</li>
+<li><p>写入文件</p>
+<ol>
+<li>同步写入</li>
+<li>异步写入</li>
+<li>简单写入</li>
+<li>流式写入</li>
+</ol>
+</li>
+<li><p>读取文件</p>
+<ol>
+<li>同步读取</li>
+<li>异步读取</li>
+<li>简单读取</li>
+<li>流式读取</li>
+</ol>
+</li>
+<li><p>方法</p>
+</li>
+<li><p>打开文件</p>
+<ul>
+<li>fs.open(path, flags[, mode], callback)<ul>
+<li>回调函数两个参数：<ul>
+<li>err 错误对象，如果没有错误则为null</li>
+<li>fd  文件的描述符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fs.openSync(path, flags[, mode])<ul>
+<li>path 要打开文件的路径</li>
+<li>flags 打开文件要做的操作的类型<ul>
+<li>r 只读的</li>
+<li>w 可写的</li>
+</ul>
+</li>
+<li>mode 设置文件的操作权限，一般不传</li>
+</ul>
+<ul>
+<li>返回值：该方法会返回一个文件的描述符作为结果，我们可以通过该描述符来对文件进行各种操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>读写文件</p>
+<ul>
+<li><p>fs.write(fd, string[, position[, encoding]], callback)</p>
+</li>
+<li><p>fs.writeSync(fd, string[, position[, encoding]])</p>
+<ul>
+<li>fd 文件的描述符，需要传递要写入的文件的描述符</li>
+<li>string 要写入的内容</li>
+<li>position 写入的起始位置</li>
+<li>encoding 写入的编码，默认utf-8</li>
+</ul>
+</li>
+<li><p>fs.read(fd, buffer, offset, length, position, callback)</p>
+</li>
+<li><p>fs.readSync(fd, buffer, offset, length, position)</p>
+</li>
+</ul>
+</li>
+<li><p>关闭文件</p>
+<ul>
+<li>fs.close(fd,callback)</li>
+<li>fs.closeSync(fd);</li>
+</ul>
+</li>
+<li><p>简单文件读取和写入</p>
+<ul>
+<li><p>fs.writeFile(file, data[, options], callback)</p>
+</li>
+<li><p>fs.writeFileSync(file, data[, options])</p>
+<ul>
+<li>file 要操作的文件的路径</li>
+<li>data 要写入的数据</li>
+<li>options 选项，可以对写入进行一些设置<ul>
+<li>encoding <string> | <null> 默认值: ‘utf8’。</null></string></li>
+<li>mode <integer> 默认值: 0o666。</integer></li>
+<li>flag <string> 参见文件系统 flag 的支持。 默认值: ‘w’( r 只读,w 可写,a 追加)</string></li>
+</ul>
+</li>
+<li>callback 当写入完成以后执行的函数</li>
+</ul>
+</li>
+<li><p>fs.readFile(path[, options], callback)</p>
+</li>
+<li><p>fs.readFileSync(path[, options])</p>
+<ul>
+<li>path 要读取的文件的路径<ul>
+<li>options 读取的选项</li>
+<li>callback回调函数，通过回调函数将读取到内容返回(err , data)<ul>
+<li>err 错误对象</li>
+<li>data 读取到的数据，会返回一个Buffer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>流式文件读取和写入</p>
+</li>
+</ul>
+<ul>
+<li>同步、异步、简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出</li>
+</ul>
+<ul>
+<li>流式读取和写入适用于一些比较大的文件</li>
+</ul>
+<ul>
+<li>可以通过监听流的open和close事件来监听流的打开和关闭<ul>
+<li>on(事件字符串,回调函数)<ul>
+<li>可以为对象绑定一个事件</li>
+</ul>
+</li>
+<li>once(事件字符串,回调函数)<ul>
+<li>可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fs.createWriteStream(path[, options])<ul>
+<li>可以用来创建一个可写流</li>
+<li>path，文件路径</li>
+<li>options 配置的参数</li>
+</ul>
+</li>
+<li>fs.createReadStream(path[, options])</li>
+<li>pipe()可以将可读流中的内容，直接输出到可写流中rs.pipe(ws);</li>
+</ul>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ul>
+<li><p>验证路径是否存在</p>
+<ul>
+<li>fs.exists(path，callback)</li>
+<li>fs.existsSync(path)</li>
+</ul>
+</li>
+<li><p>获取文件信息</p>
+<ul>
+<li>fs.stat(path, callback)</li>
+<li>fs.statSync(path)</li>
+</ul>
+</li>
+<li><p>删除文件</p>
+<ul>
+<li>fs.unlink(path, callback)</li>
+<li>fs.unlinkSync(path)</li>
+</ul>
+</li>
+<li><p>列出文件</p>
+<ul>
+<li>fs.readdir(path[, options], callback)</li>
+<li>fs.readdirSync(path[, options])</li>
+</ul>
+</li>
+<li><p>截断文件</p>
+<ul>
+<li>fs.truncate(path, len, callback)</li>
+<li>fs.truncateSync(path, len)</li>
+</ul>
+</li>
+<li><p>建立目录</p>
+<ul>
+<li>fs.mkdir(path[, mode], callback)</li>
+<li>fs.mkdirSync(path[, mode])</li>
+</ul>
+</li>
+<li><p>删除目录</p>
+<ul>
+<li>fs.rmdir(path, callback)</li>
+<li>fs.rmdirSync(path)</li>
+</ul>
+</li>
+<li><p>重命名文件和目录</p>
+<ul>
+<li>fs.rename(oldPath, newPath, callback)</li>
+<li>fs.renameSync(oldPath, newPath)</li>
+</ul>
+</li>
+<li><p>监视文件更改写入</p>
+<ul>
+<li>fs.watchFile(filename[, options], listener)</li>
+</ul>
+</li>
+</ul>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Node-js/">Node.js</a></div><div class="social-share pull-right" data-disabled="Linkedin,点点,Facebook,Twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/12/13/MongoDB/"><i class="fa fa-chevron-left">  </i><span>MongoDB</span></a></div><div class="next-post pull-right"><a href="/2018/09/10/jQuery/"><span>jQuery</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YiMuUS8mJ9iQH4i0HKdegAjN-gzGzoHsz',
+  appKey:'S42xmXqdEnhtc3ibq7F71WYu',
+  placeholder:'Just go go',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'5',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div class="layout" id="footer"><div class="copyright">&copy;2020 By XYX</div><div class="framework-info"></div><div class="footer_custom_text">hitokoto</div><div class="icp"><a><span>鲁ICP备20021450号</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span></span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;"></a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
