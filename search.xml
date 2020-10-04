@@ -7057,6 +7057,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
 </ul>
 <h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+
 <ul>
 <li>js是单线程的，浏览器是多线程的</li>
 <li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
@@ -7216,5 +7217,11 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>节流</tag>
         <tag>防抖动</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>11</title>
+    <url>/2020/10/05/11/</url>
+    <content><![CDATA[<p><img src="/2020/10/05/11/11%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+]]></content>
   </entry>
 </search>
