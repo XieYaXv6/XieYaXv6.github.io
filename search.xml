@@ -1398,9 +1398,16 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>在事件的响应函数中，响应函数是给谁绑定的this，那么这个this就是谁</li>
 </ol>
 </li>
+<li>改变this指向<ul>
+<li>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</li>
+<li>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；</li>
+<li>apply 、 call 、bind 三者都可以利用后续参数传参；</li>
+<li>call需要把参数按顺序传递进去func.call(this, arg1, arg2)；而 apply 则是把参数放在数组里func.apply(this, [arg1, arg2])；bind() 方法的第二个以及以后的参数+函数运行时本身的参数按照顺序作为原函数的参数来调用原函数，就是说bind会不断的产生新的函数</li>
+<li>bind是返回对应函数，便于稍后调用；apply、call则是立即调用</li>
 </ul>
-<p>##构造函数 </p>
-<ul>
+</li>
+</ul>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><ul>
 <li>一个构造函数我们也可以称为一个类</li>
 <li>通过一个构造函数创建的对象，我们称该对象时这个构造函数的实例</li>
 <li>可以用 instanceof 用来检查一个对象是否是一个类的实例</li>
@@ -5652,6 +5659,17 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>import是编译时调用，所以必须放在文件开头</li>
 </ul>
 <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p><a href="https://blog.csdn.net/qq_42992643/article/details/82959720" target="_blank" rel="noopener">https://blog.csdn.net/qq_42992643/article/details/82959720</a></p>
+<h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><ul>
+<li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
+<li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
+</ul>
+<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+<ul>
+<li>js是单线程的，浏览器是多线程的</li>
+<li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
+<li>宏任务：setTimeout，setInterval，整体代码script，I/O</li>
+<li>微任务：Promise，process.nextTick</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -7129,5 +7147,74 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
         <tag>CSS</tag>
         <tag>HTML</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>性能优化</title>
+    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
+<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
+<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
+<li>优点<ul>
+<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
+<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
+<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
+<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
+* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
+* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
+<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
+<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
+<li>优点<ul>
+<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
+<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
+<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
+</ul>
+</li>
+</ul>
+<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
+<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
+<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
+<li>强缓存（200）<ul>
+<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
+</ul>
+</li>
+<li>协商缓存（304 资源未修改）<ul>
+<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
+</ul>
+</li>
+<li>Service Worker<ul>
+<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
+<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
+</ul>
+</li>
+</ul>
+<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
+<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
+<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
+</ul>
+<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
+<li>骨架屏<ul>
+<li>在数据加载时显示骨架，优化用户体验</li>
+</ul>
+</li>
+<li>缓存路由组件keep-alive<ul>
+<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
+<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
+</ul>
+</li>
+</ul>
+]]></content>
   </entry>
 </search>
