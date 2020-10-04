@@ -357,7 +357,7 @@
 <li>函数的prototype: 定义函数时被自动赋值, 值默认为{},<br>即用为原型对象</li>
 <li>实例对象的<strong>proto</strong>: 在创建实例对象时被自动添加,<br>并赋值为构造函数的prototype值</li>
 <li>原型对象即为当前实例对象的父对象</li>
-<li>例子:<br><img src="/JS%E9%AB%98%E7%BA%A7/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt></li>
+<li>例子:<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt></li>
 </ul>
 </li>
 <li><p>原型链</p>
@@ -375,7 +375,7 @@
 <li>当查找对象内部的属性/方法时, js引擎自动沿着这个原型链查找</li>
 <li><strong>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</strong></li>
 <li>函数的prototype属性指向实例的<strong>proto</strong>属性</li>
-<li>所有的函数都是 Function的实例(包括Function)<br><img src="/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt></li>
+<li>所有的函数都是 Function的实例(包括Function)<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt></li>
 </ul>
 </li>
 <li><p>instanceof是如何判断的?</p>
@@ -386,7 +386,7 @@
 </li>
 <li><p>测试题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    原型测试题：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">测试题1</span><br><span class="line">*&#x2F;</span><br><span class="line">var A &#x3D; function() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">A.prototype.n &#x3D; 1</span><br><span class="line"></span><br><span class="line">var b &#x3D; new A()</span><br><span class="line"></span><br><span class="line">A.prototype &#x3D; &#123;</span><br><span class="line">    n: 2,</span><br><span class="line">    m: 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c &#x3D; new A()</span><br><span class="line">console.log(b.n, b.m, c.n, c.m)</span><br><span class="line">&#x2F;&#x2F;1 undefined 2 3 </span><br><span class="line">&#x2F;*</span><br><span class="line">测试题2</span><br><span class="line">*&#x2F;</span><br><span class="line">var F &#x3D; function()&#123;&#125;;</span><br><span class="line">Object.prototype.a &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;a()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">Function.prototype.b &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;b()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">var f &#x3D; new F();</span><br><span class="line">f.a()</span><br><span class="line">f.b()</span><br><span class="line">F.a()</span><br><span class="line">F.b()</span><br><span class="line">&#x2F;&#x2F;a() </span><br><span class="line">&#x2F;&#x2F; f.b is not a function</span><br><span class="line">&#x2F;&#x2F;a()</span><br><span class="line">&#x2F;&#x2F;b()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
+<p><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
 </li>
 </ul>
 <h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><ul>
@@ -445,7 +445,7 @@
 </li>
 <li><p>当所有的代码执行完后, 栈中只剩下window</p>
 </li>
-<li><p>例子：<br><img src="/JS%E9%AB%98%E7%BA%A7/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt></p>
+<li><p>例子：<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt></p>
 </li>
 <li><p>测试题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">执行上下文栈测试题：</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">console.log(&#39;global begin: &#39;+ i)</span><br><span class="line">var i &#x3D; 1</span><br><span class="line">foo(1);</span><br><span class="line">function foo(i) &#123;</span><br><span class="line">    if (i &#x3D;&#x3D; 4) &#123;</span><br><span class="line">    return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;foo() begin:&#39; + i);</span><br><span class="line">    foo(i + 1);&#x2F;&#x2F;递归调用：在函数内部调用自己，一般会设置条件来终止函数</span><br><span class="line">    console.log(&#39;foo() end:&#39; + i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(&#39;global end: &#39; + i)</span><br><span class="line">&#x2F;&#x2F; global begin: undefined</span><br><span class="line">&#x2F;&#x2F; foo() begin:1 由于递归输出1.2.3</span><br><span class="line">&#x2F;&#x2F; foo() begin:2</span><br><span class="line">&#x2F;&#x2F; foo() begin:3</span><br><span class="line">&#x2F;&#x2F; foo() end:3   因为foo begin执行完后要将栈顶的对象移除出栈</span><br><span class="line">&#x2F;&#x2F; foo() end:2</span><br><span class="line">&#x2F;&#x2F; foo() end:1</span><br><span class="line">&#x2F;&#x2F; global end: 1</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
@@ -619,7 +619,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <ul>
 <li>worker内代码不能操作DOM(更新UI)</li>
 <li>不能跨域加载JS</li>
-<li>不是每个浏览器都支持这个新特性<br><img src="/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></li>
+<li>不是每个浏览器都支持这个新特性<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></li>
 </ul>
 </li>
 </ol>
