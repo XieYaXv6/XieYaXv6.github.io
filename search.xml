@@ -611,7 +611,7 @@
 <li>第二种就是我在网上搜罗了一种不用挂梯子也能访问的方法<ol>
 <li>访问<a href="https://www.ipaddress.com/" target="_blank" rel="noopener">IP查询网站</a></li>
 <li>在搜索框里搜索(GitHub.com),就会出现以下页面，找到该地址并记下来<br><img src="/2019/03/19/Git-Github/ip.png" alt></li>
-<li>然后再在搜索框中搜索（github.global.ssl.fastly.net），找到地址并记下来<br><img src="/2019/03/19/Git-Github/ip2.png" alt></li>
+<li>然后再在搜索框中搜索（github.global.ssl.fastly.net），找到地址并记下来<br><img src="/2019/03/19/Git-Github/Ip2.png" alt></li>
 <li>将这两个地址写到C:\Windows\System32\drivers\etc 路径下的 hosts文件<br><img src="/2019/03/19/Git-Github/host.png" alt></li>
 <li>刷新dns后(ipconfig /flushdns)就可以访问啦，不过速度emmm</li>
 </ol>
@@ -3453,7 +3453,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 <h2 id="简单的http服务"><a href="#简单的http服务" class="headerlink" title="简单的http服务"></a>简单的http服务</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 加载 http 核心模块</span><br><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 使用 http.createServer() 方法创建一个 Web 服务器</span><br><span class="line">&#x2F;&#x2F;    返回一个 Server 实例</span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 服务器要干嘛？</span><br><span class="line">&#x2F;&#x2F;    提供服务：对 数据的服务</span><br><span class="line">&#x2F;&#x2F;    发请求</span><br><span class="line">&#x2F;&#x2F;    接收请求</span><br><span class="line">&#x2F;&#x2F;    处理请求</span><br><span class="line">&#x2F;&#x2F;    给个反馈（发送响应）</span><br><span class="line">&#x2F;&#x2F;    注册 request 请求事件</span><br><span class="line">&#x2F;&#x2F;    当客户端请求过来，就会自动触发服务器的 request 请求事件，然后执行第二个参数：回调处理函数</span><br><span class="line">server.on(&#39;request&#39;, function () &#123;</span><br><span class="line">  console.log(&#39;收到客户端的请求了&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 绑定端口号，启动服务器</span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>打开终端使用node执行<br><img src="NodeJS/http.png" alt></p>
+<li><p>打开终端使用node执行<br><img src="/NodeJS/http.png" alt></p>
 </li>
 <li><p>停止服务</p>
 <ul>
@@ -3871,6 +3871,74 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue实战之外卖平台</title>
+    <url>/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
+<ul>
+<li>router：路由器页面跳转，开发单页应用</li>
+<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
+<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
+</ul>
+</li>
+<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
+<ul>
+<li>Bscroll: 实现页面滑动</li>
+<li>swiper：实现轮播图</li>
+<li>mint-ui：构建界面</li>
+<li>moment：处理日期格式</li>
+</ul>
+</li>
+<li><p>数据：ajax, axios, mock, vuex, postman</p>
+<ul>
+<li>ajax,axios: 实现前后台交互</li>
+<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
+<li>vuex：对数据进行全局的统一管理</li>
+<li>postman：测试后端接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li>Node+Express <ul>
+<li>用express搭建后台路由</li>
+</ul>
+</li>
+<li>Mongodb+Mongoose<ul>
+<li>用mongoose操作mongodb数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
+<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<ul>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>Node.js</tag>
+        <tag>Vue</tag>
+        <tag>Vuex</tag>
+        <tag>Mongoose</tag>
       </tags>
   </entry>
   <entry>
@@ -4348,74 +4416,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Vue实战之外卖平台</title>
-    <url>/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
-<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
-<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
-<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
-<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
-<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
-<ul>
-<li>router：路由器页面跳转，开发单页应用</li>
-<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
-<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
-</ul>
-</li>
-<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
-<ul>
-<li>Bscroll: 实现页面滑动</li>
-<li>swiper：实现轮播图</li>
-<li>mint-ui：构建界面</li>
-<li>moment：处理日期格式</li>
-</ul>
-</li>
-<li><p>数据：ajax, axios, mock, vuex, postman</p>
-<ul>
-<li>ajax,axios: 实现前后台交互</li>
-<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
-<li>vuex：对数据进行全局的统一管理</li>
-<li>postman：测试后端接口</li>
-</ul>
-</li>
-</ul>
-<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
-<li>Node+Express <ul>
-<li>用express搭建后台路由</li>
-</ul>
-</li>
-<li>Mongodb+Mongoose<ul>
-<li>用mongoose操作mongodb数据库</li>
-</ul>
-</li>
-</ul>
-<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
-<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
-<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
-<ul>
-<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>Node.js</tag>
-        <tag>Vue</tag>
-        <tag>Vuex</tag>
-        <tag>Mongoose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue实战之电商后台管理系统</title>
     <url>/2020/01/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<blockquote>
@@ -4464,249 +4464,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       <tags>
         <tag>Vue</tag>
         <tag>Vue生命周期</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>axios</title>
-    <url>/2019/06/15/axios/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>前端最流行的ajax请求库</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
-<li>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</a></li>
-</ul>
-<h2 id="HTTP-请求交互的基本过程"><a href="#HTTP-请求交互的基本过程" class="headerlink" title="HTTP 请求交互的基本过程"></a>HTTP 请求交互的基本过程</h2><p><img src="/axios/http.png" alt></p>
-<ol>
-<li>前后应用从浏览器端向服务器发送 HTTP 请求(请求报文)</li>
-<li>后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP<br>响应(响应报文)</li>
-<li>浏览器端接收到响应, 解析显示响应体/调用监视回调</li>
-</ol>
-<h2 id="HTTP-请求报文"><a href="#HTTP-请求报文" class="headerlink" title="HTTP 请求报文"></a>HTTP 请求报文</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><ul>
-<li>method </li>
-<li>url</li>
-</ul>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><ul>
-<li>Host: <a href="http://www.baidu.com主机" target="_blank" rel="noopener">www.baidu.com主机</a></li>
-<li>Cookie: BAIDUID=AD3B0FA706E; BIDUPSID=AD3B0FA706;<ul>
-<li>Cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器</li>
-</ul>
-</li>
-<li>Content-Type: application/x-www-form-urlencoded 或者 application/json<ul>
-<li>告诉服务器请求体内容的类型</li>
-</ul>
-</li>
-</ul>
-<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><ul>
-<li>urlencoded格式：username=tom&amp;pwd=123</li>
-<li>JSON格式：{“username”: “tom”, “pwd”: 123}</li>
-</ul>
-<h2 id="HTTP-响应报文"><a href="#HTTP-响应报文" class="headerlink" title="HTTP 响应报文"></a>HTTP 响应报文</h2><ol>
-<li>响应状态行<ul>
-<li>status statusText状态码</li>
-</ul>
-</li>
-<li>多个响应头<ul>
-<li>Content-Type: text/html;charset=utf-8 Set-Cookie: BD_CK_SAM=1;path=/</li>
-</ul>
-</li>
-<li>响应体<ul>
-<li>html 文本/json 文本/js/css/图片…</li>
-</ul>
-</li>
-</ol>
-<h2 id="post-请求体参数格式"><a href="#post-请求体参数格式" class="headerlink" title="post 请求体参数格式"></a>post 请求体参数格式</h2><ol>
-<li>Content-Type: application/x-www-form-urlencoded;charset=utf-8<ul>
-<li>用于键值对参数，参数的键值用=连接, 参数之间用&amp;连接</li>
-<li>例如: name=%E5%B0%8F%E6%98%8E&amp;age=12</li>
-</ul>
-</li>
-<li>Content-Type: application/json;charset=utf-8<ul>
-<li>用于 json 字符串参数</li>
-<li>例如: {“name”: “%E5%B0%8F%E6%98%8E”, “age”: 12}</li>
-</ul>
-</li>
-<li>Content-Type: multipart/form-data<ul>
-<li>用于文件上传请求</li>
-</ul>
-</li>
-</ol>
-<h2 id="常见的响应状态码"><a href="#常见的响应状态码" class="headerlink" title="常见的响应状态码"></a>常见的响应状态码</h2><table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>提示信息</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>200</td>
-<td>OK</td>
-<td>请求成功。一般用于 GET 与 POST 请求</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created</td>
-<td>已创建。成功请求并创建了新的资源</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-<td>未授权/请求要求用户的身份认证</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td>服务器无法根据客户端的请求找到资源</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>服务器内部错误，无法完成请求</td>
-</tr>
-</tbody></table>
-<h2 id="不同类型的请求及其作用"><a href="#不同类型的请求及其作用" class="headerlink" title="不同类型的请求及其作用"></a>不同类型的请求及其作用</h2><ol>
-<li>GET: 从服务器端读取数据</li>
-<li>POST: 向服务器端添加新数据</li>
-<li>PUT: 更新服务器端已经有的数据</li>
-<li>DELETE: 删除服务器端数据</li>
-</ol>
-<h2 id="API-的分类"><a href="#API-的分类" class="headerlink" title="API 的分类"></a>API 的分类</h2><ol>
-<li>REST API:restful<ul>
-<li>发送请求进行 CRUD 哪个操作由请求方式来决定</li>
-<li>同一个请求路径可以进行多个操作</li>
-<li>请求方式会用到 GET/POST/PUT/DELETE</li>
-</ul>
-</li>
-<li>非 REST API:restless<ul>
-<li>请求方式不决定请求的 CRUD 操作</li>
-<li>一个请求路径只对应一个操作</li>
-<li>一般只有 GET/POST</li>
-</ul>
-</li>
-</ol>
-<h2 id="使用-json-server-搭建-REST-API"><a href="#使用-json-server-搭建-REST-API" class="headerlink" title="使用 json-server 搭建 REST API"></a>使用 json-server 搭建 REST API</h2><h3 id="json-server-是什么"><a href="#json-server-是什么" class="headerlink" title="json-server 是什么?"></a>json-server 是什么?</h3><ul>
-<li>用来快速搭建 REST API 的工具包</li>
-</ul>
-<h3 id="使用-json-server"><a href="#使用-json-server" class="headerlink" title="使用 json-server"></a>使用 json-server</h3><ol>
-<li>在线文档: <a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></li>
-<li>下载: npm install -g json-server</li>
-<li>目标根目录下创建数据库 json 文件: db.json<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JSON数据：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;posts&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;title&quot;: &quot;json-server&quot;, &quot;author&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">],</span><br><span class="line">&quot;comments&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;body&quot;: &quot;some comment&quot;, &quot;postId&quot;: 1 &#125;</span><br><span class="line">],</span><br><span class="line">&quot;profile&quot;: &#123; &quot;name&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>启动服务器执行命令: json-server –watch db.json</li>
-</ol>
-<h3 id="使用浏览器访问测试"><a href="#使用浏览器访问测试" class="headerlink" title="使用浏览器访问测试"></a>使用浏览器访问测试</h3><ul>
-<li><p><a href="http://localhost:3000/posts" target="_blank" rel="noopener">http://localhost:3000/posts</a></p>
-</li>
-<li><p><a href="http://localhost:3000/posts/1" target="_blank" rel="noopener">http://localhost:3000/posts/1</a></p>
-</li>
-<li><p>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html</a></p>
-</li>
-</ul>
-<h1 id="XHR-的理解和使用"><a href="#XHR-的理解和使用" class="headerlink" title="XHR 的理解和使用"></a>XHR 的理解和使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ol>
-<li>使用 XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送 ajax 请求</li>
-<li>前端可以获取到数据，而无需让整个的页面刷新。</li>
-<li>这使得 Web 页面可以只更新页面的局部，而不影响用户的操作。</li>
-</ol>
-<h2 id="区别一般-http-请求与-ajax-请求"><a href="#区别一般-http-请求与-ajax-请求" class="headerlink" title="区别一般 http 请求与 ajax 请求"></a>区别一般 http 请求与 ajax 请求</h2><ol>
-<li>ajax 请求是一种特别的 http 请求</li>
-<li>对服务器端来说, 没有任何区别, 区别在浏览器端</li>
-<li>浏览器端发请求: 只有 XHR 或 fetch 发出的才是 ajax 请求, 其它所有的都是非 ajax 请求</li>
-<li>浏览器端接收到响应<ul>
-<li>一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/ 跳转页面</li>
-<li>ajax 请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据</li>
-</ul>
-</li>
-</ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
-<li>XMLHttpRequest(): 创建 XHR 对象的构造函数</li>
-<li>status: 响应状态码值, 比如 200, 404</li>
-<li>statusText: 响应状态文本</li>
-<li>readyState: 标识请求状态的只读属性<ul>
-<li>初始</li>
-<li>open()之后</li>
-<li>send()之后</li>
-<li>请求中</li>
-<li>请求完成</li>
-</ul>
-</li>
-<li>onreadystatechange: 绑定 readyState 改变的监听</li>
-<li>responseType: 指定响应数据类型, 如果是’json’, 得到响应后自动解析响应体数据</li>
-<li>response: 响应体数据, 类型取决于 responseType 的指定</li>
-<li>timeout: 指定请求超时时间, 默认为 0 代表没有限制</li>
-<li>ontimeout: 绑定超时的监听</li>
-<li>onerror: 绑定请求网络错误的监听</li>
-<li>open(): 初始化一个请求, 参数为: (method, url[, async])</li>
-<li>send(data): 发送请求</li>
-<li>abort(): 中断请求</li>
-<li>getResponseHeader(name): 获取指定名称的响应头值</li>
-<li>getAllResponseHeaders(): 获取所有响应头组成的字符串</li>
-<li>setRequestHeader(name, value): 设置请求头</li>
-</ol>
-<h2 id="XHR-的-ajax-封装-简单版-axios"><a href="#XHR-的-ajax-封装-简单版-axios" class="headerlink" title="XHR 的 ajax 封装(简单版 axios)"></a>XHR 的 ajax 封装(简单版 axios)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>函数的返回值为 promise, 成功的结果为 response, 异常的结果为 error</li>
-<li>能处理多种类型的请求: GET/POST/PUT/DELETE</li>
-<li>函数的参数为一个配置对象<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">url: &#39;&#39;,	&#x2F;&#x2F; 请求地址</span><br><span class="line">method: &#39;&#39;,		&#x2F;&#x2F; 请求方式 GET&#x2F;POST&#x2F;PUT&#x2F;DELETE params: &#123;&#125;,	&#x2F;&#x2F; GET&#x2F;DELETE 请求的 query 参数data: &#123;&#125;, &#x2F;&#x2F; POST 或 DELETE 请求的请求体参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>响应 json 数据自动解析为 js</li>
-</ol>
-<ul>
-<li>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html</a></li>
-</ul>
-<h1 id="axios-的理解和使用"><a href="#axios-的理解和使用" class="headerlink" title="axios 的理解和使用"></a>axios 的理解和使用</h1><h2 id="axios-是什么"><a href="#axios-是什么" class="headerlink" title="axios 是什么?"></a>axios 是什么?</h2><ol>
-<li>前端最流行的 ajax 请求库</li>
-<li>react/vue 官方都推荐使用 axios 发 ajax 请求</li>
-<li>文档: <a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
-</ol>
-<h2 id="axios-特点"><a href="#axios-特点" class="headerlink" title="axios 特点"></a>axios 特点</h2><ol>
-<li>基本 promise 的异步 ajax 请求库</li>
-<li>浏览器端/node 端都可以使用</li>
-<li>支持请求／响应拦截器</li>
-<li>支持请求取消</li>
-<li>请求/响应数据转换</li>
-<li>批量发送多个请求</li>
-</ol>
-<h2 id="axios-常用语法"><a href="#axios-常用语法" class="headerlink" title="axios 常用语法"></a>axios 常用语法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- axios(config): 通用&#x2F;最本质的发任意类型请求的方式</span><br><span class="line">- axios(url[, config]): 可以只指定 url 发 get 请求</span><br><span class="line">- axios.request(config): 等 同 于 axios(config) </span><br><span class="line">- axios.get(url[, config]): 发 get 请求</span><br><span class="line">- axios.delete(url[, config]): 发 delete 请求</span><br><span class="line">- axios.post(url[, data, config]): 发 post 请求</span><br><span class="line">- axios.put(url[, data, config]): 发 put 请求 </span><br><span class="line"></span><br><span class="line">- axios.defaults.xxx: 请求的默认全局配置</span><br><span class="line">- axios.interceptors.request.use(): 添加请求拦截器</span><br><span class="line">- axios.interceptors.response.use(): 添加响应拦截器</span><br><span class="line"></span><br><span class="line">- axios.create([config]): 创建一个新的 axios(它没有下面的功能)</span><br><span class="line"></span><br><span class="line">- axios.Cancel(): 用于创建取消请求的错误对象</span><br><span class="line">- axios.CancelToken(): 用于创建取消请求的 token 对象</span><br><span class="line">- axios.isCancel(): 是否是一个取消请求的错误</span><br><span class="line">- axios.all(promises): 用于批量执行多个异步请求</span><br><span class="line">- axios.spread(): 用来指定接收所有成功数据的回调函数的方法</span><br></pre></td></tr></table></figure>
-
-<h2 id="难点语法的理解和使用"><a href="#难点语法的理解和使用" class="headerlink" title="难点语法的理解和使用"></a>难点语法的理解和使用</h2><h3 id="axios-create-config"><a href="#axios-create-config" class="headerlink" title="axios.create(config)"></a>axios.create(config)</h3><ol>
-<li>根据指定配置创建一个新的 axios, 也就就每个新 axios 都有自己的配置</li>
-<li>新 axios 只是没有取消请求和批量发请求的方法, 其它所有语法都是一致的</li>
-<li>为什么要设计这个语法?<ul>
-<li>需求: 项目中有部分接口需要的配置与另一部分接口需要的配置不太一样, 如何处理</li>
-<li>解决: 创建 2 个新 axios, 每个都有自己特有的配置, 分别应用到不同要求的接口请求中</li>
-</ul>
-</li>
-</ol>
-<h3 id="拦截器函数-ajax-请求-请求的回调函数的调用顺序"><a href="#拦截器函数-ajax-请求-请求的回调函数的调用顺序" class="headerlink" title="拦截器函数/ajax 请求/请求的回调函数的调用顺序"></a>拦截器函数/ajax 请求/请求的回调函数的调用顺序</h3><ol>
-<li>说明: 调用 axios()并不是立即发送 ajax 请求, 而是需要经历一个较长的流程</li>
-<li>流程: 请求拦截器2 =&gt; 请求拦截器1 =&gt; 发ajax 请求 =&gt; 响应拦截器1 =&gt;  响应拦截器 2 =&gt; 请求的回调</li>
-<li>注意: 此流程是通过 promise 串连起来的, 请求拦截器传递的是 config, 响应拦截器传递的是 response</li>
-</ol>
-<h3 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h3><ol>
-<li>基本流程</li>
-</ol>
-<ul>
-<li>配置 cancelToken 对象</li>
-<li>缓存用于取消请求的 cancel 函数</li>
-<li>在后面特定时机调用 cancel 函数取消请求</li>
-<li>在错误回调中判断如果 error 是 cancel, 做相应处理</li>
-</ul>
-<ol start="2">
-<li>实现功能</li>
-</ol>
-<ul>
-<li>点击按钮, 取消某个正在请求中的请求</li>
-<li>在请求一个接口前, 取消前面一个未完成的请求</li>
-<li>可以用请求拦截器统一取消发送请求前未完成的请求，并且保存取消函数；用响应拦截器对结果统一处理</li>
-</ul>
-<ul>
-<li>源码：<a href="https://github.com/XieYaXv6/Learn-axios" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>axios</category>
-      </categories>
-      <tags>
-        <tag>ajax</tag>
-        <tag>axios</tag>
       </tags>
   </entry>
   <entry>
@@ -5226,6 +4983,249 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>axios</title>
+    <url>/2019/06/15/axios/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>前端最流行的ajax请求库</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
+<li>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</a></li>
+</ul>
+<h2 id="HTTP-请求交互的基本过程"><a href="#HTTP-请求交互的基本过程" class="headerlink" title="HTTP 请求交互的基本过程"></a>HTTP 请求交互的基本过程</h2><p><img src="/axios/http.png" alt></p>
+<ol>
+<li>前后应用从浏览器端向服务器发送 HTTP 请求(请求报文)</li>
+<li>后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP<br>响应(响应报文)</li>
+<li>浏览器端接收到响应, 解析显示响应体/调用监视回调</li>
+</ol>
+<h2 id="HTTP-请求报文"><a href="#HTTP-请求报文" class="headerlink" title="HTTP 请求报文"></a>HTTP 请求报文</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><ul>
+<li>method </li>
+<li>url</li>
+</ul>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><ul>
+<li>Host: <a href="http://www.baidu.com主机" target="_blank" rel="noopener">www.baidu.com主机</a></li>
+<li>Cookie: BAIDUID=AD3B0FA706E; BIDUPSID=AD3B0FA706;<ul>
+<li>Cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器</li>
+</ul>
+</li>
+<li>Content-Type: application/x-www-form-urlencoded 或者 application/json<ul>
+<li>告诉服务器请求体内容的类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><ul>
+<li>urlencoded格式：username=tom&amp;pwd=123</li>
+<li>JSON格式：{“username”: “tom”, “pwd”: 123}</li>
+</ul>
+<h2 id="HTTP-响应报文"><a href="#HTTP-响应报文" class="headerlink" title="HTTP 响应报文"></a>HTTP 响应报文</h2><ol>
+<li>响应状态行<ul>
+<li>status statusText状态码</li>
+</ul>
+</li>
+<li>多个响应头<ul>
+<li>Content-Type: text/html;charset=utf-8 Set-Cookie: BD_CK_SAM=1;path=/</li>
+</ul>
+</li>
+<li>响应体<ul>
+<li>html 文本/json 文本/js/css/图片…</li>
+</ul>
+</li>
+</ol>
+<h2 id="post-请求体参数格式"><a href="#post-请求体参数格式" class="headerlink" title="post 请求体参数格式"></a>post 请求体参数格式</h2><ol>
+<li>Content-Type: application/x-www-form-urlencoded;charset=utf-8<ul>
+<li>用于键值对参数，参数的键值用=连接, 参数之间用&amp;连接</li>
+<li>例如: name=%E5%B0%8F%E6%98%8E&amp;age=12</li>
+</ul>
+</li>
+<li>Content-Type: application/json;charset=utf-8<ul>
+<li>用于 json 字符串参数</li>
+<li>例如: {“name”: “%E5%B0%8F%E6%98%8E”, “age”: 12}</li>
+</ul>
+</li>
+<li>Content-Type: multipart/form-data<ul>
+<li>用于文件上传请求</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见的响应状态码"><a href="#常见的响应状态码" class="headerlink" title="常见的响应状态码"></a>常见的响应状态码</h2><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>提示信息</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功。一般用于 GET 与 POST 请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>未授权/请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>服务器无法根据客户端的请求找到资源</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+</tbody></table>
+<h2 id="不同类型的请求及其作用"><a href="#不同类型的请求及其作用" class="headerlink" title="不同类型的请求及其作用"></a>不同类型的请求及其作用</h2><ol>
+<li>GET: 从服务器端读取数据</li>
+<li>POST: 向服务器端添加新数据</li>
+<li>PUT: 更新服务器端已经有的数据</li>
+<li>DELETE: 删除服务器端数据</li>
+</ol>
+<h2 id="API-的分类"><a href="#API-的分类" class="headerlink" title="API 的分类"></a>API 的分类</h2><ol>
+<li>REST API:restful<ul>
+<li>发送请求进行 CRUD 哪个操作由请求方式来决定</li>
+<li>同一个请求路径可以进行多个操作</li>
+<li>请求方式会用到 GET/POST/PUT/DELETE</li>
+</ul>
+</li>
+<li>非 REST API:restless<ul>
+<li>请求方式不决定请求的 CRUD 操作</li>
+<li>一个请求路径只对应一个操作</li>
+<li>一般只有 GET/POST</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用-json-server-搭建-REST-API"><a href="#使用-json-server-搭建-REST-API" class="headerlink" title="使用 json-server 搭建 REST API"></a>使用 json-server 搭建 REST API</h2><h3 id="json-server-是什么"><a href="#json-server-是什么" class="headerlink" title="json-server 是什么?"></a>json-server 是什么?</h3><ul>
+<li>用来快速搭建 REST API 的工具包</li>
+</ul>
+<h3 id="使用-json-server"><a href="#使用-json-server" class="headerlink" title="使用 json-server"></a>使用 json-server</h3><ol>
+<li>在线文档: <a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></li>
+<li>下载: npm install -g json-server</li>
+<li>目标根目录下创建数据库 json 文件: db.json<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JSON数据：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;posts&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;title&quot;: &quot;json-server&quot;, &quot;author&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">],</span><br><span class="line">&quot;comments&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;body&quot;: &quot;some comment&quot;, &quot;postId&quot;: 1 &#125;</span><br><span class="line">],</span><br><span class="line">&quot;profile&quot;: &#123; &quot;name&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>启动服务器执行命令: json-server –watch db.json</li>
+</ol>
+<h3 id="使用浏览器访问测试"><a href="#使用浏览器访问测试" class="headerlink" title="使用浏览器访问测试"></a>使用浏览器访问测试</h3><ul>
+<li><p><a href="http://localhost:3000/posts" target="_blank" rel="noopener">http://localhost:3000/posts</a></p>
+</li>
+<li><p><a href="http://localhost:3000/posts/1" target="_blank" rel="noopener">http://localhost:3000/posts/1</a></p>
+</li>
+<li><p>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html</a></p>
+</li>
+</ul>
+<h1 id="XHR-的理解和使用"><a href="#XHR-的理解和使用" class="headerlink" title="XHR 的理解和使用"></a>XHR 的理解和使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ol>
+<li>使用 XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送 ajax 请求</li>
+<li>前端可以获取到数据，而无需让整个的页面刷新。</li>
+<li>这使得 Web 页面可以只更新页面的局部，而不影响用户的操作。</li>
+</ol>
+<h2 id="区别一般-http-请求与-ajax-请求"><a href="#区别一般-http-请求与-ajax-请求" class="headerlink" title="区别一般 http 请求与 ajax 请求"></a>区别一般 http 请求与 ajax 请求</h2><ol>
+<li>ajax 请求是一种特别的 http 请求</li>
+<li>对服务器端来说, 没有任何区别, 区别在浏览器端</li>
+<li>浏览器端发请求: 只有 XHR 或 fetch 发出的才是 ajax 请求, 其它所有的都是非 ajax 请求</li>
+<li>浏览器端接收到响应<ul>
+<li>一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/ 跳转页面</li>
+<li>ajax 请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据</li>
+</ul>
+</li>
+</ol>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
+<li>XMLHttpRequest(): 创建 XHR 对象的构造函数</li>
+<li>status: 响应状态码值, 比如 200, 404</li>
+<li>statusText: 响应状态文本</li>
+<li>readyState: 标识请求状态的只读属性<ul>
+<li>初始</li>
+<li>open()之后</li>
+<li>send()之后</li>
+<li>请求中</li>
+<li>请求完成</li>
+</ul>
+</li>
+<li>onreadystatechange: 绑定 readyState 改变的监听</li>
+<li>responseType: 指定响应数据类型, 如果是’json’, 得到响应后自动解析响应体数据</li>
+<li>response: 响应体数据, 类型取决于 responseType 的指定</li>
+<li>timeout: 指定请求超时时间, 默认为 0 代表没有限制</li>
+<li>ontimeout: 绑定超时的监听</li>
+<li>onerror: 绑定请求网络错误的监听</li>
+<li>open(): 初始化一个请求, 参数为: (method, url[, async])</li>
+<li>send(data): 发送请求</li>
+<li>abort(): 中断请求</li>
+<li>getResponseHeader(name): 获取指定名称的响应头值</li>
+<li>getAllResponseHeaders(): 获取所有响应头组成的字符串</li>
+<li>setRequestHeader(name, value): 设置请求头</li>
+</ol>
+<h2 id="XHR-的-ajax-封装-简单版-axios"><a href="#XHR-的-ajax-封装-简单版-axios" class="headerlink" title="XHR 的 ajax 封装(简单版 axios)"></a>XHR 的 ajax 封装(简单版 axios)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>函数的返回值为 promise, 成功的结果为 response, 异常的结果为 error</li>
+<li>能处理多种类型的请求: GET/POST/PUT/DELETE</li>
+<li>函数的参数为一个配置对象<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">url: &#39;&#39;,	&#x2F;&#x2F; 请求地址</span><br><span class="line">method: &#39;&#39;,		&#x2F;&#x2F; 请求方式 GET&#x2F;POST&#x2F;PUT&#x2F;DELETE params: &#123;&#125;,	&#x2F;&#x2F; GET&#x2F;DELETE 请求的 query 参数data: &#123;&#125;, &#x2F;&#x2F; POST 或 DELETE 请求的请求体参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>响应 json 数据自动解析为 js</li>
+</ol>
+<ul>
+<li>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html</a></li>
+</ul>
+<h1 id="axios-的理解和使用"><a href="#axios-的理解和使用" class="headerlink" title="axios 的理解和使用"></a>axios 的理解和使用</h1><h2 id="axios-是什么"><a href="#axios-是什么" class="headerlink" title="axios 是什么?"></a>axios 是什么?</h2><ol>
+<li>前端最流行的 ajax 请求库</li>
+<li>react/vue 官方都推荐使用 axios 发 ajax 请求</li>
+<li>文档: <a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
+</ol>
+<h2 id="axios-特点"><a href="#axios-特点" class="headerlink" title="axios 特点"></a>axios 特点</h2><ol>
+<li>基本 promise 的异步 ajax 请求库</li>
+<li>浏览器端/node 端都可以使用</li>
+<li>支持请求／响应拦截器</li>
+<li>支持请求取消</li>
+<li>请求/响应数据转换</li>
+<li>批量发送多个请求</li>
+</ol>
+<h2 id="axios-常用语法"><a href="#axios-常用语法" class="headerlink" title="axios 常用语法"></a>axios 常用语法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- axios(config): 通用&#x2F;最本质的发任意类型请求的方式</span><br><span class="line">- axios(url[, config]): 可以只指定 url 发 get 请求</span><br><span class="line">- axios.request(config): 等 同 于 axios(config) </span><br><span class="line">- axios.get(url[, config]): 发 get 请求</span><br><span class="line">- axios.delete(url[, config]): 发 delete 请求</span><br><span class="line">- axios.post(url[, data, config]): 发 post 请求</span><br><span class="line">- axios.put(url[, data, config]): 发 put 请求 </span><br><span class="line"></span><br><span class="line">- axios.defaults.xxx: 请求的默认全局配置</span><br><span class="line">- axios.interceptors.request.use(): 添加请求拦截器</span><br><span class="line">- axios.interceptors.response.use(): 添加响应拦截器</span><br><span class="line"></span><br><span class="line">- axios.create([config]): 创建一个新的 axios(它没有下面的功能)</span><br><span class="line"></span><br><span class="line">- axios.Cancel(): 用于创建取消请求的错误对象</span><br><span class="line">- axios.CancelToken(): 用于创建取消请求的 token 对象</span><br><span class="line">- axios.isCancel(): 是否是一个取消请求的错误</span><br><span class="line">- axios.all(promises): 用于批量执行多个异步请求</span><br><span class="line">- axios.spread(): 用来指定接收所有成功数据的回调函数的方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="难点语法的理解和使用"><a href="#难点语法的理解和使用" class="headerlink" title="难点语法的理解和使用"></a>难点语法的理解和使用</h2><h3 id="axios-create-config"><a href="#axios-create-config" class="headerlink" title="axios.create(config)"></a>axios.create(config)</h3><ol>
+<li>根据指定配置创建一个新的 axios, 也就就每个新 axios 都有自己的配置</li>
+<li>新 axios 只是没有取消请求和批量发请求的方法, 其它所有语法都是一致的</li>
+<li>为什么要设计这个语法?<ul>
+<li>需求: 项目中有部分接口需要的配置与另一部分接口需要的配置不太一样, 如何处理</li>
+<li>解决: 创建 2 个新 axios, 每个都有自己特有的配置, 分别应用到不同要求的接口请求中</li>
+</ul>
+</li>
+</ol>
+<h3 id="拦截器函数-ajax-请求-请求的回调函数的调用顺序"><a href="#拦截器函数-ajax-请求-请求的回调函数的调用顺序" class="headerlink" title="拦截器函数/ajax 请求/请求的回调函数的调用顺序"></a>拦截器函数/ajax 请求/请求的回调函数的调用顺序</h3><ol>
+<li>说明: 调用 axios()并不是立即发送 ajax 请求, 而是需要经历一个较长的流程</li>
+<li>流程: 请求拦截器2 =&gt; 请求拦截器1 =&gt; 发ajax 请求 =&gt; 响应拦截器1 =&gt;  响应拦截器 2 =&gt; 请求的回调</li>
+<li>注意: 此流程是通过 promise 串连起来的, 请求拦截器传递的是 config, 响应拦截器传递的是 response</li>
+</ol>
+<h3 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h3><ol>
+<li>基本流程</li>
+</ol>
+<ul>
+<li>配置 cancelToken 对象</li>
+<li>缓存用于取消请求的 cancel 函数</li>
+<li>在后面特定时机调用 cancel 函数取消请求</li>
+<li>在错误回调中判断如果 error 是 cancel, 做相应处理</li>
+</ul>
+<ol start="2">
+<li>实现功能</li>
+</ol>
+<ul>
+<li>点击按钮, 取消某个正在请求中的请求</li>
+<li>在请求一个接口前, 取消前面一个未完成的请求</li>
+<li>可以用请求拦截器统一取消发送请求前未完成的请求，并且保存取消函数；用响应拦截器对结果统一处理</li>
+</ul>
+<ul>
+<li>源码：<a href="https://github.com/XieYaXv6/Learn-axios" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>axios</category>
+      </categories>
+      <tags>
+        <tag>ajax</tag>
+        <tag>axios</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2018/07/02/hello%20world/</url>
     <content><![CDATA[<blockquote>
@@ -5257,6 +5257,320 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery</title>
+    <url>/2018/09/10/jQuery/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>一个JS函数库</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>一个JS函数库: write less, do more</li>
+<li>封装简化DOM操作(CRUD) / Ajax</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>强大选择器: 方便快速查找DOM元素</li>
+<li>隐式遍历(迭代): 一次操作多个元素</li>
+<li>读写合一: 读数据/写数据用的是一个函数</li>
+<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
+<li>事件处理</li>
+<li>DOM操作(CUD)</li>
+<li>样式操作</li>
+<li>动画</li>
+<li>浏览器兼容</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li>引入jQuery库<ul>
+<li>本地引入与CDN远程引入<ul>
+<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
+</ul>
+</li>
+<li>测试版与生产版(压缩版)</li>
+</ul>
+</li>
+<li>使用jQuery<ul>
+<li>使用jQuery函数: $/jQuery</li>
+<li>使用jQuery对象: $xxx(执行$()得到的)</li>
+</ul>
+</li>
+</ul>
+<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
+<li>问题 : 如果有2个库都有$, 就存在冲突</li>
+<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
+<li>API : jQuery.noConflict()</li>
+</ul>
+<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
+<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
+</li>
+<li><p>当成一般函数使用人: $(param)</p>
+<ul>
+<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
+<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
+<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
+<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>当成对象使用: $.xxx</p>
+<ul>
+<li>each(obj/arr, function(key, value){})</li>
+<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
+<li>包含所有匹配的n个DOM元素的伪数组对象</li>
+<li>执行$()返回的就是jQuery对象</li>
+<li>基本行为:<ul>
+<li>length/size(): 得到dom元素的个数</li>
+<li>[index] : 得到指定下标对应的dom元素</li>
+<li>each(function(index, domEle){}): 遍历所有dom元素</li>
+<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>伪数组<ol>
+<li>object对象</li>
+<li>length属性</li>
+<li>数值下标属性</li>
+<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>有特定语法规则(css选择器)的字符串</li>
+<li>用来查找某个/些DOM元素: $(selector)</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>基本选择器<ul>
+<li>#id: id选择器</li>
+<li>element : 元素选择器</li>
+<li>.class: 属性选择器</li>
+<li>selector1,selector2,selector3: 并集</li>
+<li>selector1selector2selector3: 交集</li>
+<li>: 任意标签</li>
+</ul>
+</li>
+<li>层次选择器<ul>
+<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
+<li>selector1&gt;selector2: 子元素</li>
+<li>selector1 selector2: 后代元素</li>
+<li>prev+next<ul>
+<li>匹配所有紧接在 prev 元素后的 next 元素</li>
+</ul>
+</li>
+<li>prev~siblings<ul>
+<li>匹配 prev 元素之后的所有 siblings 元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过滤选择器<ul>
+<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
+<li>:first 获取第一个元素</li>
+<li>:last 获取最后个元素</li>
+<li>:eq(index) 匹配一个给定索引值的元素</li>
+<li>:lt 匹配所有小于给定索引值的元素</li>
+<li>:gt 匹配所有大于给定索引值的元素</li>
+<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
+<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
+<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
+<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
+<li>:visible 匹配所有的可见元素</li>
+<li>:contains(text) 匹配包含给定文本的元素</li>
+<li>[属性] 匹配包含给定属性的元素</li>
+<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
+</ul>
+</li>
+<li>表单选择器<ul>
+<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
+<li>:text 匹配所有的单行文本框</li>
+<li>:checkbox 匹配所有复选框</li>
+<li>:radio 匹配所有单选按钮</li>
+<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
+</ul>
+</li>
+</ul>
+<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
+<li>$.each(): 遍历数组或对象中的数据</li>
+<li>$.trim(): 去除字符串两边的空格</li>
+<li>$.type(obj): 得到数据的类型</li>
+<li>$.isArray(obj): 判断是否是数组</li>
+<li>$.isFunction(obj): 判断是否是函数</li>
+<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
+</ol>
+<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
+<li>操作标签的属性, 标签体文本</li>
+<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
+<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
+<li>removeAttr(name)/removeProp(name): 删除属性</li>
+<li>addClass(classValue): 添加class</li>
+<li>removeClass(classValue): 移除指定class</li>
+<li>val() / val(value): 读写标签的value</li>
+<li>html() / html(htmlString): 读写标签体文本</li>
+</ul>
+<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
+<li>css(styleName): 根据样式名得到对应的值</li>
+<li>css(styleName, value): 设置一个样式</li>
+<li>css({多个样式对}): 设置多个样式</li>
+</ul>
+<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
+<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
+<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
+<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
+<li>内容尺寸</li>
+</ol>
+<ul>
+<li>height(): height</li>
+<li>width(): width</li>
+</ul>
+<ol start="2">
+<li>内部尺寸</li>
+</ol>
+<ul>
+<li>innerHeight(): height+padding</li>
+<li>innerWidth(): width+padding</li>
+</ul>
+<ol start="3">
+<li>外部尺寸</li>
+</ol>
+<ul>
+<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
+<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
+</ul>
+<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
+<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
+<li>first()：获取第一个元素</li>
+<li>last()：获取最后一个元素</li>
+<li>eq(index)：获取第N个元素</li>
+<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
+<li>not(selector): 指定表达式匹配的元素，并取反</li>
+<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
+<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
+<li>children(selector): 子元素</li>
+<li>parent(): 父元素</li>
+<li>find(selector): 后代元素</li>
+<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
+<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
+</ul>
+<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
+<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
+<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
+<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
+<li>after(): 在每个匹配的元素之后插入内容</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>remove(): 将自己及内部的孩子都删除</li>
+<li>empty(): 掏空(自己还在)</li>
+</ul>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
+</ul>
+<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
+<li>eventName(function(){})<ul>
+<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
+</ul>
+</li>
+<li>on(‘eventName’, function(){})<ul>
+<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
+</ul>
+</li>
+<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
+<li>hover(function(){}, function(){})</li>
+</ul>
+<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
+<li>off(‘eventName’)</li>
+</ul>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
+<li>理解<ul>
+<li>将多个子元素的事件监听委托给父辈元素处理</li>
+<li>监听回调是加在了父辈元素上</li>
+<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
+<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
+</ul>
+</li>
+<li>好处<ul>
+<li>添加新的子元素, 自动有事件响应处理</li>
+<li>减少事件监听的数量: n==&gt;1</li>
+</ul>
+</li>
+<li>jQuery的事件委托API<ul>
+<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
+<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
+</ul>
+</li>
+</ul>
+<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
+<li>event.offsetX: 原点是当前元素左上角</li>
+<li>event.clientX: 原点是窗口左上角</li>
+<li>event.pageX: 原点是页面左上角</li>
+</ul>
+<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
+<li>停止事件冒泡: event.stopPropagation()</li>
+<li>阻止事件的默认行为: event.preventDefault()</li>
+</ul>
+<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
+<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
+</li>
+<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
+</li>
+<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
+<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
+<li><p>在一定的时间内, 不断改变元素样式</p>
+</li>
+</ul>
+<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
+2.  fadeOut(): 带动画隐藏
+3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
+<li>slideDown(): 带动画的展开</li>
+<li>slideUp(): 带动画的收缩</li>
+<li>slideToggle(): 带动画的切换展开/收缩</li>
+</ol>
+<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
+<li>show(): (不)带动画的显示</li>
+<li>hide(): (不)带动画的隐藏</li>
+<li>toggle(): (不)带动画的切换显示/隐藏</li>
+</ol>
+<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
+<li>animate(): 自定义动画效果的动画</li>
+<li>stop(): 停止动画</li>
+</ol>
+<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
+
+<p>#其他  </p>
+<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
+<li>window.onload<ul>
+<li>包括页面的图片加载完后才会回调(晚)</li>
+<li>只能有一个监听回调</li>
+</ul>
+</li>
+<li>$(document).ready()<ul>
+<li>等同于: $(function(){})</li>
+<li>页面加载完就回调(早)</li>
+<li>可以有多个监听回调</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>jQuery</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -6448,320 +6762,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>jQuery</title>
-    <url>/2018/09/10/jQuery/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>一个JS函数库</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>一个JS函数库: write less, do more</li>
-<li>封装简化DOM操作(CRUD) / Ajax</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>强大选择器: 方便快速查找DOM元素</li>
-<li>隐式遍历(迭代): 一次操作多个元素</li>
-<li>读写合一: 读数据/写数据用的是一个函数</li>
-<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
-<li>事件处理</li>
-<li>DOM操作(CUD)</li>
-<li>样式操作</li>
-<li>动画</li>
-<li>浏览器兼容</li>
-</ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
-<li>引入jQuery库<ul>
-<li>本地引入与CDN远程引入<ul>
-<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
-</ul>
-</li>
-<li>测试版与生产版(压缩版)</li>
-</ul>
-</li>
-<li>使用jQuery<ul>
-<li>使用jQuery函数: $/jQuery</li>
-<li>使用jQuery对象: $xxx(执行$()得到的)</li>
-</ul>
-</li>
-</ul>
-<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
-<li>问题 : 如果有2个库都有$, 就存在冲突</li>
-<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
-<li>API : jQuery.noConflict()</li>
-</ul>
-<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
-<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
-</li>
-<li><p>当成一般函数使用人: $(param)</p>
-<ul>
-<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
-<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
-<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
-<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>当成对象使用: $.xxx</p>
-<ul>
-<li>each(obj/arr, function(key, value){})</li>
-<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
-<li>包含所有匹配的n个DOM元素的伪数组对象</li>
-<li>执行$()返回的就是jQuery对象</li>
-<li>基本行为:<ul>
-<li>length/size(): 得到dom元素的个数</li>
-<li>[index] : 得到指定下标对应的dom元素</li>
-<li>each(function(index, domEle){}): 遍历所有dom元素</li>
-<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>伪数组<ol>
-<li>object对象</li>
-<li>length属性</li>
-<li>数值下标属性</li>
-<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>有特定语法规则(css选择器)的字符串</li>
-<li>用来查找某个/些DOM元素: $(selector)</li>
-</ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>基本选择器<ul>
-<li>#id: id选择器</li>
-<li>element : 元素选择器</li>
-<li>.class: 属性选择器</li>
-<li>selector1,selector2,selector3: 并集</li>
-<li>selector1selector2selector3: 交集</li>
-<li>: 任意标签</li>
-</ul>
-</li>
-<li>层次选择器<ul>
-<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
-<li>selector1&gt;selector2: 子元素</li>
-<li>selector1 selector2: 后代元素</li>
-<li>prev+next<ul>
-<li>匹配所有紧接在 prev 元素后的 next 元素</li>
-</ul>
-</li>
-<li>prev~siblings<ul>
-<li>匹配 prev 元素之后的所有 siblings 元素</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过滤选择器<ul>
-<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
-<li>:first 获取第一个元素</li>
-<li>:last 获取最后个元素</li>
-<li>:eq(index) 匹配一个给定索引值的元素</li>
-<li>:lt 匹配所有小于给定索引值的元素</li>
-<li>:gt 匹配所有大于给定索引值的元素</li>
-<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
-<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
-<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
-<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
-<li>:visible 匹配所有的可见元素</li>
-<li>:contains(text) 匹配包含给定文本的元素</li>
-<li>[属性] 匹配包含给定属性的元素</li>
-<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
-</ul>
-</li>
-<li>表单选择器<ul>
-<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
-<li>:text 匹配所有的单行文本框</li>
-<li>:checkbox 匹配所有复选框</li>
-<li>:radio 匹配所有单选按钮</li>
-<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
-</ul>
-</li>
-</ul>
-<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
-<li>$.each(): 遍历数组或对象中的数据</li>
-<li>$.trim(): 去除字符串两边的空格</li>
-<li>$.type(obj): 得到数据的类型</li>
-<li>$.isArray(obj): 判断是否是数组</li>
-<li>$.isFunction(obj): 判断是否是函数</li>
-<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
-</ol>
-<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
-<li>操作标签的属性, 标签体文本</li>
-<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
-<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
-<li>removeAttr(name)/removeProp(name): 删除属性</li>
-<li>addClass(classValue): 添加class</li>
-<li>removeClass(classValue): 移除指定class</li>
-<li>val() / val(value): 读写标签的value</li>
-<li>html() / html(htmlString): 读写标签体文本</li>
-</ul>
-<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
-<li>css(styleName): 根据样式名得到对应的值</li>
-<li>css(styleName, value): 设置一个样式</li>
-<li>css({多个样式对}): 设置多个样式</li>
-</ul>
-<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
-<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
-<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
-<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
-<li>内容尺寸</li>
-</ol>
-<ul>
-<li>height(): height</li>
-<li>width(): width</li>
-</ul>
-<ol start="2">
-<li>内部尺寸</li>
-</ol>
-<ul>
-<li>innerHeight(): height+padding</li>
-<li>innerWidth(): width+padding</li>
-</ul>
-<ol start="3">
-<li>外部尺寸</li>
-</ol>
-<ul>
-<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
-<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
-</ul>
-<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
-<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
-<li>first()：获取第一个元素</li>
-<li>last()：获取最后一个元素</li>
-<li>eq(index)：获取第N个元素</li>
-<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
-<li>not(selector): 指定表达式匹配的元素，并取反</li>
-<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
-</ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
-<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
-<li>children(selector): 子元素</li>
-<li>parent(): 父元素</li>
-<li>find(selector): 后代元素</li>
-<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
-<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
-</ul>
-<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
-<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
-<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
-<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
-<li>after(): 在每个匹配的元素之后插入内容</li>
-</ul>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>remove(): 将自己及内部的孩子都删除</li>
-<li>empty(): 掏空(自己还在)</li>
-</ul>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
-<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
-</ul>
-<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
-<li>eventName(function(){})<ul>
-<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
-</ul>
-</li>
-<li>on(‘eventName’, function(){})<ul>
-<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
-</ul>
-</li>
-<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
-<li>hover(function(){}, function(){})</li>
-</ul>
-<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
-<li>off(‘eventName’)</li>
-</ul>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
-<li>理解<ul>
-<li>将多个子元素的事件监听委托给父辈元素处理</li>
-<li>监听回调是加在了父辈元素上</li>
-<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
-<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
-</ul>
-</li>
-<li>好处<ul>
-<li>添加新的子元素, 自动有事件响应处理</li>
-<li>减少事件监听的数量: n==&gt;1</li>
-</ul>
-</li>
-<li>jQuery的事件委托API<ul>
-<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
-<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
-</ul>
-</li>
-</ul>
-<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
-<li>event.offsetX: 原点是当前元素左上角</li>
-<li>event.clientX: 原点是窗口左上角</li>
-<li>event.pageX: 原点是页面左上角</li>
-</ul>
-<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
-<li>停止事件冒泡: event.stopPropagation()</li>
-<li>阻止事件的默认行为: event.preventDefault()</li>
-</ul>
-<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
-<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
-</li>
-<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
-</li>
-<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
-<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
-<li><p>在一定的时间内, 不断改变元素样式</p>
-</li>
-</ul>
-<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
-2.  fadeOut(): 带动画隐藏
-3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
-<li>slideDown(): 带动画的展开</li>
-<li>slideUp(): 带动画的收缩</li>
-<li>slideToggle(): 带动画的切换展开/收缩</li>
-</ol>
-<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
-<li>show(): (不)带动画的显示</li>
-<li>hide(): (不)带动画的隐藏</li>
-<li>toggle(): (不)带动画的切换显示/隐藏</li>
-</ol>
-<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
-<li>animate(): 自定义动画效果的动画</li>
-<li>stop(): 停止动画</li>
-</ol>
-<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
-
-<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
-
-<p>#其他  </p>
-<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
-<li>window.onload<ul>
-<li>包括页面的图片加载完后才会回调(晚)</li>
-<li>只能有一个监听回调</li>
-</ul>
-</li>
-<li>$(document).ready()<ul>
-<li>等同于: $(function(){})</li>
-<li>页面加载完就回调(早)</li>
-<li>可以有多个监听回调</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>jQuery</category>
-      </categories>
-      <tags>
-        <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>less</title>
     <url>/2019/04/21/less/</url>
     <content><![CDATA[<blockquote>
@@ -6833,6 +6833,75 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>CSS</tag>
         <tag>less</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>性能优化</title>
+    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
+<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
+<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
+<li>优点<ul>
+<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
+<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
+<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
+<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
+* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
+* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
+<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
+<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
+<li>优点<ul>
+<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
+<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
+<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
+</ul>
+</li>
+</ul>
+<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
+<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
+<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
+<li>强缓存（200）<ul>
+<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
+</ul>
+</li>
+<li>协商缓存（304 资源未修改）<ul>
+<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
+</ul>
+</li>
+<li>Service Worker<ul>
+<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
+<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
+</ul>
+</li>
+</ul>
+<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
+<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
+<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
+</ul>
+<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
+<li>骨架屏<ul>
+<li>在数据加载时显示骨架，优化用户体验</li>
+</ul>
+</li>
+<li>缓存路由组件keep-alive<ul>
+<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
+<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
+</ul>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>小本本</title>
@@ -7056,7 +7125,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
 <li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
 </ul>
-<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
 
 <ul>
 <li>js是单线程的，浏览器是多线程的</li>
@@ -7084,11 +7153,11 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li><strong>找到占用率高的进程并杀死</strong></li>
 </ol>
 <ul>
-<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C1.png" alt></li>
+<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/1.png" alt></li>
 <li>发现cpu占用率爆满</li>
 <li>然后我们找到占有率最高的进程，找到他的pid</li>
 <li>然后把该进程kill掉  kill -9 pid</li>
-<li>然后cpu恢复了平静<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C2.png" alt></li>
+<li>然后cpu恢复了平静<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/2.png" alt></li>
 </ul>
 <ol start="2">
 <li><strong>查看是否有定时任务</strong></li>
@@ -7108,10 +7177,10 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 <p><strong><em>不得不说阿里云安全售卖的那些服务并不是没有道理的，原来我他给我提示的那些风险警告并不是没用的，我一直以为是他为了售卖自己的产品故意安排这么多漏洞的，这会见识到了</em></strong></p>
 <h1 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h1><ul>
-<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C721.png" alt></li>
-<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C7211.png" alt></li>
+<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/721.png" alt></li>
+<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/7211.png" alt></li>
 <li>果然有人在用我的服务器挖矿</li>
-<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C72111.png" alt></li>
+<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/72111.png" alt></li>
 <li>发现了他的启动程序在/home/git/xmr64下</li>
 <li>然后杀死进程</li>
 <li>删除rm -f启动程序</li>
@@ -7135,12 +7204,12 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
 <li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
 <li><strong>节流是固定时间内只触发一次函数</strong></li>
-<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cthrottling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/throttling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
-<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cdebounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/debounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
 </ul>
 ]]></content>
@@ -7148,74 +7217,5 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>节流</tag>
         <tag>防抖动</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>性能优化</title>
-    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
-<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
-<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
-<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
-<li>优点<ul>
-<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
-<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
-<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
-<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
-</ul>
-</li>
-</ul>
-<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
-* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
-* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
-<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
-<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
-<li>优点<ul>
-<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
-<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
-<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
-</ul>
-</li>
-</ul>
-<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
-<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
-<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
-<li>强缓存（200）<ul>
-<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
-</ul>
-</li>
-<li>协商缓存（304 资源未修改）<ul>
-<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
-</ul>
-</li>
-<li>Service Worker<ul>
-<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
-<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
-</ul>
-</li>
-</ul>
-<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
-<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
-<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
-</ul>
-<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
-<li>骨架屏<ul>
-<li>在数据加载时显示骨架，优化用户体验</li>
-</ul>
-</li>
-<li>缓存路由组件keep-alive<ul>
-<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
-<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
-</ul>
-</li>
-</ul>
-]]></content>
   </entry>
 </search>

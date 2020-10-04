@@ -2,23 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xyx6.top/2020/01/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>http://xyx6.top/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</loc>
     
-    <lastmod>2020-10-04T17:53:05.728Z</lastmod>
+    <lastmod>2020-10-04T17:58:53.930Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</loc>
+    
+    <lastmod>2020-10-04T17:58:34.045Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2018/11/11/NodeJS/</loc>
+    
+    <lastmod>2020-10-04T17:57:49.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2019/03/19/Git-Github/</loc>
+    
+    <lastmod>2020-10-04T17:56:56.733Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://xyx6.top/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</loc>
     
-    <lastmod>2020-10-04T17:42:55.155Z</lastmod>
+    <lastmod>2020-10-04T17:55:25.929Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xyx6.top/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</loc>
+    <loc>http://xyx6.top/2019/04/15/Webpack/</loc>
     
-    <lastmod>2020-10-04T16:55:13.733Z</lastmod>
+    <lastmod>2020-10-04T17:54:19.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xyx6.top/2020/01/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</loc>
+    
+    <lastmod>2020-10-04T17:53:05.728Z</lastmod>
     
   </url>
   
@@ -40,13 +68,6 @@
     <loc>http://xyx6.top/2018/08/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</loc>
     
     <lastmod>2020-09-25T10:12:49.980Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</loc>
-    
-    <lastmod>2020-09-25T10:12:28.911Z</lastmod>
     
   </url>
   
@@ -93,13 +114,6 @@
   </url>
   
   <url>
-    <loc>http://xyx6.top/2019/04/15/Webpack/</loc>
-    
-    <lastmod>2020-09-22T07:21:45.401Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xyx6.top/2019/04/10/Gulp/</loc>
     
     <lastmod>2020-09-22T07:21:15.651Z</lastmod>
@@ -110,13 +124,6 @@
     <loc>http://xyx6.top/2019/04/05/Grunt/</loc>
     
     <lastmod>2020-09-22T07:20:58.894Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2019/03/19/Git-Github/</loc>
-    
-    <lastmod>2020-09-22T07:20:43.233Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>http://xyx6.top/2018/12/13/MongoDB/</loc>
     
     <lastmod>2020-09-22T07:19:28.835Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xyx6.top/2018/11/11/NodeJS/</loc>
-    
-    <lastmod>2020-09-22T07:18:58.450Z</lastmod>
     
   </url>
   

@@ -233,7 +233,7 @@
 <li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
 <li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
 </ul>
-<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
 
 <ul>
 <li>js是单线程的，浏览器是多线程的</li>
