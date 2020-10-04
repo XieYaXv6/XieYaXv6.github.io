@@ -1,6 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ajax</title>
+    <url>/2019/03/16/Ajax/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>页面的局部刷新技术</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
+<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
+</li>
+<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
+</li>
+<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
+<ul>
+<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
+<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
+<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
+<li>DOM实现动态显示和交互</li>
+<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
+<li>使用JS进行绑定和处理数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
+<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
+</ul>
+<ol>
+<li><p>onreadystatechang事件处理函数</p>
+<ul>
+<li>该函数由服务器触发，而不是用户</li>
+<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
+</ul>
+</li>
+<li><p>open(method,url,asynch)方法</p>
+<ul>
+<li>open运行用一个Ajax调用向服务器发送请求</li>
+<li>method：请求的类型<ul>
+<li>GET从服务器检索一个文件，不需要发送任何数据</li>
+<li>POST向服务器发送数据</li>
+</ul>
+</li>
+<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
+<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
+</ul>
+</li>
+<li><p>send方法</p>
+<ul>
+<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
+<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
+<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
+</ul>
+</li>
+<li><p>sendRequestHeader(header,value)</p>
+<ul>
+<li>首部信息用来声明一个请求时GET还是POST</li>
+<li>header首部的名字，value首部的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
+<li><p>readyState</p>
+<ul>
+<li>表示Ajax请求的当前状态<ul>
+<li>0表示初始化，还没有调用open方法</li>
+<li>1表示正在加载，open方法已调用，send方法还没调用</li>
+<li>2表示已加载完毕，send方法已调用，请求开始了</li>
+<li>3表示交互中，服务器正在发送响应</li>
+<li>4表示完成，响应发送完毕</li>
+</ul>
+</li>
+<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
+<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
+</ul>
+</li>
+<li><p>status</p>
+<ul>
+<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
+<li>常用状态码及其含义：<ul>
+<li>404没找到页面</li>
+<li>403禁止访问</li>
+<li>500内部服务器错误</li>
+<li>200一切正常</li>
+<li>304没有被修改</li>
+</ul>
+</li>
+<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
+</ul>
+</li>
+<li><p>responseText</p>
+<ul>
+<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
+<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
+</ul>
+</li>
+<li><p>responseXML</p>
+<ul>
+<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
+<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
+<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
+</ul>
+<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
+<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
+<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
+<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
+<li><p>load(url, [data], [callback])</p>
+<ul>
+<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
+<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
+<li>url:待装入 HTML 网页网址。</li>
+<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
+<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>jQuery.get(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP GET 请求载入信息</li>
+<li>url:待载入页面的URL地址</li>
+<li>data:待发送 Key/value 参数</li>
+<li>callback:载入成功时回调函数</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default</li>
+</ul>
+</li>
+<li><p>jQuery.post(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP POST 请求载入信息</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:发送成功时回调函数。</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
+</ul>
+</li>
+<li><p>jQuery.getJSON(url, [data], [callback])</p>
+<ul>
+<li>通过 HTTP GET 请求载入 JSON 数据</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:载入成功时回调函数。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ajax</category>
+      </categories>
+      <tags>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bootstrap</title>
     <url>/2019/04/25/Bootstrap/</url>
     <content><![CDATA[<blockquote>
@@ -45,7 +203,7 @@
 </li>
 </ol>
 <h2 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h2><ol>
-<li><p>栅格系统<br> <img src="/2019/04/25/Bootstrap/%E6%A0%85%E6%A0%BC.png" alt></p>
+<li><p>栅格系统<br> <img src="/Bootstrap/%E6%A0%85%E6%A0%BC.png" alt></p>
 <ul>
 <li>按照不同屏幕划分为12等分</li>
 <li>行（row）可以清除父容器的边距15px</li>
@@ -74,7 +232,7 @@
 </li>
 </ol>
 <h2 id="响应式工具"><a href="#响应式工具" class="headerlink" title="响应式工具"></a>响应式工具</h2><ul>
-<li>通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容。<br><img src="/2019/04/25/Bootstrap/xiang.png" alt></li>
+<li>通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容。<br><img src="/Bootstrap/xiang.png" alt></li>
 </ul>
 <p><strong><em>现在暂时先了解这么多，bootstrap的精髓主要体现在栅格系统上，日后如果再用到其他东西再去<a href="https://v3.bootcss.com/css/" target="_blank" rel="noopener">bootstrap官方文档</a>查阅即可</em></strong></p>
 ]]></content>
@@ -84,6 +242,344 @@
       <tags>
         <tag>Bootstrap</tag>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6-ES11</title>
+    <url>/2019/01/14/ES6-ES11/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> ECMAScript 是由ECMA国际通过 ECMA-262标准化的脚本标准化的脚本程序设计语言，Ecma 国际制定了许多标准，而 ECMA-262 只是其中的一个，从 ES6 开始，每年发布一个版本，版本号比年份最后一位大 1，ECMA-262至今已发展到了第十一版。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="ECMA"><a href="#ECMA" class="headerlink" title="ECMA"></a>ECMA</h1><ul>
+<li><p>ECMA（European Computer Manufacturers Association）</p>
+<ul>
+<li>中文名称为欧洲计算机制 造商协会，这个组织的目标是评估、开发和认可电信计算机标准。1994年后该组织改名为 ECMA国际</li>
+</ul>
+</li>
+<li><p>谁在维护 ECMA-262</p>
+<ul>
+<li>TC39（Technical Committee 39）是推进 ECMAScript 发展的委员会。其会员都是公司（其中主要是浏览器厂商，有苹果、谷歌、微软、因特尔等）。TC39 定期召开会议，会议由会员公司的代表与特邀专家出席</li>
+</ul>
+</li>
+<li><p>兼容性</p>
+</li>
+<li><p><a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es6/</a> 可查看兼容性<br><img src="/2019/01/14/ES6-ES11/%E5%85%BC%E5%AE%B9%E6%80%A7.png" alt></p>
+</li>
+<li><p>红色表示不兼容，绿色表示兼容</p>
+</li>
+</ul>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><ul>
+<li>ES6 的版本变动内容最多，具有里程碑意义</li>
+<li>ES6 加入许多新的语法特性，编程实现更简单、高效</li>
+</ul>
+<h2 id="let关键字"><a href="#let关键字" class="headerlink" title="let关键字"></a>let关键字</h2><ul>
+<li>let 关键字用来声明变量，使用 let 声明的变量有几个特点：</li>
+</ul>
+<ol>
+<li>不允许重复声明</li>
+<li>块级作用域</li>
+<li>不存在变量提升,不允许在变量声明之前使用</li>
+<li>不影响作用域链的效果</li>
+</ol>
+<ul>
+<li>应用场景：以后声明变量使用 let 就对了</li>
+</ul>
+<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><ul>
+<li>const 关键字用来声明常量，const 声明有以下特点</li>
+</ul>
+<ol>
+<li>声明必须赋初始值</li>
+<li>标识符一般为大写</li>
+<li>不允许重复声明</li>
+<li><strong>值不允许修改</strong></li>
+<li>块级作用域</li>
+</ol>
+<ul>
+<li>注意: 对象属性修改和数组元素变化不会触发const错误，因为地址没有改变</li>
+<li>应用场景：声明对象类型使用 const，非对象类型声明选择 let</li>
+</ul>
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ul>
+<li>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;数组的解构赋值</span><br><span class="line">const arr &#x3D; [&#39;张学友&#39;, &#39;刘德华&#39;, &#39;黎明&#39;, &#39;郭富城&#39;]; </span><br><span class="line">let [zhang, liu, li, guo] &#x3D; arr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;对象的解构赋值</span><br><span class="line">const lin &#x3D; &#123;</span><br><span class="line">name: &#39;林志颖&#39;,</span><br><span class="line">tags: [&#39;车手&#39;, &#39;歌手&#39;, &#39;小旋风&#39;, &#39;演员&#39;]</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;name, tags&#125; &#x3D; lin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;复杂解构</span><br><span class="line">let wangfei &#x3D; &#123;</span><br><span class="line">name: &#39;王菲&#39;, age: 18,</span><br><span class="line">songs: [&#39;红豆&#39;, &#39;流年&#39;, &#39;暧昧&#39;, &#39;传奇&#39;], </span><br><span class="line">history: [</span><br><span class="line">&#123;name: &#39;窦唯&#39;&#125;,</span><br><span class="line">&#123;name: &#39;李亚鹏&#39;&#125;,</span><br><span class="line">&#123;name: &#39;谢霆锋&#39;&#125;</span><br><span class="line">]&#125;;</span><br><span class="line">let &#123;songs: [one, two, three], history: [first, second, third]&#125; &#x3D;wangfei;</span><br></pre></td></tr></table></figure>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2></li>
+<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：<br>1)    字符串中可以出现换行符<br>2)    可以使用 ${xxx} 形式输出变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 变量拼接</span><br><span class="line">let lovest &#x3D; &#39;魏翔&#39;;</span><br><span class="line">let out &#x3D; &#96;$&#123;lovest&#125;是我心目中最搞笑的演员!!&#96;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="简化对象写法"><a href="#简化对象写法" class="headerlink" title="简化对象写法"></a>简化对象写法</h2><ul>
+<li>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let name &#x3D; &#39;xxx&#39;;</span><br><span class="line">        let change &#x3D; function()&#123;</span><br><span class="line">            console.log(&#39;xxx!&#39;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const school &#x3D; &#123;</span><br><span class="line">            name,</span><br><span class="line">            change,</span><br><span class="line">            improve()&#123;         &#x2F;&#x2F;可以省略function</span><br><span class="line">                console.log(&quot;xxx&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
+<li>ES6 允许使用「箭头」（ =&gt; ）定义函数。<br>箭头函数的注意点:<br>1)    如果形参只有一个，则小括号可以省略<br>2)    函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果<br>3)    this 是静态的. this 始终指向函数声明时所在作用域下的 this 的值<br>4)    箭头函数不能作为构造函数实例化<br>5)    不能使用 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 1. 通用写法</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn &#x3D; (arg1, arg2, arg3) &#x3D;&gt; &#123;</span><br><span class="line">return arg1 + arg2 + arg3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 2. 省略小括号的情况, 当形参有且只有一个的时候</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn2 &#x3D; num &#x3D;&gt; &#123;</span><br><span class="line">return num * 10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 3. 省略花括号的情况,当代码体只有一条语句的时候, 此时 return 必须省略,语句的执行结果就是函数的返回值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn3 &#x3D; score &#x3D;&gt; score * 20;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 4. this 指向声明时所在作用域中 this 的值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn4 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">console.log(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</li>
+<li>ES6 允许给函数参数赋值初始值<ol>
+<li>形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)</li>
+<li>默认值还可以与解构赋值结合</li>
+</ol>
+</li>
+</ul>
+<h2 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h2><ul>
+<li>ES6 引入 rest 参数（…args），用于获取函数的实参，用来代替 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rest 参数必须要放到参数最后</span><br><span class="line">function fn(a,b,...args)&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(args);</span><br><span class="line">    &#125;</span><br><span class="line">fn(1,2,3,4,5,6);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h2><ul>
+<li>扩展运算符（spread）也是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包<ol>
+<li>可以合并数组</li>
+<li>可以克隆数组</li>
+<li>将伪数组转为真正的数组<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 『...』 扩展运算符能将『数组』转换为逗号分隔的『参数序列』</span><br><span class="line">&#x2F;&#x2F;声明一个数组 ...</span><br><span class="line">const tfboys &#x3D; [&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;];</span><br><span class="line">&#x2F;&#x2F; &#x3D;&gt; &#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;</span><br><span class="line">&#x2F;&#x2F; 声明一个函数</span><br><span class="line">function chunwan()&#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">chunwan(...tfboys);&#x2F;&#x2F; chunwan(&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><ul>
+<li>ES6 引入了一种新的原始数据类型 Symbol， 表示独一无二的值。它是JavaScript 语言的<strong>第七种</strong>数据类型，是一种类似于字符串的数据类型。<br>Symbol 特点<br>1)    Symbol 的值是唯一的，用来解决命名冲突的问题<br>2)    Symbol 值不能与其他数据进行运算<br>3)    Symbol 定义的对象属性不能使用 for…in 循环遍历， 但是可以使用<br>Reflect.ownKeys 来获取对象的所有键名</li>
+<li>js数据类型：undefined string  symbol object null number boolean</li>
+</ul>
+<h2 id="Symbol-内置值"><a href="#Symbol-内置值" class="headerlink" title="Symbol 内置值"></a>Symbol 内置值</h2><ul>
+<li>除了定义自己使用的 Symbol  值以外，ES6  还提供了11 个内置的Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行<br><img src="/2019/01/14/ES6-ES11/symbol%E5%86%85%E7%BD%AE%E5%80%BC.png" alt></li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+<li>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作<br>1)    ES6 创造了一种新的遍历命令 for…of 循环，Iterator 接口主要供 for…of 消费<br>2)    原生具备 iterator 接口的数据(可用 for of 遍历)<ul>
+<li>Array</li>
+<li>Arguments</li>
+<li>Set</li>
+<li>Map</li>
+<li>String</li>
+<li>TypedArray</li>
+<li>NodeList<br>3)    工作原理</li>
+<li>创建一个指针对象，指向当前数据结构的起始位置</li>
+<li>第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员</li>
+<li>接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员</li>
+<li>每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
+</ul>
+</li>
+<li>注: 需要自定义遍历数据的时候，要想到迭代器</li>
+</ul>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
+<li>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">yield &#39;一只没有耳朵&#39;;</span><br><span class="line">yield &#39;一只没有尾巴&#39;; return &#39;真奇怪&#39;;</span><br><span class="line">&#125;</span><br><span class="line">let iterator &#x3D; gen(); console.log(iterator.next()); console.log(iterator.next());</span><br><span class="line">console.log(iterator.next());</span><br></pre></td></tr></table></figure>
+代码说明：<br>1)    *的位置没有限制<br>2)    生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到<br>yield 语句后的值<br>3)    yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next<br>方法，执行一段代码<br>4)    next 方法可以传递实参，作为 yield 语句的返回值</li>
+</ul>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ul>
+<li>Promise 是 ES6 引入的异步编程的新解决方案。语法上Promise 是一个构造函数， 用来封装异步操作并可以获取其成功或失败的结果。<br>1)    Promise 构造函数: Promise (excutor) {}<ul>
+<li>promise (function(resolve,reject){});<br>2)    Promise.prototype.then 方法</li>
+<li>then(function(){value},function(reason){})</li>
+<li>调用 then 方法  then方法的返回结果是 Promise 对象, 对象状态由回调函数的执行结果决定<ul>
+<li>如果回调函数中返回的结果是 非 promise 类型的属性, 状态为成功, 返回值为对象的成功的值</li>
+<li>如果是promise对象，promise返回的对象的状态就决定了then方法返回的promise的状态<br>3)    Promise.prototype.catch 方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><ul>
+<li>ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历，集合的属性和方法：<br>1)    size    返回集合的元素个数<br>2)    add    增加一个新元素，返回当前集合<br>3)    delete    删除元素，返回 boolean 值<br>4)    has    检测集合中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
+</ul>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
+<li>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。但是“键” 的范围不限于字符串，各种类型的值（包括对象）都可以当作键。Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。Map 的属性和方法：<br>1)    size    返回 Map 的元素个数<br>2)    set    增加一个新元素，返回当前 Map<br>3)    get    返回键名对象的键值<br>4)    has    检测 Map 中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
+</ul>
+<h2 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h2><ul>
+<li>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法塘，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。<br>知识点：<br>1)    class 声明类<br>2)    constructor 定义构造函数初始化<br>3)    extends 继承父类<br>4)    super 调用父级构造方法<br>5)    static 定义静态方法和属性<br>6)    父类方法可以重写</li>
+</ul>
+<h2 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h2><ol>
+<li><p>Number.EPSILON 是 JavaScript 表示的最小精度</p>
+<ul>
+<li>0.1+0.2===0.3不成立，因为浮点数运算是由误差的</li>
+<li>EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16</li>
+<li>用EPSILON表示js运算的最小精确度</li>
+</ul>
+</li>
+<li><p>二进制和八进制</p>
+<ul>
+<li>ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示</li>
+</ul>
+</li>
+<li><p>Number.isFinite() 与 Number.isNaN()</p>
+<ul>
+<li>Number.isFinite() 用来检查一个数值是否为有限的</li>
+<li>Number.isNaN() 用来检查一个值是否为 NaN</li>
+</ul>
+</li>
+<li><p>Number.parseInt() 与 Number.parseFloat()字符串转整数</p>
+<ul>
+<li>ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变</li>
+</ul>
+</li>
+<li><p>Math.trunc</p>
+<ul>
+<li>用于去除一个数的小数部分，返回整数部分</li>
+</ul>
+</li>
+<li><p>Number.isInteger</p>
+<ul>
+<li>Number.isInteger() 用来判断一个数值是否为整数</li>
+</ul>
+</li>
+<li><p>Math.sign </p>
+<ul>
+<li>判断一个数到底为正数 负数 还是零</li>
+</ul>
+</li>
+</ol>
+<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><ul>
+<li>ES6 新增了一些 Object 对象的方法<br>1)    Object.is比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）<br>2)    Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象<br>3)    proto 、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
+<li>模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。</li>
+</ul>
+<p>1.模块化的好处</p>
+<ul>
+<li>模块化的优势有以下几点：<br>1)    防止命名冲突<br>2)    代码复用<br>3)    高维护性</li>
+</ul>
+<ol start="2">
+<li>模块化规范产品</li>
+</ol>
+<ul>
+<li>ES6 之前的模块化规范有：<br>1) CommonJS    =&gt;    NodeJS、Browserify<br>2) AMD    =&gt;    requireJS<br>3) CMD    =&gt;    seaJS</li>
+</ul>
+<ol start="3">
+<li>ES6 模块化语法</li>
+</ol>
+<ul>
+<li>模块功能主要由两个命令构成：export 和 import<ul>
+<li>export 命令用于规定模块的对外接口</li>
+<li>import 命令用于输入其他模块提供的功能<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import:</span><br><span class="line">1. 通用的导入方式</span><br><span class="line">引入 m1.js 模块内容</span><br><span class="line">import * as m1 from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m2.js 模块内容</span><br><span class="line">import * as m2 from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m3.js </span><br><span class="line">import * as m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">2. 解构赋值形式</span><br><span class="line">import &#123;school, teach&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">import &#123;school as guigu, findJob&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">import &#123;default as m3&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">3. 简便形式  针对默认暴露</span><br><span class="line">import m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line">console.log(m3);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export:</span><br><span class="line">&#x2F;&#x2F;分别暴露</span><br><span class="line">export let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">export function teach() &#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;统一暴露</span><br><span class="line">let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">function teach()&#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line">export &#123;school, teach&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认暴露</span><br><span class="line">export default &#123;</span><br><span class="line">    school: &#39;xxx&#39;,</span><br><span class="line">    teach: function()&#123;</span><br><span class="line">        console.log(&quot;xxx&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h1><ol>
+<li><p>Array.includes()</p>
+<ul>
+<li>Includes 方法用来检测数组中是否包含某个元素，返回布尔类型值</li>
+</ul>
+</li>
+<li><p>指数操作符</p>
+<ul>
+<li>在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES8"><a href="#ES8" class="headerlink" title="ES8"></a>ES8</h1><ol>
+<li><p>async 和 await</p>
+<ul>
+<li>async 和 await 两种语法结合可以让异步代码像同步代码一样</li>
+</ul>
+<ol>
+<li>async 函数<ul>
+<li>async 函数的返回值为 promise 对象，</li>
+<li>promise 对象的结果由 async 函数执行的返回值决定</li>
+</ul>
+</li>
+<li>await 表达式<ul>
+<li>await 必须写在 async 函数中</li>
+<li>await 右侧的表达式一般为 promise 对象</li>
+<li>await 返回的是 promise 成功的值</li>
+<li>await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Object.values 和 Object.entries</p>
+<ul>
+<li>Object.values()方法返回一个给定对象的所有可枚举属性值的数组</li>
+<li>Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组</li>
+</ul>
+</li>
+<li><p>Object.getOwnPropertyDescriptors</p>
+<ul>
+<li>该方法返回指定对象所有自身属性的描述对象</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES9"><a href="#ES9" class="headerlink" title="ES9"></a>ES9</h1><ol>
+<li>Rest/Spread 属性</li>
+</ol>
+<ul>
+<li>Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组,在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function connect(&#123;host, port, ...user&#125;) &#123;</span><br><span class="line">console.log(host);</span><br><span class="line">console.log(port); </span><br><span class="line">console.log(user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connect(&#123;</span><br><span class="line">host: &#39;127.0.0.1&#39;,</span><br><span class="line">port: 3306, </span><br><span class="line">username: &#39;root&#39;, </span><br><span class="line">password: &#39;root&#39;, </span><br><span class="line">type: &#39;master&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>正则表达式命名捕获组</li>
+</ol>
+<ul>
+<li>ES9 允许命名捕获组对捕获的结果进行命名,这样获取捕获结果可读性更强<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let str &#x3D; &#39;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.atguigu.com&quot;&gt;&lt;&#x2F;a&gt;&#39;; </span><br><span class="line">const reg &#x3D; &#x2F;&lt;a href&#x3D;&quot;(?&lt;url&gt;.*)&quot;&gt;(?&lt;text&gt;.*)&lt;\&#x2F;a&gt;&#x2F;;</span><br><span class="line"></span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">console.log(result.groups.url);	</span><br><span class="line"></span><br><span class="line">console.log(result.groups.text);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li>正则表达式反向断言</li>
+</ol>
+<ul>
+<li>ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;声明字符串</span><br><span class="line">let str &#x3D; &#39;JS5211314 你知道么 555 啦啦啦&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;正向断言</span><br><span class="line">const reg &#x3D; &#x2F;\d+(?&#x3D;啦)&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;反向断言</span><br><span class="line">const reg &#x3D; &#x2F;(?&lt;&#x3D;么)\d+&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="4">
+<li>正则表达式 dotAll 模式</li>
+</ol>
+<ul>
+<li>正则表达式中点 . 匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现</li>
+</ul>
+<h1 id="ES10"><a href="#ES10" class="headerlink" title="ES10"></a>ES10</h1><ol>
+<li>Object.fromEntries<ul>
+<li>将二维数组转化为对象，与entries作用相反</li>
+</ul>
+</li>
+<li>trimStart 和 trimEnd<ul>
+<li>trimStart负责清除字符串左侧空白</li>
+<li>trimEnd负责清除字符串右侧空白</li>
+</ul>
+</li>
+<li>Array.flat() 与 flatMap<ul>
+<li>flat()将多维数组转化为低维数组</li>
+<li>flatMap把Map的结果做一个维度降低，是flat和map操作的结合体</li>
+</ul>
+</li>
+<li>Symbol.prototype.description<ul>
+<li>获取symbol的描述字符串</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES11"><a href="#ES11" class="headerlink" title="ES11"></a>ES11</h1><ol>
+<li><p>类的私有属性</p>
+<ul>
+<li>私有属性前要加#</li>
+</ul>
+</li>
+<li><p>String.prototype.matchAll</p>
+<ul>
+<li>用来得到正则批量匹配的结果</li>
+</ul>
+</li>
+<li><p>Promise.allSettled</p>
+<ul>
+<li>接受一个promise数组，返回一个成功的结果，成功的值是每一个promise对象的状态和结果</li>
+</ul>
+</li>
+<li><p>可选链操作符?.</p>
+<ul>
+<li>xxx1?.xxx2?.xxx3如果有xxx1才会读取后面的xxx2以此类推</li>
+</ul>
+</li>
+<li><p>动态 import 导入</p>
+</li>
+<li><p>globalThis 对象</p>
+<ul>
+<li>始终指向全局对象 </li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>规范集成</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+        <tag>ES11</tag>
       </tags>
   </entry>
   <entry>
@@ -271,6 +767,177 @@
       <tags>
         <tag>Git</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Grunt</title>
+    <url>/2019/04/05/Grunt/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li>什么是项目构建？<ul>
+<li>编译项目中的js,sass,less</li>
+<li>合并js/css等资源文件</li>
+<li>压缩js/css/html等资源文件</li>
+<li>js语法的检查</li>
+</ul>
+</li>
+<li>构建工具的作用？<ul>
+<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
+</ul>
+</li>
+<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
+<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
+<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
+<li>常用功能:<ul>
+<li><strong>合并文件</strong>(js/css)</li>
+<li><strong>压缩文件</strong>(js/css)</li>
+<li><strong>语法检查</strong>(js)</li>
+<li><strong>less/sass预编译处理</strong> </li>
+</ul>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>举例创建一个简单的应用grunt_test</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
+<p>node -v</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
+<p>npm install -g grunt-cli </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
+<p>npm install grunt –save-dev</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
+<p>grunt  //提示 Warning: Task “default” not found</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
+<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
+<pre><code>// 1. 初始化插件配置
+grunt.initConfig({
+    //主要编码处
+});
+
+// 2. 加载插件任务
+// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+
+// 3. 注册构建任务
+grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
+<p>  npm install grunt-contrib-concat –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code> concat: {
+   options: { //可选项配置
+     separator: &apos;;&apos;   //使用;连接合并
+   },
+   build: { //此名称任意
+     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
+     dest: &quot;build/js/built.js&quot; //输出的js文件
+   }
+ }
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个built.js
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
+uglify : {
+  options: {  //不是必须的
+    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
+    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
+  },
+  build: {
+    files: {
+      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个压缩的js文件
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
+<p>   {</p>
+<pre><code>&quot;curly&quot;: true,
+&quot;eqeqeq&quot;: true,
+&quot;eqnull&quot;: true,
+&quot;expr&quot; : true,
+&quot;immed&quot;: true,
+&quot;newcap&quot;: true,
+&quot;noempty&quot;: true,
+&quot;noarg&quot;: true,
+&quot;regexp&quot;: true,
+&quot;browser&quot;: true,
+&quot;devel&quot;: true,
+&quot;node&quot;: true,
+&quot;boss&quot;: false,
+
+//不能使用未定义的变量
+&quot;undef&quot;: true,
+//语句后面必须有分号
+&quot;asi&quot;: false,
+//预定义不检查的全局变量
+&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>jshint : {
+  options: {
+    jshintrc : &apos;.jshintrc&apos; //指定配置文件
+  },
+  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>cssmin:{
+  options: {
+    shorthandCompacting: false,//快速压缩
+    roundingPrecision: -1//精确度
+  },
+  build: {
+    files: {
+        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt    //在build/css/下生成output.min.css
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
+watch : {
+  scripts : {
+    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
+    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
+    options : {spawn : false}  
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
+改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
+```</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>自动化构建工具</category>
+      </categories>
+      <tags>
+        <tag>Grunt</tag>
       </tags>
   </entry>
   <entry>
@@ -722,7 +1389,7 @@
 <li>函数的prototype: 定义函数时被自动赋值, 值默认为{},<br>即用为原型对象</li>
 <li>实例对象的<strong>proto</strong>: 在创建实例对象时被自动添加,<br>并赋值为构造函数的prototype值</li>
 <li>原型对象即为当前实例对象的父对象</li>
-<li>例子:<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt></li>
+<li>例子:<br><img src="/JS%E9%AB%98%E7%BA%A7/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt></li>
 </ul>
 </li>
 <li><p>原型链</p>
@@ -740,7 +1407,7 @@
 <li>当查找对象内部的属性/方法时, js引擎自动沿着这个原型链查找</li>
 <li><strong>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</strong></li>
 <li>函数的prototype属性指向实例的<strong>proto</strong>属性</li>
-<li>所有的函数都是 Function的实例(包括Function)<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt></li>
+<li>所有的函数都是 Function的实例(包括Function)<br><img src="/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt></li>
 </ul>
 </li>
 <li><p>instanceof是如何判断的?</p>
@@ -751,7 +1418,7 @@
 </li>
 <li><p>测试题</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    原型测试题：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;*</span><br><span class="line">测试题1</span><br><span class="line">*&#x2F;</span><br><span class="line">var A &#x3D; function() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">A.prototype.n &#x3D; 1</span><br><span class="line"></span><br><span class="line">var b &#x3D; new A()</span><br><span class="line"></span><br><span class="line">A.prototype &#x3D; &#123;</span><br><span class="line">    n: 2,</span><br><span class="line">    m: 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c &#x3D; new A()</span><br><span class="line">console.log(b.n, b.m, c.n, c.m)</span><br><span class="line">&#x2F;&#x2F;1 undefined 2 3 </span><br><span class="line">&#x2F;*</span><br><span class="line">测试题2</span><br><span class="line">*&#x2F;</span><br><span class="line">var F &#x3D; function()&#123;&#125;;</span><br><span class="line">Object.prototype.a &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;a()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">Function.prototype.b &#x3D; function()&#123;</span><br><span class="line">    console.log(&#39;b()&#39;)</span><br><span class="line">&#125;;</span><br><span class="line">var f &#x3D; new F();</span><br><span class="line">f.a()</span><br><span class="line">f.b()</span><br><span class="line">F.a()</span><br><span class="line">F.b()</span><br><span class="line">&#x2F;&#x2F;a() </span><br><span class="line">&#x2F;&#x2F; f.b is not a function</span><br><span class="line">&#x2F;&#x2F;a()</span><br><span class="line">&#x2F;&#x2F;b()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
+<p><img src="/JS%E9%AB%98%E7%BA%A7/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
 </li>
 </ul>
 <h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><ul>
@@ -810,7 +1477,7 @@
 </li>
 <li><p>当所有的代码执行完后, 栈中只剩下window</p>
 </li>
-<li><p>例子：<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt></p>
+<li><p>例子：<br><img src="/JS%E9%AB%98%E7%BA%A7/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt></p>
 </li>
 <li><p>测试题</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">执行上下文栈测试题：</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">console.log(&#39;global begin: &#39;+ i)</span><br><span class="line">var i &#x3D; 1</span><br><span class="line">foo(1);</span><br><span class="line">function foo(i) &#123;</span><br><span class="line">    if (i &#x3D;&#x3D; 4) &#123;</span><br><span class="line">    return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;foo() begin:&#39; + i);</span><br><span class="line">    foo(i + 1);&#x2F;&#x2F;递归调用：在函数内部调用自己，一般会设置条件来终止函数</span><br><span class="line">    console.log(&#39;foo() end:&#39; + i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(&#39;global end: &#39; + i)</span><br><span class="line">&#x2F;&#x2F; global begin: undefined</span><br><span class="line">&#x2F;&#x2F; foo() begin:1 由于递归输出1.2.3</span><br><span class="line">&#x2F;&#x2F; foo() begin:2</span><br><span class="line">&#x2F;&#x2F; foo() begin:3</span><br><span class="line">&#x2F;&#x2F; foo() end:3   因为foo begin执行完后要将栈顶的对象移除出栈</span><br><span class="line">&#x2F;&#x2F; foo() end:2</span><br><span class="line">&#x2F;&#x2F; foo() end:1</span><br><span class="line">&#x2F;&#x2F; global end: 1</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
@@ -984,7 +1651,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <ul>
 <li>worker内代码不能操作DOM(更新UI)</li>
 <li>不能跨域加载JS</li>
-<li>不是每个浏览器都支持这个新特性<br><img src="/2018/08/29/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></li>
+<li>不是每个浏览器都支持这个新特性<br><img src="/JS%E9%AB%98%E7%BA%A7/H5WebWorkers.png" alt></li>
 </ul>
 </li>
 </ol>
@@ -994,432 +1661,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB</title>
-    <url>/2018/12/13/MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
-<li><p>打开cmd命令行窗口</p>
-<ul>
-<li>输入 mongod 启动mongodb服务器</li>
-</ul>
-</li>
-<li><p>在打开一个cmd窗口</p>
-<ul>
-<li>输入 mongo 连接mongodb ，出现 &gt; </li>
-</ul>
-</li>
-<li><p>还可以自定义data存储的路径和端口</p>
-<ul>
-<li>mongod –dbpath 数据库路径 –port 端口号</li>
-</ul>
-</li>
-<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
-<ul>
-<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
-<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
-<ul>
-<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-</ul>
-</li>
-<li><p>在任务管理器启动mongodb服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li>服务器用来保存数据</li>
-<li>mongod 用来启动服务器</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
-<li>mongo 用来启动客户端</li>
-</ul>
-</li>
-<li><p>基本概念</p>
-<ul>
-<li>数据库（database）</li>
-<li>集合（collection）</li>
-<li>文档（document）<ul>
-<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
-</ul>
-</li>
-<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/12/13/MongoDB/mongo.png" alt></p>
-<ul>
-<li>基本指令<ul>
-<li>show dbs</li>
-<li>show databases<ul>
-<li>显示当前的所有数据库</li>
-</ul>
-</li>
-<li>use 数据库名<ul>
-<li>进入到指定的数据库中</li>
-</ul>
-</li>
-<li>db<ul>
-<li>db表示的是当前所处的数据库</li>
-</ul>
-</li>
-<li>show collections<ul>
-<li>显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
-<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
-<li><p>db.collection.insert()</p>
-<ul>
-<li>向集合中插入一个或多个文档</li>
-<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
-<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
-</ul>
-</li>
-<li><p>db.collection.insertOne()</p>
-<ul>
-<li>插入一个文档对象</li>
-</ul>
-</li>
-<li><p>db.collection.insertMany() </p>
-<ul>
-<li>插入多个文档对象</li>
-</ul>
-</li>
-</ul>
-<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
-<li><p>db.collection.remove()</p>
-<ul>
-<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
-<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
-</ul>
-</li>
-<li><p>db.collection.deleteOne()</p>
-</li>
-<li><p>db.collection.deleteMany()</p>
-</li>
-<li><p>db.collection.drop() </p>
-<ul>
-<li>删除集合</li>
-</ul>
-</li>
-<li><p>db.dropDatabase() </p>
-<ul>
-<li>删除数据库</li>
-</ul>
-</li>
-<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
-</li>
-<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
-</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
-<li><p>db.collection.find()</p>
-<ul>
-<li>find()用来查询集合中所有符合条件的文档</li>
-<li>find()可以接收一个对象作为条件参数<ul>
-<li>{} 表示查询集合中所有的文档</li>
-<li>{属性:值} 查询属性是指定值的文档</li>
-</ul>
-</li>
-<li>find()返回的是一个数组</li>
-</ul>
-</li>
-<li><p>db.collection.findOne()</p>
-<ul>
-<li>用来查询集合中符合条件的第一个文档  </li>
-<li>findOne()返回的是一个文档对象 </li>
-</ul>
-</li>
-<li><p>db.collection.find({}).count() </p>
-<ul>
-<li>查询所有结果的数量</li>
-</ul>
-</li>
-<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
-</li>
-<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
-</li>
-<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
-<ul>
-<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
-<li>limit skip sort 可以以任意的顺序进行调用</li>
-<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
-<li><p>db.collection.update(查询条件,新对象)</p>
-<ul>
-<li>update()默认情况下会使用新对象来替换旧的对象</li>
-<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
-<li>update()默认只会修改一个</li>
-</ul>
-</li>
-<li><p>db.collection.updateMany()</p>
-<ul>
-<li>同时修改多个符合条件的文档</li>
-</ul>
-</li>
-<li><p>db.collection.updateOne()</p>
-<ul>
-<li>修改一个符合条件的文档    </li>
-</ul>
-</li>
-<li><p>db.collection.replaceOne()</p>
-<ul>
-<li>替换一个文档</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
-<li>$set<ol>
-<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
-<li>修改内嵌文档</li>
-</ol>
-</li>
-<li>$unset      <ul>
-<li>用于将键删除</li>
-</ul>
-</li>
-<li>$push <ul>
-<li>用于向数组中添加一个新的元素</li>
-</ul>
-</li>
-<li>$addToSet <ul>
-<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
-</ul>
-</li>
-<li>$each       <ul>
-<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
-</ul>
-</li>
-<li>$pop        <ul>
-<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
-</ul>
-</li>
-<li>$pull       <ul>
-<li>基于特定条件来删除元素。</li>
-</ul>
-</li>
-<li>$inc        <ul>
-<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
-</ul>
-</li>
-<li>$ne         <ul>
-<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
-</ul>
-</li>
-<li>$gt:大于</li>
-<li>$lt:小于</li>
-<li>$gte:大于或等于</li>
-<li>$lte:小于或等于</li>
-<li>$inc:自增</li>
-</ul>
-<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
-<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
-<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
-</ul>
-<ol>
-<li><p>下载安装Mongoose</p>
-<ul>
-<li>npm i mongoose –save</li>
-</ul>
-</li>
-<li><p>在项目中引入mongoose</p>
-<ul>
-<li>var mongoose = require(“mongoose”);</li>
-</ul>
-</li>
-<li><p>连接MongoDB数据库</p>
-<ul>
-<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
-<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
-</ul>
-</li>
-<li><p>断开数据库连接(一般不需要调用)</p>
-<ul>
-<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
-<ul>
-<li>mongoose.disconnect()</li>
-</ul>
-</li>
-<li><p>监听MongoDB数据库的连接状态</p>
-<ul>
-<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>数据库连接成功的事件</p>
-<ul>
-<li>mongoose.connection.once(“open”,function(){});</li>
-</ul>
-</li>
-<li><p>数据库断开的事件</p>
-<ul>
-<li>mongoose.connection.once(“close”,function(){});</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
-<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
-</ul>
-<ul>
-<li><p>Model.create(doc(s), [callback])</p>
-<ul>
-<li>用来创建一个或多个文档并添加到数据库中</li>
-<li>参数：<ul>
-<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
-<li>callback 当操作完成以后调用的回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查询：</p>
-<ul>
-<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
-</li>
-<li><p>Model.find(conditions, [projection], [options], [callback])</p>
-<ul>
-<li>查询所有符合条件的文档 总会返回一个数组</li>
-</ul>
-</li>
-<li><p>Model.findById(id, [projection], [options], [callback])</p>
-<ul>
-<li>根据文档的id属性查询文档</li>
-</ul>
-</li>
-<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
-<ul>
-<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
-<ul>
-<li>conditions 查询的条件</li>
-<li>projection 投影 需要获取到的字段<ul>
-<li>两种方式<ul>
-<li>{name:1,_id:0}</li>
-<li>“name -_id”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
-<li>callback 回调函数，查询结果会通过回调函数返回</li>
-<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>修改</p>
-<ul>
-<li>Model.update(conditions, doc, [options], [callback])</li>
-<li>Model.updateMany(conditions, doc, [options], [callback])</li>
-<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
-<li>用来修改一个或多个文档</li>
-<li>参数：<ul>
-<li>conditions 查询条件</li>
-<li>doc 修改后的对象</li>
-<li>options 配置参数</li>
-<li>callback 回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
-</ul>
-</li>
-<li><p>删除：</p>
-<ul>
-<li>Model.remove(conditions, [callback])</li>
-<li>Model.deleteOne(conditions, [callback])</li>
-<li>Model.deleteMany(conditions, [callback])</li>
-</ul>
-</li>
-<li><p>统计文档的数量 </p>
-<ul>
-<li>Model.count(conditions, [callback])</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
-<li>Document对象是Model的实例（可以用instanceof验证）</li>
-<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
-<li>通过Model查询到结果都是Document</li>
-</ul>
-</li>
-<li>document的方法<ul>
-<li>Model#save([options], [function])<ul>
-<li>和model的create作用相同，但是document只能用save<ul>
-<li>update(update,[options],[callback])</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>修改对象<ul>
-<li>remove([callback])</li>
-</ul>
-</li>
-<li>删除对象<ul>
-<li>get(name)</li>
-</ul>
-</li>
-<li>获取文档中的指定属性值<ul>
-<li>set(name , value)</li>
-</ul>
-</li>
-<li>设置文档的指定的属性值<ul>
-<li>id</li>
-</ul>
-</li>
-<li>获取文档的_id属性值<ul>
-<li>toJSON() </li>
-</ul>
-</li>
-<li>转换为一个JSON对象//不一定生效<ul>
-<li>toObject()</li>
-</ul>
-</li>
-<li>将Document对象转换为一个普通的JS对象</li>
-<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>其他模块直接通过require引入该模块即可</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -1702,7 +1943,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </li>
 <li><p>原型对象就相当于一个公共的区域，凡是通过同一个构造函数创建的对象他们通常都可以访问到相同的原型对象</p>
 </li>
-<li><p>举例：<br><img src="/2018/08/07/JavaScript/js%E5%8E%9F%E5%9E%8B.png" alt></p>
+<li><p>举例：<br><img src="/JavaScript/js%E5%8E%9F%E5%9E%8B.png" alt></p>
 </li>
 <li><p><strong>作用：如果将构造函数中的函数定义在全局作用域中，污染了全局作用域的命名空间，而且定义在全局作用域中很不安全，所以我们可以将对象共有的属性和方法放在原型对象中，这样既不用分别为每一个对象添加，也不会影响全局作用域，就可以使每个对啊ing都具有这些属性和方法了</strong></p>
 </li>
@@ -1721,7 +1962,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <p>如果自身没有就去原型对象中寻找，如果有就直接使用</p>
 <blockquote>
 <p>如果原型对象中还没有，就去原型的原型中去寻找，直到找到object对象（object没有以原型），如果还没找到就返回undefined\</p>
-<p><img src="/2018/08/07/JavaScript/%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%8E%9F%E5%9E%8B.png" alt></p>
+<p><img src="/JavaScript/%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%8E%9F%E5%9E%8B.png" alt></p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -2063,7 +2304,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>文档节点 （Document），代表整个网页</li>
 <li>元素节点（Element），代表网页中的标签</li>
 <li>属性节点（Attribute），代表标签中的属性</li>
-<li>文本节点（Text），代表网页中的文本内容<br><img src="/2018/08/07/JavaScript/node.png" alt></li>
+<li>文本节点（Text），代表网页中的文本内容<br><img src="/JavaScript/node.png" alt></li>
 </ol>
 </li>
 </ul>
@@ -2715,6 +2956,432 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>MongoDB</title>
+    <url>/2018/12/13/MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
+<li><p>打开cmd命令行窗口</p>
+<ul>
+<li>输入 mongod 启动mongodb服务器</li>
+</ul>
+</li>
+<li><p>在打开一个cmd窗口</p>
+<ul>
+<li>输入 mongo 连接mongodb ，出现 &gt; </li>
+</ul>
+</li>
+<li><p>还可以自定义data存储的路径和端口</p>
+<ul>
+<li>mongod –dbpath 数据库路径 –port 端口号</li>
+</ul>
+</li>
+<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
+<ul>
+<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
+<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
+<ul>
+<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+</ul>
+</li>
+<li><p>在任务管理器启动mongodb服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
+<li><p>数据库的服务器</p>
+<ul>
+<li>服务器用来保存数据</li>
+<li>mongod 用来启动服务器</li>
+</ul>
+</li>
+<li><p>数据库的客户端</p>
+<ul>
+<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
+<li>mongo 用来启动客户端</li>
+</ul>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li>数据库（database）</li>
+<li>集合（collection）</li>
+<li>文档（document）<ul>
+<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
+</ul>
+</li>
+<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/12/13/MongoDB/mongo.png" alt></p>
+<ul>
+<li>基本指令<ul>
+<li>show dbs</li>
+<li>show databases<ul>
+<li>显示当前的所有数据库</li>
+</ul>
+</li>
+<li>use 数据库名<ul>
+<li>进入到指定的数据库中</li>
+</ul>
+</li>
+<li>db<ul>
+<li>db表示的是当前所处的数据库</li>
+</ul>
+</li>
+<li>show collections<ul>
+<li>显示数据库中所有的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
+<li><p>db.collection.insert()</p>
+<ul>
+<li>向集合中插入一个或多个文档</li>
+<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
+<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
+</ul>
+</li>
+<li><p>db.collection.insertOne()</p>
+<ul>
+<li>插入一个文档对象</li>
+</ul>
+</li>
+<li><p>db.collection.insertMany() </p>
+<ul>
+<li>插入多个文档对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><p>db.collection.remove()</p>
+<ul>
+<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
+<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
+</ul>
+</li>
+<li><p>db.collection.deleteOne()</p>
+</li>
+<li><p>db.collection.deleteMany()</p>
+</li>
+<li><p>db.collection.drop() </p>
+<ul>
+<li>删除集合</li>
+</ul>
+</li>
+<li><p>db.dropDatabase() </p>
+<ul>
+<li>删除数据库</li>
+</ul>
+</li>
+<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
+</li>
+<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
+</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><p>db.collection.find()</p>
+<ul>
+<li>find()用来查询集合中所有符合条件的文档</li>
+<li>find()可以接收一个对象作为条件参数<ul>
+<li>{} 表示查询集合中所有的文档</li>
+<li>{属性:值} 查询属性是指定值的文档</li>
+</ul>
+</li>
+<li>find()返回的是一个数组</li>
+</ul>
+</li>
+<li><p>db.collection.findOne()</p>
+<ul>
+<li>用来查询集合中符合条件的第一个文档  </li>
+<li>findOne()返回的是一个文档对象 </li>
+</ul>
+</li>
+<li><p>db.collection.find({}).count() </p>
+<ul>
+<li>查询所有结果的数量</li>
+</ul>
+</li>
+<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
+</li>
+<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
+</li>
+<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
+<ul>
+<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
+<li>limit skip sort 可以以任意的顺序进行调用</li>
+<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
+<li><p>db.collection.update(查询条件,新对象)</p>
+<ul>
+<li>update()默认情况下会使用新对象来替换旧的对象</li>
+<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
+<li>update()默认只会修改一个</li>
+</ul>
+</li>
+<li><p>db.collection.updateMany()</p>
+<ul>
+<li>同时修改多个符合条件的文档</li>
+</ul>
+</li>
+<li><p>db.collection.updateOne()</p>
+<ul>
+<li>修改一个符合条件的文档    </li>
+</ul>
+</li>
+<li><p>db.collection.replaceOne()</p>
+<ul>
+<li>替换一个文档</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
+<li>$set<ol>
+<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
+<li>修改内嵌文档</li>
+</ol>
+</li>
+<li>$unset      <ul>
+<li>用于将键删除</li>
+</ul>
+</li>
+<li>$push <ul>
+<li>用于向数组中添加一个新的元素</li>
+</ul>
+</li>
+<li>$addToSet <ul>
+<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
+</ul>
+</li>
+<li>$each       <ul>
+<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
+</ul>
+</li>
+<li>$pop        <ul>
+<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
+</ul>
+</li>
+<li>$pull       <ul>
+<li>基于特定条件来删除元素。</li>
+</ul>
+</li>
+<li>$inc        <ul>
+<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
+</ul>
+</li>
+<li>$ne         <ul>
+<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
+</ul>
+</li>
+<li>$gt:大于</li>
+<li>$lt:小于</li>
+<li>$gte:大于或等于</li>
+<li>$lte:小于或等于</li>
+<li>$inc:自增</li>
+</ul>
+<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
+<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
+<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
+</ul>
+<ol>
+<li><p>下载安装Mongoose</p>
+<ul>
+<li>npm i mongoose –save</li>
+</ul>
+</li>
+<li><p>在项目中引入mongoose</p>
+<ul>
+<li>var mongoose = require(“mongoose”);</li>
+</ul>
+</li>
+<li><p>连接MongoDB数据库</p>
+<ul>
+<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
+<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
+</ul>
+</li>
+<li><p>断开数据库连接(一般不需要调用)</p>
+<ul>
+<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
+<ul>
+<li>mongoose.disconnect()</li>
+</ul>
+</li>
+<li><p>监听MongoDB数据库的连接状态</p>
+<ul>
+<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>数据库连接成功的事件</p>
+<ul>
+<li>mongoose.connection.once(“open”,function(){});</li>
+</ul>
+</li>
+<li><p>数据库断开的事件</p>
+<ul>
+<li>mongoose.connection.once(“close”,function(){});</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
+<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
+</ul>
+<ul>
+<li><p>Model.create(doc(s), [callback])</p>
+<ul>
+<li>用来创建一个或多个文档并添加到数据库中</li>
+<li>参数：<ul>
+<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
+<li>callback 当操作完成以后调用的回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询：</p>
+<ul>
+<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
+</li>
+<li><p>Model.find(conditions, [projection], [options], [callback])</p>
+<ul>
+<li>查询所有符合条件的文档 总会返回一个数组</li>
+</ul>
+</li>
+<li><p>Model.findById(id, [projection], [options], [callback])</p>
+<ul>
+<li>根据文档的id属性查询文档</li>
+</ul>
+</li>
+<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
+<ul>
+<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
+<ul>
+<li>conditions 查询的条件</li>
+<li>projection 投影 需要获取到的字段<ul>
+<li>两种方式<ul>
+<li>{name:1,_id:0}</li>
+<li>“name -_id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
+<li>callback 回调函数，查询结果会通过回调函数返回</li>
+<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>Model.update(conditions, doc, [options], [callback])</li>
+<li>Model.updateMany(conditions, doc, [options], [callback])</li>
+<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
+<li>用来修改一个或多个文档</li>
+<li>参数：<ul>
+<li>conditions 查询条件</li>
+<li>doc 修改后的对象</li>
+<li>options 配置参数</li>
+<li>callback 回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li>Model.remove(conditions, [callback])</li>
+<li>Model.deleteOne(conditions, [callback])</li>
+<li>Model.deleteMany(conditions, [callback])</li>
+</ul>
+</li>
+<li><p>统计文档的数量 </p>
+<ul>
+<li>Model.count(conditions, [callback])</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
+<li>Document对象是Model的实例（可以用instanceof验证）</li>
+<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
+<li>通过Model查询到结果都是Document</li>
+</ul>
+</li>
+<li>document的方法<ul>
+<li>Model#save([options], [function])<ul>
+<li>和model的create作用相同，但是document只能用save<ul>
+<li>update(update,[options],[callback])</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>修改对象<ul>
+<li>remove([callback])</li>
+</ul>
+</li>
+<li>删除对象<ul>
+<li>get(name)</li>
+</ul>
+</li>
+<li>获取文档中的指定属性值<ul>
+<li>set(name , value)</li>
+</ul>
+</li>
+<li>设置文档的指定的属性值<ul>
+<li>id</li>
+</ul>
+</li>
+<li>获取文档的_id属性值<ul>
+<li>toJSON() </li>
+</ul>
+</li>
+<li>转换为一个JSON对象//不一定生效<ul>
+<li>toObject()</li>
+</ul>
+</li>
+<li>将Document对象转换为一个普通的JS对象</li>
+<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>其他模块直接通过require引入该模块即可</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Node.js</title>
     <url>/2018/11/11/NodeJS/</url>
     <content><![CDATA[<blockquote>
@@ -3231,7 +3898,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ol>
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 引入vue.js</span><br><span class="line">2. 创建Vue实例对象(vm),指定选项(配置)对象</span><br><span class="line">    * el:指定dom标签容器的选择器</span><br><span class="line">    * data:指定初始化状态数据的对象&#x2F;函数,返回一个对象</span><br><span class="line">3. 在页面模板中使用&#123;&#123;&#125;&#125;或vue指令</span><br></pre></td></tr></table></figure>
 
-<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p><img src="/2019/05/12/Vue/mvvm.png" alt></p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p><img src="/Vue/mvvm.png" alt></p>
 <ul>
 <li>model: 模型，数据对象data</li>
 <li>view：视图，模板页面</li>
@@ -3324,7 +3991,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 
 </li>
 </ul>
-<h2 id="Vue实例的生命周期"><a href="#Vue实例的生命周期" class="headerlink" title="Vue实例的生命周期"></a>Vue实例的生命周期</h2><p><img src="/2019/05/12/Vue/live.png" alt></p>
+<h2 id="Vue实例的生命周期"><a href="#Vue实例的生命周期" class="headerlink" title="Vue实例的生命周期"></a>Vue实例的生命周期</h2><p><img src="/Vue/live.png" alt></p>
 <ul>
 <li>大致分为三个阶段：<ol>
 <li>初始化显示<ul>
@@ -3539,7 +4206,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><ul>
 <li><p><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">vuex官方文档</a></p>
 </li>
-<li><p>vuex是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间的数据共享<br><img src="/2019/05/12/Vue/store.png" alt></p>
+<li><p>vuex是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间的数据共享<br><img src="/vue/store.png" alt></p>
 </li>
 <li><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式</p>
 </li>
@@ -3547,10 +4214,10 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <ul>
 <li>state，驱动应用的数据源</li>
 <li>view，以声明方式将 state 映射到视图</li>
-<li>actions，响应在 view 上的用户输入导致的状态变化(包含 n 个更新状态的方法)<br><img src="/2019/05/12/Vue/3.png" alt></li>
+<li>actions，响应在 view 上的用户输入导致的状态变化(包含 n 个更新状态的方法)<br><img src="/vue/3.png" alt></li>
 </ul>
 </li>
-<li><p>核心思想(工作流程)：<br>  <img src="/2019/05/12/Vue/x.png" alt></p>
+<li><p>核心思想(工作流程)：<br>  <img src="/vue/x.png" alt></p>
 </li>
 <li><p>使用vuex的好处：</p>
 <ol>
@@ -3663,7 +4330,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </li>
 </ul>
 <p>5)    总结: dep 与 watcher 的关系: 多对多<br>    -    data 中的一个属性对应一个 dep, 一个 dep 中可能包含多个 watcher(模板中有几个表达式使用到了同一个属性)<br>    -    模板中一个非事件表达式对应一个 watcher, 一个 watcher 中可能包含多个 dep(表达式是多层: a.b)<br>    -    数据绑定使用到 2 个核心技术<br>        *    defineProperty()<br>        *    消息订阅与发布</p>
-<p><img src="/2019/05/12/Vue/mv.png" alt></p>
+<p><img src="/Vue/mv.png" alt></p>
 <h2 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h2><p>1)    双向数据绑定是建立在单向数据绑定(model==&gt;View)的基础之上的<br>2)    双向数据绑定的实现流程:<br>    - 在解析 v-model 指令时, 给当前元素添加 input 监听<br>    - 当 input 的 value 发生改变时, 将最新的值赋值给当前表达式所对应的 data 属性</p>
 <p><strong><em>最后这点源码的解析属实给我看的有点晕，讲的时候能明白，自己再看就又想不通了/(ㄒoㄒ)/~~，还是理解的不够深入</em></strong></p>
 <h1 id="other"><a href="#other" class="headerlink" title="other"></a>other</h1><ul>
@@ -3687,14 +4354,14 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <p>序<br><br>基于vue实现的一个外卖移动端项目</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
-<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
-<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
-<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
-<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
 <li><p>页面：vue, vue-router, vue-lazyload, styls</p>
 <ul>
@@ -3732,9 +4399,9 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 <h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
 <p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
-<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
 <ul>
-<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
 </ul>
 ]]></content>
       <categories>
@@ -3777,7 +4444,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 
 <h1 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h1><ul>
 <li>从 Vue 实例的创建，运行，到销毁期间，总是伴随着各种各样的事件，这些事件，被称为生命周期</li>
-<li>生命周期函数=生命周期钩子=生命周期事件<br><img src="/2018/08/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/live.png" alt></li>
+<li>生命周期函数=生命周期钩子=生命周期事件<br><img src="/Vue/live.png" alt></li>
 </ul>
 <h1 id="主要的生命周期函数分类"><a href="#主要的生命周期函数分类" class="headerlink" title="主要的生命周期函数分类"></a>主要的生命周期函数分类</h1><h2 id="创建期间的生命周期函数："><a href="#创建期间的生命周期函数：" class="headerlink" title="创建期间的生命周期函数："></a>创建期间的生命周期函数：</h2><ul>
 <li>beforeCreate：实例在内存中刚被创建出来，此时还没有初始化好data和methods</li>
@@ -4316,344 +4983,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>ES6-ES11</title>
-    <url>/2019/01/14/ES6-ES11/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br> ECMAScript 是由ECMA国际通过 ECMA-262标准化的脚本标准化的脚本程序设计语言，Ecma 国际制定了许多标准，而 ECMA-262 只是其中的一个，从 ES6 开始，每年发布一个版本，版本号比年份最后一位大 1，ECMA-262至今已发展到了第十一版。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="ECMA"><a href="#ECMA" class="headerlink" title="ECMA"></a>ECMA</h1><ul>
-<li><p>ECMA（European Computer Manufacturers Association）</p>
-<ul>
-<li>中文名称为欧洲计算机制 造商协会，这个组织的目标是评估、开发和认可电信计算机标准。1994年后该组织改名为 ECMA国际</li>
-</ul>
-</li>
-<li><p>谁在维护 ECMA-262</p>
-<ul>
-<li>TC39（Technical Committee 39）是推进 ECMAScript 发展的委员会。其会员都是公司（其中主要是浏览器厂商，有苹果、谷歌、微软、因特尔等）。TC39 定期召开会议，会议由会员公司的代表与特邀专家出席</li>
-</ul>
-</li>
-<li><p>兼容性</p>
-</li>
-<li><p><a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es6/</a> 可查看兼容性<br><img src="/2019/01/14/ES6-ES11/%E5%85%BC%E5%AE%B9%E6%80%A7.png" alt></p>
-</li>
-<li><p>红色表示不兼容，绿色表示兼容</p>
-</li>
-</ul>
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><ul>
-<li>ES6 的版本变动内容最多，具有里程碑意义</li>
-<li>ES6 加入许多新的语法特性，编程实现更简单、高效</li>
-</ul>
-<h2 id="let关键字"><a href="#let关键字" class="headerlink" title="let关键字"></a>let关键字</h2><ul>
-<li>let 关键字用来声明变量，使用 let 声明的变量有几个特点：</li>
-</ul>
-<ol>
-<li>不允许重复声明</li>
-<li>块级作用域</li>
-<li>不存在变量提升,不允许在变量声明之前使用</li>
-<li>不影响作用域链的效果</li>
-</ol>
-<ul>
-<li>应用场景：以后声明变量使用 let 就对了</li>
-</ul>
-<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><ul>
-<li>const 关键字用来声明常量，const 声明有以下特点</li>
-</ul>
-<ol>
-<li>声明必须赋初始值</li>
-<li>标识符一般为大写</li>
-<li>不允许重复声明</li>
-<li><strong>值不允许修改</strong></li>
-<li>块级作用域</li>
-</ol>
-<ul>
-<li>注意: 对象属性修改和数组元素变化不会触发const错误，因为地址没有改变</li>
-<li>应用场景：声明对象类型使用 const，非对象类型声明选择 let</li>
-</ul>
-<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ul>
-<li>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;数组的解构赋值</span><br><span class="line">const arr &#x3D; [&#39;张学友&#39;, &#39;刘德华&#39;, &#39;黎明&#39;, &#39;郭富城&#39;]; </span><br><span class="line">let [zhang, liu, li, guo] &#x3D; arr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;对象的解构赋值</span><br><span class="line">const lin &#x3D; &#123;</span><br><span class="line">name: &#39;林志颖&#39;,</span><br><span class="line">tags: [&#39;车手&#39;, &#39;歌手&#39;, &#39;小旋风&#39;, &#39;演员&#39;]</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;name, tags&#125; &#x3D; lin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;复杂解构</span><br><span class="line">let wangfei &#x3D; &#123;</span><br><span class="line">name: &#39;王菲&#39;, age: 18,</span><br><span class="line">songs: [&#39;红豆&#39;, &#39;流年&#39;, &#39;暧昧&#39;, &#39;传奇&#39;], </span><br><span class="line">history: [</span><br><span class="line">&#123;name: &#39;窦唯&#39;&#125;,</span><br><span class="line">&#123;name: &#39;李亚鹏&#39;&#125;,</span><br><span class="line">&#123;name: &#39;谢霆锋&#39;&#125;</span><br><span class="line">]&#125;;</span><br><span class="line">let &#123;songs: [one, two, three], history: [first, second, third]&#125; &#x3D;wangfei;</span><br></pre></td></tr></table></figure>
-<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2></li>
-<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：<br>1)    字符串中可以出现换行符<br>2)    可以使用 ${xxx} 形式输出变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 变量拼接</span><br><span class="line">let lovest &#x3D; &#39;魏翔&#39;;</span><br><span class="line">let out &#x3D; &#96;$&#123;lovest&#125;是我心目中最搞笑的演员!!&#96;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="简化对象写法"><a href="#简化对象写法" class="headerlink" title="简化对象写法"></a>简化对象写法</h2><ul>
-<li>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let name &#x3D; &#39;xxx&#39;;</span><br><span class="line">        let change &#x3D; function()&#123;</span><br><span class="line">            console.log(&#39;xxx!&#39;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const school &#x3D; &#123;</span><br><span class="line">            name,</span><br><span class="line">            change,</span><br><span class="line">            improve()&#123;         &#x2F;&#x2F;可以省略function</span><br><span class="line">                console.log(&quot;xxx&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
-<li>ES6 允许使用「箭头」（ =&gt; ）定义函数。<br>箭头函数的注意点:<br>1)    如果形参只有一个，则小括号可以省略<br>2)    函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果<br>3)    this 是静态的. this 始终指向函数声明时所在作用域下的 this 的值<br>4)    箭头函数不能作为构造函数实例化<br>5)    不能使用 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 1. 通用写法</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn &#x3D; (arg1, arg2, arg3) &#x3D;&gt; &#123;</span><br><span class="line">return arg1 + arg2 + arg3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 2. 省略小括号的情况, 当形参有且只有一个的时候</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn2 &#x3D; num &#x3D;&gt; &#123;</span><br><span class="line">return num * 10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 3. 省略花括号的情况,当代码体只有一条语句的时候, 此时 return 必须省略,语句的执行结果就是函数的返回值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn3 &#x3D; score &#x3D;&gt; score * 20;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 4. this 指向声明时所在作用域中 this 的值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn4 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">console.log(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</li>
-<li>ES6 允许给函数参数赋值初始值<ol>
-<li>形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)</li>
-<li>默认值还可以与解构赋值结合</li>
-</ol>
-</li>
-</ul>
-<h2 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h2><ul>
-<li>ES6 引入 rest 参数（…args），用于获取函数的实参，用来代替 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rest 参数必须要放到参数最后</span><br><span class="line">function fn(a,b,...args)&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(args);</span><br><span class="line">    &#125;</span><br><span class="line">fn(1,2,3,4,5,6);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h2><ul>
-<li>扩展运算符（spread）也是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包<ol>
-<li>可以合并数组</li>
-<li>可以克隆数组</li>
-<li>将伪数组转为真正的数组<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 『...』 扩展运算符能将『数组』转换为逗号分隔的『参数序列』</span><br><span class="line">&#x2F;&#x2F;声明一个数组 ...</span><br><span class="line">const tfboys &#x3D; [&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;];</span><br><span class="line">&#x2F;&#x2F; &#x3D;&gt; &#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;</span><br><span class="line">&#x2F;&#x2F; 声明一个函数</span><br><span class="line">function chunwan()&#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">chunwan(...tfboys);&#x2F;&#x2F; chunwan(&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><ul>
-<li>ES6 引入了一种新的原始数据类型 Symbol， 表示独一无二的值。它是JavaScript 语言的<strong>第七种</strong>数据类型，是一种类似于字符串的数据类型。<br>Symbol 特点<br>1)    Symbol 的值是唯一的，用来解决命名冲突的问题<br>2)    Symbol 值不能与其他数据进行运算<br>3)    Symbol 定义的对象属性不能使用 for…in 循环遍历， 但是可以使用<br>Reflect.ownKeys 来获取对象的所有键名</li>
-<li>js数据类型：undefined string  symbol object null number boolean</li>
-</ul>
-<h2 id="Symbol-内置值"><a href="#Symbol-内置值" class="headerlink" title="Symbol 内置值"></a>Symbol 内置值</h2><ul>
-<li>除了定义自己使用的 Symbol  值以外，ES6  还提供了11 个内置的Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行<br><img src="/2019/01/14/ES6-ES11/symbol%E5%86%85%E7%BD%AE%E5%80%BC.png" alt></li>
-</ul>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
-<li>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作<br>1)    ES6 创造了一种新的遍历命令 for…of 循环，Iterator 接口主要供 for…of 消费<br>2)    原生具备 iterator 接口的数据(可用 for of 遍历)<ul>
-<li>Array</li>
-<li>Arguments</li>
-<li>Set</li>
-<li>Map</li>
-<li>String</li>
-<li>TypedArray</li>
-<li>NodeList<br>3)    工作原理</li>
-<li>创建一个指针对象，指向当前数据结构的起始位置</li>
-<li>第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员</li>
-<li>接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员</li>
-<li>每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
-</ul>
-</li>
-<li>注: 需要自定义遍历数据的时候，要想到迭代器</li>
-</ul>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
-<li>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">yield &#39;一只没有耳朵&#39;;</span><br><span class="line">yield &#39;一只没有尾巴&#39;; return &#39;真奇怪&#39;;</span><br><span class="line">&#125;</span><br><span class="line">let iterator &#x3D; gen(); console.log(iterator.next()); console.log(iterator.next());</span><br><span class="line">console.log(iterator.next());</span><br></pre></td></tr></table></figure>
-代码说明：<br>1)    *的位置没有限制<br>2)    生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到<br>yield 语句后的值<br>3)    yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next<br>方法，执行一段代码<br>4)    next 方法可以传递实参，作为 yield 语句的返回值</li>
-</ul>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ul>
-<li>Promise 是 ES6 引入的异步编程的新解决方案。语法上Promise 是一个构造函数， 用来封装异步操作并可以获取其成功或失败的结果。<br>1)    Promise 构造函数: Promise (excutor) {}<ul>
-<li>promise (function(resolve,reject){});<br>2)    Promise.prototype.then 方法</li>
-<li>then(function(){value},function(reason){})</li>
-<li>调用 then 方法  then方法的返回结果是 Promise 对象, 对象状态由回调函数的执行结果决定<ul>
-<li>如果回调函数中返回的结果是 非 promise 类型的属性, 状态为成功, 返回值为对象的成功的值</li>
-<li>如果是promise对象，promise返回的对象的状态就决定了then方法返回的promise的状态<br>3)    Promise.prototype.catch 方法</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><ul>
-<li>ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历，集合的属性和方法：<br>1)    size    返回集合的元素个数<br>2)    add    增加一个新元素，返回当前集合<br>3)    delete    删除元素，返回 boolean 值<br>4)    has    检测集合中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
-</ul>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
-<li>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。但是“键” 的范围不限于字符串，各种类型的值（包括对象）都可以当作键。Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。Map 的属性和方法：<br>1)    size    返回 Map 的元素个数<br>2)    set    增加一个新元素，返回当前 Map<br>3)    get    返回键名对象的键值<br>4)    has    检测 Map 中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
-</ul>
-<h2 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h2><ul>
-<li>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法塘，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。<br>知识点：<br>1)    class 声明类<br>2)    constructor 定义构造函数初始化<br>3)    extends 继承父类<br>4)    super 调用父级构造方法<br>5)    static 定义静态方法和属性<br>6)    父类方法可以重写</li>
-</ul>
-<h2 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h2><ol>
-<li><p>Number.EPSILON 是 JavaScript 表示的最小精度</p>
-<ul>
-<li>0.1+0.2===0.3不成立，因为浮点数运算是由误差的</li>
-<li>EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16</li>
-<li>用EPSILON表示js运算的最小精确度</li>
-</ul>
-</li>
-<li><p>二进制和八进制</p>
-<ul>
-<li>ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示</li>
-</ul>
-</li>
-<li><p>Number.isFinite() 与 Number.isNaN()</p>
-<ul>
-<li>Number.isFinite() 用来检查一个数值是否为有限的</li>
-<li>Number.isNaN() 用来检查一个值是否为 NaN</li>
-</ul>
-</li>
-<li><p>Number.parseInt() 与 Number.parseFloat()字符串转整数</p>
-<ul>
-<li>ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变</li>
-</ul>
-</li>
-<li><p>Math.trunc</p>
-<ul>
-<li>用于去除一个数的小数部分，返回整数部分</li>
-</ul>
-</li>
-<li><p>Number.isInteger</p>
-<ul>
-<li>Number.isInteger() 用来判断一个数值是否为整数</li>
-</ul>
-</li>
-<li><p>Math.sign </p>
-<ul>
-<li>判断一个数到底为正数 负数 还是零</li>
-</ul>
-</li>
-</ol>
-<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><ul>
-<li>ES6 新增了一些 Object 对象的方法<br>1)    Object.is比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）<br>2)    Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象<br>3)    proto 、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型</li>
-</ul>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
-<li>模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。</li>
-</ul>
-<p>1.模块化的好处</p>
-<ul>
-<li>模块化的优势有以下几点：<br>1)    防止命名冲突<br>2)    代码复用<br>3)    高维护性</li>
-</ul>
-<ol start="2">
-<li>模块化规范产品</li>
-</ol>
-<ul>
-<li>ES6 之前的模块化规范有：<br>1) CommonJS    =&gt;    NodeJS、Browserify<br>2) AMD    =&gt;    requireJS<br>3) CMD    =&gt;    seaJS</li>
-</ul>
-<ol start="3">
-<li>ES6 模块化语法</li>
-</ol>
-<ul>
-<li>模块功能主要由两个命令构成：export 和 import<ul>
-<li>export 命令用于规定模块的对外接口</li>
-<li>import 命令用于输入其他模块提供的功能<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import:</span><br><span class="line">1. 通用的导入方式</span><br><span class="line">引入 m1.js 模块内容</span><br><span class="line">import * as m1 from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m2.js 模块内容</span><br><span class="line">import * as m2 from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m3.js </span><br><span class="line">import * as m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">2. 解构赋值形式</span><br><span class="line">import &#123;school, teach&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">import &#123;school as guigu, findJob&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">import &#123;default as m3&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">3. 简便形式  针对默认暴露</span><br><span class="line">import m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line">console.log(m3);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export:</span><br><span class="line">&#x2F;&#x2F;分别暴露</span><br><span class="line">export let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">export function teach() &#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;统一暴露</span><br><span class="line">let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">function teach()&#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line">export &#123;school, teach&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认暴露</span><br><span class="line">export default &#123;</span><br><span class="line">    school: &#39;xxx&#39;,</span><br><span class="line">    teach: function()&#123;</span><br><span class="line">        console.log(&quot;xxx&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h1><ol>
-<li><p>Array.includes()</p>
-<ul>
-<li>Includes 方法用来检测数组中是否包含某个元素，返回布尔类型值</li>
-</ul>
-</li>
-<li><p>指数操作符</p>
-<ul>
-<li>在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES8"><a href="#ES8" class="headerlink" title="ES8"></a>ES8</h1><ol>
-<li><p>async 和 await</p>
-<ul>
-<li>async 和 await 两种语法结合可以让异步代码像同步代码一样</li>
-</ul>
-<ol>
-<li>async 函数<ul>
-<li>async 函数的返回值为 promise 对象，</li>
-<li>promise 对象的结果由 async 函数执行的返回值决定</li>
-</ul>
-</li>
-<li>await 表达式<ul>
-<li>await 必须写在 async 函数中</li>
-<li>await 右侧的表达式一般为 promise 对象</li>
-<li>await 返回的是 promise 成功的值</li>
-<li>await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Object.values 和 Object.entries</p>
-<ul>
-<li>Object.values()方法返回一个给定对象的所有可枚举属性值的数组</li>
-<li>Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组</li>
-</ul>
-</li>
-<li><p>Object.getOwnPropertyDescriptors</p>
-<ul>
-<li>该方法返回指定对象所有自身属性的描述对象</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES9"><a href="#ES9" class="headerlink" title="ES9"></a>ES9</h1><ol>
-<li>Rest/Spread 属性</li>
-</ol>
-<ul>
-<li>Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组,在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function connect(&#123;host, port, ...user&#125;) &#123;</span><br><span class="line">console.log(host);</span><br><span class="line">console.log(port); </span><br><span class="line">console.log(user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connect(&#123;</span><br><span class="line">host: &#39;127.0.0.1&#39;,</span><br><span class="line">port: 3306, </span><br><span class="line">username: &#39;root&#39;, </span><br><span class="line">password: &#39;root&#39;, </span><br><span class="line">type: &#39;master&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="2">
-<li>正则表达式命名捕获组</li>
-</ol>
-<ul>
-<li>ES9 允许命名捕获组对捕获的结果进行命名,这样获取捕获结果可读性更强<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let str &#x3D; &#39;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.atguigu.com&quot;&gt;&lt;&#x2F;a&gt;&#39;; </span><br><span class="line">const reg &#x3D; &#x2F;&lt;a href&#x3D;&quot;(?&lt;url&gt;.*)&quot;&gt;(?&lt;text&gt;.*)&lt;\&#x2F;a&gt;&#x2F;;</span><br><span class="line"></span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">console.log(result.groups.url);	</span><br><span class="line"></span><br><span class="line">console.log(result.groups.text);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="3">
-<li>正则表达式反向断言</li>
-</ol>
-<ul>
-<li>ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;声明字符串</span><br><span class="line">let str &#x3D; &#39;JS5211314 你知道么 555 啦啦啦&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;正向断言</span><br><span class="line">const reg &#x3D; &#x2F;\d+(?&#x3D;啦)&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;反向断言</span><br><span class="line">const reg &#x3D; &#x2F;(?&lt;&#x3D;么)\d+&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="4">
-<li>正则表达式 dotAll 模式</li>
-</ol>
-<ul>
-<li>正则表达式中点 . 匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现</li>
-</ul>
-<h1 id="ES10"><a href="#ES10" class="headerlink" title="ES10"></a>ES10</h1><ol>
-<li>Object.fromEntries<ul>
-<li>将二维数组转化为对象，与entries作用相反</li>
-</ul>
-</li>
-<li>trimStart 和 trimEnd<ul>
-<li>trimStart负责清除字符串左侧空白</li>
-<li>trimEnd负责清除字符串右侧空白</li>
-</ul>
-</li>
-<li>Array.flat() 与 flatMap<ul>
-<li>flat()将多维数组转化为低维数组</li>
-<li>flatMap把Map的结果做一个维度降低，是flat和map操作的结合体</li>
-</ul>
-</li>
-<li>Symbol.prototype.description<ul>
-<li>获取symbol的描述字符串</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES11"><a href="#ES11" class="headerlink" title="ES11"></a>ES11</h1><ol>
-<li><p>类的私有属性</p>
-<ul>
-<li>私有属性前要加#</li>
-</ul>
-</li>
-<li><p>String.prototype.matchAll</p>
-<ul>
-<li>用来得到正则批量匹配的结果</li>
-</ul>
-</li>
-<li><p>Promise.allSettled</p>
-<ul>
-<li>接受一个promise数组，返回一个成功的结果，成功的值是每一个promise对象的状态和结果</li>
-</ul>
-</li>
-<li><p>可选链操作符?.</p>
-<ul>
-<li>xxx1?.xxx2?.xxx3如果有xxx1才会读取后面的xxx2以此类推</li>
-</ul>
-</li>
-<li><p>动态 import 导入</p>
-</li>
-<li><p>globalThis 对象</p>
-<ul>
-<li>始终指向全局对象 </li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>规范集成</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-        <tag>ES11</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>axios</title>
     <url>/2019/06/15/axios/</url>
     <content><![CDATA[<blockquote>
@@ -4897,161 +5226,37 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Ajax</title>
-    <url>/2019/03/16/Ajax/</url>
+    <title>Hello World</title>
+    <url>/2018/07/02/hello%20world/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>页面的局部刷新技术</p>
+<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
-<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
-</li>
-<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
-</li>
-<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
-<ul>
-<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
-<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
-<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
-<li>DOM实现动态显示和交互</li>
-<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
-<li>使用JS进行绑定和处理数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
-<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
-</ul>
-<ol>
-<li><p>onreadystatechang事件处理函数</p>
-<ul>
-<li>该函数由服务器触发，而不是用户</li>
-<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
-</ul>
-</li>
-<li><p>open(method,url,asynch)方法</p>
-<ul>
-<li>open运行用一个Ajax调用向服务器发送请求</li>
-<li>method：请求的类型<ul>
-<li>GET从服务器检索一个文件，不需要发送任何数据</li>
-<li>POST向服务器发送数据</li>
-</ul>
-</li>
-<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
-<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
-</ul>
-</li>
-<li><p>send方法</p>
-<ul>
-<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
-<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
-<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
-</ul>
-</li>
-<li><p>sendRequestHeader(header,value)</p>
-<ul>
-<li>首部信息用来声明一个请求时GET还是POST</li>
-<li>header首部的名字，value首部的值</li>
-</ul>
-</li>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Git</li>
+<li>Nginx</li>
+<li>Nodejs</li>
+<li>搭载环境<ol>
+<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
+<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
+<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
 </ol>
-<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
-<li><p>readyState</p>
+</li>
+</ul>
 <ul>
-<li>表示Ajax请求的当前状态<ul>
-<li>0表示初始化，还没有调用open方法</li>
-<li>1表示正在加载，open方法已调用，send方法还没调用</li>
-<li>2表示已加载完毕，send方法已调用，请求开始了</li>
-<li>3表示交互中，服务器正在发送响应</li>
-<li>4表示完成，响应发送完毕</li>
-</ul>
-</li>
-<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
-<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
-</ul>
-</li>
-<li><p>status</p>
-<ul>
-<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
-<li>常用状态码及其含义：<ul>
-<li>404没找到页面</li>
-<li>403禁止访问</li>
-<li>500内部服务器错误</li>
-<li>200一切正常</li>
-<li>304没有被修改</li>
-</ul>
-</li>
-<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
-</ul>
-</li>
-<li><p>responseText</p>
-<ul>
-<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
-<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
-</ul>
-</li>
-<li><p>responseXML</p>
-<ul>
-<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
-</ul>
-</li>
+<li>hexo<ol>
+<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
+<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
 </ol>
-<ul>
-<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
-<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
-<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
-</ul>
-<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
-<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
-<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
-<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
-<li><p>load(url, [data], [callback])</p>
-<ul>
-<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
-<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
-<li>url:待装入 HTML 网页网址。</li>
-<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
-<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-</li>
-<li><p>jQuery.get(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP GET 请求载入信息</li>
-<li>url:待载入页面的URL地址</li>
-<li>data:待发送 Key/value 参数</li>
-<li>callback:载入成功时回调函数</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default</li>
-</ul>
-</li>
-<li><p>jQuery.post(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP POST 请求载入信息</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:发送成功时回调函数。</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
-</ul>
-</li>
-<li><p>jQuery.getJSON(url, [data], [callback])</p>
-<ul>
-<li>通过 HTTP GET 请求载入 JSON 数据</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:载入成功时回调函数。</li>
-</ul>
-</li>
-</ol>
+<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
 ]]></content>
       <categories>
-        <category>Ajax</category>
+        <category>日常</category>
       </categories>
       <tags>
-        <tag>Ajax</tag>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -5366,633 +5571,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>less</title>
-    <url>/2019/04/21/less/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>less是一门css的预处理语言</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
-<li>less是一门css的预处理语言<ul>
-<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
-<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
-<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
-<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
-</ul>
-</li>
-</ul>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li><p>变量，在变量中可以存储一个任意的值</p>
-<ul>
-<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
-</li>
-<li><p>变量的语法： @变量名</p>
-</li>
-<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
-</li>
-<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
-</li>
-<li><p>变量发生重名时，会优先使用比较近的变量</p>
-</li>
-<li><p>可以在变量声明前就使用变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
-</ul>
-</li>
-<li><p>子元素选择器&gt;</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>&amp; 表示外层(只向外一层)的父元素</p>
-</li>
-<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>mixin 混合</p>
-<ul>
-<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
-<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
-</ul>
-</li>
-<li><p>在混合函数中可以直接设置变量</p>
-</li>
-<li><p>还可以调用混合函数，按顺序传递参数</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
-</li>
-<li><p>加深颜色darken(颜色，百分比)</p>
-</li>
-</ul>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
-<li><p>@import用来将其他的less引入到当前的less</p>
-</li>
-<li><p>在less中所有的数值都可以直接进行运算</p>
-</li>
-<li><p>easy  less配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端三大块</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-        <tag>less</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小本本</title>
-    <url>/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>用来记录一些繁杂的东西</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><ol>
-<li>定位<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父级开启定位 子级相对定位</span><br><span class="line">top：50%;</span><br><span class="line">left：50%;</span><br><span class="line">transform：translate(-50%,-50%); &#x2F;&#x2F;自身的一半</span><br></pre></td></tr></table></figure></li>
-<li>flex<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:flex;</span><br><span class="line">justify-content:center; 主轴分配空白</span><br><span class="line">align-item:center; 辅轴分配空白</span><br></pre></td></tr></table></figure></li>
-<li>table-cell<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:table-cell;</span><br><span class="line">vertical-align:middle;</span><br><span class="line">text-align:center;</span><br><span class="line">&#x2F;*父容器必须指定宽高 *&#x2F;</span><br><span class="line">height:500px;</span><br><span class="line">width:500px;</span><br><span class="line">子元素</span><br><span class="line">display:inline-block;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
-<li>通过 verticle-align:middle 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">vertical-align:middle;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>通过 display:flex 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>通过 display:table-cell 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:table;</span><br><span class="line">子元素display：table-cell;</span><br></pre></td></tr></table></figure>
-
-<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
-<li><p>通过 margin: 0 auto; text-align: center 实现</p>
-</li>
-<li><p>通过 display:flex 实现</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">     flex-direction:column;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>通过 width:fit-content 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">width:fit-content;</span><br><span class="line">margin: 0 auto ;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
-
-<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><ul>
-<li><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
-<h2 id="1-JSONP-跨域"><a href="#1-JSONP-跨域" class="headerlink" title="1. JSONP 跨域"></a>1. JSONP 跨域</h2></li>
-<li><p>jsonp 的原理就是利用&lt;script&gt;标签没有跨域限制，通过&lt;script&gt;标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span><br><span class="line">    script.src &#x3D; &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login?user&#x3D;admin&amp;callback&#x3D;handleCallback&#39;;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 回调执行函数</span><br><span class="line">    function handleCallback(res) &#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">handleCallback(&#123;&quot;success&quot;: true, &quot;user&quot;: &quot;admin&quot;&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-CORS-跨域"><a href="#2-CORS-跨域" class="headerlink" title="2. CORS 跨域"></a>2. CORS 跨域</h2><ul>
-<li>普通跨域请求：只服务端设置 Access-Control-Allow-Origin 即可，前端无须设置，若要带 cookie 请求：前后端都需要设置</li>
-<li>跨域到哪个服务器就在哪个服务器上配置响应头</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest(); &#x2F;&#x2F; IE8&#x2F;9需用window.XDomainRequest兼容</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials &#x3D; true;</span><br><span class="line"></span><br><span class="line">xhr.open(&#39;post&#39;, &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login&#39;, true);</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line">xhr.send(&#39;user&#x3D;admin&#39;);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
-<li>利用 node + webpack + webpack-dev-server 代理接口跨域。在开发环境下，由于 vue 渲染服务和接口代理服务都是 webpack-dev-server 同一个，所以页面与代理接口之间不再跨域，无须设置 headers 跨域信息了。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        proxy: [&#123;</span><br><span class="line">            context: &#39;&#x2F;login&#39;,</span><br><span class="line">            target: &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#39;,  &#x2F;&#x2F; 代理跨域目标接口</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">            cookieDomainRewrite: &#39;www.domain1.com&#39;  &#x2F;&#x2F; 可以为false，表示不修改</span><br><span class="line">        &#125;],</span><br><span class="line">        noInfo: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
-<li>TCP 面向连接（如打电话要先拨号建立连接）;UDP 是无连接的，即发送数据之前不需要建立连接</li>
-<li>TCP 提供可靠的服务。也就是说，通过 TCP 连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP 尽最大努力交付，即不保证可靠交付</li>
-<li>TCP 面向字节流，实际上是 TCP 把数据看成一连串无结构的字节流;UDP 是面向报文的，UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如 IP 电话，实时视频会议等）</li>
-<li>每一条 TCP 连接只能是点到点的;UDP 支持一对一，一对多，多对一和多对多的交互通信</li>
-<li>TCP 首部开销 20 字节;UDP 的首部开销小，只有 8 个字节</li>
-<li>TCP 的逻辑通信信道是全双工的可靠信道，UDP 则是不可靠信道</li>
-</ol>
-<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><ul>
-<li>第一次握手<ul>
-<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。</li>
-</ul>
-</li>
-<li>第二次握手<ul>
-<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。</li>
-</ul>
-</li>
-<li>第三次握手<ul>
-<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。</li>
-</ul>
-</li>
-</ul>
-<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ul>
-<li>第一次挥手<ul>
-<li>主动关闭方发送一个FIN，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不 会再给你发数据了(当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方依然会重发这些数据)，但是，此时主动关闭方还可 以接受数据。</li>
-</ul>
-</li>
-<li>第二次挥手<ul>
-<li>被动关闭方收到FIN包后，发送一个ACK给对方，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。</li>
-</ul>
-</li>
-<li>第三次挥手<ul>
-<li>被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，我的数据也发送完了，不会再给你发数据了。</li>
-</ul>
-</li>
-<li>第四次挥手<ul>
-<li>主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号+1，至此，完成四次挥手。</li>
-</ul>
-</li>
-</ul>
-<h1 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h1><ul>
-<li>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从 WWW 服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</li>
-<li>HTTPS：是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版，即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</li>
-<li>HTTPS 协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</li>
-</ul>
-<h2 id="HTTP-与-HTTPS-有什么区别？"><a href="#HTTP-与-HTTPS-有什么区别？" class="headerlink" title="HTTP 与 HTTPS 有什么区别？"></a>HTTP 与 HTTPS 有什么区别？</h2><ul>
-<li>HTTP 协议传输的数据都是未加密的，也就是明文的，因此使用 HTTP 协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了 SSL（Secure Sockets Layer）协议用于对 HTTP 协议传输的数据进行加密，从而就诞生了 HTTPS。简单来说，HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全。</li>
-</ul>
-<h1 id="两边固定中间自适应的布局"><a href="#两边固定中间自适应的布局" class="headerlink" title="两边固定中间自适应的布局"></a>两边固定中间自适应的布局</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float实现：</span><br><span class="line">&lt;div style&#x3D;&quot;width:100%; margin:0 auto;&quot;&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:200px; float:right; background-color:#960&quot;&gt;这是右侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:150px; float:left; background:#6FF&quot;&gt;这是左侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;margin-left:150px;margin-right:200px; background-color:#9F3&quot;&gt;中间内容，自适应宽度&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">flex实现</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left, .right &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    background:  #090;</span><br><span class="line">&#125;</span><br><span class="line">.middle &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: #f00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;middle&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="输入-url-地址按下回车会发生什么"><a href="#输入-url-地址按下回车会发生什么" class="headerlink" title="输入 url 地址按下回车会发生什么"></a>输入 url 地址按下回车会发生什么</h1><p>1.输入 url 地址后，首先进行 DNS 解析，将相应的域名解析为 IP 地址； 2.客户端根据 IP 地址去寻找相应的服务器； 3.与服务器进行 TCP 的三次握手；</p>
-<ul>
-<li><p>所谓三次握手就是客户端在请求与服务器相连接时，彼此共计发送了三次数据包，就好比以下的对话：<br>_ 首先，需要明确的是，三次握手是客户端先发起请求。<br>_ （第一次）客户端：hi，服务器，在吗？我想和你建立连接，你能收到我的消息吗？（此时客户端给服务端发送了一个数据包和发送序号，即 SYN=1，Seq=X）<br>_ （第二次）服务器：hi，客户端，我在呢，我收到你的消息了，我们可以建立连接，你能收到我答复的消息吗？（此时服务端发送 syn+ack 报文，并置发送序号为 Y，再确认序号为 X+1）<br>_ （第三次）客户端：我收到你的答复了，很开心能和你建立连接。（此时客户端发送 ack 报文，并置发送序号为 Z，再确认序号为 Y+1）</p>
-<p>4.客户端找到相应的资源库；</p>
-<p>5.根据资源库返回页面信息；</p>
-<p>6.浏览器根据自身的执行机制解析页面；</p>
-<p>7.最后服务器将解析信息返回给客户端,客户端显示自己请求，即服务端返回的东西</p>
-</li>
-</ul>
-<h1 id="type-of-与-instance-of"><a href="#type-of-与-instance-of" class="headerlink" title="type of 与 instance of"></a>type of 与 instance of</h1><ul>
-<li>typeof 是判断参数是什么类型的实例，返回值为说明运算数类型的字符串。<ul>
-<li>返回值结果：“number”、“string”、“boolean”、“object”、“function”、“undefined”</li>
-<li>若参数为引用类型，始终返回“object”，对于 Array、null 始终返回“object”</li>
-</ul>
-</li>
-<li>instanceof 是用来判断一个对象在其原型链中是否存在一个构造函数的 prototype 属性<ul>
-<li>a instanceof b：判断 a 是否为 b 的实例，可以用于继承关系中</li>
-</ul>
-</li>
-</ul>
-<h1 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h1><ul>
-<li><p>html 加载时发生了什么</p>
-<ul>
-<li><p>在页面加载时，浏览器把获取到的HTML代码解析成1个DOM树，DOM树里包含了所有HTML标签，包括display:none隐藏，还有用JS动态添加的元素等。</p>
-</li>
-<li><p>DOM Tree 和样式结构体 （浏览器把所有样式【用户定义的CSS和用户代理】解析成样式结构体） 组合后构建render tree, render tree类似于DOM tree，但区别很大，因为render tree能识别样式，render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现，而且不会影响呈现的，所以就不会包含到 render tree中。我自己简单的理解就是DOM Tree和我们写的CSS结合在一起之后，渲染出了render tree。</p>
-</li>
-</ul>
-</li>
-<li><p>什么是回流</p>
-<ul>
-<li>当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流，就是在页面第一次加载的时候，这时候是一定会发生回流的，因为要构建render tree。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。</li>
-</ul>
-</li>
-<li><p>什么是重绘</p>
-<ul>
-<li>当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</li>
-</ul>
-</li>
-<li><p>区别：</p>
-<ol>
-<li>回流必将引起重绘，而重绘不一定会引起回流。</li>
-</ol>
-<ul>
-<li>比如：只有颜色改变的时候就只会发生重绘而不会引起回流</li>
-</ul>
-<ol start="2">
-<li>当页面布局和几何属性改变时就需要回流</li>
-</ol>
-<ul>
-<li>比如：添加或者删除可见的DOM元素，元素位置改变，元素尺寸改变——边距、填充、边框、宽度和高度，内容改变</li>
-</ul>
-</li>
-</ul>
-<h1 id="Session和Cookie的区别"><a href="#Session和Cookie的区别" class="headerlink" title="Session和Cookie的区别"></a>Session和Cookie的区别</h1><ol>
-<li><p>cookie数据存放在客户的浏览器上(客户端),session数据放在服务器上</p>
-<ul>
-<li><p>cookie不是很安全,别人可以分析存放在本地的cookie并进行cookie 欺骗,如果主要考虑到安全应当使用session</p>
-</li>
-<li><p>session会在一定时间内保存在服务器上.当访问增多,会比较占用你服务器的性能,如果主要考虑到减轻服务器性能方面,应当使用cookie</p>
-</li>
-</ul>
-</li>
-<li><p>单个cookie在客户端的限制是3K,就是说一个站点在客户端存放的cookie不能3K</p>
-<ul>
-<li>将登陆信息等重要信息存放为session;其他信息如果需要保留,可以放在 cookie 中</li>
-</ul>
-</li>
-<li><p>session不能区分路径,同一个用户在访问一个网站期间,所有的session在任何一个地方都可以访问到.而cookie中如果设置了路径参数,那么同一个网站中不同路径下的cookie互相是访问不到的.cookie只能是子路径访问父路径设置的cookie</p>
-</li>
-</ol>
-<h2 id="localStorage和sessionStorage区别"><a href="#localStorage和sessionStorage区别" class="headerlink" title="localStorage和sessionStorage区别"></a>localStorage和sessionStorage区别</h2><ul>
-<li><p>localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
-</li>
-<li><p>他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
-</li>
-<li><p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
-</li>
-<li><p>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
-</li>
-</ul>
-<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><ul>
-<li>token 也称作令牌，由uid+time+sign[+固定参数]</li>
-<li>token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</li>
-<li>token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中</li>
-<li>token认证流程<ul>
-<li>token 的认证流程与cookie很相似</li>
-<li>用户登录，成功后服务器返回Token给客户端。</li>
-<li>客户端收到数据后保存在客户端</li>
-<li>客户端再次访问服务器，将token放入headers中</li>
-<li>服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
-<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
-<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
-</ul>
-<h1 id="node中import和require的区别"><a href="#node中import和require的区别" class="headerlink" title="node中import和require的区别"></a>node中import和require的区别</h1><ul>
-<li>import和require都是被模块化所使用</li>
-<li>require是运行时调用，所以require理论上可以运用在代码的任何地方</li>
-<li>import是编译时调用，所以必须放在文件开头</li>
-</ul>
-<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p><a href="https://blog.csdn.net/qq_42992643/article/details/82959720" target="_blank" rel="noopener">https://blog.csdn.net/qq_42992643/article/details/82959720</a></p>
-<h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><ul>
-<li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
-<li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
-</ul>
-<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
-<ul>
-<li>js是单线程的，浏览器是多线程的</li>
-<li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
-<li>宏任务：setTimeout，setInterval，整体代码script，I/O</li>
-<li>微任务：Promise，process.nextTick</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>性能优化</title>
-    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
-<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
-<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
-<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
-<li>优点<ul>
-<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
-<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
-<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
-<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
-</ul>
-</li>
-</ul>
-<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
-* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
-* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
-<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
-<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
-<li>优点<ul>
-<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
-<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
-<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
-</ul>
-</li>
-</ul>
-<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
-<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
-<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
-<li>强缓存（200）<ul>
-<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
-</ul>
-</li>
-<li>协商缓存（304 资源未修改）<ul>
-<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
-</ul>
-</li>
-<li>Service Worker<ul>
-<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
-<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
-</ul>
-</li>
-</ul>
-<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
-<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
-<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
-</ul>
-<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
-<li>骨架屏<ul>
-<li>在数据加载时显示骨架，优化用户体验</li>
-</ul>
-</li>
-<li>缓存路由组件keep-alive<ul>
-<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
-<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
-</ul>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>服务器竟然被挖矿程序攻击！？</title>
-    <url>/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>今天一大早醒来，洗漱了吃完饭，准备接着进度学习呢，突然手机短信提示服务器安全紧急事件：挖矿程序，上云服务控制台一顿找才发现服务器的cpu竟然爆了，平时服务器就放个博客，cpu利用率也才10%都不到，于是开始着手解决这个问题</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="挖矿程序是什么？"><a href="#挖矿程序是什么？" class="headerlink" title="挖矿程序是什么？"></a>挖矿程序是什么？</h1><ul>
-<li><p>挖矿是跟区块链以及虚拟币有关系，虚拟币是挖矿挖出来的，每间隔一段时间，比特币或者以太坊虚拟币就会在他们的区块链系统上生成一个块的随机代码，网络上的所有服务器都可以去找这个随机代码，也就是挖矿的过程对这个随机代码进行挖掘，谁挖到这个代码就会产生一个区块链的块，那么比特币跟以太坊就会奖励找到随机代码的人，奖励一定数量的虚拟币，那么挖矿的人就会有动力去挖矿，去维护整个区块链节点的网络正常运行，挖矿需要计算哈希值需要服务器的处理能力，所以有些攻击者利用入侵别人服务器来给自己挖矿，获取利润。</p>
-</li>
-<li><p>简单的来说就是别人利用你服务器的漏洞植入一段程序，然后用你的服务器帮他挖矿来帮他谋求利益</p>
-</li>
-</ul>
-<h1 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h1><ol>
-<li><strong>找到占用率高的进程并杀死</strong></li>
-</ol>
-<ul>
-<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C1.png" alt></li>
-<li>发现cpu占用率爆满</li>
-<li>然后我们找到占有率最高的进程，找到他的pid</li>
-<li>然后把该进程kill掉  kill -9 pid</li>
-<li>然后cpu恢复了平静<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C2.png" alt></li>
-</ul>
-<ol start="2">
-<li><strong>查看是否有定时任务</strong></li>
-</ol>
-<ul>
-<li>我等待了半个小时发现挖矿程序并没有卷土重来</li>
-<li>但是为了以防万一我还是把备用方案做好</li>
-<li>挖矿程序一般都有定时任务，查看定时任务得去crontab文件里找<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;crontab</span><br><span class="line">一般在下面会有可疑的任务，根据任务找到脚本，并且删掉他</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="3">
-<li><strong>删除残余文件</strong></li>
-</ol>
-<ul>
-<li>cd /proc/进程号</li>
-<li>删除路径下的所有文件</li>
-</ul>
-<p><strong><em>不得不说阿里云安全售卖的那些服务并不是没有道理的，原来我他给我提示的那些风险警告并不是没用的，我一直以为是他为了售卖自己的产品故意安排这么多漏洞的，这会见识到了</em></strong></p>
-<h1 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h1><ul>
-<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C721.png" alt></li>
-<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C7211.png" alt></li>
-<li>果然有人在用我的服务器挖矿</li>
-<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C72111.png" alt></li>
-<li>发现了他的启动程序在/home/git/xmr64下</li>
-<li>然后杀死进程</li>
-<li>删除rm -f启动程序</li>
-<li>删除rm -rf进程残留文件</li>
-</ul>
-<p><strong><em>这下应该清净了吧，启动文件都没有了，应该不会再找上门了吧</em></strong></p>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>阿里云服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>节流和防抖动</title>
-    <url>/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
-<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
-<li><strong>节流是固定时间内只触发一次函数</strong></li>
-<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cthrottling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
-<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cdebounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>节流</tag>
-        <tag>防抖动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Grunt</title>
-    <url>/2019/04/05/Grunt/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
-</blockquote>
-<a id="more"></a>
-
-<ul>
-<li>什么是项目构建？<ul>
-<li>编译项目中的js,sass,less</li>
-<li>合并js/css等资源文件</li>
-<li>压缩js/css/html等资源文件</li>
-<li>js语法的检查</li>
-</ul>
-</li>
-<li>构建工具的作用？<ul>
-<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
-</ul>
-</li>
-<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
-<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
-<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
-<li>常用功能:<ul>
-<li><strong>合并文件</strong>(js/css)</li>
-<li><strong>压缩文件</strong>(js/css)</li>
-<li><strong>语法检查</strong>(js)</li>
-<li><strong>less/sass预编译处理</strong> </li>
-</ul>
-</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><p>举例创建一个简单的应用grunt_test</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
-<p>node -v</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
-<p>npm install -g grunt-cli </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
-<p>npm install grunt –save-dev</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
-<p>grunt  //提示 Warning: Task “default” not found</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
-<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
-<pre><code>// 1. 初始化插件配置
-grunt.initConfig({
-    //主要编码处
-});
-
-// 2. 加载插件任务
-// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-
-// 3. 注册构建任务
-grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
-<p>  npm install grunt-contrib-concat –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code> concat: {
-   options: { //可选项配置
-     separator: &apos;;&apos;   //使用;连接合并
-   },
-   build: { //此名称任意
-     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
-     dest: &quot;build/js/built.js&quot; //输出的js文件
-   }
- }
- <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个built.js
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
-uglify : {
-  options: {  //不是必须的
-    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
-    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
-  },
-  build: {
-    files: {
-      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个压缩的js文件
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
-<p>   {</p>
-<pre><code>&quot;curly&quot;: true,
-&quot;eqeqeq&quot;: true,
-&quot;eqnull&quot;: true,
-&quot;expr&quot; : true,
-&quot;immed&quot;: true,
-&quot;newcap&quot;: true,
-&quot;noempty&quot;: true,
-&quot;noarg&quot;: true,
-&quot;regexp&quot;: true,
-&quot;browser&quot;: true,
-&quot;devel&quot;: true,
-&quot;node&quot;: true,
-&quot;boss&quot;: false,
-
-//不能使用未定义的变量
-&quot;undef&quot;: true,
-//语句后面必须有分号
-&quot;asi&quot;: false,
-//预定义不检查的全局变量
-&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>jshint : {
-  options: {
-    jshintrc : &apos;.jshintrc&apos; //指定配置文件
-  },
-  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>cssmin:{
-  options: {
-    shorthandCompacting: false,//快速压缩
-    roundingPrecision: -1//精确度
-  },
-  build: {
-    files: {
-        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt    //在build/css/下生成output.min.css
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
-watch : {
-  scripts : {
-    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
-    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
-    options : {spawn : false}  
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
-改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
-```</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>自动化构建工具</category>
-      </categories>
-      <tags>
-        <tag>Grunt</tag>
       </tags>
   </entry>
   <entry>
@@ -6340,7 +5918,7 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
 </ul>
 </li>
 </ol>
-<p><img src="/2018/07/10/htmlcss/htmlcss.jpg" alt></p>
+<p><img src="/htmlcss/htmlcss.jpg" alt></p>
 <h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><blockquote>
 <p>display可以将行内元素变成块元素，可以用来改变行内元素的宽高</p>
 </blockquote>
@@ -7179,42 +6757,464 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
         <category>前端三大块</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
         <tag>HTML</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2018/07/02/hello%20world/</url>
+    <title>less</title>
+    <url>/2019/04/21/less/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+<p>序<br><br>less是一门css的预处理语言</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li>Git</li>
-<li>Nginx</li>
-<li>Nodejs</li>
-<li>搭载环境<ol>
-<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
-<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
-<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
-</ol>
+<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
+<li>less是一门css的预处理语言<ul>
+<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
+<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
+<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
+<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
+</ul>
 </li>
 </ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li><p>变量，在变量中可以存储一个任意的值</p>
 <ul>
-<li>hexo<ol>
-<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
-<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
-</ol>
+<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
+</li>
+<li><p>变量的语法： @变量名</p>
+</li>
+<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
+</li>
+<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
+</li>
+<li><p>变量发生重名时，会优先使用比较近的变量</p>
+</li>
+<li><p>可以在变量声明前就使用变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
+</ul>
+</li>
+<li><p>子元素选择器&gt;</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>&amp; 表示外层(只向外一层)的父元素</p>
+</li>
+<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>mixin 混合</p>
+<ul>
+<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
+<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
+</ul>
+</li>
+<li><p>在混合函数中可以直接设置变量</p>
+</li>
+<li><p>还可以调用混合函数，按顺序传递参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
+</li>
+<li><p>加深颜色darken(颜色，百分比)</p>
 </li>
 </ul>
-<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
+<li><p>@import用来将其他的less引入到当前的less</p>
+</li>
+<li><p>在less中所有的数值都可以直接进行运算</p>
+</li>
+<li><p>easy  less配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
-        <category>日常</category>
+        <category>前端三大块</category>
       </categories>
       <tags>
-        <tag>杂记</tag>
+        <tag>CSS</tag>
+        <tag>less</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小本本</title>
+    <url>/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>用来记录一些繁杂的东西</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><ol>
+<li>定位<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父级开启定位 子级相对定位</span><br><span class="line">top：50%;</span><br><span class="line">left：50%;</span><br><span class="line">transform：translate(-50%,-50%); &#x2F;&#x2F;自身的一半</span><br></pre></td></tr></table></figure></li>
+<li>flex<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:flex;</span><br><span class="line">justify-content:center; 主轴分配空白</span><br><span class="line">align-item:center; 辅轴分配空白</span><br></pre></td></tr></table></figure></li>
+<li>table-cell<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:table-cell;</span><br><span class="line">vertical-align:middle;</span><br><span class="line">text-align:center;</span><br><span class="line">&#x2F;*父容器必须指定宽高 *&#x2F;</span><br><span class="line">height:500px;</span><br><span class="line">width:500px;</span><br><span class="line">子元素</span><br><span class="line">display:inline-block;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
+<li>通过 verticle-align:middle 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">vertical-align:middle;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过 display:flex 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 display:table-cell 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:table;</span><br><span class="line">子元素display：table-cell;</span><br></pre></td></tr></table></figure>
+
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
+<li><p>通过 margin: 0 auto; text-align: center 实现</p>
+</li>
+<li><p>通过 display:flex 实现</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">     flex-direction:column;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 width:fit-content 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">width:fit-content;</span><br><span class="line">margin: 0 auto ;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
+
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><ul>
+<li><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
+<h2 id="1-JSONP-跨域"><a href="#1-JSONP-跨域" class="headerlink" title="1. JSONP 跨域"></a>1. JSONP 跨域</h2></li>
+<li><p>jsonp 的原理就是利用&lt;script&gt;标签没有跨域限制，通过&lt;script&gt;标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span><br><span class="line">    script.src &#x3D; &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login?user&#x3D;admin&amp;callback&#x3D;handleCallback&#39;;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 回调执行函数</span><br><span class="line">    function handleCallback(res) &#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">handleCallback(&#123;&quot;success&quot;: true, &quot;user&quot;: &quot;admin&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-CORS-跨域"><a href="#2-CORS-跨域" class="headerlink" title="2. CORS 跨域"></a>2. CORS 跨域</h2><ul>
+<li>普通跨域请求：只服务端设置 Access-Control-Allow-Origin 即可，前端无须设置，若要带 cookie 请求：前后端都需要设置</li>
+<li>跨域到哪个服务器就在哪个服务器上配置响应头</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest(); &#x2F;&#x2F; IE8&#x2F;9需用window.XDomainRequest兼容</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials &#x3D; true;</span><br><span class="line"></span><br><span class="line">xhr.open(&#39;post&#39;, &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login&#39;, true);</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line">xhr.send(&#39;user&#x3D;admin&#39;);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
+<li>利用 node + webpack + webpack-dev-server 代理接口跨域。在开发环境下，由于 vue 渲染服务和接口代理服务都是 webpack-dev-server 同一个，所以页面与代理接口之间不再跨域，无须设置 headers 跨域信息了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        proxy: [&#123;</span><br><span class="line">            context: &#39;&#x2F;login&#39;,</span><br><span class="line">            target: &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#39;,  &#x2F;&#x2F; 代理跨域目标接口</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">            cookieDomainRewrite: &#39;www.domain1.com&#39;  &#x2F;&#x2F; 可以为false，表示不修改</span><br><span class="line">        &#125;],</span><br><span class="line">        noInfo: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>TCP 面向连接（如打电话要先拨号建立连接）;UDP 是无连接的，即发送数据之前不需要建立连接</li>
+<li>TCP 提供可靠的服务。也就是说，通过 TCP 连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP 尽最大努力交付，即不保证可靠交付</li>
+<li>TCP 面向字节流，实际上是 TCP 把数据看成一连串无结构的字节流;UDP 是面向报文的，UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如 IP 电话，实时视频会议等）</li>
+<li>每一条 TCP 连接只能是点到点的;UDP 支持一对一，一对多，多对一和多对多的交互通信</li>
+<li>TCP 首部开销 20 字节;UDP 的首部开销小，只有 8 个字节</li>
+<li>TCP 的逻辑通信信道是全双工的可靠信道，UDP 则是不可靠信道</li>
+</ol>
+<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><ul>
+<li>第一次握手<ul>
+<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。</li>
+</ul>
+</li>
+<li>第二次握手<ul>
+<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。</li>
+</ul>
+</li>
+<li>第三次握手<ul>
+<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ul>
+<li>第一次挥手<ul>
+<li>主动关闭方发送一个FIN，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不 会再给你发数据了(当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方依然会重发这些数据)，但是，此时主动关闭方还可 以接受数据。</li>
+</ul>
+</li>
+<li>第二次挥手<ul>
+<li>被动关闭方收到FIN包后，发送一个ACK给对方，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。</li>
+</ul>
+</li>
+<li>第三次挥手<ul>
+<li>被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，我的数据也发送完了，不会再给你发数据了。</li>
+</ul>
+</li>
+<li>第四次挥手<ul>
+<li>主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号+1，至此，完成四次挥手。</li>
+</ul>
+</li>
+</ul>
+<h1 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h1><ul>
+<li>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从 WWW 服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</li>
+<li>HTTPS：是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版，即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</li>
+<li>HTTPS 协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</li>
+</ul>
+<h2 id="HTTP-与-HTTPS-有什么区别？"><a href="#HTTP-与-HTTPS-有什么区别？" class="headerlink" title="HTTP 与 HTTPS 有什么区别？"></a>HTTP 与 HTTPS 有什么区别？</h2><ul>
+<li>HTTP 协议传输的数据都是未加密的，也就是明文的，因此使用 HTTP 协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了 SSL（Secure Sockets Layer）协议用于对 HTTP 协议传输的数据进行加密，从而就诞生了 HTTPS。简单来说，HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全。</li>
+</ul>
+<h1 id="两边固定中间自适应的布局"><a href="#两边固定中间自适应的布局" class="headerlink" title="两边固定中间自适应的布局"></a>两边固定中间自适应的布局</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float实现：</span><br><span class="line">&lt;div style&#x3D;&quot;width:100%; margin:0 auto;&quot;&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:200px; float:right; background-color:#960&quot;&gt;这是右侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:150px; float:left; background:#6FF&quot;&gt;这是左侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;margin-left:150px;margin-right:200px; background-color:#9F3&quot;&gt;中间内容，自适应宽度&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">flex实现</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left, .right &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    background:  #090;</span><br><span class="line">&#125;</span><br><span class="line">.middle &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: #f00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;middle&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输入-url-地址按下回车会发生什么"><a href="#输入-url-地址按下回车会发生什么" class="headerlink" title="输入 url 地址按下回车会发生什么"></a>输入 url 地址按下回车会发生什么</h1><p>1.输入 url 地址后，首先进行 DNS 解析，将相应的域名解析为 IP 地址； 2.客户端根据 IP 地址去寻找相应的服务器； 3.与服务器进行 TCP 的三次握手；</p>
+<ul>
+<li><p>所谓三次握手就是客户端在请求与服务器相连接时，彼此共计发送了三次数据包，就好比以下的对话：<br>_ 首先，需要明确的是，三次握手是客户端先发起请求。<br>_ （第一次）客户端：hi，服务器，在吗？我想和你建立连接，你能收到我的消息吗？（此时客户端给服务端发送了一个数据包和发送序号，即 SYN=1，Seq=X）<br>_ （第二次）服务器：hi，客户端，我在呢，我收到你的消息了，我们可以建立连接，你能收到我答复的消息吗？（此时服务端发送 syn+ack 报文，并置发送序号为 Y，再确认序号为 X+1）<br>_ （第三次）客户端：我收到你的答复了，很开心能和你建立连接。（此时客户端发送 ack 报文，并置发送序号为 Z，再确认序号为 Y+1）</p>
+<p>4.客户端找到相应的资源库；</p>
+<p>5.根据资源库返回页面信息；</p>
+<p>6.浏览器根据自身的执行机制解析页面；</p>
+<p>7.最后服务器将解析信息返回给客户端,客户端显示自己请求，即服务端返回的东西</p>
+</li>
+</ul>
+<h1 id="type-of-与-instance-of"><a href="#type-of-与-instance-of" class="headerlink" title="type of 与 instance of"></a>type of 与 instance of</h1><ul>
+<li>typeof 是判断参数是什么类型的实例，返回值为说明运算数类型的字符串。<ul>
+<li>返回值结果：“number”、“string”、“boolean”、“object”、“function”、“undefined”</li>
+<li>若参数为引用类型，始终返回“object”，对于 Array、null 始终返回“object”</li>
+</ul>
+</li>
+<li>instanceof 是用来判断一个对象在其原型链中是否存在一个构造函数的 prototype 属性<ul>
+<li>a instanceof b：判断 a 是否为 b 的实例，可以用于继承关系中</li>
+</ul>
+</li>
+</ul>
+<h1 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h1><ul>
+<li><p>html 加载时发生了什么</p>
+<ul>
+<li><p>在页面加载时，浏览器把获取到的HTML代码解析成1个DOM树，DOM树里包含了所有HTML标签，包括display:none隐藏，还有用JS动态添加的元素等。</p>
+</li>
+<li><p>DOM Tree 和样式结构体 （浏览器把所有样式【用户定义的CSS和用户代理】解析成样式结构体） 组合后构建render tree, render tree类似于DOM tree，但区别很大，因为render tree能识别样式，render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现，而且不会影响呈现的，所以就不会包含到 render tree中。我自己简单的理解就是DOM Tree和我们写的CSS结合在一起之后，渲染出了render tree。</p>
+</li>
+</ul>
+</li>
+<li><p>什么是回流</p>
+<ul>
+<li>当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流，就是在页面第一次加载的时候，这时候是一定会发生回流的，因为要构建render tree。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。</li>
+</ul>
+</li>
+<li><p>什么是重绘</p>
+<ul>
+<li>当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</li>
+</ul>
+</li>
+<li><p>区别：</p>
+<ol>
+<li>回流必将引起重绘，而重绘不一定会引起回流。</li>
+</ol>
+<ul>
+<li>比如：只有颜色改变的时候就只会发生重绘而不会引起回流</li>
+</ul>
+<ol start="2">
+<li>当页面布局和几何属性改变时就需要回流</li>
+</ol>
+<ul>
+<li>比如：添加或者删除可见的DOM元素，元素位置改变，元素尺寸改变——边距、填充、边框、宽度和高度，内容改变</li>
+</ul>
+</li>
+</ul>
+<h1 id="Session和Cookie的区别"><a href="#Session和Cookie的区别" class="headerlink" title="Session和Cookie的区别"></a>Session和Cookie的区别</h1><ol>
+<li><p>cookie数据存放在客户的浏览器上(客户端),session数据放在服务器上</p>
+<ul>
+<li><p>cookie不是很安全,别人可以分析存放在本地的cookie并进行cookie 欺骗,如果主要考虑到安全应当使用session</p>
+</li>
+<li><p>session会在一定时间内保存在服务器上.当访问增多,会比较占用你服务器的性能,如果主要考虑到减轻服务器性能方面,应当使用cookie</p>
+</li>
+</ul>
+</li>
+<li><p>单个cookie在客户端的限制是3K,就是说一个站点在客户端存放的cookie不能3K</p>
+<ul>
+<li>将登陆信息等重要信息存放为session;其他信息如果需要保留,可以放在 cookie 中</li>
+</ul>
+</li>
+<li><p>session不能区分路径,同一个用户在访问一个网站期间,所有的session在任何一个地方都可以访问到.而cookie中如果设置了路径参数,那么同一个网站中不同路径下的cookie互相是访问不到的.cookie只能是子路径访问父路径设置的cookie</p>
+</li>
+</ol>
+<h2 id="localStorage和sessionStorage区别"><a href="#localStorage和sessionStorage区别" class="headerlink" title="localStorage和sessionStorage区别"></a>localStorage和sessionStorage区别</h2><ul>
+<li><p>localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
+</li>
+<li><p>他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
+</li>
+<li><p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
+</li>
+<li><p>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
+</li>
+</ul>
+<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><ul>
+<li>token 也称作令牌，由uid+time+sign[+固定参数]</li>
+<li>token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</li>
+<li>token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中</li>
+<li>token认证流程<ul>
+<li>token 的认证流程与cookie很相似</li>
+<li>用户登录，成功后服务器返回Token给客户端。</li>
+<li>客户端收到数据后保存在客户端</li>
+<li>客户端再次访问服务器，将token放入headers中</li>
+<li>服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
+<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
+<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
+</ul>
+<h1 id="node中import和require的区别"><a href="#node中import和require的区别" class="headerlink" title="node中import和require的区别"></a>node中import和require的区别</h1><ul>
+<li>import和require都是被模块化所使用</li>
+<li>require是运行时调用，所以require理论上可以运用在代码的任何地方</li>
+<li>import是编译时调用，所以必须放在文件开头</li>
+</ul>
+<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p><a href="https://blog.csdn.net/qq_42992643/article/details/82959720" target="_blank" rel="noopener">https://blog.csdn.net/qq_42992643/article/details/82959720</a></p>
+<h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><ul>
+<li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
+<li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
+</ul>
+<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2018/08/30/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%B0%8F%E6%9C%AC%E6%9C%AC%5C%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+<ul>
+<li>js是单线程的，浏览器是多线程的</li>
+<li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
+<li>宏任务：setTimeout，setInterval，整体代码script，I/O</li>
+<li>微任务：Promise，process.nextTick</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>性能优化</title>
+    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
+<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
+<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
+<li>优点<ul>
+<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
+<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
+<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
+<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
+* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
+* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
+<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
+<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
+<li>优点<ul>
+<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
+<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
+<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
+</ul>
+</li>
+</ul>
+<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
+<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
+<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
+<li>强缓存（200）<ul>
+<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
+</ul>
+</li>
+<li>协商缓存（304 资源未修改）<ul>
+<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
+</ul>
+</li>
+<li>Service Worker<ul>
+<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
+<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
+</ul>
+</li>
+</ul>
+<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
+<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
+<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
+</ul>
+<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
+<li>骨架屏<ul>
+<li>在数据加载时显示骨架，优化用户体验</li>
+</ul>
+</li>
+<li>缓存路由组件keep-alive<ul>
+<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
+<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>服务器竟然被挖矿程序攻击！？</title>
+    <url>/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>今天一大早醒来，洗漱了吃完饭，准备接着进度学习呢，突然手机短信提示服务器安全紧急事件：挖矿程序，上云服务控制台一顿找才发现服务器的cpu竟然爆了，平时服务器就放个博客，cpu利用率也才10%都不到，于是开始着手解决这个问题</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="挖矿程序是什么？"><a href="#挖矿程序是什么？" class="headerlink" title="挖矿程序是什么？"></a>挖矿程序是什么？</h1><ul>
+<li><p>挖矿是跟区块链以及虚拟币有关系，虚拟币是挖矿挖出来的，每间隔一段时间，比特币或者以太坊虚拟币就会在他们的区块链系统上生成一个块的随机代码，网络上的所有服务器都可以去找这个随机代码，也就是挖矿的过程对这个随机代码进行挖掘，谁挖到这个代码就会产生一个区块链的块，那么比特币跟以太坊就会奖励找到随机代码的人，奖励一定数量的虚拟币，那么挖矿的人就会有动力去挖矿，去维护整个区块链节点的网络正常运行，挖矿需要计算哈希值需要服务器的处理能力，所以有些攻击者利用入侵别人服务器来给自己挖矿，获取利润。</p>
+</li>
+<li><p>简单的来说就是别人利用你服务器的漏洞植入一段程序，然后用你的服务器帮他挖矿来帮他谋求利益</p>
+</li>
+</ul>
+<h1 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h1><ol>
+<li><strong>找到占用率高的进程并杀死</strong></li>
+</ol>
+<ul>
+<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C1.png" alt></li>
+<li>发现cpu占用率爆满</li>
+<li>然后我们找到占有率最高的进程，找到他的pid</li>
+<li>然后把该进程kill掉  kill -9 pid</li>
+<li>然后cpu恢复了平静<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C2.png" alt></li>
+</ul>
+<ol start="2">
+<li><strong>查看是否有定时任务</strong></li>
+</ol>
+<ul>
+<li>我等待了半个小时发现挖矿程序并没有卷土重来</li>
+<li>但是为了以防万一我还是把备用方案做好</li>
+<li>挖矿程序一般都有定时任务，查看定时任务得去crontab文件里找<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;crontab</span><br><span class="line">一般在下面会有可疑的任务，根据任务找到脚本，并且删掉他</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li><strong>删除残余文件</strong></li>
+</ol>
+<ul>
+<li>cd /proc/进程号</li>
+<li>删除路径下的所有文件</li>
+</ul>
+<p><strong><em>不得不说阿里云安全售卖的那些服务并不是没有道理的，原来我他给我提示的那些风险警告并不是没用的，我一直以为是他为了售卖自己的产品故意安排这么多漏洞的，这会见识到了</em></strong></p>
+<h1 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h1><ul>
+<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C721.png" alt></li>
+<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C7211.png" alt></li>
+<li>果然有人在用我的服务器挖矿</li>
+<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2019/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/%5C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F%5C72111.png" alt></li>
+<li>发现了他的启动程序在/home/git/xmr64下</li>
+<li>然后杀死进程</li>
+<li>删除rm -f启动程序</li>
+<li>删除rm -rf进程残留文件</li>
+</ul>
+<p><strong><em>这下应该清净了吧，启动文件都没有了，应该不会再找上门了吧</em></strong></p>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>阿里云服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>节流和防抖动</title>
+    <url>/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+
+<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
+<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
+<li><strong>节流是固定时间内只触发一次函数</strong></li>
+<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cthrottling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
+<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2018/08/30/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8%5Cdebounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>节流</tag>
+        <tag>防抖动</tag>
       </tags>
   </entry>
 </search>
