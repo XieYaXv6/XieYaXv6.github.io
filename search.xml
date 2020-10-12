@@ -7171,8 +7171,9 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>利用object.defineProperty（）重写对象的set方法和get方法。通过这两种方法对data中的数据进行监控，当修改数据值时，触发set；当访问数据值时，触发get。</li>
 <li>监控数据变化是为了更新页面，更新变化数据对应的DOM节点</li>
 <li>完成上述要求需要底层虚拟DOM的支持</li>
+<li>vue3中用proxy来监听数据，只需要监听对象，对象中的属性发生改变自动捕获。</li>
 </ul>
-<h1 id="Vue中的虚拟dom"><a href="#Vue中的虚拟dom" class="headerlink" title="Vue中的虚拟dom"></a>Vue中的虚拟dom</h1><ul>
+<h1 id="Vue中的虚拟dom及diff算法"><a href="#Vue中的虚拟dom及diff算法" class="headerlink" title="Vue中的虚拟dom及diff算法"></a>Vue中的虚拟dom及diff算法</h1><ul>
 <li>vue2引入了虚拟dom，渲染速度比vue1提高了2-4倍，而且大大降低了内存消耗</li>
 <li>模板转换成视图的过程<ol>
 <li>将模板编译转换成渲染函数，执行渲染函数得到一个虚拟节点树</li>
@@ -7188,6 +7189,31 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>patch(也叫做patching算法)：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新。这点我们从单词含义就可以看出， patch本身就有补丁、修补的意思，其实际作用是在现有DOM上进行修改来实现更新视图的目的。</li>
 </ol>
 </li>
+<li>虚拟dom是什么？<ul>
+<li>虚拟dom是一颗以js对象（VNode节点）为基础的树，用对象属性来描述节点。它实际上是对真实dom的抽象，最后通过一系列操作可以使这棵树映射到真实环境上。虚拟dom就相当于缓存，介于cpu（JS）和硬盘（dom）之间,js只操作虚拟dom，最后再把变更的地方写入真实dom中。</li>
+<li>虚拟dom的最终目标是将虚拟节点渲染到视图上，如果直接用虚拟节点覆盖旧节点，会有很多不必要的dom操作，为了避免这种情况，虚拟dom在虚拟节点映射到视图的过程中，将虚拟节点与上一次的旧虚拟节点做对比，找到需要更新的节点进行dom操作，从而避免不必要的操作。</li>
+<li>其实虚拟DOM在Vue.js主要做了两件事：<ol>
+<li>提供与真实DOM节点所对应的虚拟节点vnode</li>
+<li>将虚拟节点vnode和旧虚拟节点oldVnode进行对比，然后更新视图</li>
+</ol>
+</li>
+<li>模板 → 渲染函数 → 虚拟DOM树 → 真实DOM</li>
+</ul>
+</li>
+<li>diff算法<ul>
+<li>为了实现高效的DOM操作，一套高效的虚拟DOM diff算法显得很有必要。我们通过patch 的核心—-diff 算法，找出本次DOM需要更新的节点来更新，其他的不更新。思想是仅在同级的vnode间做diff，递归地进行同级vnode的diff，最终实现整个DOM树的更新。</li>
+<li>diff 算法包括几个步骤：<ol>
+<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
+<li>把所记录的差异应用到所构建的真正的DOM树上，视图就更新了</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="XSS攻击的原理及解决办法"><a href="#XSS攻击的原理及解决办法" class="headerlink" title="XSS攻击的原理及解决办法"></a>XSS攻击的原理及解决办法</h1><ul>
+<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
+<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
 </ul>
 ]]></content>
   </entry>
