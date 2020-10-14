@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="网络安全"><meta name="keywords" content=""><meta name="author" content="XYX"><meta name="copyright" content="XYX"><title>网络安全 | XYX's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?42b25629bbf1fae4313b2d989bcab163";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XYX's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">28</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">我的朋友们</div><a class="author-info-links__name text-center" href="https://www.ntutn.top/" target="_blank" rel="noopener">归零幻想</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">网络安全</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-08-13</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.5k</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><ul>
+<li><a id="more"></a>
+</li>
+</ul>
+<ol>
+<li>XSS</li>
+</ol>
+<ul>
+<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
+<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
+<li>它可以分为两类：反射型和持久型</li>
+<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
+<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
+<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
+<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
+</ul>
+<ol start="2">
+<li>CSRF</li>
+</ol>
+<ul>
+<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
+</li>
+<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/13/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
+</li>
+<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
+</li>
+<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
+</li>
+</ul>
+<ol>
+<li><p>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</p>
+</li>
+<li><p>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</p>
+</li>
+<li><p>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</p>
+</li>
+<li><p>点击劫持</p>
+</li>
+</ol>
+<ul>
+<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
+<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
+<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
+<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
+<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>DDOS攻击</li>
+</ol>
+<ul>
+<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
+<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
+<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
+</ul>
+<ol start="5">
+<li>SQL注入</li>
+</ol>
+<ul>
+<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
+<li>解决方案 :<ol>
+<li>对用户的输入进行校验</li>
+<li>对主要信息加密</li>
+</ol>
+</li>
+</ul>
+<ol start="6">
+<li>DNS挟持</li>
+</ol>
+<ul>
+<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
+<li>解决方案：手动指定DNS服务器地址</li>
+</ul>
+<ol start="7">
+<li>钓鱼攻击</li>
+</ol>
+<ul>
+<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
+<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
+</ul>
+<ol start="8">
+<li>控制台注入代码</li>
+</ol>
+<ul>
+<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
+<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
+</ul>
+</div></article><div class="post-meta__tag-list"></div><div class="social-share pull-right" data-disabled="Linkedin,点点,Facebook,Twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="next-post pull-right"><a href="/2020/01/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"><span>Vue实战之电商后台管理系统</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YiMuUS8mJ9iQH4i0HKdegAjN-gzGzoHsz',
+  appKey:'S42xmXqdEnhtc3ibq7F71WYu',
+  placeholder:'Just go go',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'5',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div class="layout" id="footer"><div class="copyright">&copy;2020 By XYX</div><div class="framework-info"></div><div class="footer_custom_text">hitokoto</div><div class="icp"><a><span>鲁ICP备20021450号</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span></span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;"></a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

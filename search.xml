@@ -7211,9 +7211,17 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 </li>
 </ul>
-<h1 id="XSS攻击的原理及解决办法"><a href="#XSS攻击的原理及解决办法" class="headerlink" title="XSS攻击的原理及解决办法"></a>XSS攻击的原理及解决办法</h1><ul>
-<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
-<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
+<h1 id="computed和watch的区别"><a href="#computed和watch的区别" class="headerlink" title="computed和watch的区别"></a>computed和watch的区别</h1><ul>
+<li>computed是用于定义基于数据之上的数据；并且computed是有缓存的，在数据还没有变化时访问时，计算属性会立即返回缓存中之前计算的结果。</li>
+<li>watch是在某个数据变化时做一些事情，可以是调用函数，也可以像computed返回数据，而且监听的是一个参数，而computed可以依赖多个参数。</li>
+</ul>
+<h1 id="MVC-MVVM"><a href="#MVC-MVVM" class="headerlink" title="MVC/MVVM"></a>MVC/MVVM</h1><ul>
+<li>mvc用户对View的操作交给了Controller处理，在Controller中响应View的事件调用Model的接口对数据进行操作，一旦Model发生变化便通知相关视图进行更新。</li>
+<li>在原生的html+js中，可以将html看成view;js看成controller，负责处理用户与应用的交互，响应对view的操作（对事件的监听），调用Model对数据进行操作，完成model与view的同步（根据model的改变，通过选择器对view进行操作）;将js的ajax当做Model，也就是数据层，通过ajax从服务器获取数据。</li>
+<li>Model的对象不只包含数据，也有对属性（name）的监听事件</li>
+<li>MVVM与MVC最大的区别就是：它实现了View和Model的自动同步，也就是当Model的属性改变时，我们不用再自己手动操作Dom元素，来改变View的显示，而是改变属性后该属性对应View层显示会自动改变</li>
+<li>Vue实例中的data相当于Model层，而ViewModel层的核心是Vue中的双向数据绑定，即Model变化时VIew可以实时更新，View变化也能让Model发生变化</li>
+<li>MVVM比MVC精简很多，不仅简化了业务与界面的依赖，还解决了数据频繁更新的问题，不用再用选择器操作DOM元素</li>
 </ul>
 ]]></content>
   </entry>
@@ -7299,5 +7307,98 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>节流</tag>
         <tag>防抖动</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>网络安全</title>
+    <url>/2020/08/13/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<ul>
+<li><a id="more"></a>
+</li>
+</ul>
+<ol>
+<li>XSS</li>
+</ol>
+<ul>
+<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
+<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
+<li>它可以分为两类：反射型和持久型</li>
+<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
+<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
+<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
+<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
+</ul>
+<ol start="2">
+<li>CSRF</li>
+</ol>
+<ul>
+<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
+</li>
+<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/13/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
+</li>
+<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
+</li>
+<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
+</li>
+</ul>
+<ol>
+<li><p>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</p>
+</li>
+<li><p>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</p>
+</li>
+<li><p>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</p>
+</li>
+<li><p>点击劫持</p>
+</li>
+</ol>
+<ul>
+<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
+<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
+<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
+<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
+<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>DDOS攻击</li>
+</ol>
+<ul>
+<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
+<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
+<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
+</ul>
+<ol start="5">
+<li>SQL注入</li>
+</ol>
+<ul>
+<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
+<li>解决方案 :<ol>
+<li>对用户的输入进行校验</li>
+<li>对主要信息加密</li>
+</ol>
+</li>
+</ul>
+<ol start="6">
+<li>DNS挟持</li>
+</ol>
+<ul>
+<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
+<li>解决方案：手动指定DNS服务器地址</li>
+</ul>
+<ol start="7">
+<li>钓鱼攻击</li>
+</ol>
+<ul>
+<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
+<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
+</ul>
+<ol start="8">
+<li>控制台注入代码</li>
+</ol>
+<ul>
+<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
+<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
+</ul>
+]]></content>
   </entry>
 </search>
