@@ -6839,7 +6839,13 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
     <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p>-</p>
 <a id="more"></a>
-<h1 id="懒加载与预加载"><a href="#懒加载与预加载" class="headerlink" title="懒加载与预加载"></a>懒加载与预加载</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+
+<h1 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h1><ol>
+<li>合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改</li>
+<li>雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分</li>
+<li>cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。<br>因此保持coockie尽可能的小以减少用户的响应时间十分重要</li>
+</ol>
+<h1 id="加载策略"><a href="#加载策略" class="headerlink" title="加载策略"></a>加载策略</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
 <li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
 <li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
 <li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
@@ -6871,6 +6877,10 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 </li>
 </ul>
+<h1 id="静态资源（样式文件放在顶部，把js文件放在底部）"><a href="#静态资源（样式文件放在顶部，把js文件放在底部）" class="headerlink" title="静态资源（样式文件放在顶部，把js文件放在底部）"></a>静态资源（样式文件放在顶部，把js文件放在底部）</h1><ul>
+<li>浏览器是下载完全部CSS后才会对页面进行渲染，加载JS后则立即执行</li>
+<li>压缩js和css</li>
+</ul>
 <h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
 <li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
 <li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
@@ -6888,7 +6898,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 </li>
 </ul>
-<h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
+<h1 id="减少DOM元素数量，减少DOM访问和操作"><a href="#减少DOM元素数量，减少DOM访问和操作" class="headerlink" title="减少DOM元素数量，减少DOM访问和操作"></a>减少DOM元素数量，减少DOM访问和操作</h1><h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
 <li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
 <li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
 </ul>
@@ -7311,10 +7321,9 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
   <entry>
     <title>网络安全</title>
     <url>/2020/08/13/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<ul>
-<li><a id="more"></a>
-</li>
-</ul>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+
 <ol>
 <li>XSS</li>
 </ol>
