@@ -1983,58 +1983,30 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ul>
 <li>数组也是一个对象，是一个用来存储数据的对象和Object类似，但是它的存储效率比普通对象要高，数组中保存的内容我们称为元素</li>
 </ul>
-<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">var arr &#x3D; new Array();  </span><br><span class="line">arr[0] &#x3D; 123;  </span><br><span class="line">arr[1] &#x3D; &quot;hello&quot;;</span><br><span class="line">方法二：</span><br><span class="line">var arr &#x3D; [123,&quot;hello&quot;];</span><br></pre></td></tr></table></figure></code></pre><h2 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h2><table>
-<thead>
-<tr>
-<th>FunctionName</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>push()</td>
-<td>用来向数组的末尾添加一个或多个元素，并返回数组新的长度\</td>
-</tr>
-<tr>
-<td>pop()</td>
-<td>用来删除数组的最后一个元素，并返回被删除的元素\</td>
-</tr>
-<tr>
-<td>unshift()</td>
-<td>向数组的开头添加一个或多个元素，并返回数组的新的长度\</td>
-</tr>
-<tr>
-<td>shift()</td>
-<td>删除数组的开头的一个元素，并返回被删除的元素\</td>
-</tr>
-<tr>
-<td>slice(start,end)</td>
-<td>可以从一个数组中截取指定的元素，该方法不会影响原数组，而是将截取到的内容封装为一个新的数组并返回\</td>
-</tr>
-<tr>
-<td>splice()</td>
-<td>可以用来删除数组中指定元素，并使用新的元素替换，该方法会将删除的元素封装到新数组中返回，第三个及以后，都是替换的元素，这些元素将会插入到开始位置索引的前边\</td>
-</tr>
-<tr>
-<td>concat()</td>
-<td>可以连接两个或多个数组，它不会影响原数组，而是连接数组作为返回值返回\</td>
-</tr>
-<tr>
-<td>join()</td>
-<td>可以将一个数组转换为一个字符串,它不会影响原数组，而是转换后的数组作为返回值返回\</td>
-</tr>
-<tr>
-<td>reverse()</td>
-<td>可以用来反转一个数组，它会对原数组产生影响\</td>
-</tr>
-<tr>
-<td>sort()</td>
-<td>可以对一个数组中的内容进行排序，默认是按照Unicode编码进行排序，他会对原数组产生影响，我们可以自己来指定排序的规则我们可以在sort()添加一个回调函数【数组.sort(functiom(a,b){});】，来指定排序规则，回调函数中需要定义两个形参</td>
-</tr>
-<tr>
-<td>filter()</td>
-<td>filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。</td>
-</tr>
-</tbody></table>
+<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">var arr &#x3D; new Array();  </span><br><span class="line">arr[0] &#x3D; 123;  </span><br><span class="line">arr[1] &#x3D; &quot;hello&quot;;</span><br><span class="line">方法二：</span><br><span class="line">var arr &#x3D; [123,&quot;hello&quot;];</span><br></pre></td></tr></table></figure></code></pre><h2 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h2><ol>
+<li>join():数组转换成字符串</li>
+<li>push():  把里面的内容添加到数组末尾，并返回修改后的长度</li>
+<li>pop()：移除数组最后一项，返回移除的那个值，减少数组的length</li>
+<li>shift()：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined</li>
+<li>unshift():将参数添加到原数组开头，并返回数组的长度 </li>
+<li>sort()：将数组里的项从小到大排序</li>
+<li>reverse()：反转数组项的顺序</li>
+<li>concat():将参数添加到原数组中</li>
+<li>slice()：返回从原数组中指定开始下标到结束下标之间的项组成的新数组</li>
+<li>splice()<ul>
+<li>删除：指定 2 个参数：要删除的第一项的位置和要删除的项数</li>
+<li>插入：可以向指定位置插入任意数量的项，只需提供 3 个参数：起始位置、 0（要删除的项数）和要插入的项</li>
+<li>替换：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等</li>
+</ul>
+</li>
+<li>indexOf()：接收两个参数：要查找的项和（可选的）表示查找起点位置的索引。其中， 从数组的开头（位置 0）开始向后查找</li>
+<li>lastIndexOf：接收两个参数：要查找的项和（可选的）表示查找起点位置的索引。其中， 从数组的末尾开始向前查找</li>
+<li>forEach()：对数组进行遍历循环，对数组中的每一项运行给定函数。这个方法没有返回值。参数都是function类型，默认有传参，参数分别为：遍历的数组内容；第对应的数组索引，数组本身</li>
+<li>map()：指“映射”，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组</li>
+<li>filter()：“过滤”功能，数组中的每一项运行给定函数，返回满足过滤条件组成的数组</li>
+<li>every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true</li>
+<li>some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true</li>
+</ol>
 <h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><ol>
 <li><p>用for循环来遍历数组</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">for(var i&#x3D;0 ; i&lt;数组.length ; i++)&#123;  </span><br><span class="line">    &#x2F;&#x2F;数组[i]  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -7165,7 +7137,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <h1 id="var-let-const的区别"><a href="#var-let-const的区别" class="headerlink" title="var,let,const的区别"></a>var,let,const的区别</h1><ul>
 <li>var声明变量存在变量提升，let/const不存在</li>
 <li>var不存在块级作用域。let和const存在块级作用域，顾名思义，就是只在当前代码块起作用</li>
-<li>var允许重复声明变量，后一个变量会覆盖前一个变量。let和const在同一作用域不允许重复声明变量，会报错</li>
+<li>var允许重复声明变量，后一个变量会覆盖前一个变量。let和const在同一作用域不允许重复声明变量，会报错（正常情况下三者都不能重复声明变量，但是编译器会忽略重复声明的var，所以var可以）</li>
 <li>const/let大部分特性一样，不同的是：<ul>
 <li>const声明时必须赋值且只能赋值一次，不能修改</li>
 <li>如果const声明的是复合类型数据，可以修改其属性</li>
@@ -7232,6 +7204,38 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>MVVM与MVC最大的区别就是：它实现了View和Model的自动同步，也就是当Model的属性改变时，我们不用再自己手动操作Dom元素，来改变View的显示，而是改变属性后该属性对应View层显示会自动改变</li>
 <li>Vue实例中的data相当于Model层，而ViewModel层的核心是Vue中的双向数据绑定，即Model变化时VIew可以实时更新，View变化也能让Model发生变化</li>
 <li>MVVM比MVC精简很多，不仅简化了业务与界面的依赖，还解决了数据频繁更新的问题，不用再用选择器操作DOM元素</li>
+</ul>
+<h1 id="webpack-1"><a href="#webpack-1" class="headerlink" title="webpack"></a>webpack</h1><ul>
+<li>webpack有五大核心概念：<ol>
+<li>entry：指示从哪个文件开始打包</li>
+<li>output：指示打包的文件输出到哪里去</li>
+<li>loader：因为webpack本身只能打包js文件，所以需要loader把其他文件转化成js文件加载进来</li>
+<li>plugin：用于拓展webpack的功能，它可以执行更多的任务，从打包优化到压缩，一直到重新定义变量等</li>
+<li>model：model指示webpack使用的相应模式的配置，分为开发模式和生产模式</li>
+</ol>
+</li>
+</ul>
+<h1 id="Java和JavaScript"><a href="#Java和JavaScript" class="headerlink" title="Java和JavaScript"></a>Java和JavaScript</h1><ul>
+<li>Java和js的区别<ol>
+<li>Java是面向对象的语言，即使是简单的程序也需要设计对象，JavaScript是脚本语言，他是种基于对象和事件驱动的语言</li>
+<li>Java在执行之前必须编译，JavaScript不需要，可以有浏览器直接解释执行</li>
+<li>Java的所有变量在编译之前必须做声明，JavaScript不需要</li>
+<li>代码格式不一样</li>
+</ol>
+</li>
+<li>js怎么实现Java的继承<ol>
+<li>使用对象冒充（this.method）,将parent指向的对象赋给this.method,然后执行this.method，最后执行完再销毁就行了</li>
+<li>使用call方法，parent.call(this,父类对象)，改变this指向</li>
+<li>也可使用apply方法改变this指向</li>
+<li>原型链方式，父类的函数和变量放在原型对象上，子类通过实例化父类来继承函数和变量</li>
+</ol>
+</li>
+<li>js实现public和private<ul>
+<li>public<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;通过初始化实例变量来给对象添加public变量</span><br><span class="line">functin Container(param) &#123;   </span><br><span class="line">this.member &#x3D; param;   </span><br><span class="line">&#125;  </span><br><span class="line">var myContainer &#x3D; new Container(&#39;abc&#39;)，则myContainer.member为&#39;abc&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;函数通过加在原型链来实现public</span><br><span class="line">Container.prototype.stamp &#x3D; function (string) &#123;   </span><br><span class="line">return this.member + string;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Private<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">普通的var变量就是private</span><br><span class="line">private函数</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;private methd  </span><br><span class="line">function getSex()&#123;  </span><br><span class="line">    return sex;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">function getSalary()&#123;  </span><br><span class="line">    return salary;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">this.display &#x3D; function()&#123;  </span><br><span class="line">    document.write(this.getName() + &quot;---&quot; + this.getAge() + &quot;---&quot; + getSex() + &quot;----&quot; + getSalary());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 ]]></content>
   </entry>
