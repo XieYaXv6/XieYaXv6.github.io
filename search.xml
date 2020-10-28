@@ -6813,9 +6813,12 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <a id="more"></a>
 
 
-<h1 id="网页"><a href="#网页" class="headerlink" title="网页"></a>网页</h1><h2 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h2><pre><code>1. 合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改
-2. 雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分
-3. cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。因此保持coockie尽可能的小以减少用户的响应时间十分重要</code></pre><h2 id="设置Expires和Cache-Control"><a href="#设置Expires和Cache-Control" class="headerlink" title="设置Expires和Cache-Control"></a>设置Expires和Cache-Control</h2><ul>
+<h1 id="网页"><a href="#网页" class="headerlink" title="网页"></a>网页</h1><h2 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h2><ol>
+<li>合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改</li>
+<li>雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分</li>
+<li>cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。因此保持coockie尽可能的小以减少用户的响应时间十分重要</li>
+</ol>
+<h2 id="设置Expires和Cache-Control"><a href="#设置Expires和Cache-Control" class="headerlink" title="设置Expires和Cache-Control"></a>设置Expires和Cache-Control</h2><ul>
 <li>已缓存资源不再发起http请求，即HTTP的Expires和Cache-Control。对一个网站而言，CSS、JavaScript、图片等静态资源更新的频率都比较低，而这些文件又几乎是每次HTTP请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置http头中的cache-control和expires的属性，可设定浏览器缓存，将静态内容设为永不过期，或者很长时间后才过期。</li>
 </ul>
 <h2 id="减少DNS查询次数"><a href="#减少DNS查询次数" class="headerlink" title="减少DNS查询次数"></a>减少DNS查询次数</h2><ul>
@@ -6837,10 +6840,11 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 </ul>
 </li>
 </ul>
-<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><pre><code>* 为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。
-* 懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。
-* 常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import</code></pre><p>　</p>
-<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><ul>
+<li>为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。</li>
+<li>懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。</li>
+<li>常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import
+　<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2></li>
 <li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
 <li>优点<ul>
 <li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
