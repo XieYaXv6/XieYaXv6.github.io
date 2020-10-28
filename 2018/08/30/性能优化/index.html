@@ -14,15 +14,19 @@
     noSupport: '浏览器不支持'
   }
 } </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XYX's Blog" type="application/atom+xml">
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http请求优化（减少cookie体积，减少http请求次数）"><span class="toc-number">1.</span> <span class="toc-text">http请求优化（减少cookie体积，减少http请求次数）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加载策略"><span class="toc-number">2.</span> <span class="toc-text">加载策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#懒加载"><span class="toc-number">2.1.</span> <span class="toc-text">懒加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由懒加载"><span class="toc-number">2.2.</span> <span class="toc-text">路由懒加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预加载"><span class="toc-number">2.3.</span> <span class="toc-text">预加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态资源（样式文件放在顶部，把js文件放在底部）"><span class="toc-number">3.</span> <span class="toc-text">静态资源（样式文件放在顶部，把js文件放在底部）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存优化"><span class="toc-number">4.</span> <span class="toc-text">缓存优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http缓存"><span class="toc-number">4.1.</span> <span class="toc-text">http缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-number">4.2.</span> <span class="toc-text">HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少DOM元素数量，减少DOM访问和操作"><span class="toc-number">5.</span> <span class="toc-text">减少DOM元素数量，减少DOM访问和操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少重绘与回流"><span class="toc-number">6.</span> <span class="toc-text">减少重绘与回流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户感知优化"><span class="toc-number">7.</span> <span class="toc-text">用户感知优化</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">28</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">我的朋友们</div><a class="author-info-links__name text-center" href="https://www.ntutn.top/" target="_blank" rel="noopener">归零幻想</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">性能优化</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-30</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.5k</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>-</p>
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网页"><span class="toc-number">1.</span> <span class="toc-text">网页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http请求优化（减少cookie体积，减少http请求次数）"><span class="toc-number">1.1.</span> <span class="toc-text">http请求优化（减少cookie体积，减少http请求次数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置Expires和Cache-Control"><span class="toc-number">1.2.</span> <span class="toc-text">设置Expires和Cache-Control</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减少DNS查询次数"><span class="toc-number">1.3.</span> <span class="toc-text">减少DNS查询次数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒加载"><span class="toc-number">1.4.</span> <span class="toc-text">懒加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由懒加载"><span class="toc-number">1.5.</span> <span class="toc-text">路由懒加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预加载"><span class="toc-number">1.6.</span> <span class="toc-text">预加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用cdn"><span class="toc-number">1.7.</span> <span class="toc-text">使用cdn</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css置顶"><span class="toc-number">2.1.</span> <span class="toc-text">css置顶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免css表达式"><span class="toc-number">2.2.</span> <span class="toc-text">避免css表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用link代替import"><span class="toc-number">2.3.</span> <span class="toc-text">用link代替import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减少重绘与回流"><span class="toc-number">2.4.</span> <span class="toc-text">减少重绘与回流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js"><span class="toc-number">3.</span> <span class="toc-text">js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#js置底"><span class="toc-number">3.1.</span> <span class="toc-text">js置底</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩文件"><span class="toc-number">3.2.</span> <span class="toc-text">压缩文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减少dom访问"><span class="toc-number">3.3.</span> <span class="toc-text">减少dom访问</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户感知优化"><span class="toc-number">4.</span> <span class="toc-text">用户感知优化</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">XYX</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">28</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">我的朋友们</div><a class="author-info-links__name text-center" href="https://www.ntutn.top/" target="_blank" rel="noopener">归零幻想</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://www.xyx6.top/img/top/top.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">XYX's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">性能优化</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-30</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.8k</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>-</p>
 <a id="more"></a>
 
-<h1 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h1><ol>
-<li>合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改</li>
-<li>雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分</li>
-<li>cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。<br>因此保持coockie尽可能的小以减少用户的响应时间十分重要</li>
-</ol>
-<h1 id="加载策略"><a href="#加载策略" class="headerlink" title="加载策略"></a>加载策略</h1><h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+
+<h1 id="网页"><a href="#网页" class="headerlink" title="网页"></a>网页</h1><h2 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h2><pre><code>1. 合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改
+2. 雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分
+3. cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。因此保持coockie尽可能的小以减少用户的响应时间十分重要</code></pre><h2 id="设置Expires和Cache-Control"><a href="#设置Expires和Cache-Control" class="headerlink" title="设置Expires和Cache-Control"></a>设置Expires和Cache-Control</h2><ul>
+<li>已缓存资源不再发起http请求，即HTTP的Expires和Cache-Control。对一个网站而言，CSS、JavaScript、图片等静态资源更新的频率都比较低，而这些文件又几乎是每次HTTP请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置http头中的cache-control和expires的属性，可设定浏览器缓存，将静态内容设为永不过期，或者很长时间后才过期。</li>
+</ul>
+<h2 id="减少DNS查询次数"><a href="#减少DNS查询次数" class="headerlink" title="减少DNS查询次数"></a>减少DNS查询次数</h2><ul>
+<li>DNS查询也消耗响应时间，若网页内容来自各个不同的域名，则客户端首次解析这些域名需要消耗一定的时间，但由于DNS查询结果会缓存在本地系统和浏览器中一段时间（IE对DNS记录默认的缓存时间为30分钟，Firefox对DNS记录默认的缓存时间为1分钟，Chrome对DNS记录默认的缓存时间为1分钟），所以DNS查询一般只是对首次访问时的速度有影响。</li>
+</ul>
+<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
 <li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
 <li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
 <li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
@@ -54,30 +58,32 @@
 </ul>
 </li>
 </ul>
-<h1 id="静态资源（样式文件放在顶部，把js文件放在底部）"><a href="#静态资源（样式文件放在顶部，把js文件放在底部）" class="headerlink" title="静态资源（样式文件放在顶部，把js文件放在底部）"></a>静态资源（样式文件放在顶部，把js文件放在底部）</h1><ul>
-<li>浏览器是下载完全部CSS后才会对页面进行渲染，加载JS后则立即执行</li>
-<li>压缩js和css</li>
+<h2 id="使用cdn"><a href="#使用cdn" class="headerlink" title="使用cdn"></a>使用cdn</h2><ul>
+<li>将静态资源存放到cdn服务器上直接请求，无需下载，提高网页速度</li>
 </ul>
-<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ul>
-<li>HTTP 缓存一般分为两类：强缓存（也称本地缓存） 和 协商缓存（也称304缓存）</li>
-<li>普通刷新会启用 协商缓存，忽略 强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用 强缓存</li>
-<li>强缓存（200）<ul>
-<li>本地缓存是最快速的一种缓存方式，只要资源还在缓存有效期内，浏览器就会直接在本地读取，不会请求服务端。</li>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="css置顶"><a href="#css置顶" class="headerlink" title="css置顶"></a>css置顶</h2><ul>
+<li>在所有CSS加载并解析完之后才会呈现内容，减少白屏</li>
+<li>现代浏览器为了更好的用户体验,渲染引擎将尝试尽快在屏幕上显示的内容。它不会等到所有HTML解析之前开始构建和布局渲染树。部分的内容将被解析并显示。也就是说浏览器能够渲染不完整的dom树和css结合，尽快的减少白屏的时间</li>
 </ul>
-</li>
-<li>协商缓存（304 资源未修改）<ul>
-<li>协商缓存，顾名思义是经过浏览器与服务器之间协商过之后，在决定是否读取本地缓存，如果服务器通知浏览器可以读取本地缓存，会返回304状态码，并且协商过程很简单，只会发送头信息，不会发送响应体<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2></li>
+<h2 id="避免css表达式"><a href="#避免css表达式" class="headerlink" title="避免css表达式"></a>避免css表达式</h2><ul>
+<li>CSS 表达式虽然强大，但是会给浏览器带来很严重的性能问题，并拖慢网页的加载速度</li>
+<li>表达式的问题就在于它的计算频率要比我们想象的多。不仅仅是在页面显示和缩放时，就是在页面滚动、乃至移动鼠标时都会要重新计算一次</li>
 </ul>
-</li>
-<li>Service Worker<ul>
-<li>ServiceWorker 是运行在浏览器后台进程里的一段 JS，它可以做许多事情，比如拦截客户端的请求、向客户端发送消息、向服务器发起请求等等，其中最重要的作用之一就是离线资源缓存。</li>
-<li>ServiceWorker  拥有对缓存流程丰富灵活的控制能力，当页面请求到 ServiceWorker 时，ServiceWorker 同时请求缓存和网络，把缓存的内容直接给用户，而后覆盖缓存，我司已经使用了 ServiceWorker 替换 HTTP缓存策略</li>
+<h2 id="用link代替import"><a href="#用link代替import" class="headerlink" title="用link代替import"></a>用link代替import</h2><ul>
+<li>当页面被加载时，link引用的CSS会同时被加载，而@import引用的CSS则是等待主页面全部被加载完后才会被加载，所以当网速较慢时，可能会只出现页面而没有样式，等一段时间后样式才会被加载出来</li>
 </ul>
-</li>
-</ul>
-<h1 id="减少DOM元素数量，减少DOM访问和操作"><a href="#减少DOM元素数量，减少DOM访问和操作" class="headerlink" title="减少DOM元素数量，减少DOM访问和操作"></a>减少DOM元素数量，减少DOM访问和操作</h1><h1 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h1><ul>
+<h2 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h2><ul>
 <li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
 <li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
+</ul>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="js置底"><a href="#js置底" class="headerlink" title="js置底"></a>js置底</h2><ul>
+<li>js 会阻碍浏览器的解析，解析遇到js会停止渲染，优先去加载或者执行js,处理完毕后再继续渲染，js放在最后面就不会影响前面的页面的渲染</li>
+</ul>
+<h2 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h2><ul>
+<li>对js、css、图片等进行压缩，尽可能减小文件的大小，减少文件下载的时间，从而减少网页响应的时间</li>
+</ul>
+<h2 id="减少dom访问"><a href="#减少dom访问" class="headerlink" title="减少dom访问"></a>减少dom访问</h2><ul>
+<li>使用JavaScript访问DOM元素比较慢</li>
 </ul>
 <h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
 <li>骨架屏<ul>
