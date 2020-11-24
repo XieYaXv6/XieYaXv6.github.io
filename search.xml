@@ -245,344 +245,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6-ES11</title>
-    <url>/2019/01/14/ES6-ES11/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br> ECMAScript 是由ECMA国际通过 ECMA-262标准化的脚本标准化的脚本程序设计语言，Ecma 国际制定了许多标准，而 ECMA-262 只是其中的一个，从 ES6 开始，每年发布一个版本，版本号比年份最后一位大 1，ECMA-262至今已发展到了第十一版。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="ECMA"><a href="#ECMA" class="headerlink" title="ECMA"></a>ECMA</h1><ul>
-<li><p>ECMA（European Computer Manufacturers Association）</p>
-<ul>
-<li>中文名称为欧洲计算机制 造商协会，这个组织的目标是评估、开发和认可电信计算机标准。1994年后该组织改名为 ECMA国际</li>
-</ul>
-</li>
-<li><p>谁在维护 ECMA-262</p>
-<ul>
-<li>TC39（Technical Committee 39）是推进 ECMAScript 发展的委员会。其会员都是公司（其中主要是浏览器厂商，有苹果、谷歌、微软、因特尔等）。TC39 定期召开会议，会议由会员公司的代表与特邀专家出席</li>
-</ul>
-</li>
-<li><p>兼容性</p>
-</li>
-<li><p><a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es6/</a> 可查看兼容性<br><img src="/2019/01/14/ES6-ES11/%E5%85%BC%E5%AE%B9%E6%80%A7.png" alt></p>
-</li>
-<li><p>红色表示不兼容，绿色表示兼容</p>
-</li>
-</ul>
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><ul>
-<li>ES6 的版本变动内容最多，具有里程碑意义</li>
-<li>ES6 加入许多新的语法特性，编程实现更简单、高效</li>
-</ul>
-<h2 id="let关键字"><a href="#let关键字" class="headerlink" title="let关键字"></a>let关键字</h2><ul>
-<li>let 关键字用来声明变量，使用 let 声明的变量有几个特点：</li>
-</ul>
-<ol>
-<li>不允许重复声明</li>
-<li>块级作用域</li>
-<li>不存在变量提升,不允许在变量声明之前使用</li>
-<li>不影响作用域链的效果</li>
-</ol>
-<ul>
-<li>应用场景：以后声明变量使用 let 就对了</li>
-</ul>
-<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><ul>
-<li>const 关键字用来声明常量，const 声明有以下特点</li>
-</ul>
-<ol>
-<li>声明必须赋初始值</li>
-<li>标识符一般为大写</li>
-<li>不允许重复声明</li>
-<li><strong>值不允许修改</strong></li>
-<li>块级作用域</li>
-</ol>
-<ul>
-<li>注意: 对象属性修改和数组元素变化不会触发const错误，因为地址没有改变</li>
-<li>应用场景：声明对象类型使用 const，非对象类型声明选择 let</li>
-</ul>
-<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ul>
-<li>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;数组的解构赋值</span><br><span class="line">const arr &#x3D; [&#39;张学友&#39;, &#39;刘德华&#39;, &#39;黎明&#39;, &#39;郭富城&#39;]; </span><br><span class="line">let [zhang, liu, li, guo] &#x3D; arr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;对象的解构赋值</span><br><span class="line">const lin &#x3D; &#123;</span><br><span class="line">name: &#39;林志颖&#39;,</span><br><span class="line">tags: [&#39;车手&#39;, &#39;歌手&#39;, &#39;小旋风&#39;, &#39;演员&#39;]</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;name, tags&#125; &#x3D; lin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;复杂解构</span><br><span class="line">let wangfei &#x3D; &#123;</span><br><span class="line">name: &#39;王菲&#39;, age: 18,</span><br><span class="line">songs: [&#39;红豆&#39;, &#39;流年&#39;, &#39;暧昧&#39;, &#39;传奇&#39;], </span><br><span class="line">history: [</span><br><span class="line">&#123;name: &#39;窦唯&#39;&#125;,</span><br><span class="line">&#123;name: &#39;李亚鹏&#39;&#125;,</span><br><span class="line">&#123;name: &#39;谢霆锋&#39;&#125;</span><br><span class="line">]&#125;;</span><br><span class="line">let &#123;songs: [one, two, three], history: [first, second, third]&#125; &#x3D;wangfei;</span><br></pre></td></tr></table></figure>
-<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2></li>
-<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：<br>1)    字符串中可以出现换行符<br>2)    可以使用 ${xxx} 形式输出变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 变量拼接</span><br><span class="line">let lovest &#x3D; &#39;魏翔&#39;;</span><br><span class="line">let out &#x3D; &#96;$&#123;lovest&#125;是我心目中最搞笑的演员!!&#96;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="简化对象写法"><a href="#简化对象写法" class="headerlink" title="简化对象写法"></a>简化对象写法</h2><ul>
-<li>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let name &#x3D; &#39;xxx&#39;;</span><br><span class="line">        let change &#x3D; function()&#123;</span><br><span class="line">            console.log(&#39;xxx!&#39;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const school &#x3D; &#123;</span><br><span class="line">            name,</span><br><span class="line">            change,</span><br><span class="line">            improve()&#123;         &#x2F;&#x2F;可以省略function</span><br><span class="line">                console.log(&quot;xxx&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
-<li>ES6 允许使用「箭头」（ =&gt; ）定义函数。<br>箭头函数的注意点:<br>1)    如果形参只有一个，则小括号可以省略<br>2)    函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果<br>3)    this 是静态的. this 始终指向函数声明时所在作用域下的 this 的值<br>4)    箭头函数不能作为构造函数实例化<br>5)    不能使用 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 1. 通用写法</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn &#x3D; (arg1, arg2, arg3) &#x3D;&gt; &#123;</span><br><span class="line">return arg1 + arg2 + arg3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 2. 省略小括号的情况, 当形参有且只有一个的时候</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn2 &#x3D; num &#x3D;&gt; &#123;</span><br><span class="line">return num * 10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 3. 省略花括号的情况,当代码体只有一条语句的时候, 此时 return 必须省略,语句的执行结果就是函数的返回值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn3 &#x3D; score &#x3D;&gt; score * 20;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 4. this 指向声明时所在作用域中 this 的值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn4 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">console.log(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</li>
-<li>ES6 允许给函数参数赋值初始值<ol>
-<li>形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)</li>
-<li>默认值还可以与解构赋值结合</li>
-</ol>
-</li>
-</ul>
-<h2 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h2><ul>
-<li>ES6 引入 rest 参数（…args），用于获取函数的实参，用来代替 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rest 参数必须要放到参数最后</span><br><span class="line">function fn(a,b,...args)&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(args);</span><br><span class="line">    &#125;</span><br><span class="line">fn(1,2,3,4,5,6);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h2><ul>
-<li>扩展运算符（spread）也是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包<ol>
-<li>可以合并数组</li>
-<li>可以克隆数组</li>
-<li>将伪数组转为真正的数组<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 『...』 扩展运算符能将『数组』转换为逗号分隔的『参数序列』</span><br><span class="line">&#x2F;&#x2F;声明一个数组 ...</span><br><span class="line">const tfboys &#x3D; [&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;];</span><br><span class="line">&#x2F;&#x2F; &#x3D;&gt; &#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;</span><br><span class="line">&#x2F;&#x2F; 声明一个函数</span><br><span class="line">function chunwan()&#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">chunwan(...tfboys);&#x2F;&#x2F; chunwan(&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><ul>
-<li>ES6 引入了一种新的原始数据类型 Symbol， 表示独一无二的值。它是JavaScript 语言的<strong>第七种</strong>数据类型，是一种类似于字符串的数据类型。<br>Symbol 特点<br>1)    Symbol 的值是唯一的，用来解决命名冲突的问题<br>2)    Symbol 值不能与其他数据进行运算<br>3)    Symbol 定义的对象属性不能使用 for…in 循环遍历， 但是可以使用<br>Reflect.ownKeys 来获取对象的所有键名</li>
-<li>js数据类型：undefined string  symbol object null number boolean</li>
-</ul>
-<h2 id="Symbol-内置值"><a href="#Symbol-内置值" class="headerlink" title="Symbol 内置值"></a>Symbol 内置值</h2><ul>
-<li>除了定义自己使用的 Symbol  值以外，ES6  还提供了11 个内置的Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行<br><img src="/2019/01/14/ES6-ES11/symbol%E5%86%85%E7%BD%AE%E5%80%BC.png" alt></li>
-</ul>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
-<li>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作<br>1)    ES6 创造了一种新的遍历命令 for…of 循环，Iterator 接口主要供 for…of 消费<br>2)    原生具备 iterator 接口的数据(可用 for of 遍历)<ul>
-<li>Array</li>
-<li>Arguments</li>
-<li>Set</li>
-<li>Map</li>
-<li>String</li>
-<li>TypedArray</li>
-<li>NodeList<br>3)    工作原理</li>
-<li>创建一个指针对象，指向当前数据结构的起始位置</li>
-<li>第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员</li>
-<li>接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员</li>
-<li>每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
-</ul>
-</li>
-<li>注: 需要自定义遍历数据的时候，要想到迭代器</li>
-</ul>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
-<li>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">yield &#39;一只没有耳朵&#39;;</span><br><span class="line">yield &#39;一只没有尾巴&#39;; return &#39;真奇怪&#39;;</span><br><span class="line">&#125;</span><br><span class="line">let iterator &#x3D; gen(); console.log(iterator.next()); console.log(iterator.next());</span><br><span class="line">console.log(iterator.next());</span><br></pre></td></tr></table></figure>
-代码说明：<br>1)    *的位置没有限制<br>2)    生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到<br>yield 语句后的值<br>3)    yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next<br>方法，执行一段代码<br>4)    next 方法可以传递实参，作为 yield 语句的返回值</li>
-</ul>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ul>
-<li>Promise 是 ES6 引入的异步编程的新解决方案。语法上Promise 是一个构造函数， 用来封装异步操作并可以获取其成功或失败的结果。<br>1)    Promise 构造函数: Promise (excutor) {}<ul>
-<li>promise (function(resolve,reject){});<br>2)    Promise.prototype.then 方法</li>
-<li>then(function(){value},function(reason){})</li>
-<li>调用 then 方法  then方法的返回结果是 Promise 对象, 对象状态由回调函数的执行结果决定<ul>
-<li>如果回调函数中返回的结果是 非 promise 类型的属性, 状态为成功, 返回值为对象的成功的值</li>
-<li>如果是promise对象，promise返回的对象的状态就决定了then方法返回的promise的状态<br>3)    Promise.prototype.catch 方法</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><ul>
-<li>ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历，集合的属性和方法：<br>1)    size    返回集合的元素个数<br>2)    add    增加一个新元素，返回当前集合<br>3)    delete    删除元素，返回 boolean 值<br>4)    has    检测集合中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
-</ul>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
-<li>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。但是“键” 的范围不限于字符串，各种类型的值（包括对象）都可以当作键。Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。Map 的属性和方法：<br>1)    size    返回 Map 的元素个数<br>2)    set    增加一个新元素，返回当前 Map<br>3)    get    返回键名对象的键值<br>4)    has    检测 Map 中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
-</ul>
-<h2 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h2><ul>
-<li>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法塘，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。<br>知识点：<br>1)    class 声明类<br>2)    constructor 定义构造函数初始化<br>3)    extends 继承父类<br>4)    super 调用父级构造方法<br>5)    static 定义静态方法和属性<br>6)    父类方法可以重写</li>
-</ul>
-<h2 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h2><ol>
-<li><p>Number.EPSILON 是 JavaScript 表示的最小精度</p>
-<ul>
-<li>0.1+0.2===0.3不成立，因为浮点数运算是由误差的</li>
-<li>EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16</li>
-<li>用EPSILON表示js运算的最小精确度</li>
-</ul>
-</li>
-<li><p>二进制和八进制</p>
-<ul>
-<li>ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示</li>
-</ul>
-</li>
-<li><p>Number.isFinite() 与 Number.isNaN()</p>
-<ul>
-<li>Number.isFinite() 用来检查一个数值是否为有限的</li>
-<li>Number.isNaN() 用来检查一个值是否为 NaN</li>
-</ul>
-</li>
-<li><p>Number.parseInt() 与 Number.parseFloat()字符串转整数</p>
-<ul>
-<li>ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变</li>
-</ul>
-</li>
-<li><p>Math.trunc</p>
-<ul>
-<li>用于去除一个数的小数部分，返回整数部分</li>
-</ul>
-</li>
-<li><p>Number.isInteger</p>
-<ul>
-<li>Number.isInteger() 用来判断一个数值是否为整数</li>
-</ul>
-</li>
-<li><p>Math.sign </p>
-<ul>
-<li>判断一个数到底为正数 负数 还是零</li>
-</ul>
-</li>
-</ol>
-<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><ul>
-<li>ES6 新增了一些 Object 对象的方法<br>1)    Object.is比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）<br>2)    Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象<br>3)    proto 、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型</li>
-</ul>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
-<li>模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。</li>
-</ul>
-<p>1.模块化的好处</p>
-<ul>
-<li>模块化的优势有以下几点：<br>1)    防止命名冲突<br>2)    代码复用<br>3)    高维护性</li>
-</ul>
-<ol start="2">
-<li>模块化规范产品</li>
-</ol>
-<ul>
-<li>ES6 之前的模块化规范有：<br>1) CommonJS    =&gt;    NodeJS、Browserify<br>2) AMD    =&gt;    requireJS<br>3) CMD    =&gt;    seaJS</li>
-</ul>
-<ol start="3">
-<li>ES6 模块化语法</li>
-</ol>
-<ul>
-<li>模块功能主要由两个命令构成：export 和 import<ul>
-<li>export 命令用于规定模块的对外接口</li>
-<li>import 命令用于输入其他模块提供的功能<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import:</span><br><span class="line">1. 通用的导入方式</span><br><span class="line">引入 m1.js 模块内容</span><br><span class="line">import * as m1 from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m2.js 模块内容</span><br><span class="line">import * as m2 from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m3.js </span><br><span class="line">import * as m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">2. 解构赋值形式</span><br><span class="line">import &#123;school, teach&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">import &#123;school as guigu, findJob&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">import &#123;default as m3&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">3. 简便形式  针对默认暴露</span><br><span class="line">import m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line">console.log(m3);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export:</span><br><span class="line">&#x2F;&#x2F;分别暴露</span><br><span class="line">export let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">export function teach() &#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;统一暴露</span><br><span class="line">let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">function teach()&#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line">export &#123;school, teach&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认暴露</span><br><span class="line">export default &#123;</span><br><span class="line">    school: &#39;xxx&#39;,</span><br><span class="line">    teach: function()&#123;</span><br><span class="line">        console.log(&quot;xxx&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h1><ol>
-<li><p>Array.includes()</p>
-<ul>
-<li>Includes 方法用来检测数组中是否包含某个元素，返回布尔类型值</li>
-</ul>
-</li>
-<li><p>指数操作符</p>
-<ul>
-<li>在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES8"><a href="#ES8" class="headerlink" title="ES8"></a>ES8</h1><ol>
-<li><p>async 和 await</p>
-<ul>
-<li>async 和 await 两种语法结合可以让异步代码像同步代码一样</li>
-</ul>
-<ol>
-<li>async 函数<ul>
-<li>async 函数的返回值为 promise 对象，</li>
-<li>promise 对象的结果由 async 函数执行的返回值决定</li>
-</ul>
-</li>
-<li>await 表达式<ul>
-<li>await 必须写在 async 函数中</li>
-<li>await 右侧的表达式一般为 promise 对象</li>
-<li>await 返回的是 promise 成功的值</li>
-<li>await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Object.values 和 Object.entries</p>
-<ul>
-<li>Object.values()方法返回一个给定对象的所有可枚举属性值的数组</li>
-<li>Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组</li>
-</ul>
-</li>
-<li><p>Object.getOwnPropertyDescriptors</p>
-<ul>
-<li>该方法返回指定对象所有自身属性的描述对象</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES9"><a href="#ES9" class="headerlink" title="ES9"></a>ES9</h1><ol>
-<li>Rest/Spread 属性</li>
-</ol>
-<ul>
-<li>Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组,在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function connect(&#123;host, port, ...user&#125;) &#123;</span><br><span class="line">console.log(host);</span><br><span class="line">console.log(port); </span><br><span class="line">console.log(user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connect(&#123;</span><br><span class="line">host: &#39;127.0.0.1&#39;,</span><br><span class="line">port: 3306, </span><br><span class="line">username: &#39;root&#39;, </span><br><span class="line">password: &#39;root&#39;, </span><br><span class="line">type: &#39;master&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="2">
-<li>正则表达式命名捕获组</li>
-</ol>
-<ul>
-<li>ES9 允许命名捕获组对捕获的结果进行命名,这样获取捕获结果可读性更强<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let str &#x3D; &#39;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.atguigu.com&quot;&gt;&lt;&#x2F;a&gt;&#39;; </span><br><span class="line">const reg &#x3D; &#x2F;&lt;a href&#x3D;&quot;(?&lt;url&gt;.*)&quot;&gt;(?&lt;text&gt;.*)&lt;\&#x2F;a&gt;&#x2F;;</span><br><span class="line"></span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">console.log(result.groups.url);	</span><br><span class="line"></span><br><span class="line">console.log(result.groups.text);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="3">
-<li>正则表达式反向断言</li>
-</ol>
-<ul>
-<li>ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;声明字符串</span><br><span class="line">let str &#x3D; &#39;JS5211314 你知道么 555 啦啦啦&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;正向断言</span><br><span class="line">const reg &#x3D; &#x2F;\d+(?&#x3D;啦)&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;反向断言</span><br><span class="line">const reg &#x3D; &#x2F;(?&lt;&#x3D;么)\d+&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="4">
-<li>正则表达式 dotAll 模式</li>
-</ol>
-<ul>
-<li>正则表达式中点 . 匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现</li>
-</ul>
-<h1 id="ES10"><a href="#ES10" class="headerlink" title="ES10"></a>ES10</h1><ol>
-<li>Object.fromEntries<ul>
-<li>将二维数组转化为对象，与entries作用相反</li>
-</ul>
-</li>
-<li>trimStart 和 trimEnd<ul>
-<li>trimStart负责清除字符串左侧空白</li>
-<li>trimEnd负责清除字符串右侧空白</li>
-</ul>
-</li>
-<li>Array.flat() 与 flatMap<ul>
-<li>flat()将多维数组转化为低维数组</li>
-<li>flatMap把Map的结果做一个维度降低，是flat和map操作的结合体</li>
-</ul>
-</li>
-<li>Symbol.prototype.description<ul>
-<li>获取symbol的描述字符串</li>
-</ul>
-</li>
-</ol>
-<h1 id="ES11"><a href="#ES11" class="headerlink" title="ES11"></a>ES11</h1><ol>
-<li><p>类的私有属性</p>
-<ul>
-<li>私有属性前要加#</li>
-</ul>
-</li>
-<li><p>String.prototype.matchAll</p>
-<ul>
-<li>用来得到正则批量匹配的结果</li>
-</ul>
-</li>
-<li><p>Promise.allSettled</p>
-<ul>
-<li>接受一个promise数组，返回一个成功的结果，成功的值是每一个promise对象的状态和结果</li>
-</ul>
-</li>
-<li><p>可选链操作符?.</p>
-<ul>
-<li>xxx1?.xxx2?.xxx3如果有xxx1才会读取后面的xxx2以此类推</li>
-</ul>
-</li>
-<li><p>动态 import 导入</p>
-</li>
-<li><p>globalThis 对象</p>
-<ul>
-<li>始终指向全局对象 </li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>规范集成</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-        <tag>ES11</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git&amp;Github</title>
     <url>/2019/03/19/Git-Github/</url>
     <content><![CDATA[<blockquote>
@@ -938,6 +600,447 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
       </categories>
       <tags>
         <tag>Grunt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6-ES11</title>
+    <url>/2019/01/14/ES6-ES11/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> ECMAScript 是由ECMA国际通过 ECMA-262标准化的脚本标准化的脚本程序设计语言，Ecma 国际制定了许多标准，而 ECMA-262 只是其中的一个，从 ES6 开始，每年发布一个版本，版本号比年份最后一位大 1，ECMA-262至今已发展到了第十一版。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="ECMA"><a href="#ECMA" class="headerlink" title="ECMA"></a>ECMA</h1><ul>
+<li><p>ECMA（European Computer Manufacturers Association）</p>
+<ul>
+<li>中文名称为欧洲计算机制 造商协会，这个组织的目标是评估、开发和认可电信计算机标准。1994年后该组织改名为 ECMA国际</li>
+</ul>
+</li>
+<li><p>谁在维护 ECMA-262</p>
+<ul>
+<li>TC39（Technical Committee 39）是推进 ECMAScript 发展的委员会。其会员都是公司（其中主要是浏览器厂商，有苹果、谷歌、微软、因特尔等）。TC39 定期召开会议，会议由会员公司的代表与特邀专家出席</li>
+</ul>
+</li>
+<li><p>兼容性</p>
+</li>
+<li><p><a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es6/</a> 可查看兼容性<br><img src="/2019/01/14/ES6-ES11/%E5%85%BC%E5%AE%B9%E6%80%A7.png" alt></p>
+</li>
+<li><p>红色表示不兼容，绿色表示兼容</p>
+</li>
+</ul>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><ul>
+<li>ES6 的版本变动内容最多，具有里程碑意义</li>
+<li>ES6 加入许多新的语法特性，编程实现更简单、高效</li>
+</ul>
+<h2 id="let关键字"><a href="#let关键字" class="headerlink" title="let关键字"></a>let关键字</h2><ul>
+<li>let 关键字用来声明变量，使用 let 声明的变量有几个特点：</li>
+</ul>
+<ol>
+<li>不允许重复声明</li>
+<li>块级作用域</li>
+<li>不存在变量提升,不允许在变量声明之前使用</li>
+<li>不影响作用域链的效果</li>
+</ol>
+<ul>
+<li>应用场景：以后声明变量使用 let 就对了</li>
+</ul>
+<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><ul>
+<li>const 关键字用来声明常量，const 声明有以下特点</li>
+</ul>
+<ol>
+<li>声明必须赋初始值</li>
+<li>标识符一般为大写</li>
+<li>不允许重复声明</li>
+<li><strong>值不允许修改</strong></li>
+<li>块级作用域</li>
+</ol>
+<ul>
+<li>注意: 对象属性修改和数组元素变化不会触发const错误，因为地址没有改变</li>
+<li>应用场景：声明对象类型使用 const，非对象类型声明选择 let</li>
+</ul>
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ul>
+<li>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;数组的解构赋值</span><br><span class="line">const arr &#x3D; [&#39;张学友&#39;, &#39;刘德华&#39;, &#39;黎明&#39;, &#39;郭富城&#39;]; </span><br><span class="line">let [zhang, liu, li, guo] &#x3D; arr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;对象的解构赋值</span><br><span class="line">const lin &#x3D; &#123;</span><br><span class="line">name: &#39;林志颖&#39;,</span><br><span class="line">tags: [&#39;车手&#39;, &#39;歌手&#39;, &#39;小旋风&#39;, &#39;演员&#39;]</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;name, tags&#125; &#x3D; lin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;复杂解构</span><br><span class="line">let wangfei &#x3D; &#123;</span><br><span class="line">name: &#39;王菲&#39;, age: 18,</span><br><span class="line">songs: [&#39;红豆&#39;, &#39;流年&#39;, &#39;暧昧&#39;, &#39;传奇&#39;], </span><br><span class="line">history: [</span><br><span class="line">&#123;name: &#39;窦唯&#39;&#125;,</span><br><span class="line">&#123;name: &#39;李亚鹏&#39;&#125;,</span><br><span class="line">&#123;name: &#39;谢霆锋&#39;&#125;</span><br><span class="line">]&#125;;</span><br><span class="line">let &#123;songs: [one, two, three], history: [first, second, third]&#125; &#x3D;wangfei;</span><br></pre></td></tr></table></figure>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2></li>
+<li>模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：<br>1)    字符串中可以出现换行符<br>2)    可以使用 ${xxx} 形式输出变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 变量拼接</span><br><span class="line">let lovest &#x3D; &#39;魏翔&#39;;</span><br><span class="line">let out &#x3D; &#96;$&#123;lovest&#125;是我心目中最搞笑的演员!!&#96;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="简化对象写法"><a href="#简化对象写法" class="headerlink" title="简化对象写法"></a>简化对象写法</h2><ul>
+<li>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let name &#x3D; &#39;xxx&#39;;</span><br><span class="line">        let change &#x3D; function()&#123;</span><br><span class="line">            console.log(&#39;xxx!&#39;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const school &#x3D; &#123;</span><br><span class="line">            name,</span><br><span class="line">            change,</span><br><span class="line">            improve()&#123;         &#x2F;&#x2F;可以省略function</span><br><span class="line">                console.log(&quot;xxx&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
+<li>ES6 允许使用「箭头」（ =&gt; ）定义函数。<br>箭头函数的注意点:<br>1)    如果形参只有一个，则小括号可以省略<br>2)    函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果<br>3)    this 是静态的. this 始终指向函数声明时所在作用域下的 this 的值<br>4)    箭头函数不能作为构造函数实例化<br>5)    不能使用 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 1. 通用写法</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn &#x3D; (arg1, arg2, arg3) &#x3D;&gt; &#123;</span><br><span class="line">return arg1 + arg2 + arg3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 2. 省略小括号的情况, 当形参有且只有一个的时候</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn2 &#x3D; num &#x3D;&gt; &#123;</span><br><span class="line">return num * 10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 3. 省略花括号的情况,当代码体只有一条语句的时候, 此时 return 必须省略,语句的执行结果就是函数的返回值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn3 &#x3D; score &#x3D;&gt; score * 20;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* 4. this 指向声明时所在作用域中 this 的值</span><br><span class="line">*&#x2F;</span><br><span class="line">let fn4 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">console.log(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</li>
+<li>ES6 允许给函数参数赋值初始值<ol>
+<li>形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)</li>
+<li>默认值还可以与解构赋值结合</li>
+</ol>
+</li>
+</ul>
+<h2 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h2><ul>
+<li>ES6 引入 rest 参数（…args），用于获取函数的实参，用来代替 arguments<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rest 参数必须要放到参数最后</span><br><span class="line">function fn(a,b,...args)&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(args);</span><br><span class="line">    &#125;</span><br><span class="line">fn(1,2,3,4,5,6);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h2><ul>
+<li>扩展运算符（spread）也是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包<ol>
+<li>可以合并数组</li>
+<li>可以克隆数组</li>
+<li>将伪数组转为真正的数组<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 『...』 扩展运算符能将『数组』转换为逗号分隔的『参数序列』</span><br><span class="line">&#x2F;&#x2F;声明一个数组 ...</span><br><span class="line">const tfboys &#x3D; [&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;];</span><br><span class="line">&#x2F;&#x2F; &#x3D;&gt; &#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;</span><br><span class="line">&#x2F;&#x2F; 声明一个函数</span><br><span class="line">function chunwan()&#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">chunwan(...tfboys);&#x2F;&#x2F; chunwan(&#39;易烊千玺&#39;,&#39;王源&#39;,&#39;王俊凯&#39;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><ul>
+<li>ES6 引入了一种新的原始数据类型 Symbol， 表示独一无二的值。它是JavaScript 语言的<strong>第七种</strong>数据类型，是一种类似于字符串的数据类型。<br>Symbol 特点<br>1)    Symbol 的值是唯一的，用来解决命名冲突的问题<br>2)    Symbol 值不能与其他数据进行运算<br>3)    Symbol 定义的对象属性不能使用 for…in 循环遍历， 但是可以使用<br>Reflect.ownKeys 来获取对象的所有键名</li>
+<li>js数据类型：undefined string  symbol object null number boolean</li>
+</ul>
+<h2 id="Symbol-内置值"><a href="#Symbol-内置值" class="headerlink" title="Symbol 内置值"></a>Symbol 内置值</h2><ul>
+<li>除了定义自己使用的 Symbol  值以外，ES6  还提供了11 个内置的Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行<br><img src="/2019/01/14/ES6-ES11/symbol%E5%86%85%E7%BD%AE%E5%80%BC.png" alt></li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+<li>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作<br>1)    ES6 创造了一种新的遍历命令 for…of 循环，Iterator 接口主要供 for…of 消费<br>2)    原生具备 iterator 接口的数据(可用 for of 遍历)<ul>
+<li>Array</li>
+<li>Arguments</li>
+<li>Set</li>
+<li>Map</li>
+<li>String</li>
+<li>TypedArray</li>
+<li>NodeList<br>3)    工作原理</li>
+<li>创建一个指针对象，指向当前数据结构的起始位置</li>
+<li>第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员</li>
+<li>接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员</li>
+<li>每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
+</ul>
+</li>
+<li>注: 需要自定义遍历数据的时候，要想到迭代器</li>
+</ul>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
+<li>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">yield &#39;一只没有耳朵&#39;;</span><br><span class="line">yield &#39;一只没有尾巴&#39;; return &#39;真奇怪&#39;;</span><br><span class="line">&#125;</span><br><span class="line">let iterator &#x3D; gen(); console.log(iterator.next()); console.log(iterator.next());</span><br><span class="line">console.log(iterator.next());</span><br></pre></td></tr></table></figure>
+代码说明：<br>1)    *的位置没有限制<br>2)    生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到<br>yield 语句后的值<br>3)    yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next<br>方法，执行一段代码<br>4)    next 方法可以传递实参，作为 yield 语句的返回值</li>
+</ul>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ul>
+<li>Promise 是 ES6 引入的异步编程的新解决方案。语法上Promise 是一个构造函数， 用来封装异步操作并可以获取其成功或失败的结果。<br>1)    Promise 构造函数: Promise (excutor) {}<ul>
+<li>promise (function(resolve,reject){});<br>2)    Promise.prototype.then 方法</li>
+<li>then(function(){value},function(reason){})</li>
+<li>调用 then 方法  then方法的返回结果是 Promise 对象, 对象状态由回调函数的执行结果决定<ul>
+<li>如果回调函数中返回的结果是 非 promise 类型的属性, 状态为成功, 返回值为对象的成功的值</li>
+<li>如果是promise对象，promise返回的对象的状态就决定了then方法返回的promise的状态<br>3)    Promise.prototype.catch 方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><ul>
+<li>ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历，集合的属性和方法：<br>1)    size    返回集合的元素个数<br>2)    add    增加一个新元素，返回当前集合<br>3)    delete    删除元素，返回 boolean 值<br>4)    has    检测集合中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
+</ul>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
+<li>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。但是“键” 的范围不限于字符串，各种类型的值（包括对象）都可以当作键。Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。Map 的属性和方法：<br>1)    size    返回 Map 的元素个数<br>2)    set    增加一个新元素，返回当前 Map<br>3)    get    返回键名对象的键值<br>4)    has    检测 Map 中是否包含某个元素，返回 boolean 值<br>5)    clear    清空集合，返回 undefined</li>
+</ul>
+<h2 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h2><ul>
+<li>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法塘，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。<br>知识点：<br>1)    class 声明类<br>2)    constructor 定义构造函数初始化<br>3)    extends 继承父类<br>4)    super 调用父级构造方法<br>5)    static 定义静态方法和属性<br>6)    父类方法可以重写</li>
+</ul>
+<h2 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h2><ol>
+<li><p>Number.EPSILON 是 JavaScript 表示的最小精度</p>
+<ul>
+<li>0.1+0.2===0.3不成立，因为浮点数运算是由误差的</li>
+<li>EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16</li>
+<li>用EPSILON表示js运算的最小精确度</li>
+</ul>
+</li>
+<li><p>二进制和八进制</p>
+<ul>
+<li>ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示</li>
+</ul>
+</li>
+<li><p>Number.isFinite() 与 Number.isNaN()</p>
+<ul>
+<li>Number.isFinite() 用来检查一个数值是否为有限的</li>
+<li>Number.isNaN() 用来检查一个值是否为 NaN</li>
+</ul>
+</li>
+<li><p>Number.parseInt() 与 Number.parseFloat()字符串转整数</p>
+<ul>
+<li>ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变</li>
+</ul>
+</li>
+<li><p>Math.trunc</p>
+<ul>
+<li>用于去除一个数的小数部分，返回整数部分</li>
+</ul>
+</li>
+<li><p>Number.isInteger</p>
+<ul>
+<li>Number.isInteger() 用来判断一个数值是否为整数</li>
+</ul>
+</li>
+<li><p>Math.sign </p>
+<ul>
+<li>判断一个数到底为正数 负数 还是零</li>
+</ul>
+</li>
+</ol>
+<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><ul>
+<li>ES6 新增了一些 Object 对象的方法<br>1)    Object.is比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）<br>2)    Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象<br>3)    proto 、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
+<li>模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。</li>
+</ul>
+<p>1.模块化的好处</p>
+<ul>
+<li>模块化的优势有以下几点：<br>1)    防止命名冲突<br>2)    代码复用<br>3)    高维护性</li>
+</ul>
+<ol start="2">
+<li>模块化规范产品</li>
+</ol>
+<ul>
+<li>ES6 之前的模块化规范有：<br>1) CommonJS    =&gt;    NodeJS、Browserify<br>2) AMD    =&gt;    requireJS<br>3) CMD    =&gt;    seaJS</li>
+</ul>
+<ol start="3">
+<li>ES6 模块化语法</li>
+</ol>
+<ul>
+<li>模块功能主要由两个命令构成：export 和 import<ul>
+<li>export 命令用于规定模块的对外接口</li>
+<li>import 命令用于输入其他模块提供的功能<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import:</span><br><span class="line">1. 通用的导入方式</span><br><span class="line">引入 m1.js 模块内容</span><br><span class="line">import * as m1 from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m2.js 模块内容</span><br><span class="line">import * as m2 from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">&#x2F;&#x2F;引入 m3.js </span><br><span class="line">import * as m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">2. 解构赋值形式</span><br><span class="line">import &#123;school, teach&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m1.js&quot;;</span><br><span class="line">import &#123;school as guigu, findJob&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m2.js&quot;;</span><br><span class="line">import &#123;default as m3&#125; from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line"></span><br><span class="line">3. 简便形式  针对默认暴露</span><br><span class="line">import m3 from &quot;.&#x2F;src&#x2F;js&#x2F;m3.js&quot;;</span><br><span class="line">console.log(m3);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export:</span><br><span class="line">&#x2F;&#x2F;分别暴露</span><br><span class="line">export let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">export function teach() &#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;统一暴露</span><br><span class="line">let school &#x3D; &#39;xxx&#39;;</span><br><span class="line">function teach()&#123;</span><br><span class="line">    console.log(&quot;xxx&quot;);</span><br><span class="line">&#125;</span><br><span class="line">export &#123;school, teach&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认暴露</span><br><span class="line">export default &#123;</span><br><span class="line">    school: &#39;xxx&#39;,</span><br><span class="line">    teach: function()&#123;</span><br><span class="line">        console.log(&quot;xxx&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h1><ol>
+<li><p>Array.includes()</p>
+<ul>
+<li>Includes 方法用来检测数组中是否包含某个元素，返回布尔类型值</li>
+</ul>
+</li>
+<li><p>指数操作符</p>
+<ul>
+<li>在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES8"><a href="#ES8" class="headerlink" title="ES8"></a>ES8</h1><ol>
+<li><p>async 和 await</p>
+<ul>
+<li>async 和 await 两种语法结合可以让异步代码像同步代码一样</li>
+</ul>
+<ol>
+<li>async 函数<ul>
+<li>async 函数的返回值为 promise 对象，</li>
+<li>promise 对象的结果由 async 函数执行的返回值决定</li>
+</ul>
+</li>
+<li>await 表达式<ul>
+<li>await 必须写在 async 函数中</li>
+<li>await 右侧的表达式一般为 promise 对象</li>
+<li>await 返回的是 promise 成功的值</li>
+<li>await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Object.values 和 Object.entries</p>
+<ul>
+<li>Object.values()方法返回一个给定对象的所有可枚举属性值的数组</li>
+<li>Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组</li>
+</ul>
+</li>
+<li><p>Object.getOwnPropertyDescriptors</p>
+<ul>
+<li>该方法返回指定对象所有自身属性的描述对象</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES9"><a href="#ES9" class="headerlink" title="ES9"></a>ES9</h1><ol>
+<li>Rest/Spread 属性</li>
+</ol>
+<ul>
+<li>Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组,在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function connect(&#123;host, port, ...user&#125;) &#123;</span><br><span class="line">console.log(host);</span><br><span class="line">console.log(port); </span><br><span class="line">console.log(user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connect(&#123;</span><br><span class="line">host: &#39;127.0.0.1&#39;,</span><br><span class="line">port: 3306, </span><br><span class="line">username: &#39;root&#39;, </span><br><span class="line">password: &#39;root&#39;, </span><br><span class="line">type: &#39;master&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>正则表达式命名捕获组</li>
+</ol>
+<ul>
+<li>ES9 允许命名捕获组对捕获的结果进行命名,这样获取捕获结果可读性更强<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let str &#x3D; &#39;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.atguigu.com&quot;&gt;&lt;&#x2F;a&gt;&#39;; </span><br><span class="line">const reg &#x3D; &#x2F;&lt;a href&#x3D;&quot;(?&lt;url&gt;.*)&quot;&gt;(?&lt;text&gt;.*)&lt;\&#x2F;a&gt;&#x2F;;</span><br><span class="line"></span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">console.log(result.groups.url);	</span><br><span class="line"></span><br><span class="line">console.log(result.groups.text);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li>正则表达式反向断言</li>
+</ol>
+<ul>
+<li>ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;声明字符串</span><br><span class="line">let str &#x3D; &#39;JS5211314 你知道么 555 啦啦啦&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;正向断言</span><br><span class="line">const reg &#x3D; &#x2F;\d+(?&#x3D;啦)&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;反向断言</span><br><span class="line">const reg &#x3D; &#x2F;(?&lt;&#x3D;么)\d+&#x2F;;</span><br><span class="line">const result &#x3D; reg.exec(str);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="4">
+<li>正则表达式 dotAll 模式</li>
+</ol>
+<ul>
+<li>正则表达式中点 . 匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现</li>
+</ul>
+<h1 id="ES10"><a href="#ES10" class="headerlink" title="ES10"></a>ES10</h1><ol>
+<li>Object.fromEntries<ul>
+<li>将二维数组转化为对象，与entries作用相反</li>
+</ul>
+</li>
+<li>trimStart 和 trimEnd<ul>
+<li>trimStart负责清除字符串左侧空白</li>
+<li>trimEnd负责清除字符串右侧空白</li>
+</ul>
+</li>
+<li>Array.flat() 与 flatMap<ul>
+<li>flat()将多维数组转化为低维数组</li>
+<li>flatMap把Map的结果做一个维度降低，是flat和map操作的结合体</li>
+</ul>
+</li>
+<li>Symbol.prototype.description<ul>
+<li>获取symbol的描述字符串</li>
+</ul>
+</li>
+</ol>
+<h1 id="ES11"><a href="#ES11" class="headerlink" title="ES11"></a>ES11</h1><ol>
+<li><p>类的私有属性</p>
+<ul>
+<li>私有属性前要加#</li>
+</ul>
+</li>
+<li><p>String.prototype.matchAll</p>
+<ul>
+<li>用来得到正则批量匹配的结果</li>
+</ul>
+</li>
+<li><p>Promise.allSettled</p>
+<ul>
+<li>接受一个promise数组，返回一个成功的结果，成功的值是每一个promise对象的状态和结果</li>
+</ul>
+</li>
+<li><p>可选链操作符?.</p>
+<ul>
+<li>xxx1?.xxx2?.xxx3如果有xxx1才会读取后面的xxx2以此类推</li>
+</ul>
+</li>
+<li><p>动态 import 导入</p>
+</li>
+<li><p>globalThis 对象</p>
+<ul>
+<li>始终指向全局对象 </li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>规范集成</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+        <tag>ES11</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gulp</title>
+    <url>/2019/04/10/Gulp/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h1><ul>
+<li>中文主页: <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a></li>
+<li>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></li>
+<li>能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务</li>
+<li>gulp更高效(异步多任务), 更易于使用, 插件高质量</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>举例创建一个简单的应用gulp_test<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|- dist&#x2F;&#x2F;放打包生成的文件</span><br><span class="line">|- src</span><br><span class="line">  |- js</span><br><span class="line">  |- css</span><br><span class="line">  |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js-----gulp配置文件</span><br><span class="line">|- package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;gulp_test&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li>安装nodejs, 查看版本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></li>
+<li>安装gulp:<ul>
+<li>全局安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure></li>
+<li>局部安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp@3.9.1 --save-dev </span><br><span class="line">&#x2F;&#x2F;以下指令都是3.9版本的，4.0以上版本指令与3.9不同</span><br></pre></td></tr></table></figure></li>
+<li>配置编码: gulpfile.js<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;引入gulp模块</span><br><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">&#x2F;&#x2F;定义默认任务</span><br><span class="line">gulp.task(&#39;任务名&#39;, function() &#123;</span><br><span class="line">  &#x2F;&#x2F; 将你的任务的任务代码放在这</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;任务&#39;])&#x2F;&#x2F;异步执行</span><br></pre></td></tr></table></figure></li>
+<li>构建命令: <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
+<h2 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h2></li>
+<li>相关插件:<ul>
+<li>gulp-concat : 合并文件(js/css)</li>
+<li>gulp-uglify : 压缩js文件</li>
+<li>gulp-rename : 文件重命名</li>
+<li>gulp-less : 编译less</li>
+<li>gulp-clean-css : 压缩css</li>
+<li>gulp-livereload : 实时自动编译刷新</li>
+</ul>
+</li>
+<li><strong>重要API</strong><ul>
+<li>gulp.src(filePath/pathArr) : <ul>
+<li>指向指定路径的所有文件, 返回文件流对象</li>
+<li>用于读取文件</li>
+</ul>
+</li>
+<li>gulp.dest(dirPath/pathArr)<ul>
+<li>指向指定的所有文件夹</li>
+<li>用于向文件夹中输出文件</li>
+</ul>
+</li>
+<li>gulp.task(name, [deps], fn) <ul>
+<li>定义一个任务</li>
+</ul>
+</li>
+<li>gulp.watch() <ul>
+<li>监视文件的变化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="处理js"><a href="#处理js" class="headerlink" title="处理js"></a>处理js</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var concat &#x3D; require(&#39;gulp-concat&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var rename &#x3D; require(&#39;gulp-rename&#39;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;minifyjs&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;js&#x2F;*.js&#39;) &#x2F;&#x2F;找到操作的源文件，将文件读取到gulp的内存</span><br><span class="line">        .pipe(concat(&#39;built.js&#39;)) &#x2F;&#x2F;合并到临时文件     </span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;临时生成到目标文件夹</span><br><span class="line">        .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;)) &#x2F;&#x2F;重命名（后缀名+min）  </span><br><span class="line">        .pipe(uglify())    &#x2F;&#x2F;压缩</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;));&#x2F;&#x2F;生成到目标文件夹</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>页面引入js浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;dist&#x2F;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp</li>
+</ul>
+<h2 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var less &#x3D; require(&#39;gulp-less&#39;);</span><br><span class="line">var cleanCSS &#x3D; require(&#39;gulp-clean-css&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;less处理任务</span><br><span class="line">gulp.task(&#39;lessTask&#39;, function () &#123;</span><br><span class="line">return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe(less())               &#x2F;&#x2F;编译less文件为css文件</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#39;));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;css处理任务, 指定依赖的任务,当lessTask执行完在执行该任务</span><br><span class="line">gulp.task(&#39;cssTask&#39;,[&#39;lessTask&#39;], function () &#123;</span><br><span class="line"></span><br><span class="line">return gulp.src(&#39;src&#x2F;css&#x2F;*.css&#39;)</span><br><span class="line">    .pipe(concat(&#39;built.css&#39;))</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;))</span><br><span class="line">    .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;))</span><br><span class="line">    .pipe(cleanCSS(&#123;compatibility: &#39;ie8&#39;&#125;)) &#x2F;&#x2F;兼容到ie8</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>页面引入css浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;dist&#x2F;css&#x2F;built.min.css&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp</li>
+</ul>
+<h2 id="处理html"><a href="#处理html" class="headerlink" title="处理html"></a>处理html</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">&#x2F;&#x2F;压缩html任务</span><br><span class="line">gulp.task(&#39;htmlMinify&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;index.html&#39;)</span><br><span class="line">        .pipe(htmlmin(&#123;collapseWhitespace: true&#125;))&#x2F;&#x2F;清除空格</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;, &#39;htmlMinify&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>修改页面引入  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;built.min.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp    </li>
+</ul>
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><ul>
+<li>下载插件  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var livereload &#x3D; require(&#39;gulp-livereload&#39;);</span><br><span class="line">        </span><br><span class="line">&#x2F;&#x2F;所有的pipe</span><br><span class="line">.pipe(livereload());</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;    </span><br><span class="line">&#x2F;&#x2F;开启监视</span><br><span class="line">livereload.listen();</span><br><span class="line">&#x2F;&#x2F;监视指定的文件, 并指定对应的处理任务</span><br><span class="line">gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;minifyjs&#39;])</span><br><span class="line">gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;,&#39;src&#x2F;less&#x2F;*.less&#39;], [&#39;cssTask&#39;,&#39;lessTask&#39;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="热加载-实时加载"><a href="#热加载-实时加载" class="headerlink" title="热加载(实时加载)"></a>热加载(实时加载)</h2><ul>
+<li>下载插件：gulp-connect<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、npm install gulp-connect --save-dev</span><br><span class="line"></span><br><span class="line">2、注册 热加载的任务 server，注意依赖build任务 </span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;&#125;</span><br><span class="line"></span><br><span class="line">3、注册热加载的任务</span><br><span class="line">    &#x2F;&#x2F;配置加载的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">            root : &#39;dist&#x2F;&#39;,&#x2F;&#x2F;监视的源目标文件路径</span><br><span class="line">            livereload : true,&#x2F;&#x2F;是否实时刷新</span><br><span class="line">            port : 5000&#x2F;&#x2F;开启端口号</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 自动开启链接</span><br><span class="line">    open(&#39;http:&#x2F;&#x2F;localhost:5000&#39;);</span><br><span class="line">    &#x2F;&#x2F;npm install open --save-dev</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 监视目标文件</span><br><span class="line">    gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;js&#39;]);</span><br><span class="line">    gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;, &#39;src&#x2F;css&#x2F;*.less&#39;], [&#39;cssMin&#39;, &#39;less&#39;]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><ul>
+<li>打包加载gulp插件</li>
+<li>前提：将插件下载好。</li>
+<li>下载打包插件： gulp-load-plugins</li>
+<li>npm install gulp-load-plugins –save-dev</li>
+<li>引入： var $ = require(‘gulp-load-plugins’)();！！！引入的插件是个方法，必须记住调用。</li>
+<li>其他的插件不用再引入了</li>
+<li>使用方法：  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 所有的插件用 $ 引出，其他插件的方法名统一为插件的功能名字(即插件名字的最后一部分)：如：concat,connect,cssmin...</span><br><span class="line">gulp.task(&#39;less&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe($.less())&#x2F;&#x2F;将less转换为less</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#x2F;&#39;))</span><br><span class="line">    &#x2F;&#x2F;将转换为less的文件输出到src下</span><br><span class="line">    .pipe($.livereload())&#x2F;&#x2F;实时刷新</span><br><span class="line">    .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>自动化构建工具</category>
+      </categories>
+      <tags>
+        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -1558,109 +1661,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Gulp</title>
-    <url>/2019/04/10/Gulp/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h1><ul>
-<li>中文主页: <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a></li>
-<li>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></li>
-<li>能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务</li>
-<li>gulp更高效(异步多任务), 更易于使用, 插件高质量</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>举例创建一个简单的应用gulp_test<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|- dist&#x2F;&#x2F;放打包生成的文件</span><br><span class="line">|- src</span><br><span class="line">  |- js</span><br><span class="line">  |- css</span><br><span class="line">  |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js-----gulp配置文件</span><br><span class="line">|- package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;gulp_test&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-<li>安装nodejs, 查看版本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></li>
-<li>安装gulp:<ul>
-<li>全局安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure></li>
-<li>局部安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp@3.9.1 --save-dev </span><br><span class="line">&#x2F;&#x2F;以下指令都是3.9版本的，4.0以上版本指令与3.9不同</span><br></pre></td></tr></table></figure></li>
-<li>配置编码: gulpfile.js<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;引入gulp模块</span><br><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">&#x2F;&#x2F;定义默认任务</span><br><span class="line">gulp.task(&#39;任务名&#39;, function() &#123;</span><br><span class="line">  &#x2F;&#x2F; 将你的任务的任务代码放在这</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;任务&#39;])&#x2F;&#x2F;异步执行</span><br></pre></td></tr></table></figure></li>
-<li>构建命令: <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
-<h2 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h2></li>
-<li>相关插件:<ul>
-<li>gulp-concat : 合并文件(js/css)</li>
-<li>gulp-uglify : 压缩js文件</li>
-<li>gulp-rename : 文件重命名</li>
-<li>gulp-less : 编译less</li>
-<li>gulp-clean-css : 压缩css</li>
-<li>gulp-livereload : 实时自动编译刷新</li>
-</ul>
-</li>
-<li><strong>重要API</strong><ul>
-<li>gulp.src(filePath/pathArr) : <ul>
-<li>指向指定路径的所有文件, 返回文件流对象</li>
-<li>用于读取文件</li>
-</ul>
-</li>
-<li>gulp.dest(dirPath/pathArr)<ul>
-<li>指向指定的所有文件夹</li>
-<li>用于向文件夹中输出文件</li>
-</ul>
-</li>
-<li>gulp.task(name, [deps], fn) <ul>
-<li>定义一个任务</li>
-</ul>
-</li>
-<li>gulp.watch() <ul>
-<li>监视文件的变化</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="处理js"><a href="#处理js" class="headerlink" title="处理js"></a>处理js</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var concat &#x3D; require(&#39;gulp-concat&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var rename &#x3D; require(&#39;gulp-rename&#39;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;minifyjs&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;js&#x2F;*.js&#39;) &#x2F;&#x2F;找到操作的源文件，将文件读取到gulp的内存</span><br><span class="line">        .pipe(concat(&#39;built.js&#39;)) &#x2F;&#x2F;合并到临时文件     </span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;临时生成到目标文件夹</span><br><span class="line">        .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;)) &#x2F;&#x2F;重命名（后缀名+min）  </span><br><span class="line">        .pipe(uglify())    &#x2F;&#x2F;压缩</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;));&#x2F;&#x2F;生成到目标文件夹</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>页面引入js浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;dist&#x2F;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp</li>
-</ul>
-<h2 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var less &#x3D; require(&#39;gulp-less&#39;);</span><br><span class="line">var cleanCSS &#x3D; require(&#39;gulp-clean-css&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;less处理任务</span><br><span class="line">gulp.task(&#39;lessTask&#39;, function () &#123;</span><br><span class="line">return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe(less())               &#x2F;&#x2F;编译less文件为css文件</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#39;));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;css处理任务, 指定依赖的任务,当lessTask执行完在执行该任务</span><br><span class="line">gulp.task(&#39;cssTask&#39;,[&#39;lessTask&#39;], function () &#123;</span><br><span class="line"></span><br><span class="line">return gulp.src(&#39;src&#x2F;css&#x2F;*.css&#39;)</span><br><span class="line">    .pipe(concat(&#39;built.css&#39;))</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;))</span><br><span class="line">    .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;))</span><br><span class="line">    .pipe(cleanCSS(&#123;compatibility: &#39;ie8&#39;&#125;)) &#x2F;&#x2F;兼容到ie8</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>页面引入css浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;dist&#x2F;css&#x2F;built.min.css&quot;&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp</li>
-</ul>
-<h2 id="处理html"><a href="#处理html" class="headerlink" title="处理html"></a>处理html</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">&#x2F;&#x2F;压缩html任务</span><br><span class="line">gulp.task(&#39;htmlMinify&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;index.html&#39;)</span><br><span class="line">        .pipe(htmlmin(&#123;collapseWhitespace: true&#125;))&#x2F;&#x2F;清除空格</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;, &#39;htmlMinify&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>修改页面引入  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;built.min.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp    </li>
-</ul>
-<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><ul>
-<li>下载插件  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var livereload &#x3D; require(&#39;gulp-livereload&#39;);</span><br><span class="line">        </span><br><span class="line">&#x2F;&#x2F;所有的pipe</span><br><span class="line">.pipe(livereload());</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;    </span><br><span class="line">&#x2F;&#x2F;开启监视</span><br><span class="line">livereload.listen();</span><br><span class="line">&#x2F;&#x2F;监视指定的文件, 并指定对应的处理任务</span><br><span class="line">gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;minifyjs&#39;])</span><br><span class="line">gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;,&#39;src&#x2F;less&#x2F;*.less&#39;], [&#39;cssTask&#39;,&#39;lessTask&#39;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="热加载-实时加载"><a href="#热加载-实时加载" class="headerlink" title="热加载(实时加载)"></a>热加载(实时加载)</h2><ul>
-<li>下载插件：gulp-connect<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、npm install gulp-connect --save-dev</span><br><span class="line"></span><br><span class="line">2、注册 热加载的任务 server，注意依赖build任务 </span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;&#125;</span><br><span class="line"></span><br><span class="line">3、注册热加载的任务</span><br><span class="line">    &#x2F;&#x2F;配置加载的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">            root : &#39;dist&#x2F;&#39;,&#x2F;&#x2F;监视的源目标文件路径</span><br><span class="line">            livereload : true,&#x2F;&#x2F;是否实时刷新</span><br><span class="line">            port : 5000&#x2F;&#x2F;开启端口号</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 自动开启链接</span><br><span class="line">    open(&#39;http:&#x2F;&#x2F;localhost:5000&#39;);</span><br><span class="line">    &#x2F;&#x2F;npm install open --save-dev</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 监视目标文件</span><br><span class="line">    gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;js&#39;]);</span><br><span class="line">    gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;, &#39;src&#x2F;css&#x2F;*.less&#39;], [&#39;cssMin&#39;, &#39;less&#39;]);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><ul>
-<li>打包加载gulp插件</li>
-<li>前提：将插件下载好。</li>
-<li>下载打包插件： gulp-load-plugins</li>
-<li>npm install gulp-load-plugins –save-dev</li>
-<li>引入： var $ = require(‘gulp-load-plugins’)();！！！引入的插件是个方法，必须记住调用。</li>
-<li>其他的插件不用再引入了</li>
-<li>使用方法：  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 所有的插件用 $ 引出，其他插件的方法名统一为插件的功能名字(即插件名字的最后一部分)：如：concat,connect,cssmin...</span><br><span class="line">gulp.task(&#39;less&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe($.less())&#x2F;&#x2F;将less转换为less</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#x2F;&#39;))</span><br><span class="line">    &#x2F;&#x2F;将转换为less的文件输出到src下</span><br><span class="line">    .pipe($.livereload())&#x2F;&#x2F;实时刷新</span><br><span class="line">    .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>自动化构建工具</category>
-      </categories>
-      <tags>
-        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -3846,74 +3846,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Vue实战之外卖平台</title>
-    <url>/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
-<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
-<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
-<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
-<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
-<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
-<ul>
-<li>router：路由器页面跳转，开发单页应用</li>
-<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
-<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
-</ul>
-</li>
-<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
-<ul>
-<li>Bscroll: 实现页面滑动</li>
-<li>swiper：实现轮播图</li>
-<li>mint-ui：构建界面</li>
-<li>moment：处理日期格式</li>
-</ul>
-</li>
-<li><p>数据：ajax, axios, mock, vuex, postman</p>
-<ul>
-<li>ajax,axios: 实现前后台交互</li>
-<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
-<li>vuex：对数据进行全局的统一管理</li>
-<li>postman：测试后端接口</li>
-</ul>
-</li>
-</ul>
-<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
-<li>Node+Express <ul>
-<li>用express搭建后台路由</li>
-</ul>
-</li>
-<li>Mongodb+Mongoose<ul>
-<li>用mongoose操作mongodb数据库</li>
-</ul>
-</li>
-</ul>
-<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
-<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
-<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
-<ul>
-<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>Node.js</tag>
-        <tag>Vue</tag>
-        <tag>Vuex</tag>
-        <tag>Mongoose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue</title>
     <url>/2019/05/12/Vue/</url>
     <content><![CDATA[<blockquote>
@@ -4385,6 +4317,74 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue实战之外卖平台</title>
+    <url>/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
+<ul>
+<li>router：路由器页面跳转，开发单页应用</li>
+<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
+<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
+</ul>
+</li>
+<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
+<ul>
+<li>Bscroll: 实现页面滑动</li>
+<li>swiper：实现轮播图</li>
+<li>mint-ui：构建界面</li>
+<li>moment：处理日期格式</li>
+</ul>
+</li>
+<li><p>数据：ajax, axios, mock, vuex, postman</p>
+<ul>
+<li>ajax,axios: 实现前后台交互</li>
+<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
+<li>vuex：对数据进行全局的统一管理</li>
+<li>postman：测试后端接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li>Node+Express <ul>
+<li>用express搭建后台路由</li>
+</ul>
+</li>
+<li>Mongodb+Mongoose<ul>
+<li>用mongoose操作mongodb数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
+<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<ul>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2019/08/02/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>Node.js</tag>
+        <tag>Vue</tag>
+        <tag>Vuex</tag>
+        <tag>Mongoose</tag>
       </tags>
   </entry>
   <entry>
@@ -4955,40 +4955,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2018/07/02/hello%20world/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li>Git</li>
-<li>Nginx</li>
-<li>Nodejs</li>
-<li>搭载环境<ol>
-<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
-<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
-<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>hexo<ol>
-<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
-<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>axios</title>
     <url>/2019/06/15/axios/</url>
     <content><![CDATA[<blockquote>
@@ -5229,6 +5195,354 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       <tags>
         <tag>ajax</tag>
         <tag>axios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2018/07/02/hello%20world/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Git</li>
+<li>Nginx</li>
+<li>Nodejs</li>
+<li>搭载环境<ol>
+<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
+<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
+<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>hexo<ol>
+<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
+<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery</title>
+    <url>/2018/09/10/jQuery/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>一个JS函数库</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>一个JS函数库: write less, do more</li>
+<li>封装简化DOM操作(CRUD) / Ajax</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>强大选择器: 方便快速查找DOM元素</li>
+<li>隐式遍历(迭代): 一次操作多个元素</li>
+<li>读写合一: 读数据/写数据用的是一个函数</li>
+<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
+<li>事件处理</li>
+<li>DOM操作(CUD)</li>
+<li>样式操作</li>
+<li>动画</li>
+<li>浏览器兼容</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li>引入jQuery库<ul>
+<li>本地引入与CDN远程引入<ul>
+<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
+</ul>
+</li>
+<li>测试版与生产版(压缩版)</li>
+</ul>
+</li>
+<li>使用jQuery<ul>
+<li>使用jQuery函数: $/jQuery</li>
+<li>使用jQuery对象: $xxx(执行$()得到的)</li>
+</ul>
+</li>
+</ul>
+<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
+<li>问题 : 如果有2个库都有$, 就存在冲突</li>
+<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
+<li>API : jQuery.noConflict()</li>
+</ul>
+<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
+<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
+</li>
+<li><p>当成一般函数使用人: $(param)</p>
+<ul>
+<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
+<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
+<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
+<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>当成对象使用: $.xxx</p>
+<ul>
+<li>each(obj/arr, function(key, value){})</li>
+<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
+<li>包含所有匹配的n个DOM元素的伪数组对象</li>
+<li>执行$()返回的就是jQuery对象</li>
+<li>基本行为:<ul>
+<li>length/size(): 得到dom元素的个数</li>
+<li>[index] : 得到指定下标对应的dom元素</li>
+<li>each(function(index, domEle){}): 遍历所有dom元素</li>
+<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>伪数组<ol>
+<li>object对象</li>
+<li>length属性</li>
+<li>数值下标属性</li>
+<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>有特定语法规则(css选择器)的字符串</li>
+<li>用来查找某个/些DOM元素: $(selector)</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>基本选择器<ul>
+<li>#id: id选择器</li>
+<li>element : 元素选择器</li>
+<li>.class: 属性选择器</li>
+<li>selector1,selector2,selector3: 并集</li>
+<li>selector1selector2selector3: 交集</li>
+<li>: 任意标签</li>
+</ul>
+</li>
+<li>层次选择器<ul>
+<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
+<li>selector1&gt;selector2: 子元素</li>
+<li>selector1 selector2: 后代元素</li>
+<li>prev+next<ul>
+<li>匹配所有紧接在 prev 元素后的 next 元素</li>
+</ul>
+</li>
+<li>prev~siblings<ul>
+<li>匹配 prev 元素之后的所有 siblings 元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过滤选择器<ul>
+<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
+<li>:first 获取第一个元素</li>
+<li>:last 获取最后个元素</li>
+<li>:eq(index) 匹配一个给定索引值的元素</li>
+<li>:lt 匹配所有小于给定索引值的元素</li>
+<li>:gt 匹配所有大于给定索引值的元素</li>
+<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
+<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
+<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
+<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
+<li>:visible 匹配所有的可见元素</li>
+<li>:contains(text) 匹配包含给定文本的元素</li>
+<li>[属性] 匹配包含给定属性的元素</li>
+<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
+</ul>
+</li>
+<li>表单选择器<ul>
+<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
+<li>:text 匹配所有的单行文本框</li>
+<li>:checkbox 匹配所有复选框</li>
+<li>:radio 匹配所有单选按钮</li>
+<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
+</ul>
+</li>
+</ul>
+<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
+<li>$.each(): 遍历数组或对象中的数据</li>
+<li>$.trim(): 去除字符串两边的空格</li>
+<li>$.type(obj): 得到数据的类型</li>
+<li>$.isArray(obj): 判断是否是数组</li>
+<li>$.isFunction(obj): 判断是否是函数</li>
+<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
+</ol>
+<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
+<li>操作标签的属性, 标签体文本</li>
+<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
+<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
+<li>removeAttr(name)/removeProp(name): 删除属性</li>
+<li>addClass(classValue): 添加class</li>
+<li>removeClass(classValue): 移除指定class</li>
+<li>val() / val(value): 读写标签的value</li>
+<li>html() / html(htmlString): 读写标签体文本</li>
+</ul>
+<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
+<li>css(styleName): 根据样式名得到对应的值</li>
+<li>css(styleName, value): 设置一个样式</li>
+<li>css({多个样式对}): 设置多个样式</li>
+</ul>
+<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
+<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
+<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
+<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
+<li>内容尺寸</li>
+</ol>
+<ul>
+<li>height(): height</li>
+<li>width(): width</li>
+</ul>
+<ol start="2">
+<li>内部尺寸</li>
+</ol>
+<ul>
+<li>innerHeight(): height+padding</li>
+<li>innerWidth(): width+padding</li>
+</ul>
+<ol start="3">
+<li>外部尺寸</li>
+</ol>
+<ul>
+<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
+<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
+</ul>
+<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
+<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
+<li>first()：获取第一个元素</li>
+<li>last()：获取最后一个元素</li>
+<li>eq(index)：获取第N个元素</li>
+<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
+<li>not(selector): 指定表达式匹配的元素，并取反</li>
+<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
+<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
+<li>children(selector): 子元素</li>
+<li>parent(): 父元素</li>
+<li>find(selector): 后代元素</li>
+<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
+<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
+</ul>
+<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
+<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
+<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
+<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
+<li>after(): 在每个匹配的元素之后插入内容</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>remove(): 将自己及内部的孩子都删除</li>
+<li>empty(): 掏空(自己还在)</li>
+</ul>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
+</ul>
+<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
+<li>eventName(function(){})<ul>
+<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
+</ul>
+</li>
+<li>on(‘eventName’, function(){})<ul>
+<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
+</ul>
+</li>
+<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
+<li>hover(function(){}, function(){})</li>
+</ul>
+<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
+<li>off(‘eventName’)</li>
+</ul>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
+<li>理解<ul>
+<li>将多个子元素的事件监听委托给父辈元素处理</li>
+<li>监听回调是加在了父辈元素上</li>
+<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
+<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
+</ul>
+</li>
+<li>好处<ul>
+<li>添加新的子元素, 自动有事件响应处理</li>
+<li>减少事件监听的数量: n==&gt;1</li>
+</ul>
+</li>
+<li>jQuery的事件委托API<ul>
+<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
+<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
+</ul>
+</li>
+</ul>
+<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
+<li>event.offsetX: 原点是当前元素左上角</li>
+<li>event.clientX: 原点是窗口左上角</li>
+<li>event.pageX: 原点是页面左上角</li>
+</ul>
+<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
+<li>停止事件冒泡: event.stopPropagation()</li>
+<li>阻止事件的默认行为: event.preventDefault()</li>
+</ul>
+<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
+<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
+</li>
+<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
+</li>
+<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
+<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
+<li><p>在一定的时间内, 不断改变元素样式</p>
+</li>
+</ul>
+<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
+2.  fadeOut(): 带动画隐藏
+3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
+<li>slideDown(): 带动画的展开</li>
+<li>slideUp(): 带动画的收缩</li>
+<li>slideToggle(): 带动画的切换展开/收缩</li>
+</ol>
+<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
+<li>show(): (不)带动画的显示</li>
+<li>hide(): (不)带动画的隐藏</li>
+<li>toggle(): (不)带动画的切换显示/隐藏</li>
+</ol>
+<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
+<li>animate(): 自定义动画效果的动画</li>
+<li>stop(): 停止动画</li>
+</ol>
+<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
+
+<p>#其他  </p>
+<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
+<li>window.onload<ul>
+<li>包括页面的图片加载完后才会回调(晚)</li>
+<li>只能有一个监听回调</li>
+</ul>
+</li>
+<li>$(document).ready()<ul>
+<li>等同于: $(function(){})</li>
+<li>页面加载完就回调(早)</li>
+<li>可以有多个监听回调</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>jQuery</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -6420,320 +6734,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>jQuery</title>
-    <url>/2018/09/10/jQuery/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>一个JS函数库</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>一个JS函数库: write less, do more</li>
-<li>封装简化DOM操作(CRUD) / Ajax</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>强大选择器: 方便快速查找DOM元素</li>
-<li>隐式遍历(迭代): 一次操作多个元素</li>
-<li>读写合一: 读数据/写数据用的是一个函数</li>
-<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
-<li>事件处理</li>
-<li>DOM操作(CUD)</li>
-<li>样式操作</li>
-<li>动画</li>
-<li>浏览器兼容</li>
-</ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
-<li>引入jQuery库<ul>
-<li>本地引入与CDN远程引入<ul>
-<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
-</ul>
-</li>
-<li>测试版与生产版(压缩版)</li>
-</ul>
-</li>
-<li>使用jQuery<ul>
-<li>使用jQuery函数: $/jQuery</li>
-<li>使用jQuery对象: $xxx(执行$()得到的)</li>
-</ul>
-</li>
-</ul>
-<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
-<li>问题 : 如果有2个库都有$, 就存在冲突</li>
-<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
-<li>API : jQuery.noConflict()</li>
-</ul>
-<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
-<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
-</li>
-<li><p>当成一般函数使用人: $(param)</p>
-<ul>
-<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
-<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
-<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
-<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>当成对象使用: $.xxx</p>
-<ul>
-<li>each(obj/arr, function(key, value){})</li>
-<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
-<li>包含所有匹配的n个DOM元素的伪数组对象</li>
-<li>执行$()返回的就是jQuery对象</li>
-<li>基本行为:<ul>
-<li>length/size(): 得到dom元素的个数</li>
-<li>[index] : 得到指定下标对应的dom元素</li>
-<li>each(function(index, domEle){}): 遍历所有dom元素</li>
-<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>伪数组<ol>
-<li>object对象</li>
-<li>length属性</li>
-<li>数值下标属性</li>
-<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>有特定语法规则(css选择器)的字符串</li>
-<li>用来查找某个/些DOM元素: $(selector)</li>
-</ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>基本选择器<ul>
-<li>#id: id选择器</li>
-<li>element : 元素选择器</li>
-<li>.class: 属性选择器</li>
-<li>selector1,selector2,selector3: 并集</li>
-<li>selector1selector2selector3: 交集</li>
-<li>: 任意标签</li>
-</ul>
-</li>
-<li>层次选择器<ul>
-<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
-<li>selector1&gt;selector2: 子元素</li>
-<li>selector1 selector2: 后代元素</li>
-<li>prev+next<ul>
-<li>匹配所有紧接在 prev 元素后的 next 元素</li>
-</ul>
-</li>
-<li>prev~siblings<ul>
-<li>匹配 prev 元素之后的所有 siblings 元素</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过滤选择器<ul>
-<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
-<li>:first 获取第一个元素</li>
-<li>:last 获取最后个元素</li>
-<li>:eq(index) 匹配一个给定索引值的元素</li>
-<li>:lt 匹配所有小于给定索引值的元素</li>
-<li>:gt 匹配所有大于给定索引值的元素</li>
-<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
-<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
-<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
-<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
-<li>:visible 匹配所有的可见元素</li>
-<li>:contains(text) 匹配包含给定文本的元素</li>
-<li>[属性] 匹配包含给定属性的元素</li>
-<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
-</ul>
-</li>
-<li>表单选择器<ul>
-<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
-<li>:text 匹配所有的单行文本框</li>
-<li>:checkbox 匹配所有复选框</li>
-<li>:radio 匹配所有单选按钮</li>
-<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
-</ul>
-</li>
-</ul>
-<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
-<li>$.each(): 遍历数组或对象中的数据</li>
-<li>$.trim(): 去除字符串两边的空格</li>
-<li>$.type(obj): 得到数据的类型</li>
-<li>$.isArray(obj): 判断是否是数组</li>
-<li>$.isFunction(obj): 判断是否是函数</li>
-<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
-</ol>
-<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
-<li>操作标签的属性, 标签体文本</li>
-<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
-<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
-<li>removeAttr(name)/removeProp(name): 删除属性</li>
-<li>addClass(classValue): 添加class</li>
-<li>removeClass(classValue): 移除指定class</li>
-<li>val() / val(value): 读写标签的value</li>
-<li>html() / html(htmlString): 读写标签体文本</li>
-</ul>
-<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
-<li>css(styleName): 根据样式名得到对应的值</li>
-<li>css(styleName, value): 设置一个样式</li>
-<li>css({多个样式对}): 设置多个样式</li>
-</ul>
-<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
-<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
-<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
-<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
-<li>内容尺寸</li>
-</ol>
-<ul>
-<li>height(): height</li>
-<li>width(): width</li>
-</ul>
-<ol start="2">
-<li>内部尺寸</li>
-</ol>
-<ul>
-<li>innerHeight(): height+padding</li>
-<li>innerWidth(): width+padding</li>
-</ul>
-<ol start="3">
-<li>外部尺寸</li>
-</ol>
-<ul>
-<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
-<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
-</ul>
-<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
-<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
-<li>first()：获取第一个元素</li>
-<li>last()：获取最后一个元素</li>
-<li>eq(index)：获取第N个元素</li>
-<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
-<li>not(selector): 指定表达式匹配的元素，并取反</li>
-<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
-</ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
-<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
-<li>children(selector): 子元素</li>
-<li>parent(): 父元素</li>
-<li>find(selector): 后代元素</li>
-<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
-<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
-</ul>
-<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
-<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
-<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
-<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
-<li>after(): 在每个匹配的元素之后插入内容</li>
-</ul>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>remove(): 将自己及内部的孩子都删除</li>
-<li>empty(): 掏空(自己还在)</li>
-</ul>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
-<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
-</ul>
-<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
-<li>eventName(function(){})<ul>
-<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
-</ul>
-</li>
-<li>on(‘eventName’, function(){})<ul>
-<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
-</ul>
-</li>
-<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
-<li>hover(function(){}, function(){})</li>
-</ul>
-<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
-<li>off(‘eventName’)</li>
-</ul>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
-<li>理解<ul>
-<li>将多个子元素的事件监听委托给父辈元素处理</li>
-<li>监听回调是加在了父辈元素上</li>
-<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
-<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
-</ul>
-</li>
-<li>好处<ul>
-<li>添加新的子元素, 自动有事件响应处理</li>
-<li>减少事件监听的数量: n==&gt;1</li>
-</ul>
-</li>
-<li>jQuery的事件委托API<ul>
-<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
-<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
-</ul>
-</li>
-</ul>
-<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
-<li>event.offsetX: 原点是当前元素左上角</li>
-<li>event.clientX: 原点是窗口左上角</li>
-<li>event.pageX: 原点是页面左上角</li>
-</ul>
-<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
-<li>停止事件冒泡: event.stopPropagation()</li>
-<li>阻止事件的默认行为: event.preventDefault()</li>
-</ul>
-<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
-<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
-</li>
-<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
-</li>
-<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
-<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
-<li><p>在一定的时间内, 不断改变元素样式</p>
-</li>
-</ul>
-<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
-2.  fadeOut(): 带动画隐藏
-3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
-<li>slideDown(): 带动画的展开</li>
-<li>slideUp(): 带动画的收缩</li>
-<li>slideToggle(): 带动画的切换展开/收缩</li>
-</ol>
-<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
-<li>show(): (不)带动画的显示</li>
-<li>hide(): (不)带动画的隐藏</li>
-<li>toggle(): (不)带动画的切换显示/隐藏</li>
-</ol>
-<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
-<li>animate(): 自定义动画效果的动画</li>
-<li>stop(): 停止动画</li>
-</ol>
-<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
-
-<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
-
-<p>#其他  </p>
-<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
-<li>window.onload<ul>
-<li>包括页面的图片加载完后才会回调(晚)</li>
-<li>只能有一个监听回调</li>
-</ul>
-</li>
-<li>$(document).ready()<ul>
-<li>等同于: $(function(){})</li>
-<li>页面加载完就回调(早)</li>
-<li>可以有多个监听回调</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>jQuery</category>
-      </categories>
-      <tags>
-        <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>less</title>
     <url>/2019/04/21/less/</url>
     <content><![CDATA[<blockquote>
@@ -6805,6 +6805,97 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>CSS</tag>
         <tag>less</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>性能优化</title>
+    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+
+
+<h1 id="网页"><a href="#网页" class="headerlink" title="网页"></a>网页</h1><h2 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h2><ol>
+<li>合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改</li>
+<li>雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分</li>
+<li>cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。因此保持coockie尽可能的小以减少用户的响应时间十分重要</li>
+</ol>
+<h2 id="设置Expires和Cache-Control"><a href="#设置Expires和Cache-Control" class="headerlink" title="设置Expires和Cache-Control"></a>设置Expires和Cache-Control</h2><ul>
+<li>已缓存资源不再发起http请求，即HTTP的Expires和Cache-Control。对一个网站而言，CSS、JavaScript、图片等静态资源更新的频率都比较低，而这些文件又几乎是每次HTTP请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置http头中的cache-control和expires的属性，可设定浏览器缓存，将静态内容设为永不过期，或者很长时间后才过期。</li>
+</ul>
+<h2 id="减少DNS查询次数"><a href="#减少DNS查询次数" class="headerlink" title="减少DNS查询次数"></a>减少DNS查询次数</h2><ul>
+<li>DNS查询也消耗响应时间，若网页内容来自各个不同的域名，则客户端首次解析这些域名需要消耗一定的时间，但由于DNS查询结果会缓存在本地系统和浏览器中一段时间（IE对DNS记录默认的缓存时间为30分钟，Firefox对DNS记录默认的缓存时间为1分钟，Chrome对DNS记录默认的缓存时间为1分钟），所以DNS查询一般只是对首次访问时的速度有影响。</li>
+</ul>
+<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
+<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
+<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
+<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
+<li>优点<ul>
+<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
+<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
+<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
+<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><ul>
+<li>为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。</li>
+<li>懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。</li>
+<li>常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import
+　<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2></li>
+<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
+<li>优点<ul>
+<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
+<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
+<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用cdn"><a href="#使用cdn" class="headerlink" title="使用cdn"></a>使用cdn</h2><ul>
+<li>将静态资源存放到cdn服务器上直接请求，无需下载，提高网页速度</li>
+</ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="css置顶"><a href="#css置顶" class="headerlink" title="css置顶"></a>css置顶</h2><ul>
+<li>在所有CSS加载并解析完之后才会呈现内容，减少白屏</li>
+<li>现代浏览器为了更好的用户体验,渲染引擎将尝试尽快在屏幕上显示的内容。它不会等到所有HTML解析之前开始构建和布局渲染树。部分的内容将被解析并显示。也就是说浏览器能够渲染不完整的dom树和css结合，尽快的减少白屏的时间</li>
+</ul>
+<h2 id="避免css表达式"><a href="#避免css表达式" class="headerlink" title="避免css表达式"></a>避免css表达式</h2><ul>
+<li>CSS 表达式虽然强大，但是会给浏览器带来很严重的性能问题，并拖慢网页的加载速度</li>
+<li>表达式的问题就在于它的计算频率要比我们想象的多。不仅仅是在页面显示和缩放时，就是在页面滚动、乃至移动鼠标时都会要重新计算一次</li>
+</ul>
+<h2 id="用link代替import"><a href="#用link代替import" class="headerlink" title="用link代替import"></a>用link代替import</h2><ul>
+<li>当页面被加载时，link引用的CSS会同时被加载，而@import引用的CSS则是等待主页面全部被加载完后才会被加载，所以当网速较慢时，可能会只出现页面而没有样式，等一段时间后样式才会被加载出来</li>
+</ul>
+<h2 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h2><ul>
+<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
+<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
+</ul>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="js置底"><a href="#js置底" class="headerlink" title="js置底"></a>js置底</h2><ul>
+<li>js 会阻碍浏览器的解析，解析遇到js会停止渲染，优先去加载或者执行js,处理完毕后再继续渲染，js放在最后面就不会影响前面的页面的渲染</li>
+</ul>
+<h2 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h2><ul>
+<li>对js、css、图片等进行压缩，尽可能减小文件的大小，减少文件下载的时间，从而减少网页响应的时间</li>
+</ul>
+<h2 id="减少dom访问"><a href="#减少dom访问" class="headerlink" title="减少dom访问"></a>减少dom访问</h2><ul>
+<li>使用JavaScript访问DOM元素比较慢</li>
+</ul>
+<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
+<li>骨架屏<ul>
+<li>在数据加载时显示骨架，优化用户体验</li>
+</ul>
+</li>
+<li>缓存路由组件keep-alive<ul>
+<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
+<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
+</ul>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>小本本</title>
@@ -7153,97 +7244,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>public<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;通过初始化实例变量来给对象添加public变量</span><br><span class="line">functin Container(param) &#123;   </span><br><span class="line">this.member &#x3D; param;   </span><br><span class="line">&#125;  </span><br><span class="line">var myContainer &#x3D; new Container(&#39;abc&#39;)，则myContainer.member为&#39;abc&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;函数通过加在原型链来实现public</span><br><span class="line">Container.prototype.stamp &#x3D; function (string) &#123;   </span><br><span class="line">return this.member + string;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>Private<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">普通的var变量就是private</span><br><span class="line">private函数</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;private methd  </span><br><span class="line">function getSex()&#123;  </span><br><span class="line">    return sex;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">function getSalary()&#123;  </span><br><span class="line">    return salary;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">this.display &#x3D; function()&#123;  </span><br><span class="line">    document.write(this.getName() + &quot;---&quot; + this.getAge() + &quot;---&quot; + getSex() + &quot;----&quot; + getSalary());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>性能优化</title>
-    <url>/2018/08/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-
-<h1 id="网页"><a href="#网页" class="headerlink" title="网页"></a>网页</h1><h2 id="http请求优化（减少cookie体积，减少http请求次数）"><a href="#http请求优化（减少cookie体积，减少http请求次数）" class="headerlink" title="http请求优化（减少cookie体积，减少http请求次数）"></a>http请求优化（减少cookie体积，减少http请求次数）</h2><ol>
-<li>合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改</li>
-<li>雪碧图：把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分</li>
-<li>cookie内的有关信息是通过HTTP文件头来在web服务器和浏览器之间进行交流的。因此保持coockie尽可能的小以减少用户的响应时间十分重要</li>
-</ol>
-<h2 id="设置Expires和Cache-Control"><a href="#设置Expires和Cache-Control" class="headerlink" title="设置Expires和Cache-Control"></a>设置Expires和Cache-Control</h2><ul>
-<li>已缓存资源不再发起http请求，即HTTP的Expires和Cache-Control。对一个网站而言，CSS、JavaScript、图片等静态资源更新的频率都比较低，而这些文件又几乎是每次HTTP请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置http头中的cache-control和expires的属性，可设定浏览器缓存，将静态内容设为永不过期，或者很长时间后才过期。</li>
-</ul>
-<h2 id="减少DNS查询次数"><a href="#减少DNS查询次数" class="headerlink" title="减少DNS查询次数"></a>减少DNS查询次数</h2><ul>
-<li>DNS查询也消耗响应时间，若网页内容来自各个不同的域名，则客户端首次解析这些域名需要消耗一定的时间，但由于DNS查询结果会缓存在本地系统和浏览器中一段时间（IE对DNS记录默认的缓存时间为30分钟，Firefox对DNS记录默认的缓存时间为1分钟，Chrome对DNS记录默认的缓存时间为1分钟），所以DNS查询一般只是对首次访问时的速度有影响。</li>
-</ul>
-<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><ul>
-<li>懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。</li>
-<li>用户滚动到它们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页上使用延迟加载将使网页加载更快。</li>
-<li>在某些情况下，它还可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。</li>
-<li>优点<ul>
-<li>能提升用户的体验，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间很长，严重影响用户体验。</li>
-<li>减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担。</li>
-<li>防止并发加载的资源过多会阻塞js的加载，影响网站的正常使用。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-original属性中。</li>
-<li>当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现懒加载。</li>
-</ul>
-</li>
-</ul>
-<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><ul>
-<li>为给客户更好的客户体验，首屏组件加载速度更快一些，解决白屏问题。</li>
-<li>懒加载简单来说就是延迟加载或按需加载，即在需要的时候的时候进行加载。</li>
-<li>常用的懒加载方式有两种：即使用vue异步组件 和 ES中的import
-　<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2></li>
-<li>预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。</li>
-<li>优点<ul>
-<li>在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。</li>
-</ul>
-</li>
-<li>原理<ul>
-<li>用CSS和JavaScript实现预加载，html中img标签最初设置为display:none；</li>
-<li>仅使用JavaScript实现预加载，js脚本中使用image对象动态创建好图片；</li>
-<li>使用Ajax实现预加载，使用XMLHttpRequest对象可以更加精细的控制预加载过程，缺点是无法跨域：</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用cdn"><a href="#使用cdn" class="headerlink" title="使用cdn"></a>使用cdn</h2><ul>
-<li>将静态资源存放到cdn服务器上直接请求，无需下载，提高网页速度</li>
-</ul>
-<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="css置顶"><a href="#css置顶" class="headerlink" title="css置顶"></a>css置顶</h2><ul>
-<li>在所有CSS加载并解析完之后才会呈现内容，减少白屏</li>
-<li>现代浏览器为了更好的用户体验,渲染引擎将尝试尽快在屏幕上显示的内容。它不会等到所有HTML解析之前开始构建和布局渲染树。部分的内容将被解析并显示。也就是说浏览器能够渲染不完整的dom树和css结合，尽快的减少白屏的时间</li>
-</ul>
-<h2 id="避免css表达式"><a href="#避免css表达式" class="headerlink" title="避免css表达式"></a>避免css表达式</h2><ul>
-<li>CSS 表达式虽然强大，但是会给浏览器带来很严重的性能问题，并拖慢网页的加载速度</li>
-<li>表达式的问题就在于它的计算频率要比我们想象的多。不仅仅是在页面显示和缩放时，就是在页面滚动、乃至移动鼠标时都会要重新计算一次</li>
-</ul>
-<h2 id="用link代替import"><a href="#用link代替import" class="headerlink" title="用link代替import"></a>用link代替import</h2><ul>
-<li>当页面被加载时，link引用的CSS会同时被加载，而@import引用的CSS则是等待主页面全部被加载完后才会被加载，所以当网速较慢时，可能会只出现页面而没有样式，等一段时间后样式才会被加载出来</li>
-</ul>
-<h2 id="减少重绘与回流"><a href="#减少重绘与回流" class="headerlink" title="减少重绘与回流"></a>减少重绘与回流</h2><ul>
-<li>CSS（ui渲染）和JavaScript（js解析）会相互阻塞</li>
-<li>前端性能优化与重绘与回流有关系的原因是：频繁的触发重绘与回流，会导致UI频繁渲染，最终会导致js变慢，会导致页面性能变差</li>
-</ul>
-<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="js置底"><a href="#js置底" class="headerlink" title="js置底"></a>js置底</h2><ul>
-<li>js 会阻碍浏览器的解析，解析遇到js会停止渲染，优先去加载或者执行js,处理完毕后再继续渲染，js放在最后面就不会影响前面的页面的渲染</li>
-</ul>
-<h2 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h2><ul>
-<li>对js、css、图片等进行压缩，尽可能减小文件的大小，减少文件下载的时间，从而减少网页响应的时间</li>
-</ul>
-<h2 id="减少dom访问"><a href="#减少dom访问" class="headerlink" title="减少dom访问"></a>减少dom访问</h2><ul>
-<li>使用JavaScript访问DOM元素比较慢</li>
-</ul>
-<h1 id="用户感知优化"><a href="#用户感知优化" class="headerlink" title="用户感知优化"></a>用户感知优化</h1><ul>
-<li>骨架屏<ul>
-<li>在数据加载时显示骨架，优化用户体验</li>
-</ul>
-</li>
-<li>缓存路由组件keep-alive<ul>
-<li>默认情况下, 被切换的路由组件对象会死亡释放, 再次回来时是重新创建的</li>
-<li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
 </ul>
 </li>
 </ul>
