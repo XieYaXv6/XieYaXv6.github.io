@@ -245,193 +245,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git&amp;Github</title>
-    <url>/2019/03/19/Git-Github/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br> Git是一个分布式版本控制系统， Github是一个为用户提供Git服务的网站</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
-<li><p>仓库(Repository):存放项目代码，多个开源项目存放多个仓库</p>
-</li>
-<li><p>收藏（star）：收藏项目</p>
-</li>
-<li><p>复制克隆项目（fork）：该fork的项目时独立存在的，把项目复制过来自己用</p>
-</li>
-<li><p>发起请求（Pull request）：基于fork的动作，在别人的fork项目上新增了功能，觉得不错，想合并到原本项目里，会向原有项目创建人发送请求，原有项目人同意即可添加你的代码</p>
-</li>
-<li><p>关注（watch）：关注别人项目，及时收到更新的消息</p>
-</li>
-<li><p>事物卡片（lssue）：发现代码BUG，但是目前没有成型代码，需要讨论时用，比如别人发现你的项目中有bug就会给你发送issue来提醒你</p>
-</li>
-</ul>
-<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><ul>
-<li>关于GitHub访问的问题</li>
-</ul>
-<ol>
-<li>第一种方法就是挂梯子了，毕竟GitHub是国外的服务器，这点理所应当，不止是一般的VPN，我在挂学校的vpn时也能实现很流畅的访问</li>
-<li>第二种就是我在网上搜罗了一种不用挂梯子也能访问的方法<ol>
-<li>访问<a href="https://www.ipaddress.com/" target="_blank" rel="noopener">IP查询网站</a></li>
-<li>在搜索框里搜索(GitHub.com),就会出现以下页面，找到该地址并记下来<br><img src="/2019/03/19/Git-Github/ip.png" alt></li>
-<li>然后再在搜索框中搜索（github.global.ssl.fastly.net），找到地址并记下来<br><img src="/2019/03/19/Git-Github/Ip2.png" alt></li>
-<li>将这两个地址写到C:\Windows\System32\drivers\etc 路径下的 hosts文件<br><img src="/2019/03/19/Git-Github/host.png" alt></li>
-<li>刷新dns后(ipconfig /flushdns)就可以访问啦，不过速度emmm</li>
-</ol>
-</li>
-</ol>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
-<li><p>Git和Github的区别</p>
-<ul>
-<li><p>Git是一个分布式版本控制系统，简单的说就是一个软件，用于记录一个或若干文件内容变化，以便来查阅特定版本修订情况的软件。</p>
-</li>
-<li><p>Github是一个为用户提供Git服务的网站，简单说就是一个可以放代码的地方（也可以放其他内容）。Github除了提供管理Git的web界面外，还提供了订阅、关注、讨论组,在线编辑器等丰富的功能。</p>
-</li>
-<li><p>目前我们使用到的 Git 命令都是在本地执行，如果你想通过 Git 分享你的代码或者与其他开发人员合作。你就需要将数据放到一台其他开发人员能够连接的服务器上,所以就可以使用 Github 作为远程仓库</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="基本工作流程"><a href="#基本工作流程" class="headerlink" title="基本工作流程"></a>基本工作流程</h2><ul>
-<li><p>Git工作区域<br><img src="/2019/03/19/Git-Github/Gitwork.png" alt></p>
-</li>
-<li><p>向仓库中添加文件流程<br><img src="/2019/03/19/Git-Github/gitstep.png" alt></p>
-</li>
-</ul>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
-<li>基本信息设置<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &#39;用户名&#39;</span><br><span class="line">git config --global user.email &#39;邮箱地址&#39;</span><br><span class="line"></span><br><span class="line">该设置在github仓库主页显示谁提交了该文件</span><br></pre></td></tr></table></figure></li>
-<li>Git仓库的初始化</li>
-</ol>
-<ul>
-<li>即让Git知道需要他来管理这个目录<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></li>
-<li>执行后，打开这个项目目录下，点击隐藏目录你会发现多了一个.git文件夹。不能删除，也不能随意更改</li>
-</ul>
-<h2 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h2><ul>
-<li><p>上传文件至仓库</p>
-<ol>
-<li>git status:查看当前工作状态</li>
-<li>git add:将工作区文件添加到缓存区，可以加–all批量提交</li>
-<li>git commit -m “注释内容”:提交至版本库</li>
-</ol>
-</li>
-<li><p>删除文件</p>
-<ol>
-<li>git rm:从git中删除文件</li>
-</ol>
-</li>
-<li><p>将本地仓库同步到远程仓库</p>
-<ol>
-<li>先将远程仓库的项目复制到本地<ul>
-<li>git clone 线上仓库地址</li>
-</ul>
-</li>
-<li>操作完文件将文件添加到本地仓库</li>
-<li>git push可将本地仓库同步到远程仓库</li>
-<li>用git pull拉取线上的最新版本</li>
-</ol>
-<ul>
-<li>如果要同步到其他仓库<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先建立连接</span><br><span class="line">git remote add name http:&#x2F;&#x2F;xxxxxxxx.git   (如果是clone下来的可以省略) </span><br><span class="line"></span><br><span class="line">然后拉取最新版</span><br><span class="line">git pull  name branch &#x2F;&#x2F;有一种情况是因为readme.md文件不在本地会报错 只需要git pull --rebase name branch本地生成readme文件</span><br><span class="line"></span><br><span class="line">然后推送到仓库</span><br><span class="line">git push name branch</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>查询文件</p>
-<ul>
-<li>git  status   :  查看工作目录中文件的状态(已跟踪(已提交 已暂存 已修改) 未跟踪)</li>
-<li>git  diff     :  查看未暂存的修改</li>
-<li>git  diff –cache : 查看未提交的暂存</li>
-<li>git  log –oneline : 查看提交记录</li>
-</ul>
-</li>
-<li><p>分支</p>
-<ul>
-<li>分支的本质其实就是一个提交对象!!!</li>
-<li>HEAD: 是一个指针 它默认指向master分支 切换分支时其实就是让HEAD指向不同的分支，每次有新的提交时 HEAD都会带着当前指向的分支 一起往前移动</li>
-<li>创建分支            : git branch branchname</li>
-<li>切换分支           : git checkout  branchname</li>
-<li>创建&amp;切换分支     : git checkout -b branchname</li>
-<li>版本穿梭(时光机) :  git branch branchname commitHash  </li>
-<li>普通删除分支      : git  branch -d branchname</li>
-<li>强制删除分支      : git  branch -D branchname</li>
-<li>合并分支         : git merge branchname</li>
-</ul>
-</li>
-<li><p>git分支的注意点：在切换的时候 一定要保证当前分支是干净的（已提交状态）!!!</p>
-</li>
-<li><p>后悔药</p>
-<ul>
-<li>工作区<ul>
-<li>如何撤回自己在工作目录中的修改 : git checkout –filename</li>
-</ul>
-</li>
-<li>暂存区<ul>
-<li>如何撤回自己的暂存  : git reset HEAD filename</li>
-</ul>
-</li>
-<li>版本库              <ul>
-<li>如何撤回自己的提交    : git commit –amend<ol>
-<li>注释写错了,重新给用户一次机会改注释</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="日常开发流程"><a href="#日常开发流程" class="headerlink" title="日常开发流程"></a>日常开发流程</h1><ol>
-<li>git remote add &lt;名字&gt; &lt;链接&gt;<ul>
-<li>先建立连接</li>
-</ul>
-</li>
-<li>git checkout -b 新分支名称<ul>
-<li>创建新分支并切换到新分支</li>
-</ul>
-</li>
-<li>git push -u 连接名字 云端分支名字<ul>
-<li>将新创建的分支push到云端，并且起相同的名字和本地的分支对应起来</li>
-</ul>
-</li>
-<li>git status<ul>
-<li>查看当前工作状态</li>
-</ul>
-</li>
-<li>git add *<ul>
-<li>将工作区文件添加到缓存区</li>
-</ul>
-</li>
-<li>git commit -m “注释内容”<ul>
-<li>暂存区内容提交至版本库</li>
-</ul>
-</li>
-<li>git push<ul>
-<li>将该分支提交到远程仓库</li>
-</ul>
-</li>
-<li>git checkout master<ul>
-<li>切换回主分支</li>
-</ul>
-</li>
-<li>git merge 新分支<ul>
-<li>将新分支的代码合并到主分支上</li>
-</ul>
-</li>
-<li>git push  连接名字 分支<ul>
-<li>这样分支和主分支就都提交到远程仓库上了</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>版本控制工具</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6-ES11</title>
     <url>/2019/01/14/ES6-ES11/</url>
     <content><![CDATA[<blockquote>
@@ -770,6 +583,193 @@
       </tags>
   </entry>
   <entry>
+    <title>Git&amp;Github</title>
+    <url>/2019/03/19/Git-Github/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> Git是一个分布式版本控制系统， Github是一个为用户提供Git服务的网站</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
+<li><p>仓库(Repository):存放项目代码，多个开源项目存放多个仓库</p>
+</li>
+<li><p>收藏（star）：收藏项目</p>
+</li>
+<li><p>复制克隆项目（fork）：该fork的项目时独立存在的，把项目复制过来自己用</p>
+</li>
+<li><p>发起请求（Pull request）：基于fork的动作，在别人的fork项目上新增了功能，觉得不错，想合并到原本项目里，会向原有项目创建人发送请求，原有项目人同意即可添加你的代码</p>
+</li>
+<li><p>关注（watch）：关注别人项目，及时收到更新的消息</p>
+</li>
+<li><p>事物卡片（lssue）：发现代码BUG，但是目前没有成型代码，需要讨论时用，比如别人发现你的项目中有bug就会给你发送issue来提醒你</p>
+</li>
+</ul>
+<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><ul>
+<li>关于GitHub访问的问题</li>
+</ul>
+<ol>
+<li>第一种方法就是挂梯子了，毕竟GitHub是国外的服务器，这点理所应当，不止是一般的VPN，我在挂学校的vpn时也能实现很流畅的访问</li>
+<li>第二种就是我在网上搜罗了一种不用挂梯子也能访问的方法<ol>
+<li>访问<a href="https://www.ipaddress.com/" target="_blank" rel="noopener">IP查询网站</a></li>
+<li>在搜索框里搜索(GitHub.com),就会出现以下页面，找到该地址并记下来<br><img src="/2019/03/19/Git-Github/ip.png" alt></li>
+<li>然后再在搜索框中搜索（github.global.ssl.fastly.net），找到地址并记下来<br><img src="/2019/03/19/Git-Github/Ip2.png" alt></li>
+<li>将这两个地址写到C:\Windows\System32\drivers\etc 路径下的 hosts文件<br><img src="/2019/03/19/Git-Github/host.png" alt></li>
+<li>刷新dns后(ipconfig /flushdns)就可以访问啦，不过速度emmm</li>
+</ol>
+</li>
+</ol>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li><p>Git和Github的区别</p>
+<ul>
+<li><p>Git是一个分布式版本控制系统，简单的说就是一个软件，用于记录一个或若干文件内容变化，以便来查阅特定版本修订情况的软件。</p>
+</li>
+<li><p>Github是一个为用户提供Git服务的网站，简单说就是一个可以放代码的地方（也可以放其他内容）。Github除了提供管理Git的web界面外，还提供了订阅、关注、讨论组,在线编辑器等丰富的功能。</p>
+</li>
+<li><p>目前我们使用到的 Git 命令都是在本地执行，如果你想通过 Git 分享你的代码或者与其他开发人员合作。你就需要将数据放到一台其他开发人员能够连接的服务器上,所以就可以使用 Github 作为远程仓库</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本工作流程"><a href="#基本工作流程" class="headerlink" title="基本工作流程"></a>基本工作流程</h2><ul>
+<li><p>Git工作区域<br><img src="/2019/03/19/Git-Github/Gitwork.png" alt></p>
+</li>
+<li><p>向仓库中添加文件流程<br><img src="/2019/03/19/Git-Github/gitstep.png" alt></p>
+</li>
+</ul>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
+<li>基本信息设置<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &#39;用户名&#39;</span><br><span class="line">git config --global user.email &#39;邮箱地址&#39;</span><br><span class="line"></span><br><span class="line">该设置在github仓库主页显示谁提交了该文件</span><br></pre></td></tr></table></figure></li>
+<li>Git仓库的初始化</li>
+</ol>
+<ul>
+<li>即让Git知道需要他来管理这个目录<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></li>
+<li>执行后，打开这个项目目录下，点击隐藏目录你会发现多了一个.git文件夹。不能删除，也不能随意更改</li>
+</ul>
+<h2 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h2><ul>
+<li><p>上传文件至仓库</p>
+<ol>
+<li>git status:查看当前工作状态</li>
+<li>git add:将工作区文件添加到缓存区，可以加–all批量提交</li>
+<li>git commit -m “注释内容”:提交至版本库</li>
+</ol>
+</li>
+<li><p>删除文件</p>
+<ol>
+<li>git rm:从git中删除文件</li>
+</ol>
+</li>
+<li><p>将本地仓库同步到远程仓库</p>
+<ol>
+<li>先将远程仓库的项目复制到本地<ul>
+<li>git clone 线上仓库地址</li>
+</ul>
+</li>
+<li>操作完文件将文件添加到本地仓库</li>
+<li>git push可将本地仓库同步到远程仓库</li>
+<li>用git pull拉取线上的最新版本</li>
+</ol>
+<ul>
+<li>如果要同步到其他仓库<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先建立连接</span><br><span class="line">git remote add name http:&#x2F;&#x2F;xxxxxxxx.git   (如果是clone下来的可以省略) </span><br><span class="line"></span><br><span class="line">然后拉取最新版</span><br><span class="line">git pull  name branch &#x2F;&#x2F;有一种情况是因为readme.md文件不在本地会报错 只需要git pull --rebase name branch本地生成readme文件</span><br><span class="line"></span><br><span class="line">然后推送到仓库</span><br><span class="line">git push name branch</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查询文件</p>
+<ul>
+<li>git  status   :  查看工作目录中文件的状态(已跟踪(已提交 已暂存 已修改) 未跟踪)</li>
+<li>git  diff     :  查看未暂存的修改</li>
+<li>git  diff –cache : 查看未提交的暂存</li>
+<li>git  log –oneline : 查看提交记录</li>
+</ul>
+</li>
+<li><p>分支</p>
+<ul>
+<li>分支的本质其实就是一个提交对象!!!</li>
+<li>HEAD: 是一个指针 它默认指向master分支 切换分支时其实就是让HEAD指向不同的分支，每次有新的提交时 HEAD都会带着当前指向的分支 一起往前移动</li>
+<li>创建分支            : git branch branchname</li>
+<li>切换分支           : git checkout  branchname</li>
+<li>创建&amp;切换分支     : git checkout -b branchname</li>
+<li>版本穿梭(时光机) :  git branch branchname commitHash  </li>
+<li>普通删除分支      : git  branch -d branchname</li>
+<li>强制删除分支      : git  branch -D branchname</li>
+<li>合并分支         : git merge branchname</li>
+</ul>
+</li>
+<li><p>git分支的注意点：在切换的时候 一定要保证当前分支是干净的（已提交状态）!!!</p>
+</li>
+<li><p>后悔药</p>
+<ul>
+<li>工作区<ul>
+<li>如何撤回自己在工作目录中的修改 : git checkout –filename</li>
+</ul>
+</li>
+<li>暂存区<ul>
+<li>如何撤回自己的暂存  : git reset HEAD filename</li>
+</ul>
+</li>
+<li>版本库              <ul>
+<li>如何撤回自己的提交    : git commit –amend<ol>
+<li>注释写错了,重新给用户一次机会改注释</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="日常开发流程"><a href="#日常开发流程" class="headerlink" title="日常开发流程"></a>日常开发流程</h1><ol>
+<li>git remote add &lt;名字&gt; &lt;链接&gt;<ul>
+<li>先建立连接</li>
+</ul>
+</li>
+<li>git checkout -b 新分支名称<ul>
+<li>创建新分支并切换到新分支</li>
+</ul>
+</li>
+<li>git push -u 连接名字 云端分支名字<ul>
+<li>将新创建的分支push到云端，并且起相同的名字和本地的分支对应起来</li>
+</ul>
+</li>
+<li>git status<ul>
+<li>查看当前工作状态</li>
+</ul>
+</li>
+<li>git add *<ul>
+<li>将工作区文件添加到缓存区</li>
+</ul>
+</li>
+<li>git commit -m “注释内容”<ul>
+<li>暂存区内容提交至版本库</li>
+</ul>
+</li>
+<li>git push<ul>
+<li>将该分支提交到远程仓库</li>
+</ul>
+</li>
+<li>git checkout master<ul>
+<li>切换回主分支</li>
+</ul>
+</li>
+<li>git merge 新分支<ul>
+<li>将新分支的代码合并到主分支上</li>
+</ul>
+</li>
+<li>git push  连接名字 分支<ul>
+<li>这样分支和主分支就都提交到远程仓库上了</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>版本控制工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Grunt</title>
     <url>/2019/04/05/Grunt/</url>
     <content><![CDATA[<blockquote>
@@ -1041,6 +1041,924 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
       </categories>
       <tags>
         <tag>Gulp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node.js</title>
+    <url>/2018/11/11/NodeJS/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> Node.js是一个能够在服务器端运行js的开放源代码，跨平台的js运行平台</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><ul>
+<li>Node是对ES标准一个实现，Node也是一个JS引擎</li>
+<li>通过Node可以使js代码在服务器端执行</li>
+<li>Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM    </li>
+<li>Node中可以使用所有的内建对象</li>
+</ul>
+<ul>
+<li>String Number Boolean Math Date RegExp Function Object Array</li>
+<li>而BOM和DOM都不能使用</li>
+<li>但是可以使用 console 也可以使用定时器（setTimeout() setInterval()）</li>
+</ul>
+<ul>
+<li>node为js提供了许多服务器级别的API：<a href="http://nodejs.cn/api/" target="_blank" rel="noopener">http://nodejs.cn/api/</a><ul>
+<li>文件操作的能力</li>
+<li>http 服务的能力<br><img src="/2018/11/11/NodeJS/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%BB%91%E7%9B%92%E5%AD%90.png" alt></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Node可以在后台来编写服务器<br>Node编写服务器都是单线程的服务器</p>
+<ul>
+<li>进程<ul>
+<li>进程就是一个一个的工作计划（工厂中的车间）</li>
+</ul>
+</li>
+<li>线程<ul>
+<li>线程是计算机最小的运算单位（工厂中的工人）<br>线程是干活的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>传统的服务器都是多线程的</p>
+<ul>
+<li>每进来一个请求，就创建一个线程去处理请求</li>
+</ul>
+</li>
+<li><p>Node的服务器单线程的</p>
+<ul>
+<li>Node处理请求时是单线程，但是在后台拥有一个I/O线程池</li>
+</ul>
+</li>
+</ul>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><ul>
+<li>require</li>
+<li>端口号<ul>
+<li>ip 地址定位计算机</li>
+<li>端口号定位具体的应用程序</li>
+<li>端口号的范围从0-65536之间</li>
+<li>可以同时开启多个服务，但是要确保端口号不一致才行</li>
+</ul>
+</li>
+<li>Content-Type<ul>
+<li>服务器最好把每次响应的数据是什么内容类型都告诉客户端，而且要正确的告诉</li>
+<li>不同的资源对应的 Content-Type 是不一样，具体参照：<a href="http://tool.oschina.net/commons" target="_blank" rel="noopener">http://tool.oschina.net/commons</a></li>
+<li>对于文本类型的数据，最好都加上编码，<strong>目的是为了防止中文解析乱码问题</strong></li>
+</ul>
+</li>
+<li>通过网络发送文件<ul>
+<li>发送的并不是文件，本质上来讲发送是文件的内容</li>
+<li>当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理<br><img src="/2018/11/11/NodeJS/ip%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7.png" alt></li>
+</ul>
+</li>
+</ul>
+<h2 id="简单的http服务"><a href="#简单的http服务" class="headerlink" title="简单的http服务"></a>简单的http服务</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 加载 http 核心模块</span><br><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 使用 http.createServer() 方法创建一个 Web 服务器</span><br><span class="line">&#x2F;&#x2F;    返回一个 Server 实例</span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 服务器要干嘛？</span><br><span class="line">&#x2F;&#x2F;    提供服务：对 数据的服务</span><br><span class="line">&#x2F;&#x2F;    发请求</span><br><span class="line">&#x2F;&#x2F;    接收请求</span><br><span class="line">&#x2F;&#x2F;    处理请求</span><br><span class="line">&#x2F;&#x2F;    给个反馈（发送响应）</span><br><span class="line">&#x2F;&#x2F;    注册 request 请求事件</span><br><span class="line">&#x2F;&#x2F;    当客户端请求过来，就会自动触发服务器的 request 请求事件，然后执行第二个参数：回调处理函数</span><br><span class="line">server.on(&#39;request&#39;, function () &#123;</span><br><span class="line">  console.log(&#39;收到客户端的请求了&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 绑定端口号，启动服务器</span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>打开终端使用node执行<br><img src="/NodeJS/http.png" alt></p>
+</li>
+<li><p>停止服务</p>
+<ul>
+<li>可以ctrl + v</li>
+<li>还可以找到端口的进程并taskkill掉</li>
+<li>netstat -ano | find “:3000”</li>
+<li>taskkill /F /PID 找到的pid</li>
+</ul>
+</li>
+<li><p>发送请求</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; request 请求事件处理函数，需要接收两个参数：</span><br><span class="line">&#x2F;&#x2F;    Request 请求对象</span><br><span class="line">&#x2F;&#x2F;        请求对象可以用来获取客户端的一些请求信息，例如请求路径</span><br><span class="line">&#x2F;&#x2F;    Response 响应对象</span><br><span class="line">&#x2F;&#x2F;        响应对象可以用来给客户端发送响应消息</span><br><span class="line">server.on(&#39;request&#39;, function (request, response) &#123;</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; </span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;a 返回&#x2F;a</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;foo&#x2F;b 返回&#x2F;foo&#x2F;b</span><br><span class="line">  &#x2F;&#x2F; 在浏览器中的端口号后面输入什么，请求路径就返回什么</span><br><span class="line">  console.log(&#39;收到客户端的请求了，请求路径是：&#39; + request.url)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; response 对象有一个方法：write 可以用来给客户端发送响应数据</span><br><span class="line">  &#x2F;&#x2F; write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待</span><br><span class="line">  response.write(&#39;hello&#39;)</span><br><span class="line">  response.write(&#39; nodejs&#39;)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 告诉客户端，我的话说完了，你可以呈递给用户了</span><br><span class="line">  response.end()</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>改完代码后要重启服务才生效</strong></p>
+</li>
+</ul>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><ul>
+<li>ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化</li>
+<li>在node中为了对模块管理，引入了CommonJS规范</li>
+</ul>
+<h2 id="模块的引用"><a href="#模块的引用" class="headerlink" title="模块的引用"></a>模块的引用</h2><ul>
+<li>使用 require()函数来引入一个模块</li>
+<li>例子：<br>var 变量 = require(“模块的标识”);</li>
+</ul>
+<h2 id="模块的定义"><a href="#模块的定义" class="headerlink" title="模块的定义"></a>模块的定义</h2><ul>
+<li><p>在node中一个js文件就是一个模块</p>
+</li>
+<li><p>默认情况下在js文件中编写的内容，都是运行在一个独立的函数中，<br>外部的模块无法访问</p>
+</li>
+<li><p>导出变量和函数</p>
+<ul>
+<li><p>使用 exports </p>
+</li>
+<li><p>通过exports只能使用.的方式来向外暴露内部变量</p>
+<ul>
+<li>例子：<ul>
+<li>exports.属性 = 属性值;</li>
+<li>exports.方法 = 函数;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用module.exports</p>
+</li>
+<li><p>而module.exports既可以通过.的形式，也可以直接赋值</p>
+<ul>
+<li>例子：<ul>
+<li>module.exports.属性 = 属性值;</li>
+<li>module.exports.方法 = 函数;</li>
+<li>module.exports = {};</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模块的标识"><a href="#模块的标识" class="headerlink" title="模块的标识"></a>模块的标识</h2><ul>
+<li><p>模块的标识就是模块的名字或路径</p>
+</li>
+<li><p>我们node通过模块的标识来寻找模块的</p>
+</li>
+<li><p>模块分成两大类</p>
+<ul>
+<li><p>核心模块</p>
+<ul>
+<li>由node引擎提供的模块</li>
+<li>核心模块的标识就是，模块的名字</li>
+</ul>
+<ul>
+<li>对于核心模块（npm中下载的模块），直接使用模块的名字对其进行引入<ul>
+<li>var fs = require(“fs”);</li>
+<li>var express = require(“express”);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件模块</p>
+<ul>
+<li>由用户自己创建的模块   </li>
+<li>对于自定义的文件模块，需要通过文件的路径来对模块进行引入,路径可以是绝对路径，如果是相对路径必须以./或 ../开头<br>var router = require(“./router”);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>当node在执行模块中的代码时，它会首先在代码的最顶部，添加如下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function (exports, require, module, __filename, __dirname) &#123;</span><br><span class="line">在代码的最底部，添加如下代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参</p>
+<ul>
+<li><p>exports</p>
+<ul>
+<li>该对象用来将变量或函数暴露到外部</li>
+</ul>
+</li>
+<li><p>require</p>
+<ul>
+<li>函数，用来引入外部的模块</li>
+</ul>
+</li>
+<li><p>module</p>
+<ul>
+<li>module代表的是当前模块本身</li>
+<li>exports就是module的属性</li>
+<li>既可以使用 exports 导出，也可以使用module.exports导出</li>
+</ul>
+</li>
+<li><p>__filename</p>
+<ul>
+<li>当前模块的完整路径</li>
+</ul>
+</li>
+<li><p>__dirname</p>
+<ul>
+<li>当前模块所在文件夹的完整路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><ul>
+<li>将多个模块组合为一个完整的功能，就是一个包</li>
+<li>包结构<ul>
+<li>bin<ul>
+<li>二进制的可执行文件，一般都是一些工具包中才有</li>
+</ul>
+</li>
+<li>lib<ul>
+<li>js文件</li>
+</ul>
+</li>
+<li>doc<ul>
+<li>文档</li>
+</ul>
+</li>
+<li>test<ul>
+<li>测试代码</li>
+</ul>
+</li>
+<li>package.json<ul>
+<li>包的描述文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><ul>
+<li>它是一个json格式的文件，在它里面保存了包各种相关的信息<ul>
+<li>name 包名</li>
+<li>version 版本</li>
+<li>dependencies 依赖</li>
+<li>main 包的主要的文件</li>
+<li>bin 可执行文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="npm（Node-Package-Manager-node的包管理器）"><a href="#npm（Node-Package-Manager-node的包管理器）" class="headerlink" title="npm（Node Package Manager node的包管理器）"></a>npm（Node Package Manager node的包管理器）</h2><ul>
+<li>通过npm可以对node中的包进行上传、下载、搜索等操作</li>
+<li>npm会在安装完node以后，自动安装</li>
+<li>npm的常用指令<ul>
+<li>npm -v 查看npm的版本</li>
+<li>npm version 查看所有模块的版本</li>
+<li>npm init 初始化项目（创建package.json）</li>
+<li>npm i/install 包名 安装指定的包</li>
+<li>npm i/install 包名 –save 安装指定的包并添加依赖(写在json文件里，下次下载自动下载依赖的包)</li>
+<li>npm i/install 包名 -g 全局安装（一般都是一些工具）</li>
+<li>npm i/install 安装当前项目所依赖的包</li>
+<li>npm s/search 包名 搜索包    </li>
+<li>npm r/remove 包名 删除一个包</li>
+<li>$ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> 淘宝镜像（从国外的npm服务器复制一份作为镜像来供国内使用，提高下载速度，以后使用淘宝镜像就是执行cnpm指令，使用npm连接的是国外服务器）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>通过npm下载的包都放到node_modules文件夹中</p>
+<ul>
+<li>我们通过npm下载的包，直接通过包名引入即可</li>
+</ul>
+</li>
+<li><p>node在使用模块名字来引入模块时，它会首先在当前目录的node_modules中寻找是否含有该模块</p>
+<ul>
+<li>如果有则直接使用，如果没有则去上一级目录的node_modules中寻找</li>
+<li>如果有则直接使用，如果没有则再去上一级目录寻找，直到找到为止</li>
+<li>直到找到磁盘的根目录，如果依然没有，则报错</li>
+</ul>
+</li>
+</ul>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="Buffer（缓冲区）"><a href="#Buffer（缓冲区）" class="headerlink" title="Buffer（缓冲区）"></a>Buffer（缓冲区）</h2><ul>
+<li>Buffer和数组的结构的非常类似，Buffer是用来存储二进制数据的</li>
+<li>数组中不能存储二进制的文件，而buffer就是专门用来存储二进制数据</li>
+<li>使用buffer不需要引入模块，直接使用即可</li>
+<li>在buffer中存储的都是二进制数据，但是在显示时都是以16进制的形式显示</li>
+<li>Buffer的方法<ul>
+<li>Buffer.from(字符串)<ul>
+<li>将一个字符串中内容保存到一个buffer中</li>
+</ul>
+</li>
+<li>buf.toString()<ul>
+<li>将buffer转换为一个字符串</li>
+</ul>
+</li>
+<li>Buffer.alloc(size)<ul>
+<li>创建一个指定大小的buffer对象</li>
+</ul>
+</li>
+<li>Buffer.allocUnsafe(size)<ul>
+<li>创建一个指定大小的buffer对象，可以包含敏感数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h2><ul>
+<li><p>在Node通过fs模块来对系统中的文件进行操作，fs模块是node中已经继承好了，不需要在使用npm下载，直接引入即可</p>
+</li>
+<li><p>引入fs</p>
+<ul>
+<li>var fs = require(“fs”);</li>
+</ul>
+</li>
+<li><p>fs模块中的大部分操作都提供了两种方法，同步方法和异步方法</p>
+<ul>
+<li>同步方法带sync</li>
+<li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码</li>
+<li>异步方法没有sync，都需要回调函数</li>
+<li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回</li>
+</ul>
+</li>
+<li><p>写入文件</p>
+<ol>
+<li>同步写入</li>
+<li>异步写入</li>
+<li>简单写入</li>
+<li>流式写入</li>
+</ol>
+</li>
+<li><p>读取文件</p>
+<ol>
+<li>同步读取</li>
+<li>异步读取</li>
+<li>简单读取</li>
+<li>流式读取</li>
+</ol>
+</li>
+<li><p>方法</p>
+</li>
+<li><p>打开文件</p>
+<ul>
+<li>fs.open(path, flags[, mode], callback)<ul>
+<li>回调函数两个参数：<ul>
+<li>err 错误对象，如果没有错误则为null</li>
+<li>fd  文件的描述符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fs.openSync(path, flags[, mode])<ul>
+<li>path 要打开文件的路径</li>
+<li>flags 打开文件要做的操作的类型<ul>
+<li>r 只读的</li>
+<li>w 可写的</li>
+</ul>
+</li>
+<li>mode 设置文件的操作权限，一般不传</li>
+</ul>
+<ul>
+<li>返回值：该方法会返回一个文件的描述符作为结果，我们可以通过该描述符来对文件进行各种操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>读写文件</p>
+<ul>
+<li><p>fs.write(fd, string[, position[, encoding]], callback)</p>
+</li>
+<li><p>fs.writeSync(fd, string[, position[, encoding]])</p>
+<ul>
+<li>fd 文件的描述符，需要传递要写入的文件的描述符</li>
+<li>string 要写入的内容</li>
+<li>position 写入的起始位置</li>
+<li>encoding 写入的编码，默认utf-8</li>
+</ul>
+</li>
+<li><p>fs.read(fd, buffer, offset, length, position, callback)</p>
+</li>
+<li><p>fs.readSync(fd, buffer, offset, length, position)</p>
+</li>
+</ul>
+</li>
+<li><p>关闭文件</p>
+<ul>
+<li>fs.close(fd,callback)</li>
+<li>fs.closeSync(fd);</li>
+</ul>
+</li>
+<li><p>简单文件读取和写入</p>
+<ul>
+<li><p>fs.writeFile(file, data[, options], callback)</p>
+</li>
+<li><p>fs.writeFileSync(file, data[, options])</p>
+<ul>
+<li>file 要操作的文件的路径</li>
+<li>data 要写入的数据</li>
+<li>options 选项，可以对写入进行一些设置<ul>
+<li>encoding <string> | <null> 默认值: ‘utf8’。</null></string></li>
+<li>mode <integer> 默认值: 0o666。</integer></li>
+<li>flag <string> 参见文件系统 flag 的支持。 默认值: ‘w’( r 只读,w 可写,a 追加)</string></li>
+</ul>
+</li>
+<li>callback 当写入完成以后执行的函数</li>
+</ul>
+</li>
+<li><p>fs.readFile(path[, options], callback)</p>
+</li>
+<li><p>fs.readFileSync(path[, options])</p>
+<ul>
+<li>path 要读取的文件的路径<ul>
+<li>options 读取的选项</li>
+<li>callback回调函数，通过回调函数将读取到内容返回(err , data)<ul>
+<li>err 错误对象</li>
+<li>data 读取到的数据，会返回一个Buffer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>流式文件读取和写入</p>
+</li>
+</ul>
+<ul>
+<li>同步、异步、简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出</li>
+</ul>
+<ul>
+<li>流式读取和写入适用于一些比较大的文件</li>
+</ul>
+<ul>
+<li>可以通过监听流的open和close事件来监听流的打开和关闭<ul>
+<li>on(事件字符串,回调函数)<ul>
+<li>可以为对象绑定一个事件</li>
+</ul>
+</li>
+<li>once(事件字符串,回调函数)<ul>
+<li>可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fs.createWriteStream(path[, options])<ul>
+<li>可以用来创建一个可写流</li>
+<li>path，文件路径</li>
+<li>options 配置的参数</li>
+</ul>
+</li>
+<li>fs.createReadStream(path[, options])</li>
+<li>pipe()可以将可读流中的内容，直接输出到可写流中rs.pipe(ws);</li>
+</ul>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ul>
+<li><p>验证路径是否存在</p>
+<ul>
+<li>fs.exists(path，callback)</li>
+<li>fs.existsSync(path)</li>
+</ul>
+</li>
+<li><p>获取文件信息</p>
+<ul>
+<li>fs.stat(path, callback)</li>
+<li>fs.statSync(path)</li>
+</ul>
+</li>
+<li><p>删除文件</p>
+<ul>
+<li>fs.unlink(path, callback)</li>
+<li>fs.unlinkSync(path)</li>
+</ul>
+</li>
+<li><p>列出文件</p>
+<ul>
+<li>fs.readdir(path[, options], callback)</li>
+<li>fs.readdirSync(path[, options])</li>
+</ul>
+</li>
+<li><p>截断文件</p>
+<ul>
+<li>fs.truncate(path, len, callback)</li>
+<li>fs.truncateSync(path, len)</li>
+</ul>
+</li>
+<li><p>建立目录</p>
+<ul>
+<li>fs.mkdir(path[, mode], callback)</li>
+<li>fs.mkdirSync(path[, mode])</li>
+</ul>
+</li>
+<li><p>删除目录</p>
+<ul>
+<li>fs.rmdir(path, callback)</li>
+<li>fs.rmdirSync(path)</li>
+</ul>
+</li>
+<li><p>重命名文件和目录</p>
+<ul>
+<li>fs.rename(oldPath, newPath, callback)</li>
+<li>fs.renameSync(oldPath, newPath)</li>
+</ul>
+</li>
+<li><p>监视文件更改写入</p>
+<ul>
+<li>fs.watchFile(filename[, options], listener)</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB</title>
+    <url>/2018/12/13/MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
+<li><p>打开cmd命令行窗口</p>
+<ul>
+<li>输入 mongod 启动mongodb服务器</li>
+</ul>
+</li>
+<li><p>在打开一个cmd窗口</p>
+<ul>
+<li>输入 mongo 连接mongodb ，出现 &gt; </li>
+</ul>
+</li>
+<li><p>还可以自定义data存储的路径和端口</p>
+<ul>
+<li>mongod –dbpath 数据库路径 –port 端口号</li>
+</ul>
+</li>
+<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
+<ul>
+<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
+<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
+<ul>
+<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+</ul>
+</li>
+<li><p>在任务管理器启动mongodb服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
+<li><p>数据库的服务器</p>
+<ul>
+<li>服务器用来保存数据</li>
+<li>mongod 用来启动服务器</li>
+</ul>
+</li>
+<li><p>数据库的客户端</p>
+<ul>
+<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
+<li>mongo 用来启动客户端</li>
+</ul>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li>数据库（database）</li>
+<li>集合（collection）</li>
+<li>文档（document）<ul>
+<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
+</ul>
+</li>
+<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/12/13/MongoDB/mongo.png" alt></p>
+<ul>
+<li>基本指令<ul>
+<li>show dbs</li>
+<li>show databases<ul>
+<li>显示当前的所有数据库</li>
+</ul>
+</li>
+<li>use 数据库名<ul>
+<li>进入到指定的数据库中</li>
+</ul>
+</li>
+<li>db<ul>
+<li>db表示的是当前所处的数据库</li>
+</ul>
+</li>
+<li>show collections<ul>
+<li>显示数据库中所有的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
+<li><p>db.collection.insert()</p>
+<ul>
+<li>向集合中插入一个或多个文档</li>
+<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
+<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
+</ul>
+</li>
+<li><p>db.collection.insertOne()</p>
+<ul>
+<li>插入一个文档对象</li>
+</ul>
+</li>
+<li><p>db.collection.insertMany() </p>
+<ul>
+<li>插入多个文档对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><p>db.collection.remove()</p>
+<ul>
+<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
+<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
+</ul>
+</li>
+<li><p>db.collection.deleteOne()</p>
+</li>
+<li><p>db.collection.deleteMany()</p>
+</li>
+<li><p>db.collection.drop() </p>
+<ul>
+<li>删除集合</li>
+</ul>
+</li>
+<li><p>db.dropDatabase() </p>
+<ul>
+<li>删除数据库</li>
+</ul>
+</li>
+<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
+</li>
+<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
+</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><p>db.collection.find()</p>
+<ul>
+<li>find()用来查询集合中所有符合条件的文档</li>
+<li>find()可以接收一个对象作为条件参数<ul>
+<li>{} 表示查询集合中所有的文档</li>
+<li>{属性:值} 查询属性是指定值的文档</li>
+</ul>
+</li>
+<li>find()返回的是一个数组</li>
+</ul>
+</li>
+<li><p>db.collection.findOne()</p>
+<ul>
+<li>用来查询集合中符合条件的第一个文档  </li>
+<li>findOne()返回的是一个文档对象 </li>
+</ul>
+</li>
+<li><p>db.collection.find({}).count() </p>
+<ul>
+<li>查询所有结果的数量</li>
+</ul>
+</li>
+<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
+</li>
+<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
+</li>
+<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
+<ul>
+<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
+<li>limit skip sort 可以以任意的顺序进行调用</li>
+<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
+<li><p>db.collection.update(查询条件,新对象)</p>
+<ul>
+<li>update()默认情况下会使用新对象来替换旧的对象</li>
+<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
+<li>update()默认只会修改一个</li>
+</ul>
+</li>
+<li><p>db.collection.updateMany()</p>
+<ul>
+<li>同时修改多个符合条件的文档</li>
+</ul>
+</li>
+<li><p>db.collection.updateOne()</p>
+<ul>
+<li>修改一个符合条件的文档    </li>
+</ul>
+</li>
+<li><p>db.collection.replaceOne()</p>
+<ul>
+<li>替换一个文档</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
+<li>$set<ol>
+<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
+<li>修改内嵌文档</li>
+</ol>
+</li>
+<li>$unset      <ul>
+<li>用于将键删除</li>
+</ul>
+</li>
+<li>$push <ul>
+<li>用于向数组中添加一个新的元素</li>
+</ul>
+</li>
+<li>$addToSet <ul>
+<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
+</ul>
+</li>
+<li>$each       <ul>
+<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
+</ul>
+</li>
+<li>$pop        <ul>
+<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
+</ul>
+</li>
+<li>$pull       <ul>
+<li>基于特定条件来删除元素。</li>
+</ul>
+</li>
+<li>$inc        <ul>
+<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
+</ul>
+</li>
+<li>$ne         <ul>
+<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
+</ul>
+</li>
+<li>$gt:大于</li>
+<li>$lt:小于</li>
+<li>$gte:大于或等于</li>
+<li>$lte:小于或等于</li>
+<li>$inc:自增</li>
+</ul>
+<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
+<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
+<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
+</ul>
+<ol>
+<li><p>下载安装Mongoose</p>
+<ul>
+<li>npm i mongoose –save</li>
+</ul>
+</li>
+<li><p>在项目中引入mongoose</p>
+<ul>
+<li>var mongoose = require(“mongoose”);</li>
+</ul>
+</li>
+<li><p>连接MongoDB数据库</p>
+<ul>
+<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
+<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
+</ul>
+</li>
+<li><p>断开数据库连接(一般不需要调用)</p>
+<ul>
+<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
+<ul>
+<li>mongoose.disconnect()</li>
+</ul>
+</li>
+<li><p>监听MongoDB数据库的连接状态</p>
+<ul>
+<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>数据库连接成功的事件</p>
+<ul>
+<li>mongoose.connection.once(“open”,function(){});</li>
+</ul>
+</li>
+<li><p>数据库断开的事件</p>
+<ul>
+<li>mongoose.connection.once(“close”,function(){});</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
+<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
+</ul>
+<ul>
+<li><p>Model.create(doc(s), [callback])</p>
+<ul>
+<li>用来创建一个或多个文档并添加到数据库中</li>
+<li>参数：<ul>
+<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
+<li>callback 当操作完成以后调用的回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询：</p>
+<ul>
+<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
+</li>
+<li><p>Model.find(conditions, [projection], [options], [callback])</p>
+<ul>
+<li>查询所有符合条件的文档 总会返回一个数组</li>
+</ul>
+</li>
+<li><p>Model.findById(id, [projection], [options], [callback])</p>
+<ul>
+<li>根据文档的id属性查询文档</li>
+</ul>
+</li>
+<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
+<ul>
+<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
+<ul>
+<li>conditions 查询的条件</li>
+<li>projection 投影 需要获取到的字段<ul>
+<li>两种方式<ul>
+<li>{name:1,_id:0}</li>
+<li>“name -_id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
+<li>callback 回调函数，查询结果会通过回调函数返回</li>
+<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>Model.update(conditions, doc, [options], [callback])</li>
+<li>Model.updateMany(conditions, doc, [options], [callback])</li>
+<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
+<li>用来修改一个或多个文档</li>
+<li>参数：<ul>
+<li>conditions 查询条件</li>
+<li>doc 修改后的对象</li>
+<li>options 配置参数</li>
+<li>callback 回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li>Model.remove(conditions, [callback])</li>
+<li>Model.deleteOne(conditions, [callback])</li>
+<li>Model.deleteMany(conditions, [callback])</li>
+</ul>
+</li>
+<li><p>统计文档的数量 </p>
+<ul>
+<li>Model.count(conditions, [callback])</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
+<li>Document对象是Model的实例（可以用instanceof验证）</li>
+<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
+<li>通过Model查询到结果都是Document</li>
+</ul>
+</li>
+<li>document的方法<ul>
+<li>Model#save([options], [function])<ul>
+<li>和model的create作用相同，但是document只能用save<ul>
+<li>update(update,[options],[callback])</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>修改对象<ul>
+<li>remove([callback])</li>
+</ul>
+</li>
+<li>删除对象<ul>
+<li>get(name)</li>
+</ul>
+</li>
+<li>获取文档中的指定属性值<ul>
+<li>set(name , value)</li>
+</ul>
+</li>
+<li>设置文档的指定的属性值<ul>
+<li>id</li>
+</ul>
+</li>
+<li>获取文档的_id属性值<ul>
+<li>toJSON() </li>
+</ul>
+</li>
+<li>转换为一个JSON对象//不一定生效<ul>
+<li>toObject()</li>
+</ul>
+</li>
+<li>将Document对象转换为一个普通的JS对象</li>
+<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>其他模块直接通过require引入该模块即可</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -2928,924 +3846,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>MongoDB</title>
-    <url>/2018/12/13/MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
-<li><p>打开cmd命令行窗口</p>
-<ul>
-<li>输入 mongod 启动mongodb服务器</li>
-</ul>
-</li>
-<li><p>在打开一个cmd窗口</p>
-<ul>
-<li>输入 mongo 连接mongodb ，出现 &gt; </li>
-</ul>
-</li>
-<li><p>还可以自定义data存储的路径和端口</p>
-<ul>
-<li>mongod –dbpath 数据库路径 –port 端口号</li>
-</ul>
-</li>
-<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
-<ul>
-<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
-<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
-<ul>
-<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-</ul>
-</li>
-<li><p>在任务管理器启动mongodb服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li>服务器用来保存数据</li>
-<li>mongod 用来启动服务器</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
-<li>mongo 用来启动客户端</li>
-</ul>
-</li>
-<li><p>基本概念</p>
-<ul>
-<li>数据库（database）</li>
-<li>集合（collection）</li>
-<li>文档（document）<ul>
-<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
-</ul>
-</li>
-<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/12/13/MongoDB/mongo.png" alt></p>
-<ul>
-<li>基本指令<ul>
-<li>show dbs</li>
-<li>show databases<ul>
-<li>显示当前的所有数据库</li>
-</ul>
-</li>
-<li>use 数据库名<ul>
-<li>进入到指定的数据库中</li>
-</ul>
-</li>
-<li>db<ul>
-<li>db表示的是当前所处的数据库</li>
-</ul>
-</li>
-<li>show collections<ul>
-<li>显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
-<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
-<li><p>db.collection.insert()</p>
-<ul>
-<li>向集合中插入一个或多个文档</li>
-<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
-<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
-</ul>
-</li>
-<li><p>db.collection.insertOne()</p>
-<ul>
-<li>插入一个文档对象</li>
-</ul>
-</li>
-<li><p>db.collection.insertMany() </p>
-<ul>
-<li>插入多个文档对象</li>
-</ul>
-</li>
-</ul>
-<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
-<li><p>db.collection.remove()</p>
-<ul>
-<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
-<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
-</ul>
-</li>
-<li><p>db.collection.deleteOne()</p>
-</li>
-<li><p>db.collection.deleteMany()</p>
-</li>
-<li><p>db.collection.drop() </p>
-<ul>
-<li>删除集合</li>
-</ul>
-</li>
-<li><p>db.dropDatabase() </p>
-<ul>
-<li>删除数据库</li>
-</ul>
-</li>
-<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
-</li>
-<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
-</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
-<li><p>db.collection.find()</p>
-<ul>
-<li>find()用来查询集合中所有符合条件的文档</li>
-<li>find()可以接收一个对象作为条件参数<ul>
-<li>{} 表示查询集合中所有的文档</li>
-<li>{属性:值} 查询属性是指定值的文档</li>
-</ul>
-</li>
-<li>find()返回的是一个数组</li>
-</ul>
-</li>
-<li><p>db.collection.findOne()</p>
-<ul>
-<li>用来查询集合中符合条件的第一个文档  </li>
-<li>findOne()返回的是一个文档对象 </li>
-</ul>
-</li>
-<li><p>db.collection.find({}).count() </p>
-<ul>
-<li>查询所有结果的数量</li>
-</ul>
-</li>
-<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
-</li>
-<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
-</li>
-<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
-<ul>
-<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
-<li>limit skip sort 可以以任意的顺序进行调用</li>
-<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
-<li><p>db.collection.update(查询条件,新对象)</p>
-<ul>
-<li>update()默认情况下会使用新对象来替换旧的对象</li>
-<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
-<li>update()默认只会修改一个</li>
-</ul>
-</li>
-<li><p>db.collection.updateMany()</p>
-<ul>
-<li>同时修改多个符合条件的文档</li>
-</ul>
-</li>
-<li><p>db.collection.updateOne()</p>
-<ul>
-<li>修改一个符合条件的文档    </li>
-</ul>
-</li>
-<li><p>db.collection.replaceOne()</p>
-<ul>
-<li>替换一个文档</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
-<li>$set<ol>
-<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
-<li>修改内嵌文档</li>
-</ol>
-</li>
-<li>$unset      <ul>
-<li>用于将键删除</li>
-</ul>
-</li>
-<li>$push <ul>
-<li>用于向数组中添加一个新的元素</li>
-</ul>
-</li>
-<li>$addToSet <ul>
-<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
-</ul>
-</li>
-<li>$each       <ul>
-<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
-</ul>
-</li>
-<li>$pop        <ul>
-<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
-</ul>
-</li>
-<li>$pull       <ul>
-<li>基于特定条件来删除元素。</li>
-</ul>
-</li>
-<li>$inc        <ul>
-<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
-</ul>
-</li>
-<li>$ne         <ul>
-<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
-</ul>
-</li>
-<li>$gt:大于</li>
-<li>$lt:小于</li>
-<li>$gte:大于或等于</li>
-<li>$lte:小于或等于</li>
-<li>$inc:自增</li>
-</ul>
-<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
-<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
-<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
-</ul>
-<ol>
-<li><p>下载安装Mongoose</p>
-<ul>
-<li>npm i mongoose –save</li>
-</ul>
-</li>
-<li><p>在项目中引入mongoose</p>
-<ul>
-<li>var mongoose = require(“mongoose”);</li>
-</ul>
-</li>
-<li><p>连接MongoDB数据库</p>
-<ul>
-<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
-<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
-</ul>
-</li>
-<li><p>断开数据库连接(一般不需要调用)</p>
-<ul>
-<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
-<ul>
-<li>mongoose.disconnect()</li>
-</ul>
-</li>
-<li><p>监听MongoDB数据库的连接状态</p>
-<ul>
-<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>数据库连接成功的事件</p>
-<ul>
-<li>mongoose.connection.once(“open”,function(){});</li>
-</ul>
-</li>
-<li><p>数据库断开的事件</p>
-<ul>
-<li>mongoose.connection.once(“close”,function(){});</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
-<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
-</ul>
-<ul>
-<li><p>Model.create(doc(s), [callback])</p>
-<ul>
-<li>用来创建一个或多个文档并添加到数据库中</li>
-<li>参数：<ul>
-<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
-<li>callback 当操作完成以后调用的回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查询：</p>
-<ul>
-<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
-</li>
-<li><p>Model.find(conditions, [projection], [options], [callback])</p>
-<ul>
-<li>查询所有符合条件的文档 总会返回一个数组</li>
-</ul>
-</li>
-<li><p>Model.findById(id, [projection], [options], [callback])</p>
-<ul>
-<li>根据文档的id属性查询文档</li>
-</ul>
-</li>
-<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
-<ul>
-<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
-<ul>
-<li>conditions 查询的条件</li>
-<li>projection 投影 需要获取到的字段<ul>
-<li>两种方式<ul>
-<li>{name:1,_id:0}</li>
-<li>“name -_id”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
-<li>callback 回调函数，查询结果会通过回调函数返回</li>
-<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>修改</p>
-<ul>
-<li>Model.update(conditions, doc, [options], [callback])</li>
-<li>Model.updateMany(conditions, doc, [options], [callback])</li>
-<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
-<li>用来修改一个或多个文档</li>
-<li>参数：<ul>
-<li>conditions 查询条件</li>
-<li>doc 修改后的对象</li>
-<li>options 配置参数</li>
-<li>callback 回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
-</ul>
-</li>
-<li><p>删除：</p>
-<ul>
-<li>Model.remove(conditions, [callback])</li>
-<li>Model.deleteOne(conditions, [callback])</li>
-<li>Model.deleteMany(conditions, [callback])</li>
-</ul>
-</li>
-<li><p>统计文档的数量 </p>
-<ul>
-<li>Model.count(conditions, [callback])</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
-<li>Document对象是Model的实例（可以用instanceof验证）</li>
-<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
-<li>通过Model查询到结果都是Document</li>
-</ul>
-</li>
-<li>document的方法<ul>
-<li>Model#save([options], [function])<ul>
-<li>和model的create作用相同，但是document只能用save<ul>
-<li>update(update,[options],[callback])</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>修改对象<ul>
-<li>remove([callback])</li>
-</ul>
-</li>
-<li>删除对象<ul>
-<li>get(name)</li>
-</ul>
-</li>
-<li>获取文档中的指定属性值<ul>
-<li>set(name , value)</li>
-</ul>
-</li>
-<li>设置文档的指定的属性值<ul>
-<li>id</li>
-</ul>
-</li>
-<li>获取文档的_id属性值<ul>
-<li>toJSON() </li>
-</ul>
-</li>
-<li>转换为一个JSON对象//不一定生效<ul>
-<li>toObject()</li>
-</ul>
-</li>
-<li>将Document对象转换为一个普通的JS对象</li>
-<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>其他模块直接通过require引入该模块即可</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node.js</title>
-    <url>/2018/11/11/NodeJS/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br> Node.js是一个能够在服务器端运行js的开放源代码，跨平台的js运行平台</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><ul>
-<li>Node是对ES标准一个实现，Node也是一个JS引擎</li>
-<li>通过Node可以使js代码在服务器端执行</li>
-<li>Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM    </li>
-<li>Node中可以使用所有的内建对象</li>
-</ul>
-<ul>
-<li>String Number Boolean Math Date RegExp Function Object Array</li>
-<li>而BOM和DOM都不能使用</li>
-<li>但是可以使用 console 也可以使用定时器（setTimeout() setInterval()）</li>
-</ul>
-<ul>
-<li>node为js提供了许多服务器级别的API：<a href="http://nodejs.cn/api/" target="_blank" rel="noopener">http://nodejs.cn/api/</a><ul>
-<li>文件操作的能力</li>
-<li>http 服务的能力<br><img src="/2018/11/11/NodeJS/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%BB%91%E7%9B%92%E5%AD%90.png" alt></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>Node可以在后台来编写服务器<br>Node编写服务器都是单线程的服务器</p>
-<ul>
-<li>进程<ul>
-<li>进程就是一个一个的工作计划（工厂中的车间）</li>
-</ul>
-</li>
-<li>线程<ul>
-<li>线程是计算机最小的运算单位（工厂中的工人）<br>线程是干活的</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>传统的服务器都是多线程的</p>
-<ul>
-<li>每进来一个请求，就创建一个线程去处理请求</li>
-</ul>
-</li>
-<li><p>Node的服务器单线程的</p>
-<ul>
-<li>Node处理请求时是单线程，但是在后台拥有一个I/O线程池</li>
-</ul>
-</li>
-</ul>
-<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><ul>
-<li>require</li>
-<li>端口号<ul>
-<li>ip 地址定位计算机</li>
-<li>端口号定位具体的应用程序</li>
-<li>端口号的范围从0-65536之间</li>
-<li>可以同时开启多个服务，但是要确保端口号不一致才行</li>
-</ul>
-</li>
-<li>Content-Type<ul>
-<li>服务器最好把每次响应的数据是什么内容类型都告诉客户端，而且要正确的告诉</li>
-<li>不同的资源对应的 Content-Type 是不一样，具体参照：<a href="http://tool.oschina.net/commons" target="_blank" rel="noopener">http://tool.oschina.net/commons</a></li>
-<li>对于文本类型的数据，最好都加上编码，<strong>目的是为了防止中文解析乱码问题</strong></li>
-</ul>
-</li>
-<li>通过网络发送文件<ul>
-<li>发送的并不是文件，本质上来讲发送是文件的内容</li>
-<li>当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理<br><img src="/2018/11/11/NodeJS/ip%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7.png" alt></li>
-</ul>
-</li>
-</ul>
-<h2 id="简单的http服务"><a href="#简单的http服务" class="headerlink" title="简单的http服务"></a>简单的http服务</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 加载 http 核心模块</span><br><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 使用 http.createServer() 方法创建一个 Web 服务器</span><br><span class="line">&#x2F;&#x2F;    返回一个 Server 实例</span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 服务器要干嘛？</span><br><span class="line">&#x2F;&#x2F;    提供服务：对 数据的服务</span><br><span class="line">&#x2F;&#x2F;    发请求</span><br><span class="line">&#x2F;&#x2F;    接收请求</span><br><span class="line">&#x2F;&#x2F;    处理请求</span><br><span class="line">&#x2F;&#x2F;    给个反馈（发送响应）</span><br><span class="line">&#x2F;&#x2F;    注册 request 请求事件</span><br><span class="line">&#x2F;&#x2F;    当客户端请求过来，就会自动触发服务器的 request 请求事件，然后执行第二个参数：回调处理函数</span><br><span class="line">server.on(&#39;request&#39;, function () &#123;</span><br><span class="line">  console.log(&#39;收到客户端的请求了&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 绑定端口号，启动服务器</span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>打开终端使用node执行<br><img src="/NodeJS/http.png" alt></p>
-</li>
-<li><p>停止服务</p>
-<ul>
-<li>可以ctrl + v</li>
-<li>还可以找到端口的进程并taskkill掉</li>
-<li>netstat -ano | find “:3000”</li>
-<li>taskkill /F /PID 找到的pid</li>
-</ul>
-</li>
-<li><p>发送请求</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var http &#x3D; require(&#39;http&#39;)</span><br><span class="line"></span><br><span class="line">var server &#x3D; http.createServer()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; request 请求事件处理函数，需要接收两个参数：</span><br><span class="line">&#x2F;&#x2F;    Request 请求对象</span><br><span class="line">&#x2F;&#x2F;        请求对象可以用来获取客户端的一些请求信息，例如请求路径</span><br><span class="line">&#x2F;&#x2F;    Response 响应对象</span><br><span class="line">&#x2F;&#x2F;        响应对象可以用来给客户端发送响应消息</span><br><span class="line">server.on(&#39;request&#39;, function (request, response) &#123;</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; </span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;a 返回&#x2F;a</span><br><span class="line">  &#x2F;&#x2F; http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;foo&#x2F;b 返回&#x2F;foo&#x2F;b</span><br><span class="line">  &#x2F;&#x2F; 在浏览器中的端口号后面输入什么，请求路径就返回什么</span><br><span class="line">  console.log(&#39;收到客户端的请求了，请求路径是：&#39; + request.url)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; response 对象有一个方法：write 可以用来给客户端发送响应数据</span><br><span class="line">  &#x2F;&#x2F; write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待</span><br><span class="line">  response.write(&#39;hello&#39;)</span><br><span class="line">  response.write(&#39; nodejs&#39;)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 告诉客户端，我的话说完了，你可以呈递给用户了</span><br><span class="line">  response.end()</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(3000, function () &#123;</span><br><span class="line">  console.log(&#39;服务器启动成功了，可以通过 http:&#x2F;&#x2F;127.0.0.1:3000&#x2F; 来进行访问&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>改完代码后要重启服务才生效</strong></p>
-</li>
-</ul>
-<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><ul>
-<li>ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化</li>
-<li>在node中为了对模块管理，引入了CommonJS规范</li>
-</ul>
-<h2 id="模块的引用"><a href="#模块的引用" class="headerlink" title="模块的引用"></a>模块的引用</h2><ul>
-<li>使用 require()函数来引入一个模块</li>
-<li>例子：<br>var 变量 = require(“模块的标识”);</li>
-</ul>
-<h2 id="模块的定义"><a href="#模块的定义" class="headerlink" title="模块的定义"></a>模块的定义</h2><ul>
-<li><p>在node中一个js文件就是一个模块</p>
-</li>
-<li><p>默认情况下在js文件中编写的内容，都是运行在一个独立的函数中，<br>外部的模块无法访问</p>
-</li>
-<li><p>导出变量和函数</p>
-<ul>
-<li><p>使用 exports </p>
-</li>
-<li><p>通过exports只能使用.的方式来向外暴露内部变量</p>
-<ul>
-<li>例子：<ul>
-<li>exports.属性 = 属性值;</li>
-<li>exports.方法 = 函数;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>使用module.exports</p>
-</li>
-<li><p>而module.exports既可以通过.的形式，也可以直接赋值</p>
-<ul>
-<li>例子：<ul>
-<li>module.exports.属性 = 属性值;</li>
-<li>module.exports.方法 = 函数;</li>
-<li>module.exports = {};</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="模块的标识"><a href="#模块的标识" class="headerlink" title="模块的标识"></a>模块的标识</h2><ul>
-<li><p>模块的标识就是模块的名字或路径</p>
-</li>
-<li><p>我们node通过模块的标识来寻找模块的</p>
-</li>
-<li><p>模块分成两大类</p>
-<ul>
-<li><p>核心模块</p>
-<ul>
-<li>由node引擎提供的模块</li>
-<li>核心模块的标识就是，模块的名字</li>
-</ul>
-<ul>
-<li>对于核心模块（npm中下载的模块），直接使用模块的名字对其进行引入<ul>
-<li>var fs = require(“fs”);</li>
-<li>var express = require(“express”);</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>文件模块</p>
-<ul>
-<li>由用户自己创建的模块   </li>
-<li>对于自定义的文件模块，需要通过文件的路径来对模块进行引入,路径可以是绝对路径，如果是相对路径必须以./或 ../开头<br>var router = require(“./router”);</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>当node在执行模块中的代码时，它会首先在代码的最顶部，添加如下代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function (exports, require, module, __filename, __dirname) &#123;</span><br><span class="line">在代码的最底部，添加如下代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参</p>
-<ul>
-<li><p>exports</p>
-<ul>
-<li>该对象用来将变量或函数暴露到外部</li>
-</ul>
-</li>
-<li><p>require</p>
-<ul>
-<li>函数，用来引入外部的模块</li>
-</ul>
-</li>
-<li><p>module</p>
-<ul>
-<li>module代表的是当前模块本身</li>
-<li>exports就是module的属性</li>
-<li>既可以使用 exports 导出，也可以使用module.exports导出</li>
-</ul>
-</li>
-<li><p>__filename</p>
-<ul>
-<li>当前模块的完整路径</li>
-</ul>
-</li>
-<li><p>__dirname</p>
-<ul>
-<li>当前模块所在文件夹的完整路径</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><ul>
-<li>将多个模块组合为一个完整的功能，就是一个包</li>
-<li>包结构<ul>
-<li>bin<ul>
-<li>二进制的可执行文件，一般都是一些工具包中才有</li>
-</ul>
-</li>
-<li>lib<ul>
-<li>js文件</li>
-</ul>
-</li>
-<li>doc<ul>
-<li>文档</li>
-</ul>
-</li>
-<li>test<ul>
-<li>测试代码</li>
-</ul>
-</li>
-<li>package.json<ul>
-<li>包的描述文件</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><ul>
-<li>它是一个json格式的文件，在它里面保存了包各种相关的信息<ul>
-<li>name 包名</li>
-<li>version 版本</li>
-<li>dependencies 依赖</li>
-<li>main 包的主要的文件</li>
-<li>bin 可执行文件</li>
-</ul>
-</li>
-</ul>
-<h2 id="npm（Node-Package-Manager-node的包管理器）"><a href="#npm（Node-Package-Manager-node的包管理器）" class="headerlink" title="npm（Node Package Manager node的包管理器）"></a>npm（Node Package Manager node的包管理器）</h2><ul>
-<li>通过npm可以对node中的包进行上传、下载、搜索等操作</li>
-<li>npm会在安装完node以后，自动安装</li>
-<li>npm的常用指令<ul>
-<li>npm -v 查看npm的版本</li>
-<li>npm version 查看所有模块的版本</li>
-<li>npm init 初始化项目（创建package.json）</li>
-<li>npm i/install 包名 安装指定的包</li>
-<li>npm i/install 包名 –save 安装指定的包并添加依赖(写在json文件里，下次下载自动下载依赖的包)</li>
-<li>npm i/install 包名 -g 全局安装（一般都是一些工具）</li>
-<li>npm i/install 安装当前项目所依赖的包</li>
-<li>npm s/search 包名 搜索包    </li>
-<li>npm r/remove 包名 删除一个包</li>
-<li>$ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> 淘宝镜像（从国外的npm服务器复制一份作为镜像来供国内使用，提高下载速度，以后使用淘宝镜像就是执行cnpm指令，使用npm连接的是国外服务器）</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>通过npm下载的包都放到node_modules文件夹中</p>
-<ul>
-<li>我们通过npm下载的包，直接通过包名引入即可</li>
-</ul>
-</li>
-<li><p>node在使用模块名字来引入模块时，它会首先在当前目录的node_modules中寻找是否含有该模块</p>
-<ul>
-<li>如果有则直接使用，如果没有则去上一级目录的node_modules中寻找</li>
-<li>如果有则直接使用，如果没有则再去上一级目录寻找，直到找到为止</li>
-<li>直到找到磁盘的根目录，如果依然没有，则报错</li>
-</ul>
-</li>
-</ul>
-<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="Buffer（缓冲区）"><a href="#Buffer（缓冲区）" class="headerlink" title="Buffer（缓冲区）"></a>Buffer（缓冲区）</h2><ul>
-<li>Buffer和数组的结构的非常类似，Buffer是用来存储二进制数据的</li>
-<li>数组中不能存储二进制的文件，而buffer就是专门用来存储二进制数据</li>
-<li>使用buffer不需要引入模块，直接使用即可</li>
-<li>在buffer中存储的都是二进制数据，但是在显示时都是以16进制的形式显示</li>
-<li>Buffer的方法<ul>
-<li>Buffer.from(字符串)<ul>
-<li>将一个字符串中内容保存到一个buffer中</li>
-</ul>
-</li>
-<li>buf.toString()<ul>
-<li>将buffer转换为一个字符串</li>
-</ul>
-</li>
-<li>Buffer.alloc(size)<ul>
-<li>创建一个指定大小的buffer对象</li>
-</ul>
-</li>
-<li>Buffer.allocUnsafe(size)<ul>
-<li>创建一个指定大小的buffer对象，可以包含敏感数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h2><ul>
-<li><p>在Node通过fs模块来对系统中的文件进行操作，fs模块是node中已经继承好了，不需要在使用npm下载，直接引入即可</p>
-</li>
-<li><p>引入fs</p>
-<ul>
-<li>var fs = require(“fs”);</li>
-</ul>
-</li>
-<li><p>fs模块中的大部分操作都提供了两种方法，同步方法和异步方法</p>
-<ul>
-<li>同步方法带sync</li>
-<li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码</li>
-<li>异步方法没有sync，都需要回调函数</li>
-<li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回</li>
-</ul>
-</li>
-<li><p>写入文件</p>
-<ol>
-<li>同步写入</li>
-<li>异步写入</li>
-<li>简单写入</li>
-<li>流式写入</li>
-</ol>
-</li>
-<li><p>读取文件</p>
-<ol>
-<li>同步读取</li>
-<li>异步读取</li>
-<li>简单读取</li>
-<li>流式读取</li>
-</ol>
-</li>
-<li><p>方法</p>
-</li>
-<li><p>打开文件</p>
-<ul>
-<li>fs.open(path, flags[, mode], callback)<ul>
-<li>回调函数两个参数：<ul>
-<li>err 错误对象，如果没有错误则为null</li>
-<li>fd  文件的描述符</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>fs.openSync(path, flags[, mode])<ul>
-<li>path 要打开文件的路径</li>
-<li>flags 打开文件要做的操作的类型<ul>
-<li>r 只读的</li>
-<li>w 可写的</li>
-</ul>
-</li>
-<li>mode 设置文件的操作权限，一般不传</li>
-</ul>
-<ul>
-<li>返回值：该方法会返回一个文件的描述符作为结果，我们可以通过该描述符来对文件进行各种操作</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>读写文件</p>
-<ul>
-<li><p>fs.write(fd, string[, position[, encoding]], callback)</p>
-</li>
-<li><p>fs.writeSync(fd, string[, position[, encoding]])</p>
-<ul>
-<li>fd 文件的描述符，需要传递要写入的文件的描述符</li>
-<li>string 要写入的内容</li>
-<li>position 写入的起始位置</li>
-<li>encoding 写入的编码，默认utf-8</li>
-</ul>
-</li>
-<li><p>fs.read(fd, buffer, offset, length, position, callback)</p>
-</li>
-<li><p>fs.readSync(fd, buffer, offset, length, position)</p>
-</li>
-</ul>
-</li>
-<li><p>关闭文件</p>
-<ul>
-<li>fs.close(fd,callback)</li>
-<li>fs.closeSync(fd);</li>
-</ul>
-</li>
-<li><p>简单文件读取和写入</p>
-<ul>
-<li><p>fs.writeFile(file, data[, options], callback)</p>
-</li>
-<li><p>fs.writeFileSync(file, data[, options])</p>
-<ul>
-<li>file 要操作的文件的路径</li>
-<li>data 要写入的数据</li>
-<li>options 选项，可以对写入进行一些设置<ul>
-<li>encoding <string> | <null> 默认值: ‘utf8’。</null></string></li>
-<li>mode <integer> 默认值: 0o666。</integer></li>
-<li>flag <string> 参见文件系统 flag 的支持。 默认值: ‘w’( r 只读,w 可写,a 追加)</string></li>
-</ul>
-</li>
-<li>callback 当写入完成以后执行的函数</li>
-</ul>
-</li>
-<li><p>fs.readFile(path[, options], callback)</p>
-</li>
-<li><p>fs.readFileSync(path[, options])</p>
-<ul>
-<li>path 要读取的文件的路径<ul>
-<li>options 读取的选项</li>
-<li>callback回调函数，通过回调函数将读取到内容返回(err , data)<ul>
-<li>err 错误对象</li>
-<li>data 读取到的数据，会返回一个Buffer</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>流式文件读取和写入</p>
-</li>
-</ul>
-<ul>
-<li>同步、异步、简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出</li>
-</ul>
-<ul>
-<li>流式读取和写入适用于一些比较大的文件</li>
-</ul>
-<ul>
-<li>可以通过监听流的open和close事件来监听流的打开和关闭<ul>
-<li>on(事件字符串,回调函数)<ul>
-<li>可以为对象绑定一个事件</li>
-</ul>
-</li>
-<li>once(事件字符串,回调函数)<ul>
-<li>可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>fs.createWriteStream(path[, options])<ul>
-<li>可以用来创建一个可写流</li>
-<li>path，文件路径</li>
-<li>options 配置的参数</li>
-</ul>
-</li>
-<li>fs.createReadStream(path[, options])</li>
-<li>pipe()可以将可读流中的内容，直接输出到可写流中rs.pipe(ws);</li>
-</ul>
-<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ul>
-<li><p>验证路径是否存在</p>
-<ul>
-<li>fs.exists(path，callback)</li>
-<li>fs.existsSync(path)</li>
-</ul>
-</li>
-<li><p>获取文件信息</p>
-<ul>
-<li>fs.stat(path, callback)</li>
-<li>fs.statSync(path)</li>
-</ul>
-</li>
-<li><p>删除文件</p>
-<ul>
-<li>fs.unlink(path, callback)</li>
-<li>fs.unlinkSync(path)</li>
-</ul>
-</li>
-<li><p>列出文件</p>
-<ul>
-<li>fs.readdir(path[, options], callback)</li>
-<li>fs.readdirSync(path[, options])</li>
-</ul>
-</li>
-<li><p>截断文件</p>
-<ul>
-<li>fs.truncate(path, len, callback)</li>
-<li>fs.truncateSync(path, len)</li>
-</ul>
-</li>
-<li><p>建立目录</p>
-<ul>
-<li>fs.mkdir(path[, mode], callback)</li>
-<li>fs.mkdirSync(path[, mode])</li>
-</ul>
-</li>
-<li><p>删除目录</p>
-<ul>
-<li>fs.rmdir(path, callback)</li>
-<li>fs.rmdirSync(path)</li>
-</ul>
-</li>
-<li><p>重命名文件和目录</p>
-<ul>
-<li>fs.rename(oldPath, newPath, callback)</li>
-<li>fs.renameSync(oldPath, newPath)</li>
-</ul>
-</li>
-<li><p>监视文件更改写入</p>
-<ul>
-<li>fs.watchFile(filename[, options], listener)</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue</title>
     <url>/2019/05/12/Vue/</url>
     <content><![CDATA[<blockquote>
@@ -4380,8 +4380,8 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>Node.js</tag>
+        <tag>MongoDB</tag>
         <tag>Vue</tag>
         <tag>Vuex</tag>
         <tag>Mongoose</tag>
@@ -6420,6 +6420,38 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>博客挂载到GitHub</title>
+    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<ul>
+<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
+<li>博客挂载到GitHub上的步骤：<ol>
+<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
+<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
+<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
+<li>github仓库配置里source选择master分支</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+<li>绑定域名<ol>
+<li>阿里云域名-&gt;解析-&gt;添加解析</li>
+<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
+<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
+<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jQuery</title>
     <url>/2018/09/10/jQuery/</url>
     <content><![CDATA[<blockquote>
@@ -6804,38 +6836,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       <tags>
         <tag>CSS</tag>
         <tag>less</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客挂载到GitHub</title>
-    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<ul>
-<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
-<li>博客挂载到GitHub上的步骤：<ol>
-<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
-<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
-<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
-<li>github仓库配置里source选择master分支</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-<li>绑定域名<ol>
-<li>阿里云域名-&gt;解析-&gt;添加解析</li>
-<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
-<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
-<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
