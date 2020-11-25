@@ -7398,4 +7398,36 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>防抖动</tag>
       </tags>
   </entry>
+  <entry>
+    <title>博客挂载到GitHub</title>
+    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<ul>
+<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
+<li>博客挂载到GitHub上的步骤：<ol>
+<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
+<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
+<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
+<li>github仓库配置里source选择master分支</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+<li>绑定域名<ol>
+<li>阿里云域名-&gt;解析-&gt;添加解析</li>
+<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
+<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
+<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
 </search>
