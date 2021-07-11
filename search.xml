@@ -1664,6 +1664,432 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>MongoDB</title>
+    <url>/2020/07/13/MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
+<li><p>打开cmd命令行窗口</p>
+<ul>
+<li>输入 mongod 启动mongodb服务器</li>
+</ul>
+</li>
+<li><p>在打开一个cmd窗口</p>
+<ul>
+<li>输入 mongo 连接mongodb ，出现 &gt; </li>
+</ul>
+</li>
+<li><p>还可以自定义data存储的路径和端口</p>
+<ul>
+<li>mongod –dbpath 数据库路径 –port 端口号</li>
+</ul>
+</li>
+<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
+<ul>
+<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
+<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
+<ul>
+<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+</ul>
+</li>
+<li><p>在任务管理器启动mongodb服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
+<li><p>数据库的服务器</p>
+<ul>
+<li>服务器用来保存数据</li>
+<li>mongod 用来启动服务器</li>
+</ul>
+</li>
+<li><p>数据库的客户端</p>
+<ul>
+<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
+<li>mongo 用来启动客户端</li>
+</ul>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li>数据库（database）</li>
+<li>集合（collection）</li>
+<li>文档（document）<ul>
+<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
+</ul>
+</li>
+<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/07/13/MongoDB/mongo.png" alt></p>
+<ul>
+<li>基本指令<ul>
+<li>show dbs</li>
+<li>show databases<ul>
+<li>显示当前的所有数据库</li>
+</ul>
+</li>
+<li>use 数据库名<ul>
+<li>进入到指定的数据库中</li>
+</ul>
+</li>
+<li>db<ul>
+<li>db表示的是当前所处的数据库</li>
+</ul>
+</li>
+<li>show collections<ul>
+<li>显示数据库中所有的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
+<li><p>db.collection.insert()</p>
+<ul>
+<li>向集合中插入一个或多个文档</li>
+<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
+<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
+</ul>
+</li>
+<li><p>db.collection.insertOne()</p>
+<ul>
+<li>插入一个文档对象</li>
+</ul>
+</li>
+<li><p>db.collection.insertMany() </p>
+<ul>
+<li>插入多个文档对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><p>db.collection.remove()</p>
+<ul>
+<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
+<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
+</ul>
+</li>
+<li><p>db.collection.deleteOne()</p>
+</li>
+<li><p>db.collection.deleteMany()</p>
+</li>
+<li><p>db.collection.drop() </p>
+<ul>
+<li>删除集合</li>
+</ul>
+</li>
+<li><p>db.dropDatabase() </p>
+<ul>
+<li>删除数据库</li>
+</ul>
+</li>
+<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
+</li>
+<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
+</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><p>db.collection.find()</p>
+<ul>
+<li>find()用来查询集合中所有符合条件的文档</li>
+<li>find()可以接收一个对象作为条件参数<ul>
+<li>{} 表示查询集合中所有的文档</li>
+<li>{属性:值} 查询属性是指定值的文档</li>
+</ul>
+</li>
+<li>find()返回的是一个数组</li>
+</ul>
+</li>
+<li><p>db.collection.findOne()</p>
+<ul>
+<li>用来查询集合中符合条件的第一个文档  </li>
+<li>findOne()返回的是一个文档对象 </li>
+</ul>
+</li>
+<li><p>db.collection.find({}).count() </p>
+<ul>
+<li>查询所有结果的数量</li>
+</ul>
+</li>
+<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
+</li>
+<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
+</li>
+<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
+<ul>
+<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
+<li>limit skip sort 可以以任意的顺序进行调用</li>
+<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
+<li><p>db.collection.update(查询条件,新对象)</p>
+<ul>
+<li>update()默认情况下会使用新对象来替换旧的对象</li>
+<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
+<li>update()默认只会修改一个</li>
+</ul>
+</li>
+<li><p>db.collection.updateMany()</p>
+<ul>
+<li>同时修改多个符合条件的文档</li>
+</ul>
+</li>
+<li><p>db.collection.updateOne()</p>
+<ul>
+<li>修改一个符合条件的文档    </li>
+</ul>
+</li>
+<li><p>db.collection.replaceOne()</p>
+<ul>
+<li>替换一个文档</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
+<li>$set<ol>
+<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
+<li>修改内嵌文档</li>
+</ol>
+</li>
+<li>$unset      <ul>
+<li>用于将键删除</li>
+</ul>
+</li>
+<li>$push <ul>
+<li>用于向数组中添加一个新的元素</li>
+</ul>
+</li>
+<li>$addToSet <ul>
+<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
+</ul>
+</li>
+<li>$each       <ul>
+<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
+</ul>
+</li>
+<li>$pop        <ul>
+<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
+</ul>
+</li>
+<li>$pull       <ul>
+<li>基于特定条件来删除元素。</li>
+</ul>
+</li>
+<li>$inc        <ul>
+<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
+</ul>
+</li>
+<li>$ne         <ul>
+<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
+</ul>
+</li>
+<li>$gt:大于</li>
+<li>$lt:小于</li>
+<li>$gte:大于或等于</li>
+<li>$lte:小于或等于</li>
+<li>$inc:自增</li>
+</ul>
+<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
+<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
+<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
+</ul>
+<ol>
+<li><p>下载安装Mongoose</p>
+<ul>
+<li>npm i mongoose –save</li>
+</ul>
+</li>
+<li><p>在项目中引入mongoose</p>
+<ul>
+<li>var mongoose = require(“mongoose”);</li>
+</ul>
+</li>
+<li><p>连接MongoDB数据库</p>
+<ul>
+<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
+<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
+</ul>
+</li>
+<li><p>断开数据库连接(一般不需要调用)</p>
+<ul>
+<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
+<ul>
+<li>mongoose.disconnect()</li>
+</ul>
+</li>
+<li><p>监听MongoDB数据库的连接状态</p>
+<ul>
+<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>数据库连接成功的事件</p>
+<ul>
+<li>mongoose.connection.once(“open”,function(){});</li>
+</ul>
+</li>
+<li><p>数据库断开的事件</p>
+<ul>
+<li>mongoose.connection.once(“close”,function(){});</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
+<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
+</ul>
+<ul>
+<li><p>Model.create(doc(s), [callback])</p>
+<ul>
+<li>用来创建一个或多个文档并添加到数据库中</li>
+<li>参数：<ul>
+<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
+<li>callback 当操作完成以后调用的回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询：</p>
+<ul>
+<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
+</li>
+<li><p>Model.find(conditions, [projection], [options], [callback])</p>
+<ul>
+<li>查询所有符合条件的文档 总会返回一个数组</li>
+</ul>
+</li>
+<li><p>Model.findById(id, [projection], [options], [callback])</p>
+<ul>
+<li>根据文档的id属性查询文档</li>
+</ul>
+</li>
+<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
+<ul>
+<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
+<ul>
+<li>conditions 查询的条件</li>
+<li>projection 投影 需要获取到的字段<ul>
+<li>两种方式<ul>
+<li>{name:1,_id:0}</li>
+<li>“name -_id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
+<li>callback 回调函数，查询结果会通过回调函数返回</li>
+<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>Model.update(conditions, doc, [options], [callback])</li>
+<li>Model.updateMany(conditions, doc, [options], [callback])</li>
+<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
+<li>用来修改一个或多个文档</li>
+<li>参数：<ul>
+<li>conditions 查询条件</li>
+<li>doc 修改后的对象</li>
+<li>options 配置参数</li>
+<li>callback 回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li>Model.remove(conditions, [callback])</li>
+<li>Model.deleteOne(conditions, [callback])</li>
+<li>Model.deleteMany(conditions, [callback])</li>
+</ul>
+</li>
+<li><p>统计文档的数量 </p>
+<ul>
+<li>Model.count(conditions, [callback])</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
+<li>Document对象是Model的实例（可以用instanceof验证）</li>
+<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
+<li>通过Model查询到结果都是Document</li>
+</ul>
+</li>
+<li>document的方法<ul>
+<li>Model#save([options], [function])<ul>
+<li>和model的create作用相同，但是document只能用save<ul>
+<li>update(update,[options],[callback])</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>修改对象<ul>
+<li>remove([callback])</li>
+</ul>
+</li>
+<li>删除对象<ul>
+<li>get(name)</li>
+</ul>
+</li>
+<li>获取文档中的指定属性值<ul>
+<li>set(name , value)</li>
+</ul>
+</li>
+<li>设置文档的指定的属性值<ul>
+<li>id</li>
+</ul>
+</li>
+<li>获取文档的_id属性值<ul>
+<li>toJSON() </li>
+</ul>
+</li>
+<li>转换为一个JSON对象//不一定生效<ul>
+<li>toObject()</li>
+</ul>
+</li>
+<li>将Document对象转换为一个普通的JS对象</li>
+<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>其他模块直接通过require引入该模块即可</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript</title>
     <url>/2020/07/07/JavaScript/</url>
     <content><![CDATA[<blockquote>
@@ -2928,432 +3354,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>MongoDB</title>
-    <url>/2020/07/13/MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
-<li><p>打开cmd命令行窗口</p>
-<ul>
-<li>输入 mongod 启动mongodb服务器</li>
-</ul>
-</li>
-<li><p>在打开一个cmd窗口</p>
-<ul>
-<li>输入 mongo 连接mongodb ，出现 &gt; </li>
-</ul>
-</li>
-<li><p>还可以自定义data存储的路径和端口</p>
-<ul>
-<li>mongod –dbpath 数据库路径 –port 端口号</li>
-</ul>
-</li>
-<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
-<ul>
-<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
-<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
-<ul>
-<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-</ul>
-</li>
-<li><p>在任务管理器启动mongodb服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li>服务器用来保存数据</li>
-<li>mongod 用来启动服务器</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
-<li>mongo 用来启动客户端</li>
-</ul>
-</li>
-<li><p>基本概念</p>
-<ul>
-<li>数据库（database）</li>
-<li>集合（collection）</li>
-<li>文档（document）<ul>
-<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
-</ul>
-</li>
-<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/07/13/MongoDB/mongo.png" alt></p>
-<ul>
-<li>基本指令<ul>
-<li>show dbs</li>
-<li>show databases<ul>
-<li>显示当前的所有数据库</li>
-</ul>
-</li>
-<li>use 数据库名<ul>
-<li>进入到指定的数据库中</li>
-</ul>
-</li>
-<li>db<ul>
-<li>db表示的是当前所处的数据库</li>
-</ul>
-</li>
-<li>show collections<ul>
-<li>显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
-<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
-<li><p>db.collection.insert()</p>
-<ul>
-<li>向集合中插入一个或多个文档</li>
-<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
-<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
-</ul>
-</li>
-<li><p>db.collection.insertOne()</p>
-<ul>
-<li>插入一个文档对象</li>
-</ul>
-</li>
-<li><p>db.collection.insertMany() </p>
-<ul>
-<li>插入多个文档对象</li>
-</ul>
-</li>
-</ul>
-<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
-<li><p>db.collection.remove()</p>
-<ul>
-<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
-<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
-</ul>
-</li>
-<li><p>db.collection.deleteOne()</p>
-</li>
-<li><p>db.collection.deleteMany()</p>
-</li>
-<li><p>db.collection.drop() </p>
-<ul>
-<li>删除集合</li>
-</ul>
-</li>
-<li><p>db.dropDatabase() </p>
-<ul>
-<li>删除数据库</li>
-</ul>
-</li>
-<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
-</li>
-<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
-</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
-<li><p>db.collection.find()</p>
-<ul>
-<li>find()用来查询集合中所有符合条件的文档</li>
-<li>find()可以接收一个对象作为条件参数<ul>
-<li>{} 表示查询集合中所有的文档</li>
-<li>{属性:值} 查询属性是指定值的文档</li>
-</ul>
-</li>
-<li>find()返回的是一个数组</li>
-</ul>
-</li>
-<li><p>db.collection.findOne()</p>
-<ul>
-<li>用来查询集合中符合条件的第一个文档  </li>
-<li>findOne()返回的是一个文档对象 </li>
-</ul>
-</li>
-<li><p>db.collection.find({}).count() </p>
-<ul>
-<li>查询所有结果的数量</li>
-</ul>
-</li>
-<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
-</li>
-<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
-</li>
-<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
-<ul>
-<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
-<li>limit skip sort 可以以任意的顺序进行调用</li>
-<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
-<li><p>db.collection.update(查询条件,新对象)</p>
-<ul>
-<li>update()默认情况下会使用新对象来替换旧的对象</li>
-<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
-<li>update()默认只会修改一个</li>
-</ul>
-</li>
-<li><p>db.collection.updateMany()</p>
-<ul>
-<li>同时修改多个符合条件的文档</li>
-</ul>
-</li>
-<li><p>db.collection.updateOne()</p>
-<ul>
-<li>修改一个符合条件的文档    </li>
-</ul>
-</li>
-<li><p>db.collection.replaceOne()</p>
-<ul>
-<li>替换一个文档</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
-<li>$set<ol>
-<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
-<li>修改内嵌文档</li>
-</ol>
-</li>
-<li>$unset      <ul>
-<li>用于将键删除</li>
-</ul>
-</li>
-<li>$push <ul>
-<li>用于向数组中添加一个新的元素</li>
-</ul>
-</li>
-<li>$addToSet <ul>
-<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
-</ul>
-</li>
-<li>$each       <ul>
-<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
-</ul>
-</li>
-<li>$pop        <ul>
-<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
-</ul>
-</li>
-<li>$pull       <ul>
-<li>基于特定条件来删除元素。</li>
-</ul>
-</li>
-<li>$inc        <ul>
-<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
-</ul>
-</li>
-<li>$ne         <ul>
-<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
-</ul>
-</li>
-<li>$gt:大于</li>
-<li>$lt:小于</li>
-<li>$gte:大于或等于</li>
-<li>$lte:小于或等于</li>
-<li>$inc:自增</li>
-</ul>
-<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
-<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
-<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
-</ul>
-<ol>
-<li><p>下载安装Mongoose</p>
-<ul>
-<li>npm i mongoose –save</li>
-</ul>
-</li>
-<li><p>在项目中引入mongoose</p>
-<ul>
-<li>var mongoose = require(“mongoose”);</li>
-</ul>
-</li>
-<li><p>连接MongoDB数据库</p>
-<ul>
-<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
-<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
-</ul>
-</li>
-<li><p>断开数据库连接(一般不需要调用)</p>
-<ul>
-<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
-<ul>
-<li>mongoose.disconnect()</li>
-</ul>
-</li>
-<li><p>监听MongoDB数据库的连接状态</p>
-<ul>
-<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>数据库连接成功的事件</p>
-<ul>
-<li>mongoose.connection.once(“open”,function(){});</li>
-</ul>
-</li>
-<li><p>数据库断开的事件</p>
-<ul>
-<li>mongoose.connection.once(“close”,function(){});</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
-<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
-</ul>
-<ul>
-<li><p>Model.create(doc(s), [callback])</p>
-<ul>
-<li>用来创建一个或多个文档并添加到数据库中</li>
-<li>参数：<ul>
-<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
-<li>callback 当操作完成以后调用的回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查询：</p>
-<ul>
-<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
-</li>
-<li><p>Model.find(conditions, [projection], [options], [callback])</p>
-<ul>
-<li>查询所有符合条件的文档 总会返回一个数组</li>
-</ul>
-</li>
-<li><p>Model.findById(id, [projection], [options], [callback])</p>
-<ul>
-<li>根据文档的id属性查询文档</li>
-</ul>
-</li>
-<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
-<ul>
-<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
-<ul>
-<li>conditions 查询的条件</li>
-<li>projection 投影 需要获取到的字段<ul>
-<li>两种方式<ul>
-<li>{name:1,_id:0}</li>
-<li>“name -_id”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
-<li>callback 回调函数，查询结果会通过回调函数返回</li>
-<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>修改</p>
-<ul>
-<li>Model.update(conditions, doc, [options], [callback])</li>
-<li>Model.updateMany(conditions, doc, [options], [callback])</li>
-<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
-<li>用来修改一个或多个文档</li>
-<li>参数：<ul>
-<li>conditions 查询条件</li>
-<li>doc 修改后的对象</li>
-<li>options 配置参数</li>
-<li>callback 回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
-</ul>
-</li>
-<li><p>删除：</p>
-<ul>
-<li>Model.remove(conditions, [callback])</li>
-<li>Model.deleteOne(conditions, [callback])</li>
-<li>Model.deleteMany(conditions, [callback])</li>
-</ul>
-</li>
-<li><p>统计文档的数量 </p>
-<ul>
-<li>Model.count(conditions, [callback])</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
-<li>Document对象是Model的实例（可以用instanceof验证）</li>
-<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
-<li>通过Model查询到结果都是Document</li>
-</ul>
-</li>
-<li>document的方法<ul>
-<li>Model#save([options], [function])<ul>
-<li>和model的create作用相同，但是document只能用save<ul>
-<li>update(update,[options],[callback])</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>修改对象<ul>
-<li>remove([callback])</li>
-</ul>
-</li>
-<li>删除对象<ul>
-<li>get(name)</li>
-</ul>
-</li>
-<li>获取文档中的指定属性值<ul>
-<li>set(name , value)</li>
-</ul>
-</li>
-<li>设置文档的指定的属性值<ul>
-<li>id</li>
-</ul>
-</li>
-<li>获取文档的_id属性值<ul>
-<li>toJSON() </li>
-</ul>
-</li>
-<li>转换为一个JSON对象//不一定生效<ul>
-<li>toObject()</li>
-</ul>
-</li>
-<li>将Document对象转换为一个普通的JS对象</li>
-<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>其他模块直接通过require引入该模块即可</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Node.js</title>
     <url>/2020/07/11/NodeJS/</url>
     <content><![CDATA[<blockquote>
@@ -4439,6 +4439,249 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>axios</title>
+    <url>/2020/07/17/axios/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>前端最流行的ajax请求库</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
+<li>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</a></li>
+</ul>
+<h2 id="HTTP-请求交互的基本过程"><a href="#HTTP-请求交互的基本过程" class="headerlink" title="HTTP 请求交互的基本过程"></a>HTTP 请求交互的基本过程</h2><p><img src="/axios/http.png" alt></p>
+<ol>
+<li>前后应用从浏览器端向服务器发送 HTTP 请求(请求报文)</li>
+<li>后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP<br>响应(响应报文)</li>
+<li>浏览器端接收到响应, 解析显示响应体/调用监视回调</li>
+</ol>
+<h2 id="HTTP-请求报文"><a href="#HTTP-请求报文" class="headerlink" title="HTTP 请求报文"></a>HTTP 请求报文</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><ul>
+<li>method </li>
+<li>url</li>
+</ul>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><ul>
+<li>Host: <a href="http://www.baidu.com主机" target="_blank" rel="noopener">www.baidu.com主机</a></li>
+<li>Cookie: BAIDUID=AD3B0FA706E; BIDUPSID=AD3B0FA706;<ul>
+<li>Cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器</li>
+</ul>
+</li>
+<li>Content-Type: application/x-www-form-urlencoded 或者 application/json<ul>
+<li>告诉服务器请求体内容的类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><ul>
+<li>urlencoded格式：username=tom&amp;pwd=123</li>
+<li>JSON格式：{“username”: “tom”, “pwd”: 123}</li>
+</ul>
+<h2 id="HTTP-响应报文"><a href="#HTTP-响应报文" class="headerlink" title="HTTP 响应报文"></a>HTTP 响应报文</h2><ol>
+<li>响应状态行<ul>
+<li>status statusText状态码</li>
+</ul>
+</li>
+<li>多个响应头<ul>
+<li>Content-Type: text/html;charset=utf-8 Set-Cookie: BD_CK_SAM=1;path=/</li>
+</ul>
+</li>
+<li>响应体<ul>
+<li>html 文本/json 文本/js/css/图片…</li>
+</ul>
+</li>
+</ol>
+<h2 id="post-请求体参数格式"><a href="#post-请求体参数格式" class="headerlink" title="post 请求体参数格式"></a>post 请求体参数格式</h2><ol>
+<li>Content-Type: application/x-www-form-urlencoded;charset=utf-8<ul>
+<li>用于键值对参数，参数的键值用=连接, 参数之间用&amp;连接</li>
+<li>例如: name=%E5%B0%8F%E6%98%8E&amp;age=12</li>
+</ul>
+</li>
+<li>Content-Type: application/json;charset=utf-8<ul>
+<li>用于 json 字符串参数</li>
+<li>例如: {“name”: “%E5%B0%8F%E6%98%8E”, “age”: 12}</li>
+</ul>
+</li>
+<li>Content-Type: multipart/form-data<ul>
+<li>用于文件上传请求</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见的响应状态码"><a href="#常见的响应状态码" class="headerlink" title="常见的响应状态码"></a>常见的响应状态码</h2><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>提示信息</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功。一般用于 GET 与 POST 请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>未授权/请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>服务器无法根据客户端的请求找到资源</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+</tbody></table>
+<h2 id="不同类型的请求及其作用"><a href="#不同类型的请求及其作用" class="headerlink" title="不同类型的请求及其作用"></a>不同类型的请求及其作用</h2><ol>
+<li>GET: 从服务器端读取数据</li>
+<li>POST: 向服务器端添加新数据</li>
+<li>PUT: 更新服务器端已经有的数据</li>
+<li>DELETE: 删除服务器端数据</li>
+</ol>
+<h2 id="API-的分类"><a href="#API-的分类" class="headerlink" title="API 的分类"></a>API 的分类</h2><ol>
+<li>REST API:restful<ul>
+<li>发送请求进行 CRUD 哪个操作由请求方式来决定</li>
+<li>同一个请求路径可以进行多个操作</li>
+<li>请求方式会用到 GET/POST/PUT/DELETE</li>
+</ul>
+</li>
+<li>非 REST API:restless<ul>
+<li>请求方式不决定请求的 CRUD 操作</li>
+<li>一个请求路径只对应一个操作</li>
+<li>一般只有 GET/POST</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用-json-server-搭建-REST-API"><a href="#使用-json-server-搭建-REST-API" class="headerlink" title="使用 json-server 搭建 REST API"></a>使用 json-server 搭建 REST API</h2><h3 id="json-server-是什么"><a href="#json-server-是什么" class="headerlink" title="json-server 是什么?"></a>json-server 是什么?</h3><ul>
+<li>用来快速搭建 REST API 的工具包</li>
+</ul>
+<h3 id="使用-json-server"><a href="#使用-json-server" class="headerlink" title="使用 json-server"></a>使用 json-server</h3><ol>
+<li>在线文档: <a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></li>
+<li>下载: npm install -g json-server</li>
+<li>目标根目录下创建数据库 json 文件: db.json<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JSON数据：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;posts&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;title&quot;: &quot;json-server&quot;, &quot;author&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">],</span><br><span class="line">&quot;comments&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;body&quot;: &quot;some comment&quot;, &quot;postId&quot;: 1 &#125;</span><br><span class="line">],</span><br><span class="line">&quot;profile&quot;: &#123; &quot;name&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>启动服务器执行命令: json-server –watch db.json</li>
+</ol>
+<h3 id="使用浏览器访问测试"><a href="#使用浏览器访问测试" class="headerlink" title="使用浏览器访问测试"></a>使用浏览器访问测试</h3><ul>
+<li><p><a href="http://localhost:3000/posts" target="_blank" rel="noopener">http://localhost:3000/posts</a></p>
+</li>
+<li><p><a href="http://localhost:3000/posts/1" target="_blank" rel="noopener">http://localhost:3000/posts/1</a></p>
+</li>
+<li><p>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html</a></p>
+</li>
+</ul>
+<h1 id="XHR-的理解和使用"><a href="#XHR-的理解和使用" class="headerlink" title="XHR 的理解和使用"></a>XHR 的理解和使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ol>
+<li>使用 XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送 ajax 请求</li>
+<li>前端可以获取到数据，而无需让整个的页面刷新。</li>
+<li>这使得 Web 页面可以只更新页面的局部，而不影响用户的操作。</li>
+</ol>
+<h2 id="区别一般-http-请求与-ajax-请求"><a href="#区别一般-http-请求与-ajax-请求" class="headerlink" title="区别一般 http 请求与 ajax 请求"></a>区别一般 http 请求与 ajax 请求</h2><ol>
+<li>ajax 请求是一种特别的 http 请求</li>
+<li>对服务器端来说, 没有任何区别, 区别在浏览器端</li>
+<li>浏览器端发请求: 只有 XHR 或 fetch 发出的才是 ajax 请求, 其它所有的都是非 ajax 请求</li>
+<li>浏览器端接收到响应<ul>
+<li>一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/ 跳转页面</li>
+<li>ajax 请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据</li>
+</ul>
+</li>
+</ol>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
+<li>XMLHttpRequest(): 创建 XHR 对象的构造函数</li>
+<li>status: 响应状态码值, 比如 200, 404</li>
+<li>statusText: 响应状态文本</li>
+<li>readyState: 标识请求状态的只读属性<ul>
+<li>初始</li>
+<li>open()之后</li>
+<li>send()之后</li>
+<li>请求中</li>
+<li>请求完成</li>
+</ul>
+</li>
+<li>onreadystatechange: 绑定 readyState 改变的监听</li>
+<li>responseType: 指定响应数据类型, 如果是’json’, 得到响应后自动解析响应体数据</li>
+<li>response: 响应体数据, 类型取决于 responseType 的指定</li>
+<li>timeout: 指定请求超时时间, 默认为 0 代表没有限制</li>
+<li>ontimeout: 绑定超时的监听</li>
+<li>onerror: 绑定请求网络错误的监听</li>
+<li>open(): 初始化一个请求, 参数为: (method, url[, async])</li>
+<li>send(data): 发送请求</li>
+<li>abort(): 中断请求</li>
+<li>getResponseHeader(name): 获取指定名称的响应头值</li>
+<li>getAllResponseHeaders(): 获取所有响应头组成的字符串</li>
+<li>setRequestHeader(name, value): 设置请求头</li>
+</ol>
+<h2 id="XHR-的-ajax-封装-简单版-axios"><a href="#XHR-的-ajax-封装-简单版-axios" class="headerlink" title="XHR 的 ajax 封装(简单版 axios)"></a>XHR 的 ajax 封装(简单版 axios)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>函数的返回值为 promise, 成功的结果为 response, 异常的结果为 error</li>
+<li>能处理多种类型的请求: GET/POST/PUT/DELETE</li>
+<li>函数的参数为一个配置对象<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">url: &#39;&#39;,	&#x2F;&#x2F; 请求地址</span><br><span class="line">method: &#39;&#39;,		&#x2F;&#x2F; 请求方式 GET&#x2F;POST&#x2F;PUT&#x2F;DELETE params: &#123;&#125;,	&#x2F;&#x2F; GET&#x2F;DELETE 请求的 query 参数data: &#123;&#125;, &#x2F;&#x2F; POST 或 DELETE 请求的请求体参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>响应 json 数据自动解析为 js</li>
+</ol>
+<ul>
+<li>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html</a></li>
+</ul>
+<h1 id="axios-的理解和使用"><a href="#axios-的理解和使用" class="headerlink" title="axios 的理解和使用"></a>axios 的理解和使用</h1><h2 id="axios-是什么"><a href="#axios-是什么" class="headerlink" title="axios 是什么?"></a>axios 是什么?</h2><ol>
+<li>前端最流行的 ajax 请求库</li>
+<li>react/vue 官方都推荐使用 axios 发 ajax 请求</li>
+<li>文档: <a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
+</ol>
+<h2 id="axios-特点"><a href="#axios-特点" class="headerlink" title="axios 特点"></a>axios 特点</h2><ol>
+<li>基本 promise 的异步 ajax 请求库</li>
+<li>浏览器端/node 端都可以使用</li>
+<li>支持请求／响应拦截器</li>
+<li>支持请求取消</li>
+<li>请求/响应数据转换</li>
+<li>批量发送多个请求</li>
+</ol>
+<h2 id="axios-常用语法"><a href="#axios-常用语法" class="headerlink" title="axios 常用语法"></a>axios 常用语法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- axios(config): 通用&#x2F;最本质的发任意类型请求的方式</span><br><span class="line">- axios(url[, config]): 可以只指定 url 发 get 请求</span><br><span class="line">- axios.request(config): 等 同 于 axios(config) </span><br><span class="line">- axios.get(url[, config]): 发 get 请求</span><br><span class="line">- axios.delete(url[, config]): 发 delete 请求</span><br><span class="line">- axios.post(url[, data, config]): 发 post 请求</span><br><span class="line">- axios.put(url[, data, config]): 发 put 请求 </span><br><span class="line"></span><br><span class="line">- axios.defaults.xxx: 请求的默认全局配置</span><br><span class="line">- axios.interceptors.request.use(): 添加请求拦截器</span><br><span class="line">- axios.interceptors.response.use(): 添加响应拦截器</span><br><span class="line"></span><br><span class="line">- axios.create([config]): 创建一个新的 axios(它没有下面的功能)</span><br><span class="line"></span><br><span class="line">- axios.Cancel(): 用于创建取消请求的错误对象</span><br><span class="line">- axios.CancelToken(): 用于创建取消请求的 token 对象</span><br><span class="line">- axios.isCancel(): 是否是一个取消请求的错误</span><br><span class="line">- axios.all(promises): 用于批量执行多个异步请求</span><br><span class="line">- axios.spread(): 用来指定接收所有成功数据的回调函数的方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="难点语法的理解和使用"><a href="#难点语法的理解和使用" class="headerlink" title="难点语法的理解和使用"></a>难点语法的理解和使用</h2><h3 id="axios-create-config"><a href="#axios-create-config" class="headerlink" title="axios.create(config)"></a>axios.create(config)</h3><ol>
+<li>根据指定配置创建一个新的 axios, 也就就每个新 axios 都有自己的配置</li>
+<li>新 axios 只是没有取消请求和批量发请求的方法, 其它所有语法都是一致的</li>
+<li>为什么要设计这个语法?<ul>
+<li>需求: 项目中有部分接口需要的配置与另一部分接口需要的配置不太一样, 如何处理</li>
+<li>解决: 创建 2 个新 axios, 每个都有自己特有的配置, 分别应用到不同要求的接口请求中</li>
+</ul>
+</li>
+</ol>
+<h3 id="拦截器函数-ajax-请求-请求的回调函数的调用顺序"><a href="#拦截器函数-ajax-请求-请求的回调函数的调用顺序" class="headerlink" title="拦截器函数/ajax 请求/请求的回调函数的调用顺序"></a>拦截器函数/ajax 请求/请求的回调函数的调用顺序</h3><ol>
+<li>说明: 调用 axios()并不是立即发送 ajax 请求, 而是需要经历一个较长的流程</li>
+<li>流程: 请求拦截器2 =&gt; 请求拦截器1 =&gt; 发ajax 请求 =&gt; 响应拦截器1 =&gt;  响应拦截器 2 =&gt; 请求的回调</li>
+<li>注意: 此流程是通过 promise 串连起来的, 请求拦截器传递的是 config, 响应拦截器传递的是 response</li>
+</ol>
+<h3 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h3><ol>
+<li>基本流程</li>
+</ol>
+<ul>
+<li>配置 cancelToken 对象</li>
+<li>缓存用于取消请求的 cancel 函数</li>
+<li>在后面特定时机调用 cancel 函数取消请求</li>
+<li>在错误回调中判断如果 error 是 cancel, 做相应处理</li>
+</ul>
+<ol start="2">
+<li>实现功能</li>
+</ol>
+<ul>
+<li>点击按钮, 取消某个正在请求中的请求</li>
+<li>在请求一个接口前, 取消前面一个未完成的请求</li>
+<li>可以用请求拦截器统一取消发送请求前未完成的请求，并且保存取消函数；用响应拦截器对结果统一处理</li>
+</ul>
+<ul>
+<li>源码：<a href="https://github.com/XieYaXv6/Learn-axios" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>axios</category>
+      </categories>
+      <tags>
+        <tag>ajax</tag>
+        <tag>axios</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Webpack</title>
     <url>/2020/07/18/Webpack/</url>
     <content><![CDATA[<blockquote>
@@ -4952,249 +5195,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>Webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>axios</title>
-    <url>/2020/07/17/axios/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>前端最流行的ajax请求库</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
-<li>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</a></li>
-</ul>
-<h2 id="HTTP-请求交互的基本过程"><a href="#HTTP-请求交互的基本过程" class="headerlink" title="HTTP 请求交互的基本过程"></a>HTTP 请求交互的基本过程</h2><p><img src="/axios/http.png" alt></p>
-<ol>
-<li>前后应用从浏览器端向服务器发送 HTTP 请求(请求报文)</li>
-<li>后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP<br>响应(响应报文)</li>
-<li>浏览器端接收到响应, 解析显示响应体/调用监视回调</li>
-</ol>
-<h2 id="HTTP-请求报文"><a href="#HTTP-请求报文" class="headerlink" title="HTTP 请求报文"></a>HTTP 请求报文</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><ul>
-<li>method </li>
-<li>url</li>
-</ul>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><ul>
-<li>Host: <a href="http://www.baidu.com主机" target="_blank" rel="noopener">www.baidu.com主机</a></li>
-<li>Cookie: BAIDUID=AD3B0FA706E; BIDUPSID=AD3B0FA706;<ul>
-<li>Cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器</li>
-</ul>
-</li>
-<li>Content-Type: application/x-www-form-urlencoded 或者 application/json<ul>
-<li>告诉服务器请求体内容的类型</li>
-</ul>
-</li>
-</ul>
-<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><ul>
-<li>urlencoded格式：username=tom&amp;pwd=123</li>
-<li>JSON格式：{“username”: “tom”, “pwd”: 123}</li>
-</ul>
-<h2 id="HTTP-响应报文"><a href="#HTTP-响应报文" class="headerlink" title="HTTP 响应报文"></a>HTTP 响应报文</h2><ol>
-<li>响应状态行<ul>
-<li>status statusText状态码</li>
-</ul>
-</li>
-<li>多个响应头<ul>
-<li>Content-Type: text/html;charset=utf-8 Set-Cookie: BD_CK_SAM=1;path=/</li>
-</ul>
-</li>
-<li>响应体<ul>
-<li>html 文本/json 文本/js/css/图片…</li>
-</ul>
-</li>
-</ol>
-<h2 id="post-请求体参数格式"><a href="#post-请求体参数格式" class="headerlink" title="post 请求体参数格式"></a>post 请求体参数格式</h2><ol>
-<li>Content-Type: application/x-www-form-urlencoded;charset=utf-8<ul>
-<li>用于键值对参数，参数的键值用=连接, 参数之间用&amp;连接</li>
-<li>例如: name=%E5%B0%8F%E6%98%8E&amp;age=12</li>
-</ul>
-</li>
-<li>Content-Type: application/json;charset=utf-8<ul>
-<li>用于 json 字符串参数</li>
-<li>例如: {“name”: “%E5%B0%8F%E6%98%8E”, “age”: 12}</li>
-</ul>
-</li>
-<li>Content-Type: multipart/form-data<ul>
-<li>用于文件上传请求</li>
-</ul>
-</li>
-</ol>
-<h2 id="常见的响应状态码"><a href="#常见的响应状态码" class="headerlink" title="常见的响应状态码"></a>常见的响应状态码</h2><table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>提示信息</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>200</td>
-<td>OK</td>
-<td>请求成功。一般用于 GET 与 POST 请求</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created</td>
-<td>已创建。成功请求并创建了新的资源</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-<td>未授权/请求要求用户的身份认证</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td>服务器无法根据客户端的请求找到资源</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>服务器内部错误，无法完成请求</td>
-</tr>
-</tbody></table>
-<h2 id="不同类型的请求及其作用"><a href="#不同类型的请求及其作用" class="headerlink" title="不同类型的请求及其作用"></a>不同类型的请求及其作用</h2><ol>
-<li>GET: 从服务器端读取数据</li>
-<li>POST: 向服务器端添加新数据</li>
-<li>PUT: 更新服务器端已经有的数据</li>
-<li>DELETE: 删除服务器端数据</li>
-</ol>
-<h2 id="API-的分类"><a href="#API-的分类" class="headerlink" title="API 的分类"></a>API 的分类</h2><ol>
-<li>REST API:restful<ul>
-<li>发送请求进行 CRUD 哪个操作由请求方式来决定</li>
-<li>同一个请求路径可以进行多个操作</li>
-<li>请求方式会用到 GET/POST/PUT/DELETE</li>
-</ul>
-</li>
-<li>非 REST API:restless<ul>
-<li>请求方式不决定请求的 CRUD 操作</li>
-<li>一个请求路径只对应一个操作</li>
-<li>一般只有 GET/POST</li>
-</ul>
-</li>
-</ol>
-<h2 id="使用-json-server-搭建-REST-API"><a href="#使用-json-server-搭建-REST-API" class="headerlink" title="使用 json-server 搭建 REST API"></a>使用 json-server 搭建 REST API</h2><h3 id="json-server-是什么"><a href="#json-server-是什么" class="headerlink" title="json-server 是什么?"></a>json-server 是什么?</h3><ul>
-<li>用来快速搭建 REST API 的工具包</li>
-</ul>
-<h3 id="使用-json-server"><a href="#使用-json-server" class="headerlink" title="使用 json-server"></a>使用 json-server</h3><ol>
-<li>在线文档: <a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></li>
-<li>下载: npm install -g json-server</li>
-<li>目标根目录下创建数据库 json 文件: db.json<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JSON数据：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;posts&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;title&quot;: &quot;json-server&quot;, &quot;author&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">],</span><br><span class="line">&quot;comments&quot;: [</span><br><span class="line">&#123; &quot;id&quot;: 1, &quot;body&quot;: &quot;some comment&quot;, &quot;postId&quot;: 1 &#125;</span><br><span class="line">],</span><br><span class="line">&quot;profile&quot;: &#123; &quot;name&quot;: &quot;typicode&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>启动服务器执行命令: json-server –watch db.json</li>
-</ol>
-<h3 id="使用浏览器访问测试"><a href="#使用浏览器访问测试" class="headerlink" title="使用浏览器访问测试"></a>使用浏览器访问测试</h3><ul>
-<li><p><a href="http://localhost:3000/posts" target="_blank" rel="noopener">http://localhost:3000/posts</a></p>
-</li>
-<li><p><a href="http://localhost:3000/posts/1" target="_blank" rel="noopener">http://localhost:3000/posts/1</a></p>
-</li>
-<li><p>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/01_restapi.html</a></p>
-</li>
-</ul>
-<h1 id="XHR-的理解和使用"><a href="#XHR-的理解和使用" class="headerlink" title="XHR 的理解和使用"></a>XHR 的理解和使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ol>
-<li>使用 XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送 ajax 请求</li>
-<li>前端可以获取到数据，而无需让整个的页面刷新。</li>
-<li>这使得 Web 页面可以只更新页面的局部，而不影响用户的操作。</li>
-</ol>
-<h2 id="区别一般-http-请求与-ajax-请求"><a href="#区别一般-http-请求与-ajax-请求" class="headerlink" title="区别一般 http 请求与 ajax 请求"></a>区别一般 http 请求与 ajax 请求</h2><ol>
-<li>ajax 请求是一种特别的 http 请求</li>
-<li>对服务器端来说, 没有任何区别, 区别在浏览器端</li>
-<li>浏览器端发请求: 只有 XHR 或 fetch 发出的才是 ajax 请求, 其它所有的都是非 ajax 请求</li>
-<li>浏览器端接收到响应<ul>
-<li>一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/ 跳转页面</li>
-<li>ajax 请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据</li>
-</ul>
-</li>
-</ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
-<li>XMLHttpRequest(): 创建 XHR 对象的构造函数</li>
-<li>status: 响应状态码值, 比如 200, 404</li>
-<li>statusText: 响应状态文本</li>
-<li>readyState: 标识请求状态的只读属性<ul>
-<li>初始</li>
-<li>open()之后</li>
-<li>send()之后</li>
-<li>请求中</li>
-<li>请求完成</li>
-</ul>
-</li>
-<li>onreadystatechange: 绑定 readyState 改变的监听</li>
-<li>responseType: 指定响应数据类型, 如果是’json’, 得到响应后自动解析响应体数据</li>
-<li>response: 响应体数据, 类型取决于 responseType 的指定</li>
-<li>timeout: 指定请求超时时间, 默认为 0 代表没有限制</li>
-<li>ontimeout: 绑定超时的监听</li>
-<li>onerror: 绑定请求网络错误的监听</li>
-<li>open(): 初始化一个请求, 参数为: (method, url[, async])</li>
-<li>send(data): 发送请求</li>
-<li>abort(): 中断请求</li>
-<li>getResponseHeader(name): 获取指定名称的响应头值</li>
-<li>getAllResponseHeaders(): 获取所有响应头组成的字符串</li>
-<li>setRequestHeader(name, value): 设置请求头</li>
-</ol>
-<h2 id="XHR-的-ajax-封装-简单版-axios"><a href="#XHR-的-ajax-封装-简单版-axios" class="headerlink" title="XHR 的 ajax 封装(简单版 axios)"></a>XHR 的 ajax 封装(简单版 axios)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>函数的返回值为 promise, 成功的结果为 response, 异常的结果为 error</li>
-<li>能处理多种类型的请求: GET/POST/PUT/DELETE</li>
-<li>函数的参数为一个配置对象<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">url: &#39;&#39;,	&#x2F;&#x2F; 请求地址</span><br><span class="line">method: &#39;&#39;,		&#x2F;&#x2F; 请求方式 GET&#x2F;POST&#x2F;PUT&#x2F;DELETE params: &#123;&#125;,	&#x2F;&#x2F; GET&#x2F;DELETE 请求的 query 参数data: &#123;&#125;, &#x2F;&#x2F; POST 或 DELETE 请求的请求体参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>响应 json 数据自动解析为 js</li>
-</ol>
-<ul>
-<li>代码实现：<a href="https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios/blob/master/02_xhr.html</a></li>
-</ul>
-<h1 id="axios-的理解和使用"><a href="#axios-的理解和使用" class="headerlink" title="axios 的理解和使用"></a>axios 的理解和使用</h1><h2 id="axios-是什么"><a href="#axios-是什么" class="headerlink" title="axios 是什么?"></a>axios 是什么?</h2><ol>
-<li>前端最流行的 ajax 请求库</li>
-<li>react/vue 官方都推荐使用 axios 发 ajax 请求</li>
-<li>文档: <a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
-</ol>
-<h2 id="axios-特点"><a href="#axios-特点" class="headerlink" title="axios 特点"></a>axios 特点</h2><ol>
-<li>基本 promise 的异步 ajax 请求库</li>
-<li>浏览器端/node 端都可以使用</li>
-<li>支持请求／响应拦截器</li>
-<li>支持请求取消</li>
-<li>请求/响应数据转换</li>
-<li>批量发送多个请求</li>
-</ol>
-<h2 id="axios-常用语法"><a href="#axios-常用语法" class="headerlink" title="axios 常用语法"></a>axios 常用语法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- axios(config): 通用&#x2F;最本质的发任意类型请求的方式</span><br><span class="line">- axios(url[, config]): 可以只指定 url 发 get 请求</span><br><span class="line">- axios.request(config): 等 同 于 axios(config) </span><br><span class="line">- axios.get(url[, config]): 发 get 请求</span><br><span class="line">- axios.delete(url[, config]): 发 delete 请求</span><br><span class="line">- axios.post(url[, data, config]): 发 post 请求</span><br><span class="line">- axios.put(url[, data, config]): 发 put 请求 </span><br><span class="line"></span><br><span class="line">- axios.defaults.xxx: 请求的默认全局配置</span><br><span class="line">- axios.interceptors.request.use(): 添加请求拦截器</span><br><span class="line">- axios.interceptors.response.use(): 添加响应拦截器</span><br><span class="line"></span><br><span class="line">- axios.create([config]): 创建一个新的 axios(它没有下面的功能)</span><br><span class="line"></span><br><span class="line">- axios.Cancel(): 用于创建取消请求的错误对象</span><br><span class="line">- axios.CancelToken(): 用于创建取消请求的 token 对象</span><br><span class="line">- axios.isCancel(): 是否是一个取消请求的错误</span><br><span class="line">- axios.all(promises): 用于批量执行多个异步请求</span><br><span class="line">- axios.spread(): 用来指定接收所有成功数据的回调函数的方法</span><br></pre></td></tr></table></figure>
-
-<h2 id="难点语法的理解和使用"><a href="#难点语法的理解和使用" class="headerlink" title="难点语法的理解和使用"></a>难点语法的理解和使用</h2><h3 id="axios-create-config"><a href="#axios-create-config" class="headerlink" title="axios.create(config)"></a>axios.create(config)</h3><ol>
-<li>根据指定配置创建一个新的 axios, 也就就每个新 axios 都有自己的配置</li>
-<li>新 axios 只是没有取消请求和批量发请求的方法, 其它所有语法都是一致的</li>
-<li>为什么要设计这个语法?<ul>
-<li>需求: 项目中有部分接口需要的配置与另一部分接口需要的配置不太一样, 如何处理</li>
-<li>解决: 创建 2 个新 axios, 每个都有自己特有的配置, 分别应用到不同要求的接口请求中</li>
-</ul>
-</li>
-</ol>
-<h3 id="拦截器函数-ajax-请求-请求的回调函数的调用顺序"><a href="#拦截器函数-ajax-请求-请求的回调函数的调用顺序" class="headerlink" title="拦截器函数/ajax 请求/请求的回调函数的调用顺序"></a>拦截器函数/ajax 请求/请求的回调函数的调用顺序</h3><ol>
-<li>说明: 调用 axios()并不是立即发送 ajax 请求, 而是需要经历一个较长的流程</li>
-<li>流程: 请求拦截器2 =&gt; 请求拦截器1 =&gt; 发ajax 请求 =&gt; 响应拦截器1 =&gt;  响应拦截器 2 =&gt; 请求的回调</li>
-<li>注意: 此流程是通过 promise 串连起来的, 请求拦截器传递的是 config, 响应拦截器传递的是 response</li>
-</ol>
-<h3 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h3><ol>
-<li>基本流程</li>
-</ol>
-<ul>
-<li>配置 cancelToken 对象</li>
-<li>缓存用于取消请求的 cancel 函数</li>
-<li>在后面特定时机调用 cancel 函数取消请求</li>
-<li>在错误回调中判断如果 error 是 cancel, 做相应处理</li>
-</ul>
-<ol start="2">
-<li>实现功能</li>
-</ol>
-<ul>
-<li>点击按钮, 取消某个正在请求中的请求</li>
-<li>在请求一个接口前, 取消前面一个未完成的请求</li>
-<li>可以用请求拦截器统一取消发送请求前未完成的请求，并且保存取消函数；用响应拦截器对结果统一处理</li>
-</ul>
-<ul>
-<li>源码：<a href="https://github.com/XieYaXv6/Learn-axios" target="_blank" rel="noopener">https://github.com/XieYaXv6/Learn-axios</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>axios</category>
-      </categories>
-      <tags>
-        <tag>ajax</tag>
-        <tag>axios</tag>
       </tags>
   </entry>
   <entry>
@@ -7282,6 +7282,72 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 ]]></content>
   </entry>
   <entry>
+    <title>网络安全</title>
+    <url>/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+
+<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><ul>
+<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
+<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
+<li>它可以分为两类：反射型和持久型</li>
+<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
+<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
+<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
+<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
+</ul>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><ul>
+<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
+</li>
+<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
+</li>
+<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
+</li>
+<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
+</li>
+</ul>
+<ol>
+<li>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</li>
+<li>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</li>
+<li>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</li>
+</ol>
+<h1 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h1><ul>
+<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
+<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
+<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
+<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
+<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
+</ul>
+</li>
+</ul>
+<h1 id="DDOS攻击"><a href="#DDOS攻击" class="headerlink" title="DDOS攻击"></a>DDOS攻击</h1><ul>
+<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
+<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
+<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
+</ul>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><ul>
+<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
+<li>解决方案 :<ol>
+<li>对用户的输入进行校验</li>
+<li>对主要信息加密</li>
+</ol>
+</li>
+</ul>
+<h1 id="DNS挟持"><a href="#DNS挟持" class="headerlink" title="DNS挟持"></a>DNS挟持</h1><ul>
+<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
+<li>解决方案：手动指定DNS服务器地址</li>
+</ul>
+<h1 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h1><ul>
+<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
+<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
+</ul>
+<h1 id="控制台注入代码"><a href="#控制台注入代码" class="headerlink" title="控制台注入代码"></a>控制台注入代码</h1><ul>
+<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
+<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>服务器竟然被挖矿程序攻击！？</title>
     <url>/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
@@ -7363,71 +7429,5 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>节流</tag>
         <tag>防抖动</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>网络安全</title>
-    <url>/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><ul>
-<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
-<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
-<li>它可以分为两类：反射型和持久型</li>
-<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
-<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
-<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
-<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
-</ul>
-<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><ul>
-<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
-</li>
-<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
-</li>
-<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
-</li>
-<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
-</li>
-</ul>
-<ol>
-<li>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</li>
-<li>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</li>
-<li>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</li>
-</ol>
-<h1 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h1><ul>
-<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
-<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
-<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
-<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
-<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
-</ul>
-</li>
-</ul>
-<h1 id="DDOS攻击"><a href="#DDOS攻击" class="headerlink" title="DDOS攻击"></a>DDOS攻击</h1><ul>
-<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
-<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
-<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
-</ul>
-<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><ul>
-<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
-<li>解决方案 :<ol>
-<li>对用户的输入进行校验</li>
-<li>对主要信息加密</li>
-</ol>
-</li>
-</ul>
-<h1 id="DNS挟持"><a href="#DNS挟持" class="headerlink" title="DNS挟持"></a>DNS挟持</h1><ul>
-<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
-<li>解决方案：手动指定DNS服务器地址</li>
-</ul>
-<h1 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h1><ul>
-<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
-<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
-</ul>
-<h1 id="控制台注入代码"><a href="#控制台注入代码" class="headerlink" title="控制台注入代码"></a>控制台注入代码</h1><ul>
-<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
-<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
-</ul>
-]]></content>
   </entry>
 </search>
