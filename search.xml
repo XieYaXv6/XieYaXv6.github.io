@@ -7430,4 +7430,49 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <tag>防抖动</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue实战之电商数据可视化平台</title>
+    <url>/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> 本次项目主要是对数据的可视化展示，前端应用ECharts对数据进行可视化</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p>支持两套主题，图标的主题可以在echarts官网diy<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/1.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/2.png" alt></p>
+<h2 id="组件展示"><a href="#组件展示" class="headerlink" title="组件展示"></a>组件展示</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/11.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/22.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/33.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/44.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/55.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/77.png" alt></p>
+<h2 id="多端联动效果"><a href="#多端联动效果" class="headerlink" title="多端联动效果"></a>多端联动效果</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/88.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
+<li>Node+KOA2<ul>
+<li>KOA2是express原班人马打造的，express的异步处理是用的回调函数，但是KOA2使用的是async/await</li>
+<li>KOA2最大的特点是独特的中间件控制流程，是一个典型的洋葱模型<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/99.png" alt></li>
+<li>这种中间件可能还不仅仅只有一个，可能会存在多个，比如上图所示, 它就存在三层中间件，这三<br>层中间件在处理请求的过程以及它调用的顺序为:<ul>
+<li>当一个请求到达咱们的服务器，最先最先处理这个请求的是第一层中间件</li>
+<li>第一层的中间件在处理这个请求之后，它会把这个请求给第二层的中间件</li>
+<li>第二层的中间件在处理这个请求之后，它会把这个请求给第三层的中间件</li>
+<li>第三层中间件内部并没有中间件了, 所以第三层中间件在处理完所有的代码之后，这个请求又会到了第二层的中间件，所以第二层中间件对这个请求经过了两次的处处理第二层的中间件在处理完这个请求之后，又到了第一层的中间件, 所以第一层的中间件也对这个请求经过了两次的处理</li>
+<li>这个调用顺序就是洋葱模型, 中间件对请求的处理有一种先进后出的感觉，请求最先到达第一层中间件，而最后也是第一层中间件对请求再次处理了一下</li>
+</ul>
+</li>
+<li><strong><em>根据这个特性，本次项目设置了三个中间件，一个用来记录请求的总耗时，一个用来设置响应头，最后一个根据url读取相应文件的信息</em></strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li>Vue+ECharts<ul>
+<li>本次echarts的配置项进行了分离，分别是默认基础配置项，数据配置项，分辨率适配项，先进行单独图表组件的开发，最终将组件进行合并</li>
+</ul>
+</li>
+</ul>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><ul>
+<li>WebSocket 可以保持着浏览器和客户端之间的长连接， 通过WebSocket 可以实现数据由后端推送到前端，保证了数据传输的实时</li>
+<li>通过建立长连接，客户端发送数据给服务端，服务端返回数据，从而实现多端联动的效果</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
 </search>
