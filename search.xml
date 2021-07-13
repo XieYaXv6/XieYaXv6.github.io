@@ -87,164 +87,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax</title>
-    <url>/2020/07/16/Ajax/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>页面的局部刷新技术</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
-<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
-</li>
-<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
-</li>
-<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
-<ul>
-<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
-<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
-<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
-<li>DOM实现动态显示和交互</li>
-<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
-<li>使用JS进行绑定和处理数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
-<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
-</ul>
-<ol>
-<li><p>onreadystatechang事件处理函数</p>
-<ul>
-<li>该函数由服务器触发，而不是用户</li>
-<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
-</ul>
-</li>
-<li><p>open(method,url,asynch)方法</p>
-<ul>
-<li>open运行用一个Ajax调用向服务器发送请求</li>
-<li>method：请求的类型<ul>
-<li>GET从服务器检索一个文件，不需要发送任何数据</li>
-<li>POST向服务器发送数据</li>
-</ul>
-</li>
-<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
-<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
-</ul>
-</li>
-<li><p>send方法</p>
-<ul>
-<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
-<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
-<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
-</ul>
-</li>
-<li><p>sendRequestHeader(header,value)</p>
-<ul>
-<li>首部信息用来声明一个请求时GET还是POST</li>
-<li>header首部的名字，value首部的值</li>
-</ul>
-</li>
-</ol>
-<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
-<li><p>readyState</p>
-<ul>
-<li>表示Ajax请求的当前状态<ul>
-<li>0表示初始化，还没有调用open方法</li>
-<li>1表示正在加载，open方法已调用，send方法还没调用</li>
-<li>2表示已加载完毕，send方法已调用，请求开始了</li>
-<li>3表示交互中，服务器正在发送响应</li>
-<li>4表示完成，响应发送完毕</li>
-</ul>
-</li>
-<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
-<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
-</ul>
-</li>
-<li><p>status</p>
-<ul>
-<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
-<li>常用状态码及其含义：<ul>
-<li>404没找到页面</li>
-<li>403禁止访问</li>
-<li>500内部服务器错误</li>
-<li>200一切正常</li>
-<li>304没有被修改</li>
-</ul>
-</li>
-<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
-</ul>
-</li>
-<li><p>responseText</p>
-<ul>
-<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
-<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
-</ul>
-</li>
-<li><p>responseXML</p>
-<ul>
-<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
-<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
-<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
-</ul>
-<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
-<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
-<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
-<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
-<li><p>load(url, [data], [callback])</p>
-<ul>
-<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
-<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
-<li>url:待装入 HTML 网页网址。</li>
-<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
-<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>jQuery.get(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP GET 请求载入信息</li>
-<li>url:待载入页面的URL地址</li>
-<li>data:待发送 Key/value 参数</li>
-<li>callback:载入成功时回调函数</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default</li>
-</ul>
-</li>
-<li><p>jQuery.post(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP POST 请求载入信息</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:发送成功时回调函数。</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
-</ul>
-</li>
-<li><p>jQuery.getJSON(url, [data], [callback])</p>
-<ul>
-<li>通过 HTTP GET 请求载入 JSON 数据</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:载入成功时回调函数。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Ajax</category>
-      </categories>
-      <tags>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6-ES11</title>
     <url>/2020/07/14/ES6-ES11/</url>
     <content><![CDATA[<blockquote>
@@ -767,177 +609,6 @@
       <tags>
         <tag>Git</tag>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Grunt</title>
-    <url>/2020/07/18/Grunt/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
-</blockquote>
-<a id="more"></a>
-
-<ul>
-<li>什么是项目构建？<ul>
-<li>编译项目中的js,sass,less</li>
-<li>合并js/css等资源文件</li>
-<li>压缩js/css/html等资源文件</li>
-<li>js语法的检查</li>
-</ul>
-</li>
-<li>构建工具的作用？<ul>
-<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
-</ul>
-</li>
-<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
-<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
-<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
-<li>常用功能:<ul>
-<li><strong>合并文件</strong>(js/css)</li>
-<li><strong>压缩文件</strong>(js/css)</li>
-<li><strong>语法检查</strong>(js)</li>
-<li><strong>less/sass预编译处理</strong> </li>
-</ul>
-</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><p>举例创建一个简单的应用grunt_test</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
-<p>node -v</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
-<p>npm install -g grunt-cli </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
-<p>npm install grunt –save-dev</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
-<p>grunt  //提示 Warning: Task “default” not found</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
-<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
-<pre><code>// 1. 初始化插件配置
-grunt.initConfig({
-    //主要编码处
-});
-
-// 2. 加载插件任务
-// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-
-// 3. 注册构建任务
-grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
-<p>  npm install grunt-contrib-concat –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code> concat: {
-   options: { //可选项配置
-     separator: &apos;;&apos;   //使用;连接合并
-   },
-   build: { //此名称任意
-     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
-     dest: &quot;build/js/built.js&quot; //输出的js文件
-   }
- }
- <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个built.js
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
-uglify : {
-  options: {  //不是必须的
-    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
-    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
-  },
-  build: {
-    files: {
-      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个压缩的js文件
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
-<p>   {</p>
-<pre><code>&quot;curly&quot;: true,
-&quot;eqeqeq&quot;: true,
-&quot;eqnull&quot;: true,
-&quot;expr&quot; : true,
-&quot;immed&quot;: true,
-&quot;newcap&quot;: true,
-&quot;noempty&quot;: true,
-&quot;noarg&quot;: true,
-&quot;regexp&quot;: true,
-&quot;browser&quot;: true,
-&quot;devel&quot;: true,
-&quot;node&quot;: true,
-&quot;boss&quot;: false,
-
-//不能使用未定义的变量
-&quot;undef&quot;: true,
-//语句后面必须有分号
-&quot;asi&quot;: false,
-//预定义不检查的全局变量
-&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>jshint : {
-  options: {
-    jshintrc : &apos;.jshintrc&apos; //指定配置文件
-  },
-  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>cssmin:{
-  options: {
-    shorthandCompacting: false,//快速压缩
-    roundingPrecision: -1//精确度
-  },
-  build: {
-    files: {
-        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt    //在build/css/下生成output.min.css
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
-watch : {
-  scripts : {
-    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
-    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
-    options : {spawn : false}  
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
-改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
-```</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>自动化构建工具</category>
-      </categories>
-      <tags>
-        <tag>Grunt</tag>
       </tags>
   </entry>
   <entry>
@@ -1661,432 +1332,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB</title>
-    <url>/2020/07/13/MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
-<li><p>打开cmd命令行窗口</p>
-<ul>
-<li>输入 mongod 启动mongodb服务器</li>
-</ul>
-</li>
-<li><p>在打开一个cmd窗口</p>
-<ul>
-<li>输入 mongo 连接mongodb ，出现 &gt; </li>
-</ul>
-</li>
-<li><p>还可以自定义data存储的路径和端口</p>
-<ul>
-<li>mongod –dbpath 数据库路径 –port 端口号</li>
-</ul>
-</li>
-<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
-<ul>
-<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
-<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
-<ul>
-<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
-</li>
-</ul>
-</li>
-<li><p>在任务管理器启动mongodb服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li>服务器用来保存数据</li>
-<li>mongod 用来启动服务器</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
-<li>mongo 用来启动客户端</li>
-</ul>
-</li>
-<li><p>基本概念</p>
-<ul>
-<li>数据库（database）</li>
-<li>集合（collection）</li>
-<li>文档（document）<ul>
-<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
-</ul>
-</li>
-<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/07/13/MongoDB/mongo.png" alt></p>
-<ul>
-<li>基本指令<ul>
-<li>show dbs</li>
-<li>show databases<ul>
-<li>显示当前的所有数据库</li>
-</ul>
-</li>
-<li>use 数据库名<ul>
-<li>进入到指定的数据库中</li>
-</ul>
-</li>
-<li>db<ul>
-<li>db表示的是当前所处的数据库</li>
-</ul>
-</li>
-<li>show collections<ul>
-<li>显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
-<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
-<li><p>db.collection.insert()</p>
-<ul>
-<li>向集合中插入一个或多个文档</li>
-<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
-<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
-</ul>
-</li>
-<li><p>db.collection.insertOne()</p>
-<ul>
-<li>插入一个文档对象</li>
-</ul>
-</li>
-<li><p>db.collection.insertMany() </p>
-<ul>
-<li>插入多个文档对象</li>
-</ul>
-</li>
-</ul>
-<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
-<li><p>db.collection.remove()</p>
-<ul>
-<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
-<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
-</ul>
-</li>
-<li><p>db.collection.deleteOne()</p>
-</li>
-<li><p>db.collection.deleteMany()</p>
-</li>
-<li><p>db.collection.drop() </p>
-<ul>
-<li>删除集合</li>
-</ul>
-</li>
-<li><p>db.dropDatabase() </p>
-<ul>
-<li>删除数据库</li>
-</ul>
-</li>
-<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
-</li>
-<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
-</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
-<li><p>db.collection.find()</p>
-<ul>
-<li>find()用来查询集合中所有符合条件的文档</li>
-<li>find()可以接收一个对象作为条件参数<ul>
-<li>{} 表示查询集合中所有的文档</li>
-<li>{属性:值} 查询属性是指定值的文档</li>
-</ul>
-</li>
-<li>find()返回的是一个数组</li>
-</ul>
-</li>
-<li><p>db.collection.findOne()</p>
-<ul>
-<li>用来查询集合中符合条件的第一个文档  </li>
-<li>findOne()返回的是一个文档对象 </li>
-</ul>
-</li>
-<li><p>db.collection.find({}).count() </p>
-<ul>
-<li>查询所有结果的数量</li>
-</ul>
-</li>
-<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
-</li>
-<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
-</li>
-<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
-<ul>
-<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
-<li>limit skip sort 可以以任意的顺序进行调用</li>
-<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
-<li><p>db.collection.update(查询条件,新对象)</p>
-<ul>
-<li>update()默认情况下会使用新对象来替换旧的对象</li>
-<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
-<li>update()默认只会修改一个</li>
-</ul>
-</li>
-<li><p>db.collection.updateMany()</p>
-<ul>
-<li>同时修改多个符合条件的文档</li>
-</ul>
-</li>
-<li><p>db.collection.updateOne()</p>
-<ul>
-<li>修改一个符合条件的文档    </li>
-</ul>
-</li>
-<li><p>db.collection.replaceOne()</p>
-<ul>
-<li>替换一个文档</li>
-</ul>
-</li>
-</ul>
-<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
-<li>$set<ol>
-<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
-<li>修改内嵌文档</li>
-</ol>
-</li>
-<li>$unset      <ul>
-<li>用于将键删除</li>
-</ul>
-</li>
-<li>$push <ul>
-<li>用于向数组中添加一个新的元素</li>
-</ul>
-</li>
-<li>$addToSet <ul>
-<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
-</ul>
-</li>
-<li>$each       <ul>
-<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
-</ul>
-</li>
-<li>$pop        <ul>
-<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
-</ul>
-</li>
-<li>$pull       <ul>
-<li>基于特定条件来删除元素。</li>
-</ul>
-</li>
-<li>$inc        <ul>
-<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
-</ul>
-</li>
-<li>$ne         <ul>
-<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
-</ul>
-</li>
-<li>$gt:大于</li>
-<li>$lt:小于</li>
-<li>$gte:大于或等于</li>
-<li>$lte:小于或等于</li>
-<li>$inc:自增</li>
-</ul>
-<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
-<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
-<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
-</ul>
-<ol>
-<li><p>下载安装Mongoose</p>
-<ul>
-<li>npm i mongoose –save</li>
-</ul>
-</li>
-<li><p>在项目中引入mongoose</p>
-<ul>
-<li>var mongoose = require(“mongoose”);</li>
-</ul>
-</li>
-<li><p>连接MongoDB数据库</p>
-<ul>
-<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
-<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
-</ul>
-</li>
-<li><p>断开数据库连接(一般不需要调用)</p>
-<ul>
-<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
-<ul>
-<li>mongoose.disconnect()</li>
-</ul>
-</li>
-<li><p>监听MongoDB数据库的连接状态</p>
-<ul>
-<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>数据库连接成功的事件</p>
-<ul>
-<li>mongoose.connection.once(“open”,function(){});</li>
-</ul>
-</li>
-<li><p>数据库断开的事件</p>
-<ul>
-<li>mongoose.connection.once(“close”,function(){});</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
-<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
-</ul>
-<ul>
-<li><p>Model.create(doc(s), [callback])</p>
-<ul>
-<li>用来创建一个或多个文档并添加到数据库中</li>
-<li>参数：<ul>
-<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
-<li>callback 当操作完成以后调用的回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查询：</p>
-<ul>
-<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
-</li>
-<li><p>Model.find(conditions, [projection], [options], [callback])</p>
-<ul>
-<li>查询所有符合条件的文档 总会返回一个数组</li>
-</ul>
-</li>
-<li><p>Model.findById(id, [projection], [options], [callback])</p>
-<ul>
-<li>根据文档的id属性查询文档</li>
-</ul>
-</li>
-<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
-<ul>
-<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
-<ul>
-<li>conditions 查询的条件</li>
-<li>projection 投影 需要获取到的字段<ul>
-<li>两种方式<ul>
-<li>{name:1,_id:0}</li>
-<li>“name -_id”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
-<li>callback 回调函数，查询结果会通过回调函数返回</li>
-<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>修改</p>
-<ul>
-<li>Model.update(conditions, doc, [options], [callback])</li>
-<li>Model.updateMany(conditions, doc, [options], [callback])</li>
-<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
-<li>用来修改一个或多个文档</li>
-<li>参数：<ul>
-<li>conditions 查询条件</li>
-<li>doc 修改后的对象</li>
-<li>options 配置参数</li>
-<li>callback 回调函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
-</ul>
-</li>
-<li><p>删除：</p>
-<ul>
-<li>Model.remove(conditions, [callback])</li>
-<li>Model.deleteOne(conditions, [callback])</li>
-<li>Model.deleteMany(conditions, [callback])</li>
-</ul>
-</li>
-<li><p>统计文档的数量 </p>
-<ul>
-<li>Model.count(conditions, [callback])</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
-<li>Document对象是Model的实例（可以用instanceof验证）</li>
-<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
-<li>通过Model查询到结果都是Document</li>
-</ul>
-</li>
-<li>document的方法<ul>
-<li>Model#save([options], [function])<ul>
-<li>和model的create作用相同，但是document只能用save<ul>
-<li>update(update,[options],[callback])</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>修改对象<ul>
-<li>remove([callback])</li>
-</ul>
-</li>
-<li>删除对象<ul>
-<li>get(name)</li>
-</ul>
-</li>
-<li>获取文档中的指定属性值<ul>
-<li>set(name , value)</li>
-</ul>
-</li>
-<li>设置文档的指定的属性值<ul>
-<li>id</li>
-</ul>
-</li>
-<li>获取文档的_id属性值<ul>
-<li>toJSON() </li>
-</ul>
-</li>
-<li>转换为一个JSON对象//不一定生效<ul>
-<li>toObject()</li>
-</ul>
-</li>
-<li>将Document对象转换为一个普通的JS对象</li>
-<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>其他模块直接通过require引入该模块即可</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -3354,6 +2599,432 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>MongoDB</title>
+    <url>/2020/07/13/MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><ul>
+<li><p>打开cmd命令行窗口</p>
+<ul>
+<li>输入 mongod 启动mongodb服务器</li>
+</ul>
+</li>
+<li><p>在打开一个cmd窗口</p>
+<ul>
+<li>输入 mongo 连接mongodb ，出现 &gt; </li>
+</ul>
+</li>
+<li><p>还可以自定义data存储的路径和端口</p>
+<ul>
+<li>mongod –dbpath 数据库路径 –port 端口号</li>
+</ul>
+</li>
+<li><p>将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动</p>
+<ul>
+<li><p>在此之前在data目录下新建db和log文件夹，在D:\mongoDB\serve\3.2\目录下创建mongod.cfg,并写入</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> systemLog:</span><br><span class="line">destination: file</span><br><span class="line">path: D:\data\log\mongod.log</span><br><span class="line"> storage:</span><br><span class="line">dbPath: D:\data\db</span><br></pre></td></tr></table></figure></li>
+<li><p>以管理员身份打开命令行窗口，执行如下的命令</p>
+<ul>
+<li><p>sc.exe create MongoDB binPath= “&quot;D:\mongoDB\serve\3.2\bin\mongod.exe&quot; –service –config=&quot;D:\mongoDB\serve\3.2\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+<li><p>sc.exe create MongoDB binPath= “&quot;mongod的bin目录\mongod.exe&quot; –service –config=&quot;mongo的安装目录\mongod.cfg&quot;“ DisplayName= “MongoDB” start= “auto”</p>
+</li>
+</ul>
+</li>
+<li><p>在任务管理器启动mongodb服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库（database）"><a href="#数据库（database）" class="headerlink" title="数据库（database）"></a>数据库（database）</h2><ul>
+<li><p>数据库的服务器</p>
+<ul>
+<li>服务器用来保存数据</li>
+<li>mongod 用来启动服务器</li>
+</ul>
+</li>
+<li><p>数据库的客户端</p>
+<ul>
+<li>客户端用来操作服务器，对数据进行增删改查的操作</li>
+<li>mongo 用来启动客户端</li>
+</ul>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li>数据库（database）</li>
+<li>集合（collection）</li>
+<li>文档（document）<ul>
+<li>在MongoDB中，数据库和集合都不需要手动创建，<br>  当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据库和集合    </li>
+</ul>
+</li>
+<li>Scheme、model、collection、document是其中的四大元素。document是MongoDB里的基本存储单位，collection是众多同类document的集合。Schema定义了一类document的模板，让这一类document在数据库中有一个具体的构成、存储模式。而Schema仅仅是定义了Document是什么样子的，至于生成document和对document进行各种操作（增删改查）则是通过相对应的model来进行的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/07/13/MongoDB/mongo.png" alt></p>
+<ul>
+<li>基本指令<ul>
+<li>show dbs</li>
+<li>show databases<ul>
+<li>显示当前的所有数据库</li>
+</ul>
+</li>
+<li>use 数据库名<ul>
+<li>进入到指定的数据库中</li>
+</ul>
+</li>
+<li>db<ul>
+<li>db表示的是当前所处的数据库</li>
+</ul>
+</li>
+<li>show collections<ul>
+<li>显示数据库中所有的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库的CRUD（增删改查）的操作"><a href="#数据库的CRUD（增删改查）的操作" class="headerlink" title="数据库的CRUD（增删改查）的操作"></a>数据库的CRUD（增删改查）的操作</h1><p><a href="https://docs.mongodb.com/manual/crud/" target="_blank" rel="noopener">MongoDB官方文档</a></p>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
+<li><p>db.collection.insert()</p>
+<ul>
+<li>向集合中插入一个或多个文档</li>
+<li>当我们向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加_id，该属性用来作为文档的唯一标识</li>
+<li>_id我们可以自己指定，如果我们指定了数据库就不会在添加了，如果自己指定_id 也必须确保它的唯一性</li>
+</ul>
+</li>
+<li><p>db.collection.insertOne()</p>
+<ul>
+<li>插入一个文档对象</li>
+</ul>
+</li>
+<li><p>db.collection.insertMany() </p>
+<ul>
+<li>插入多个文档对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><p>db.collection.remove()</p>
+<ul>
+<li>删除一个或多个，可以第二个参数传递一个true，则只会删除一个</li>
+<li>如果传递一个空对象{}作为参数，则会删除所有的</li>
+</ul>
+</li>
+<li><p>db.collection.deleteOne()</p>
+</li>
+<li><p>db.collection.deleteMany()</p>
+</li>
+<li><p>db.collection.drop() </p>
+<ul>
+<li>删除集合</li>
+</ul>
+</li>
+<li><p>db.dropDatabase() </p>
+<ul>
+<li>删除数据库</li>
+</ul>
+</li>
+<li><p>一般数据库中的数据都不会删除，所以删除的方法很少调用</p>
+</li>
+<li><p>一般会在数据中添加一个字段，来表示数据是否被删除</p>
+</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><p>db.collection.find()</p>
+<ul>
+<li>find()用来查询集合中所有符合条件的文档</li>
+<li>find()可以接收一个对象作为条件参数<ul>
+<li>{} 表示查询集合中所有的文档</li>
+<li>{属性:值} 查询属性是指定值的文档</li>
+</ul>
+</li>
+<li>find()返回的是一个数组</li>
+</ul>
+</li>
+<li><p>db.collection.findOne()</p>
+<ul>
+<li>用来查询集合中符合条件的第一个文档  </li>
+<li>findOne()返回的是一个文档对象 </li>
+</ul>
+</li>
+<li><p>db.collection.find({}).count() </p>
+<ul>
+<li>查询所有结果的数量</li>
+</ul>
+</li>
+<li><p>MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配</p>
+</li>
+<li><p>如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号</p>
+</li>
+<li><p>查询文档时，默认情况是按照_id的值进行排列（升序）</p>
+<ul>
+<li>sort()可以用来指定文档的排序的规则,sort()需要传递一个对象来指定排序规则 1表示升序 -1表示降序</li>
+<li>limit skip sort 可以以任意的顺序进行调用</li>
+<li>在查询时，可以在第二个参数的位置来设置查询结果的<strong>投影</strong>，1表示显示该字段，0表示不显示</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h2><ul>
+<li><p>db.collection.update(查询条件,新对象)</p>
+<ul>
+<li>update()默认情况下会使用新对象来替换旧的对象</li>
+<li>如果需要修改指定的属性，而不是替换需要使用“修改操作符”来完成修改</li>
+<li>update()默认只会修改一个</li>
+</ul>
+</li>
+<li><p>db.collection.updateMany()</p>
+<ul>
+<li>同时修改多个符合条件的文档</li>
+</ul>
+</li>
+<li><p>db.collection.updateOne()</p>
+<ul>
+<li>修改一个符合条件的文档    </li>
+</ul>
+</li>
+<li><p>db.collection.replaceOne()</p>
+<ul>
+<li>替换一个文档</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改器"><a href="#修改器" class="headerlink" title="修改器"></a>修改器</h2><ul>
+<li>$set<ol>
+<li>修改器用来指定一个键值。如果这个键不存在，则创建他</li>
+<li>修改内嵌文档</li>
+</ol>
+</li>
+<li>$unset      <ul>
+<li>用于将键删除</li>
+</ul>
+</li>
+<li>$push <ul>
+<li>用于向数组中添加一个新的元素</li>
+</ul>
+</li>
+<li>$addToSet <ul>
+<li>向数组中添加一个新元素，如果数组中已经存在了该元素，则不会添加</li>
+</ul>
+</li>
+<li>$each       <ul>
+<li>和$addToSet修改结合起来用，可以一次添加多个不同的值</li>
+</ul>
+</li>
+<li>$pop        <ul>
+<li>从数组中删除元素，他可以从数组中的任何一端删除元素</li>
+</ul>
+</li>
+<li>$pull       <ul>
+<li>基于特定条件来删除元素。</li>
+</ul>
+</li>
+<li>$inc        <ul>
+<li>用来增加或减少已有的键的键值(（只能为满足要求的数字）)，或者在键不存在的时候创建一个键</li>
+</ul>
+</li>
+<li>$ne         <ul>
+<li>如果一个值不在数组里面就把他加进去，如果在不添加</li>
+</ul>
+</li>
+<li>$gt:大于</li>
+<li>$lt:小于</li>
+<li>$gte:大于或等于</li>
+<li>$lte:小于或等于</li>
+<li>$inc:自增</li>
+</ul>
+<h1 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose"></a>Mongoose</h1><ul>
+<li><strong>Mongoose就是一个让我们可以通过node来操作mongodb的模块</strong></li>
+<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose官方文档</a></li>
+</ul>
+<ol>
+<li><p>下载安装Mongoose</p>
+<ul>
+<li>npm i mongoose –save</li>
+</ul>
+</li>
+<li><p>在项目中引入mongoose</p>
+<ul>
+<li>var mongoose = require(“mongoose”);</li>
+</ul>
+</li>
+<li><p>连接MongoDB数据库</p>
+<ul>
+<li>mongoose.connect(‘mongodb://数据库的ip地址:端口号/数据库名’, { useMongoClient: true});</li>
+<li>如果端口号是默认端口号（27017） 则可以省略不写</li>
+</ul>
+</li>
+<li><p>断开数据库连接(一般不需要调用)</p>
+<ul>
+<li><p>MongoDB数据库，一般情况下，只需要连接一次，连接一次以后，除非项目停止服务器关闭，否则连接一般不会断开</p>
+<ul>
+<li>mongoose.disconnect()</li>
+</ul>
+</li>
+<li><p>监听MongoDB数据库的连接状态</p>
+<ul>
+<li>在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库连接，通过监视该对象的状态，可以来监听数据库的连接与断开</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>数据库连接成功的事件</p>
+<ul>
+<li>mongoose.connection.once(“open”,function(){});</li>
+</ul>
+</li>
+<li><p>数据库断开的事件</p>
+<ul>
+<li>mongoose.connection.once(“close”,function(){});</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;将mongoose.Schema 赋值给一个变量</span><br><span class="line">var Schema &#x3D; mongoose.Schema;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Schema（模式）对象</span><br><span class="line">var stuSchema &#x3D; new Schema(&#123;</span><br><span class="line"></span><br><span class="line">	name:String,</span><br><span class="line">	age:Number,</span><br><span class="line">	gender:&#123;</span><br><span class="line">		type:String,</span><br><span class="line">		default:&quot;female&quot;</span><br><span class="line">        &#x2F;&#x2F;默认值为female</span><br><span class="line">	&#125;,</span><br><span class="line">	address:String</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ul>
+<li>有了Model，我们就可以来对数据库进行增删改查的操作了</li>
+</ul>
+<ul>
+<li><p>Model.create(doc(s), [callback])</p>
+<ul>
+<li>用来创建一个或多个文档并添加到数据库中</li>
+<li>参数：<ul>
+<li>doc(s) 可以是一个文档对象，也可以是一个文档对象的数组</li>
+<li>callback 当操作完成以后调用的回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询：</p>
+<ul>
+<li><p>通过find()查询的结果，返回的对象，就是Document文档对象</p>
+</li>
+<li><p>Model.find(conditions, [projection], [options], [callback])</p>
+<ul>
+<li>查询所有符合条件的文档 总会返回一个数组</li>
+</ul>
+</li>
+<li><p>Model.findById(id, [projection], [options], [callback])</p>
+<ul>
+<li>根据文档的id属性查询文档</li>
+</ul>
+</li>
+<li><p>Model.findOne([conditions], [projection], [options], [callback])</p>
+<ul>
+<li><p>查询符合条件的第一个文档 总和返回一个具体的文档对象</p>
+<ul>
+<li>conditions 查询的条件</li>
+<li>projection 投影 需要获取到的字段<ul>
+<li>两种方式<ul>
+<li>{name:1,_id:0}</li>
+<li>“name -_id”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>options  查询选项（skip limit）//跳过，显示的最大数量{skip:3 , limit:1}</li>
+<li>callback 回调函数，查询结果会通过回调函数返回</li>
+<li>回调函数必须传，如果不传回调函数，压根不会查询</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>Model.update(conditions, doc, [options], [callback])</li>
+<li>Model.updateMany(conditions, doc, [options], [callback])</li>
+<li>Model.updateOne(conditions, doc, [options], [callback])<ul>
+<li>用来修改一个或多个文档</li>
+<li>参数：<ul>
+<li>conditions 查询条件</li>
+<li>doc 修改后的对象</li>
+<li>options 配置参数</li>
+<li>callback 回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model.replaceOne(conditions, doc, [options], [callback])</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li>Model.remove(conditions, [callback])</li>
+<li>Model.deleteOne(conditions, [callback])</li>
+<li>Model.deleteMany(conditions, [callback])</li>
+</ul>
+</li>
+<li><p>统计文档的数量 </p>
+<ul>
+<li>Model.count(conditions, [callback])</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&#x2F;&#x2F;通过Schema来创建Model</span><br><span class="line">&#x2F;&#x2F;Model代表的是数据库中的集合，通过Model才能对数据库进行操作</span><br><span class="line">&#x2F;&#x2F;mongoose.model(modelName, schema):</span><br><span class="line">&#x2F;&#x2F;modelName 就是要映射的集合名 mongoose会自动将集合名变成复数</span><br><span class="line">var StuModel &#x3D; mongoose.model(&quot;student&quot; , stuSchema);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向数据库中插入一个文档</span><br><span class="line">&#x2F;&#x2F;StuModel.create(doc, function(err)&#123;&#125;);</span><br><span class="line">StuModel.create(&#123;</span><br><span class="line">	name:&quot;白骨精&quot;,</span><br><span class="line">	age:16,</span><br><span class="line">	address:&quot;白骨洞&quot;</span><br><span class="line">&#125;,function (err) &#123;</span><br><span class="line">	if(!err)&#123;</span><br><span class="line">		console.log(&quot;插入成功~~~&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
+<li>Document对象是Model的实例（可以用instanceof验证）</li>
+<li>Document 和 集合中的文档一一对应 ， Document是Model的实例<ul>
+<li>通过Model查询到结果都是Document</li>
+</ul>
+</li>
+<li>document的方法<ul>
+<li>Model#save([options], [function])<ul>
+<li>和model的create作用相同，但是document只能用save<ul>
+<li>update(update,[options],[callback])</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>修改对象<ul>
+<li>remove([callback])</li>
+</ul>
+</li>
+<li>删除对象<ul>
+<li>get(name)</li>
+</ul>
+</li>
+<li>获取文档中的指定属性值<ul>
+<li>set(name , value)</li>
+</ul>
+</li>
+<li>设置文档的指定的属性值<ul>
+<li>id</li>
+</ul>
+</li>
+<li>获取文档的_id属性值<ul>
+<li>toJSON() </li>
+</ul>
+</li>
+<li>转换为一个JSON对象//不一定生效<ul>
+<li>toObject()</li>
+</ul>
+</li>
+<li>将Document对象转换为一个普通的JS对象</li>
+<li>转换为普通的js对象以后，注意所有的Document对象的方法或属性都不能使用了<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义一个连接数据库的模块<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">mongoose.connect(&quot;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&quot;,&#123;useMongoClient:true&#125;);</span><br><span class="line">mongoose.connection.once(&quot;open&quot;,function () &#123;</span><br><span class="line">	console.log(&quot;数据库连接成功~~~&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>其他模块直接通过require引入该模块即可</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后台服务器端</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Node.js</title>
     <url>/2020/07/11/NodeJS/</url>
     <content><![CDATA[<blockquote>
@@ -3846,6 +3517,253 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>Promise</title>
+    <url>/2021/07/13/Promise/</url>
+    <content><![CDATA[<p> -</p>
+<a id="more"></a>
+
+<h1 id="Promise的理解和应用"><a href="#Promise的理解和应用" class="headerlink" title="Promise的理解和应用"></a>Promise的理解和应用</h1><h2 id="promise是什么"><a href="#promise是什么" class="headerlink" title="promise是什么"></a>promise是什么</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ul>
+<li>抽象表达<ol>
+<li>promise是一门新的技术(ES6规范)</li>
+<li>promise是js中进行异步编程的新解决方案(旧方案是单纯使用回调函数)</li>
+</ol>
+</li>
+<li>具体表达<ol>
+<li>从语法上来说:promise是一个构造函数</li>
+<li>从功能上来说:promise对象用来封装一个异步操作并可以获取成功和失败的结果值<h3 id="promise的状态"><a href="#promise的状态" class="headerlink" title="promise的状态"></a>promise的状态</h3></li>
+</ol>
+</li>
+<li>实例对象的一个属性PromiseState<pre><code>1. pending 未决定的 
+2. resolved/fullfillled 成功
+3. rejected 失败</code></pre></li>
+<li>promise对象的状态只改变一次<h3 id="promise对象的值"><a href="#promise对象的值" class="headerlink" title="promise对象的值"></a>promise对象的值</h3></li>
+<li>实例对象中的另一个属性PromiseResult</li>
+<li>保存着异步任务成功/失败的结果</li>
+<li>无论变为成功还是失败 , 都会有一个结果数据</li>
+<li>成功的结果数据一般称为 value, 失败的结果数据一般称为 失败的结果数据一般称为 reason<h3 id="promise的基本流程"><a href="#promise的基本流程" class="headerlink" title="promise的基本流程"></a>promise的基本流程</h3><img src="/2021/07/13/Promise/1.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1) 创建promise对象(pending状态), 指定执行器函数</span><br><span class="line">    const p &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F; 2) 在执行器函数中启动异步任务 </span><br><span class="line">        setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            const time &#x3D; Date.now()</span><br><span class="line">            &#x2F;&#x2F; 3) 根据结果做不同处理  </span><br><span class="line">            </span><br><span class="line">            if (time % 2 &#x3D;&#x3D;&#x3D; 1) &#123;</span><br><span class="line">                resolve(&#39;成功的值 &#39; + time)</span><br><span class="line">            &#125; else &#123; </span><br><span class="line">                reject(&#39;失败的值&#39; + time)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, 2000)&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.then(</span><br><span class="line">    value &#x3D;&gt; &#123; </span><br><span class="line">        console.log(&#39;成功的value: &#39;, value)</span><br><span class="line">    &#125;, </span><br><span class="line">    reason &#x3D;&gt; &#123; </span><br><span class="line">        console.log(&#39;失败的reason: &#39;, reason)</span><br><span class="line">    &#125;</span><br><span class="line">    )</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="为什么要用promise"><a href="#为什么要用promise" class="headerlink" title="为什么要用promise"></a>为什么要用promise</h2><h3 id="支持链式调用，可以解决回调地狱问题"><a href="#支持链式调用，可以解决回调地狱问题" class="headerlink" title="支持链式调用，可以解决回调地狱问题"></a>支持链式调用，可以解决回调地狱问题</h3><ol>
+<li>什么是回调地狱<ul>
+<li>回调函数嵌套调用，外部回调函数异步执行的结果 是嵌套的回调执行的条件</li>
+</ul>
+</li>
+<li>回调地狱的缺点<ul>
+<li>不便于阅读</li>
+<li>不便于异常处理</li>
+</ul>
+</li>
+<li>解决方案<br> promise链式调用</li>
+<li>终极解决方案<br> async/await</li>
+</ol>
+<h2 id="如何使用promise"><a href="#如何使用promise" class="headerlink" title="如何使用promise"></a>如何使用promise</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ol>
+<li><p>Promise构造函数 : Promise (excutor) {}</p>
+<ul>
+<li>executor(执行器)函数 : 把promise对象的参数叫做执行器函数： (resolve, reject) =&gt; {}<ul>
+<li>执行器函数会在promise内部立即同步调用，then方法是异步调用的</li>
+</ul>
+</li>
+<li>resolve函数 : 内部定义成功时我们调用的函数 value =&gt; {}</li>
+<li>reject函数 : 内部定义失败时我们调用的函数 reason =&gt; {}</li>
+</ul>
+</li>
+<li><p>Promise.prototype.then方法 : (onResolved, onRejected) =&gt; {}</p>
+<ul>
+<li>onResolved函数 : 成功的回调函数 (value) =&gt; {}</li>
+<li>onRejected函数 : 失败的回调函数 (reason) =&gt; {}</li>
+<li>说明:指定用于得到成功value的成功回调和用于失败reason的失败回调返回一个新的promise对象</li>
+</ul>
+</li>
+<li><p>Promise.prototype.catch方法 : (onRejected) =&gt; {}</p>
+<ul>
+<li>onRejected函数 : 失败的回调函数 (reason) =&gt; {}</li>
+<li>说明：then方法的语法糖，相当于 相当于 : then(undefined, onRejected)</li>
+</ul>
+</li>
+<li><p>Promise.resolve方法 : (value) =&gt; {}</p>
+<ul>
+<li>value:成功的数据或 promise对象</li>
+<li>说明 :返回一个成功 /失败的 promise对象</li>
+</ul>
+</li>
+<li><p>Promise.reject方法 : (reason) =&gt; {}</p>
+<ul>
+<li>reason: 失败的原因</li>
+<li>说明 : 返回一个失败的 promise对象</li>
+</ul>
+</li>
+<li><p>Promise.all方法 : (promises) =&gt; {}</p>
+<ul>
+<li>promises: 包含 n个 promise的数组 的数组</li>
+<li>说明 : 返回一个新的promise，只有所有的promise都成功才成功，只要有一个失败了就直接失败</li>
+</ul>
+</li>
+<li><p>Promise.race方法 : (promises) =&gt; {}</p>
+<ul>
+<li>promises: 包含 n个 promise的数组 的数组</li>
+<li>说明 : 返回一个新的 promise, 第一个完成的promise的结果状态就是最终的结果状态</li>
+</ul>
+</li>
+<li><p><strong><em>promisify函数</em></strong></p>
+<ul>
+<li>可以将一般的回调函数转化成返回promise对象的函数</li>
+</ul>
+</li>
+</ol>
+<h3 id="promise的几个关键问题"><a href="#promise的几个关键问题" class="headerlink" title="promise的几个关键问题"></a>promise的几个关键问题</h3><ol>
+<li><p>如何改变promise的状态</p>
+<ul>
+<li>resolve(value): 如果当前是 pending就会变为 resolved</li>
+<li>reject(reason): 如果当前是 pending就会变为 rejected</li>
+<li>抛出异常 : 如果当前是 pending就会变为 rejected</li>
+</ul>
+</li>
+<li><p>一个promise对象指定多个成功/失败的回调函数，都会调用吗</p>
+<ul>
+<li>当promise的状态改变为相应状态时都会调用</li>
+</ul>
+</li>
+<li><p>改变promise状态和指定回调函数谁先谁后</p>
+<ul>
+<li>都有可能，正常情况下时先指定回调再改变状态，但也可以先改变状态再指定回调</li>
+<li>如何先改变状态在指定回调<ol>
+<li>在执行器函数直接调用resolve/reject(同步任务)</li>
+<li>延迟更长时间才调用then(比执行器函数时间长)</li>
+</ol>
+</li>
+<li>如何先指定回调再改变状态<ol>
+<li>执行器函数是异步任务，在异步回调函数中调用resolve/reject的时候，这时候先指定回调，后改变状态</li>
+</ol>
+</li>
+<li>什么时候才能拿到数据<ol>
+<li>如果是先改变的状态，当指定回调函数的时候，回调函数就会调用，从而得到数据</li>
+<li>如果是先指定的回调(先指定不是先调用)，当状态发生改变后，再调用回调函数时，才能得到数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>promise.then()返回的新promise的结果状态由什么决定</p>
+<ul>
+<li>简单表达：由then()指定的回调函数执行的结果绝定</li>
+<li>详细表达：<ol>
+<li>如果抛出异常，新promise变为rejected，reason为抛出的异常</li>
+<li>如果返回的是非promise的任意值，新promise变为resolved，value为返回的值</li>
+<li>如果返回的是另一个新promise，此promise的结果就会成为新promise的结果</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>promise如何串联多个操作任务</p>
+<ul>
+<li>promise的then返回一个新的promise，可以看成then()的链式调用</li>
+<li>通过then的链式调用串联多个异步或同步任务 </li>
+</ul>
+</li>
+<li><p>promise异常穿透</p>
+<ul>
+<li>当使用promise的then链式调用时，可以在最后指定失败的回调</li>
+<li>当前面的操作出现任何异常，都会直接传到最后失败的回调中处理</li>
+</ul>
+</li>
+<li><p>中断promise链</p>
+<ul>
+<li>当使用promise的then链式调用时，在中间中断，不再调用后面的回调函数</li>
+<li>办法：在回调函数中返回一个pendding状态的promise对象return new Promise(()=&gt;{})</li>
+</ul>
+</li>
+</ol>
+<h1 id="async和await"><a href="#async和await" class="headerlink" title="async和await"></a>async和await</h1><h2 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h2><ol>
+<li>函数的返回值为promise对象</li>
+<li>promise对象的结果由async函数执行的返回值绝定</li>
+</ol>
+<h2 id="await表达式"><a href="#await表达式" class="headerlink" title="await表达式"></a>await表达式</h2><ol>
+<li>await右侧的表达式一般为promise对象，但也可以是其他值</li>
+<li>如果表达式是promise对象，await返回的是promise成功的值</li>
+<li>如果表达式是其他值，直接将此值作为await的返回值</li>
+</ol>
+<ul>
+<li>await必须写在async函数中，但async函数中可以没有await</li>
+<li>如果await的promise失败，就会抛出异常，需要通过try catch捕获处理</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue实战之外卖平台</title>
+    <url>/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
+<ul>
+<li>router：路由器页面跳转，开发单页应用</li>
+<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
+<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
+</ul>
+</li>
+<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
+<ul>
+<li>Bscroll: 实现页面滑动</li>
+<li>swiper：实现轮播图</li>
+<li>mint-ui：构建界面</li>
+<li>moment：处理日期格式</li>
+</ul>
+</li>
+<li><p>数据：ajax, axios, mock, vuex, postman</p>
+<ul>
+<li>ajax,axios: 实现前后台交互</li>
+<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
+<li>vuex：对数据进行全局的统一管理</li>
+<li>postman：测试后端接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li>Node+Express <ul>
+<li>用express搭建后台路由</li>
+</ul>
+</li>
+<li>Mongodb+Mongoose<ul>
+<li>用mongoose操作mongodb数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
+<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<ul>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>Node.js</tag>
+        <tag>Vue</tag>
+        <tag>Vuex</tag>
+        <tag>Mongoose</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue</title>
     <url>/2020/07/22/Vue/</url>
     <content><![CDATA[<blockquote>
@@ -4320,74 +4238,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Vue实战之外卖平台</title>
-    <url>/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
-<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
-<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
-<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
-<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
-<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
-<ul>
-<li>router：路由器页面跳转，开发单页应用</li>
-<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
-<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
-</ul>
-</li>
-<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
-<ul>
-<li>Bscroll: 实现页面滑动</li>
-<li>swiper：实现轮播图</li>
-<li>mint-ui：构建界面</li>
-<li>moment：处理日期格式</li>
-</ul>
-</li>
-<li><p>数据：ajax, axios, mock, vuex, postman</p>
-<ul>
-<li>ajax,axios: 实现前后台交互</li>
-<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
-<li>vuex：对数据进行全局的统一管理</li>
-<li>postman：测试后端接口</li>
-</ul>
-</li>
-</ul>
-<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
-<li>Node+Express <ul>
-<li>用express搭建后台路由</li>
-</ul>
-</li>
-<li>Mongodb+Mongoose<ul>
-<li>用mongoose操作mongodb数据库</li>
-</ul>
-</li>
-</ul>
-<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
-<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
-<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
-<ul>
-<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>Node.js</tag>
-        <tag>Vue</tag>
-        <tag>Vuex</tag>
-        <tag>Mongoose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue实战之电商后台管理系统</title>
     <url>/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<blockquote>
@@ -4400,6 +4250,51 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <h2 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/goods.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/categories.png" alt></p>
 <h2 id="订单管理"><a href="#订单管理" class="headerlink" title="订单管理"></a>订单管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/order.png" alt></p>
 <h2 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/echarts.png" alt></p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue实战之电商数据可视化平台</title>
+    <url>/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br> 本次项目主要是对数据的可视化展示，前端应用ECharts对数据进行可视化</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p>支持两套主题，图标的主题可以在echarts官网diy<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/1.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/2.png" alt></p>
+<h2 id="组件展示"><a href="#组件展示" class="headerlink" title="组件展示"></a>组件展示</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/11.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/22.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/33.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/44.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/55.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/77.png" alt></p>
+<h2 id="多端联动效果"><a href="#多端联动效果" class="headerlink" title="多端联动效果"></a>多端联动效果</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/88.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
+<li>Node+KOA2<ul>
+<li>KOA2是express原班人马打造的，express的异步处理是用的回调函数，但是KOA2使用的是async/await</li>
+<li>KOA2最大的特点是独特的中间件控制流程，是一个典型的洋葱模型<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/99.png" alt></li>
+<li>这种中间件可能还不仅仅只有一个，可能会存在多个，比如上图所示, 它就存在三层中间件，这三<br>层中间件在处理请求的过程以及它调用的顺序为:<ul>
+<li>当一个请求到达咱们的服务器，最先最先处理这个请求的是第一层中间件</li>
+<li>第一层的中间件在处理这个请求之后，它会把这个请求给第二层的中间件</li>
+<li>第二层的中间件在处理这个请求之后，它会把这个请求给第三层的中间件</li>
+<li>第三层中间件内部并没有中间件了, 所以第三层中间件在处理完所有的代码之后，这个请求又会到了第二层的中间件，所以第二层中间件对这个请求经过了两次的处处理第二层的中间件在处理完这个请求之后，又到了第一层的中间件, 所以第一层的中间件也对这个请求经过了两次的处理</li>
+<li>这个调用顺序就是洋葱模型, 中间件对请求的处理有一种先进后出的感觉，请求最先到达第一层中间件，而最后也是第一层中间件对请求再次处理了一下</li>
+</ul>
+</li>
+<li><strong><em>根据这个特性，本次项目设置了三个中间件，一个用来记录请求的总耗时，一个用来设置响应头，最后一个根据url读取相应文件的信息</em></strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li>Vue+ECharts<ul>
+<li>本次echarts的配置项进行了分离，分别是默认基础配置项，数据配置项，分辨率适配项，先进行单独图表组件的开发，最终将组件进行合并</li>
+</ul>
+</li>
+</ul>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><ul>
+<li>WebSocket 可以保持着浏览器和客户端之间的长连接， 通过WebSocket 可以实现数据由后端推送到前端，保证了数据传输的实时</li>
+<li>通过建立长连接，客户端发送数据给服务端，服务端返回数据，从而实现多端联动的效果</li>
+</ul>
 ]]></content>
       <categories>
         <category>Vue</category>
@@ -4679,6 +4574,40 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       <tags>
         <tag>ajax</tag>
         <tag>axios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/07/02/hello%20world/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Git</li>
+<li>Nginx</li>
+<li>Nodejs</li>
+<li>搭载环境<ol>
+<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
+<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
+<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>hexo<ol>
+<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
+<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -5198,37 +5127,390 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/07/02/hello%20world/</url>
+    <title>less</title>
+    <url>/2020/07/21/less/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+<p>序<br><br>less是一门css的预处理语言</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li>Git</li>
-<li>Nginx</li>
-<li>Nodejs</li>
-<li>搭载环境<ol>
-<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
-<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
-<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
-</ol>
+<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
+<li>less是一门css的预处理语言<ul>
+<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
+<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
+<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
+<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
+</ul>
 </li>
 </ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li><p>变量，在变量中可以存储一个任意的值</p>
 <ul>
-<li>hexo<ol>
-<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
-<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
-</ol>
+<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
+</li>
+<li><p>变量的语法： @变量名</p>
+</li>
+<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
+</li>
+<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
+</li>
+<li><p>变量发生重名时，会优先使用比较近的变量</p>
+</li>
+<li><p>可以在变量声明前就使用变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
+</ul>
+</li>
+<li><p>子元素选择器&gt;</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>&amp; 表示外层(只向外一层)的父元素</p>
+</li>
+<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>mixin 混合</p>
+<ul>
+<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
+<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
+</ul>
+</li>
+<li><p>在混合函数中可以直接设置变量</p>
+</li>
+<li><p>还可以调用混合函数，按顺序传递参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
+</li>
+<li><p>加深颜色darken(颜色，百分比)</p>
 </li>
 </ul>
-<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
+<li><p>@import用来将其他的less引入到当前的less</p>
+</li>
+<li><p>在less中所有的数值都可以直接进行运算</p>
+</li>
+<li><p>easy  less配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
-        <category>日常</category>
+        <category>前端三大块</category>
       </categories>
       <tags>
-        <tag>杂记</tag>
+        <tag>CSS</tag>
+        <tag>less</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery</title>
+    <url>/2020/07/10/jQuery/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>一个JS函数库</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>一个JS函数库: write less, do more</li>
+<li>封装简化DOM操作(CRUD) / Ajax</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>强大选择器: 方便快速查找DOM元素</li>
+<li>隐式遍历(迭代): 一次操作多个元素</li>
+<li>读写合一: 读数据/写数据用的是一个函数</li>
+<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
+<li>事件处理</li>
+<li>DOM操作(CUD)</li>
+<li>样式操作</li>
+<li>动画</li>
+<li>浏览器兼容</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li>引入jQuery库<ul>
+<li>本地引入与CDN远程引入<ul>
+<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
+</ul>
+</li>
+<li>测试版与生产版(压缩版)</li>
+</ul>
+</li>
+<li>使用jQuery<ul>
+<li>使用jQuery函数: $/jQuery</li>
+<li>使用jQuery对象: $xxx(执行$()得到的)</li>
+</ul>
+</li>
+</ul>
+<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
+<li>问题 : 如果有2个库都有$, 就存在冲突</li>
+<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
+<li>API : jQuery.noConflict()</li>
+</ul>
+<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
+<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
+</li>
+<li><p>当成一般函数使用人: $(param)</p>
+<ul>
+<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
+<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
+<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
+<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>当成对象使用: $.xxx</p>
+<ul>
+<li>each(obj/arr, function(key, value){})</li>
+<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
+<li>包含所有匹配的n个DOM元素的伪数组对象</li>
+<li>执行$()返回的就是jQuery对象</li>
+<li>基本行为:<ul>
+<li>length/size(): 得到dom元素的个数</li>
+<li>[index] : 得到指定下标对应的dom元素</li>
+<li>each(function(index, domEle){}): 遍历所有dom元素</li>
+<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>伪数组<ol>
+<li>object对象</li>
+<li>length属性</li>
+<li>数值下标属性</li>
+<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>有特定语法规则(css选择器)的字符串</li>
+<li>用来查找某个/些DOM元素: $(selector)</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>基本选择器<ul>
+<li>#id: id选择器</li>
+<li>element : 元素选择器</li>
+<li>.class: 属性选择器</li>
+<li>selector1,selector2,selector3: 并集</li>
+<li>selector1selector2selector3: 交集</li>
+<li>: 任意标签</li>
+</ul>
+</li>
+<li>层次选择器<ul>
+<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
+<li>selector1&gt;selector2: 子元素</li>
+<li>selector1 selector2: 后代元素</li>
+<li>prev+next<ul>
+<li>匹配所有紧接在 prev 元素后的 next 元素</li>
+</ul>
+</li>
+<li>prev~siblings<ul>
+<li>匹配 prev 元素之后的所有 siblings 元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过滤选择器<ul>
+<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
+<li>:first 获取第一个元素</li>
+<li>:last 获取最后个元素</li>
+<li>:eq(index) 匹配一个给定索引值的元素</li>
+<li>:lt 匹配所有小于给定索引值的元素</li>
+<li>:gt 匹配所有大于给定索引值的元素</li>
+<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
+<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
+<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
+<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
+<li>:visible 匹配所有的可见元素</li>
+<li>:contains(text) 匹配包含给定文本的元素</li>
+<li>[属性] 匹配包含给定属性的元素</li>
+<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
+</ul>
+</li>
+<li>表单选择器<ul>
+<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
+<li>:text 匹配所有的单行文本框</li>
+<li>:checkbox 匹配所有复选框</li>
+<li>:radio 匹配所有单选按钮</li>
+<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
+</ul>
+</li>
+</ul>
+<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
+<li>$.each(): 遍历数组或对象中的数据</li>
+<li>$.trim(): 去除字符串两边的空格</li>
+<li>$.type(obj): 得到数据的类型</li>
+<li>$.isArray(obj): 判断是否是数组</li>
+<li>$.isFunction(obj): 判断是否是函数</li>
+<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
+</ol>
+<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
+<li>操作标签的属性, 标签体文本</li>
+<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
+<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
+<li>removeAttr(name)/removeProp(name): 删除属性</li>
+<li>addClass(classValue): 添加class</li>
+<li>removeClass(classValue): 移除指定class</li>
+<li>val() / val(value): 读写标签的value</li>
+<li>html() / html(htmlString): 读写标签体文本</li>
+</ul>
+<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
+<li>css(styleName): 根据样式名得到对应的值</li>
+<li>css(styleName, value): 设置一个样式</li>
+<li>css({多个样式对}): 设置多个样式</li>
+</ul>
+<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
+<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
+<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
+<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
+<li>内容尺寸</li>
+</ol>
+<ul>
+<li>height(): height</li>
+<li>width(): width</li>
+</ul>
+<ol start="2">
+<li>内部尺寸</li>
+</ol>
+<ul>
+<li>innerHeight(): height+padding</li>
+<li>innerWidth(): width+padding</li>
+</ul>
+<ol start="3">
+<li>外部尺寸</li>
+</ol>
+<ul>
+<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
+<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
+</ul>
+<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
+<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
+<li>first()：获取第一个元素</li>
+<li>last()：获取最后一个元素</li>
+<li>eq(index)：获取第N个元素</li>
+<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
+<li>not(selector): 指定表达式匹配的元素，并取反</li>
+<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
+<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
+<li>children(selector): 子元素</li>
+<li>parent(): 父元素</li>
+<li>find(selector): 后代元素</li>
+<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
+<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
+</ul>
+<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
+<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
+<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
+<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
+<li>after(): 在每个匹配的元素之后插入内容</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>remove(): 将自己及内部的孩子都删除</li>
+<li>empty(): 掏空(自己还在)</li>
+</ul>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
+</ul>
+<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
+<li>eventName(function(){})<ul>
+<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
+</ul>
+</li>
+<li>on(‘eventName’, function(){})<ul>
+<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
+</ul>
+</li>
+<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
+<li>hover(function(){}, function(){})</li>
+</ul>
+<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
+<li>off(‘eventName’)</li>
+</ul>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
+<li>理解<ul>
+<li>将多个子元素的事件监听委托给父辈元素处理</li>
+<li>监听回调是加在了父辈元素上</li>
+<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
+<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
+</ul>
+</li>
+<li>好处<ul>
+<li>添加新的子元素, 自动有事件响应处理</li>
+<li>减少事件监听的数量: n==&gt;1</li>
+</ul>
+</li>
+<li>jQuery的事件委托API<ul>
+<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
+<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
+</ul>
+</li>
+</ul>
+<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
+<li>event.offsetX: 原点是当前元素左上角</li>
+<li>event.clientX: 原点是窗口左上角</li>
+<li>event.pageX: 原点是页面左上角</li>
+</ul>
+<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
+<li>停止事件冒泡: event.stopPropagation()</li>
+<li>阻止事件的默认行为: event.preventDefault()</li>
+</ul>
+<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
+<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
+</li>
+<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
+</li>
+<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
+<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
+<li><p>在一定的时间内, 不断改变元素样式</p>
+</li>
+</ul>
+<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
+2.  fadeOut(): 带动画隐藏
+3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
+<li>slideDown(): 带动画的展开</li>
+<li>slideUp(): 带动画的收缩</li>
+<li>slideToggle(): 带动画的切换展开/收缩</li>
+</ol>
+<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
+<li>show(): (不)带动画的显示</li>
+<li>hide(): (不)带动画的隐藏</li>
+<li>toggle(): (不)带动画的切换显示/隐藏</li>
+</ol>
+<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
+<li>animate(): 自定义动画效果的动画</li>
+<li>stop(): 停止动画</li>
+</ol>
+<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
+
+<p>#其他  </p>
+<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
+<li>window.onload<ul>
+<li>包括页面的图片加载完后才会回调(晚)</li>
+<li>只能有一个监听回调</li>
+</ul>
+</li>
+<li>$(document).ready()<ul>
+<li>等同于: $(function(){})</li>
+<li>页面加载完就回调(早)</li>
+<li>可以有多个监听回调</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>jQuery</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -6415,427 +6697,226 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
         <category>前端三大块</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
         <tag>CSS</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
-    <title>jQuery</title>
-    <url>/2020/07/10/jQuery/</url>
+    <title>Ajax</title>
+    <url>/2020/07/16/Ajax/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>一个JS函数库</p>
+<p>序<br><br>页面的局部刷新技术</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
+<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
+</li>
+<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
+</li>
+<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
+<ul>
+<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
+<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
+<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
+<li>DOM实现动态显示和交互</li>
+<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
+<li>使用JS进行绑定和处理数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
+<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
+</ul>
+<ol>
+<li><p>onreadystatechang事件处理函数</p>
+<ul>
+<li>该函数由服务器触发，而不是用户</li>
+<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
+</ul>
+</li>
+<li><p>open(method,url,asynch)方法</p>
+<ul>
+<li>open运行用一个Ajax调用向服务器发送请求</li>
+<li>method：请求的类型<ul>
+<li>GET从服务器检索一个文件，不需要发送任何数据</li>
+<li>POST向服务器发送数据</li>
+</ul>
+</li>
+<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
+<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
+</ul>
+</li>
+<li><p>send方法</p>
+<ul>
+<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
+<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
+<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
+</ul>
+</li>
+<li><p>sendRequestHeader(header,value)</p>
+<ul>
+<li>首部信息用来声明一个请求时GET还是POST</li>
+<li>header首部的名字，value首部的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
+<li><p>readyState</p>
+<ul>
+<li>表示Ajax请求的当前状态<ul>
+<li>0表示初始化，还没有调用open方法</li>
+<li>1表示正在加载，open方法已调用，send方法还没调用</li>
+<li>2表示已加载完毕，send方法已调用，请求开始了</li>
+<li>3表示交互中，服务器正在发送响应</li>
+<li>4表示完成，响应发送完毕</li>
+</ul>
+</li>
+<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
+<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
+</ul>
+</li>
+<li><p>status</p>
+<ul>
+<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
+<li>常用状态码及其含义：<ul>
+<li>404没找到页面</li>
+<li>403禁止访问</li>
+<li>500内部服务器错误</li>
+<li>200一切正常</li>
+<li>304没有被修改</li>
+</ul>
+</li>
+<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
+</ul>
+</li>
+<li><p>responseText</p>
+<ul>
+<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
+<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
+</ul>
+</li>
+<li><p>responseXML</p>
+<ul>
+<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
+<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
+<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
+</ul>
+<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
+<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
+<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
+<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
+<li><p>load(url, [data], [callback])</p>
+<ul>
+<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
+<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
+<li>url:待装入 HTML 网页网址。</li>
+<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
+<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>jQuery.get(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP GET 请求载入信息</li>
+<li>url:待载入页面的URL地址</li>
+<li>data:待发送 Key/value 参数</li>
+<li>callback:载入成功时回调函数</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default</li>
+</ul>
+</li>
+<li><p>jQuery.post(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP POST 请求载入信息</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:发送成功时回调函数。</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
+</ul>
+</li>
+<li><p>jQuery.getJSON(url, [data], [callback])</p>
+<ul>
+<li>通过 HTTP GET 请求载入 JSON 数据</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:载入成功时回调函数。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ajax</category>
+      </categories>
+      <tags>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器竟然被挖矿程序攻击！？</title>
+    <url>/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>今天一大早醒来，洗漱了吃完饭，准备接着进度学习呢，突然手机短信提示服务器安全紧急事件：挖矿程序，上云服务控制台一顿找才发现服务器的cpu竟然爆了，平时服务器就放个博客，cpu利用率也才10%都不到，于是开始着手解决这个问题</p>
 </blockquote>
 <a id="more"></a>
 
-<h1 id="了解jQuery"><a href="#了解jQuery" class="headerlink" title="了解jQuery"></a>了解jQuery</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>一个JS函数库: write less, do more</li>
-<li>封装简化DOM操作(CRUD) / Ajax</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>强大选择器: 方便快速查找DOM元素</li>
-<li>隐式遍历(迭代): 一次操作多个元素</li>
-<li>读写合一: 读数据/写数据用的是一个函数</li>
-<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
-<li>事件处理</li>
-<li>DOM操作(CUD)</li>
-<li>样式操作</li>
-<li>动画</li>
-<li>浏览器兼容</li>
-</ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
-<li>引入jQuery库<ul>
-<li>本地引入与CDN远程引入<ul>
-<li>CDN远程引入网站：<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
-</ul>
+<h1 id="挖矿程序是什么？"><a href="#挖矿程序是什么？" class="headerlink" title="挖矿程序是什么？"></a>挖矿程序是什么？</h1><ul>
+<li><p>挖矿是跟区块链以及虚拟币有关系，虚拟币是挖矿挖出来的，每间隔一段时间，比特币或者以太坊虚拟币就会在他们的区块链系统上生成一个块的随机代码，网络上的所有服务器都可以去找这个随机代码，也就是挖矿的过程对这个随机代码进行挖掘，谁挖到这个代码就会产生一个区块链的块，那么比特币跟以太坊就会奖励找到随机代码的人，奖励一定数量的虚拟币，那么挖矿的人就会有动力去挖矿，去维护整个区块链节点的网络正常运行，挖矿需要计算哈希值需要服务器的处理能力，所以有些攻击者利用入侵别人服务器来给自己挖矿，获取利润。</p>
 </li>
-<li>测试版与生产版(压缩版)</li>
-</ul>
-</li>
-<li>使用jQuery<ul>
-<li>使用jQuery函数: $/jQuery</li>
-<li>使用jQuery对象: $xxx(执行$()得到的)</li>
-</ul>
+<li><p>简单的来说就是别人利用你服务器的漏洞植入一段程序，然后用你的服务器帮他挖矿来帮他谋求利益</p>
 </li>
 </ul>
-<h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><ul>
-<li>问题 : 如果有2个库都有$, 就存在冲突</li>
-<li>解决 : jQuery库可以释放$的使用权, 让另一个库可以正常使用,<br>此时jQuery库只能使用jQuery了</li>
-<li>API : jQuery.noConflict()</li>
-</ul>
-<h1 id="jQuery的2把利器"><a href="#jQuery的2把利器" class="headerlink" title="jQuery的2把利器"></a>jQuery的2把利器</h1><h2 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数-jQuery"></a>jQuery函数-jQuery</h2><ul>
-<li><p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
-</li>
-<li><p>当成一般函数使用人: $(param)</p>
-<ul>
-<li>param是function: 相当于window.onload =<br>function(文档加载完成的监听)</li>
-<li>param是选择器字符串: 查找所有匹配的DOM元素,<br>返回包含所有DOM元素的jQuery对象</li>
-<li>param是DOM元素: 将DOM元素对象包装为jQuery对象返回 $(this)</li>
-<li>param是标签字符串: 创建标签DOM元素对象并包装为jQuery对象返回<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">    &#x2F;&#x2F;1). 参数为函数 : 当DOM加载完成后，执行其中的函数     回调函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">&#x2F;&#x2F;2). 参数为选择器(selector)字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象</span><br><span class="line">var $btn &#x3D; $(&quot;#btn&quot;)</span><br><span class="line">$btn.click(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;this就是发生事件的dom元素对象(也就是button)</span><br><span class="line">    &#x2F;&#x2F;3). 参数为DOM对象: 将dom对象封装成jQuery对象</span><br><span class="line">    var text &#x3D; $(this).html()</span><br><span class="line">    alert(text)</span><br><span class="line">    &#x2F;&#x2F;4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</span><br><span class="line">    $(&#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;msg3&quot; &#x2F;&gt;&lt;br &#x2F;&gt;&#39;).appendTo(&#39;div&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>当成对象使用: $.xxx</p>
-<ul>
-<li>each(obj/arr, function(key, value){})</li>
-<li>trim(str)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  例子：</span><br><span class="line">&#x2F;*需求2. 遍历输出数组中所有元素值*&#x2F;</span><br><span class="line">var arr &#x3D; [123, &#39;xxx&#39;, true]</span><br><span class="line">&#x2F;&#x2F; 1). $.each() : 隐式遍历数组</span><br><span class="line">$.each(arr, function (index, item) &#123;</span><br><span class="line">console.log(&#39;第&#39; + (index + 1) + &#39;个元素的值为&#39; + item)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;*需求3. 去掉&quot;  my atguigu  &quot;两端的空格*&#x2F;</span><br><span class="line">var str &#x3D; &quot;  my xxx  &quot;</span><br><span class="line">&#x2F;&#x2F; 2). $.trim() : 去除两端的空格</span><br><span class="line">console.log(str.trim() &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;)</span><br><span class="line">console.log($.trim(str) &#x3D;&#x3D;&#x3D; &#39;my xxx&#39;) &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><ul>
-<li>包含所有匹配的n个DOM元素的伪数组对象</li>
-<li>执行$()返回的就是jQuery对象</li>
-<li>基本行为:<ul>
-<li>length/size(): 得到dom元素的个数</li>
-<li>[index] : 得到指定下标对应的dom元素</li>
-<li>each(function(index, domEle){}): 遍历所有dom元素</li>
-<li>index(): 得到当前dom元素在所有兄弟中的下标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">var $btns &#x3D; $(&#39;button&#39;)</span><br><span class="line">console.log($btns)</span><br><span class="line">&#x2F;&#x2F; 需求1. 统计一共有多少个按钮</span><br><span class="line">    &#x2F;*size()&#x2F;length: 包含的DOM元素个数*&#x2F;</span><br><span class="line">console.log($btns.size(), $btns.length)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求2. 取出第2个button的文本</span><br><span class="line">    &#x2F;*[index]&#x2F;get(index): 得到对应位置的DOM元素*&#x2F;</span><br><span class="line">console.log($btns[1].innerHTML, $btns.get(1).innerHTML)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求3. 输出所有button标签的文本</span><br><span class="line">    &#x2F;*each(): 遍历包含的所有DOM元素*&#x2F;</span><br><span class="line">$btns.each(function () &#123;</span><br><span class="line">    console.log(this.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需求4. 输出&#39;测试三&#39;按钮是所有按钮中的第几个</span><br><span class="line">    &#x2F;*index(): 得到在所在兄弟元素中的下标*&#x2F;</span><br><span class="line">console.log($(&#39;#btn3&#39;).index())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>伪数组<ol>
-<li>object对象</li>
-<li>length属性</li>
-<li>数值下标属性</li>
-<li><strong>没有数组特别的方法</strong>：例如foreach()<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F;自定义一个位数组</span><br><span class="line">var weiarr&#x3D;&#123;&#125;</span><br><span class="line">weiarr.length&#x3D;0</span><br><span class="line">weiarr[0]&#x3D;&#39;xxxx&#39;</span><br><span class="line">weiarr.length&#x3D;1</span><br><span class="line">weiarr[0]&#x3D;123</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>有特定语法规则(css选择器)的字符串</li>
-<li>用来查找某个/些DOM元素: $(selector)</li>
-</ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>基本选择器<ul>
-<li>#id: id选择器</li>
-<li>element : 元素选择器</li>
-<li>.class: 属性选择器</li>
-<li>selector1,selector2,selector3: 并集</li>
-<li>selector1selector2selector3: 交集</li>
-<li>: 任意标签</li>
-</ul>
-</li>
-<li>层次选择器<ul>
-<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
-<li>selector1&gt;selector2: 子元素</li>
-<li>selector1 selector2: 后代元素</li>
-<li>prev+next<ul>
-<li>匹配所有紧接在 prev 元素后的 next 元素</li>
-</ul>
-</li>
-<li>prev~siblings<ul>
-<li>匹配 prev 元素之后的所有 siblings 元素</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过滤选择器<ul>
-<li>在原有选择器匹配的元素中进一步进行过滤的选择器</li>
-<li>:first 获取第一个元素</li>
-<li>:last 获取最后个元素</li>
-<li>:eq(index) 匹配一个给定索引值的元素</li>
-<li>:lt 匹配所有小于给定索引值的元素</li>
-<li>:gt 匹配所有大于给定索引值的元素</li>
-<li>:odd 匹配所有索引值为奇数的元素，从 0 开始计数</li>
-<li>:even 匹配所有索引值为偶数的元素，从 0 开始计数</li>
-<li>:not(selector) 去除所有与给定选择器匹配的元素</li>
-<li>:hidden 匹配所有不可见元素，或者type为hidden的元素</li>
-<li>:visible 匹配所有的可见元素</li>
-<li>:contains(text) 匹配包含给定文本的元素</li>
-<li>[属性] 匹配包含给定属性的元素</li>
-<li>[属性=属性值] 匹配给定的属性是某个特定值的元素</li>
-</ul>
-</li>
-<li>表单选择器<ul>
-<li>:input 匹配所有 input, textarea, select 和 button 元素</li>
-<li>:text 匹配所有的单行文本框</li>
-<li>:checkbox 匹配所有复选框</li>
-<li>:radio 匹配所有单选按钮</li>
-<li>:checked:匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)</li>
-</ul>
-</li>
-</ul>
-<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="$工具方法"></a>$工具方法</h2><ol>
-<li>$.each(): 遍历数组或对象中的数据</li>
-<li>$.trim(): 去除字符串两边的空格</li>
-<li>$.type(obj): 得到数据的类型</li>
-<li>$.isArray(obj): 判断是否是数组</li>
-<li>$.isFunction(obj): 判断是否是函数</li>
-<li>$.parseJSON(json) : 解析json字符串转换为js对象/数组</li>
-</ol>
-<h1 id="属性-文本"><a href="#属性-文本" class="headerlink" title="属性-文本"></a>属性-文本</h1><ul>
-<li>操作标签的属性, 标签体文本</li>
-<li>attr(name) / attr(name, value): 读写非布尔值的标签属性</li>
-<li>prop(name) / prop(name, value): 读写布尔值的标签属性</li>
-<li>removeAttr(name)/removeProp(name): 删除属性</li>
-<li>addClass(classValue): 添加class</li>
-<li>removeClass(classValue): 移除指定class</li>
-<li>val() / val(value): 读写标签的value</li>
-<li>html() / html(htmlString): 读写标签体文本</li>
-</ul>
-<h1 id="CSS模块"><a href="#CSS模块" class="headerlink" title="CSS模块"></a>CSS模块</h1><h2 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h2><ul>
-<li>css(styleName): 根据样式名得到对应的值</li>
-<li>css(styleName, value): 设置一个样式</li>
-<li>css({多个样式对}): 设置多个样式</li>
-</ul>
-<h2 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h2><ul>
-<li>offset(): 读/写当前元素坐标(原点是页面左上角)</li>
-<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
-<li>scrollTop()/scrollLeft(): 读/写元素/页面的滚动条坐标<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;jquery实现backup</span><br><span class="line">&lt;script src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;回到顶部</span><br><span class="line">    $(&#39;#to_top&#39;).click(function () &#123;</span><br><span class="line">    var $body &#x3D; $(document.body)</span><br><span class="line">    var $html &#x3D; $(document.documentElement)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 瞬间滚动到顶部</span><br><span class="line">    &#x2F;&#x2F; $(&#39;html,body&#39;).scrollTop(0)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用scrollTop(): 平滑滚动到顶部</span><br><span class="line">    var offset &#x3D; $body.scrollTop() + $html.scrollTop()&#x2F;&#x2F;总距离</span><br><span class="line">    if(offset&#x3D;&#x3D;&#x3D;0) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    var totalTime &#x3D; 300&#x2F;&#x2F;总时间</span><br><span class="line">    var intervalTime &#x3D; 30&#x2F;&#x2F;间隔时间</span><br><span class="line">    var itemOffset &#x3D; offset&#x2F;(totalTime&#x2F;intervalTime)&#x2F;&#x2F;每一段间隔时间内滚多少距离</span><br><span class="line">    var intervalId &#x3D; setInterval(function () &#123;</span><br><span class="line">        offset -&#x3D; itemOffset&#x2F;&#x2F;总距离减去一次间隔时间内的距离</span><br><span class="line">        if(offset&lt;&#x3D;0) &#123;</span><br><span class="line">        offset &#x3D; 0</span><br><span class="line">        clearInterval(intervalId)</span><br><span class="line">        &#125;</span><br><span class="line">        $(&#39;html,body&#39;).scrollTop(offset)</span><br><span class="line">    &#125;, intervalTime)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用动画: 平滑滚动到顶部</span><br><span class="line">    $(&#39;body,html&#39;).animate(&#123;scrollTop:0&#125;,300)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><ol>
-<li>内容尺寸</li>
+<h1 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h1><ol>
+<li><strong>找到占用率高的进程并杀死</strong></li>
 </ol>
 <ul>
-<li>height(): height</li>
-<li>width(): width</li>
+<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/1.png" alt></li>
+<li>发现cpu占用率爆满</li>
+<li>然后我们找到占有率最高的进程，找到他的pid</li>
+<li>然后把该进程kill掉  kill -9 pid</li>
+<li>然后cpu恢复了平静<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/2.png" alt></li>
 </ul>
 <ol start="2">
-<li>内部尺寸</li>
+<li><strong>查看是否有定时任务</strong></li>
 </ol>
 <ul>
-<li>innerHeight(): height+padding</li>
-<li>innerWidth(): width+padding</li>
+<li>我等待了半个小时发现挖矿程序并没有卷土重来</li>
+<li>但是为了以防万一我还是把备用方案做好</li>
+<li>挖矿程序一般都有定时任务，查看定时任务得去crontab文件里找<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;crontab</span><br><span class="line">一般在下面会有可疑的任务，根据任务找到脚本，并且删掉他</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <ol start="3">
-<li>外部尺寸</li>
+<li><strong>删除残余文件</strong></li>
 </ol>
 <ul>
-<li>outerHeight(false/true): height+padding+border 如果是true,<br>加上margin</li>
-<li>outerWidth(false/true): width+padding+border 如果是true, 加上margin</li>
+<li>cd /proc/进程号</li>
+<li>删除路径下的所有文件</li>
 </ul>
-<h1 id="筛选模块"><a href="#筛选模块" class="headerlink" title="筛选模块"></a>筛选模块</h1><h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><ul>
-<li>在jQuery对象内部的元素中找出部分匹配的元素,<br>并封装成新的jQuery对象返回</li>
-<li>first()：获取第一个元素</li>
-<li>last()：获取最后一个元素</li>
-<li>eq(index)：获取第N个元素</li>
-<li>filter(selector): 筛选出与指定表达式匹配的元素集合</li>
-<li>not(selector): 指定表达式匹配的元素，并取反</li>
-<li>has(selector): 保留包含特定后代的元素，去掉那些不含有指定后代的元素</li>
+<p><strong><em>不得不说阿里云安全售卖的那些服务并不是没有道理的，原来我他给我提示的那些风险警告并不是没用的，我一直以为是他为了售卖自己的产品故意安排这么多漏洞的，这会见识到了</em></strong></p>
+<h1 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h1><ul>
+<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/721.png" alt></li>
+<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/7211.png" alt></li>
+<li>果然有人在用我的服务器挖矿</li>
+<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/72111.png" alt></li>
+<li>发现了他的启动程序在/home/git/xmr64下</li>
+<li>然后杀死进程</li>
+<li>删除rm -f启动程序</li>
+<li>删除rm -rf进程残留文件</li>
 </ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
-<li>查找jQuery对象内部的元素的子孙/兄弟/父母元素,<br>并封装成新的jQuery对象返回</li>
-<li>children(selector): 子元素</li>
-<li>parent(): 父元素</li>
-<li>find(selector): 后代元素</li>
-<li>preAll(selector): 查找当前元素之前所有的同辈元素</li>
-<li>siblings(selector):<br>取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选</li>
-</ul>
-<h1 id="文档处理-CUD-模块"><a href="#文档处理-CUD-模块" class="headerlink" title="文档处理-CUD-模块"></a>文档处理-CUD-模块</h1><h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ul>
-<li>append() / appendTo(): 向当前匹配的所有元素内部的最后插入指定内容</li>
-<li>preppend() / preppendTo():<br>向当前匹配的所有元素内部的最前面插入指定内容</li>
-<li>before(): 将指定内容插入到当前所有匹配元素的前面</li>
-<li>after(): 在每个匹配的元素之后插入内容</li>
-</ul>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>remove(): 将自己及内部的孩子都删除</li>
-<li>empty(): 掏空(自己还在)</li>
-</ul>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
-<li>replaceWith()：将所有匹配的元素替换成指定的HTML或DOM元素</li>
-</ul>
-<h1 id="事件模块"><a href="#事件模块" class="headerlink" title="事件模块"></a>事件模块</h1><h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><ul>
-<li>eventName(function(){})<ul>
-<li>绑定对应事件名的监听, 例如：$(‘#div’).click(function(){});</li>
-</ul>
-</li>
-<li>on(‘eventName’, function(){})<ul>
-<li>通用的绑定事件监听, 例如：$(‘#div’).on(‘click’, function(){})</li>
-</ul>
-</li>
-<li>常用: click, mouseenter/mouseleave mouseover/mouseout focus/blur</li>
-<li>hover(function(){}, function(){})</li>
-</ul>
-<h2 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h2><ul>
-<li>off(‘eventName’)</li>
-</ul>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><ul>
-<li>理解<ul>
-<li>将多个子元素的事件监听委托给父辈元素处理</li>
-<li>监听回调是加在了父辈元素上</li>
-<li>当操作任何一个子元素时, 事件会冒泡到父辈元素</li>
-<li>父辈元素不会直接处理事件,<br>而是根据event.target得到发生事件的子元素,<br>通过这个子元素调用事件回调函数</li>
-</ul>
-</li>
-<li>好处<ul>
-<li>添加新的子元素, 自动有事件响应处理</li>
-<li>减少事件监听的数量: n==&gt;1</li>
-</ul>
-</li>
-<li>jQuery的事件委托API<ul>
-<li>设置事件委托: $(parentSelector).delegate(childrenSelector,<br>eventName, callback)// 回调函数中的this是子元素</li>
-<li>移除事件委托: $(parentSelector).undelegate(eventName)</li>
-</ul>
-</li>
-</ul>
-<h2 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h2><ul>
-<li>event.offsetX: 原点是当前元素左上角</li>
-<li>event.clientX: 原点是窗口左上角</li>
-<li>event.pageX: 原点是页面左上角</li>
-</ul>
-<h2 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h2><ul>
-<li>停止事件冒泡: event.stopPropagation()</li>
-<li>阻止事件的默认行为: event.preventDefault()</li>
-</ul>
-<h2 id="区别mouseover与mouseenter"><a href="#区别mouseover与mouseenter" class="headerlink" title="区别mouseover与mouseenter"></a>区别mouseover与mouseenter</h2><ul>
-<li><p>mouseover: 在移入子元素时也会触发, 对应mouseout</p>
-</li>
-<li><p>mouseenter: 只在移入当前元素时才触发, 对应mouseleave</p>
-</li>
-<li><p>hover()使用的就是mouseenter()和mouseleave()</p>
-<h1 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h1></li>
-<li><p>在一定的时间内, 不断改变元素样式</p>
-</li>
-</ul>
-<h2 id="淡入淡出-不断改变元素的透明度来实现的"><a href="#淡入淡出-不断改变元素的透明度来实现的" class="headerlink" title="淡入淡出-不断改变元素的透明度来实现的"></a>淡入淡出-不断改变元素的透明度来实现的</h2><pre><code>1.  fadeIn(): 带动画的显示
-2.  fadeOut(): 带动画隐藏
-3.  fadeToggle(): 带动画切换显示/隐藏</code></pre><h2 id="滑动动画"><a href="#滑动动画" class="headerlink" title="滑动动画"></a>滑动动画</h2><ol>
-<li>slideDown(): 带动画的展开</li>
-<li>slideUp(): 带动画的收缩</li>
-<li>slideToggle(): 带动画的切换展开/收缩</li>
-</ol>
-<h2 id="显示隐藏，默认没有动画"><a href="#显示隐藏，默认没有动画" class="headerlink" title="显示隐藏，默认没有动画"></a>显示隐藏，默认没有动画</h2><ol>
-<li>show(): (不)带动画的显示</li>
-<li>hide(): (不)带动画的隐藏</li>
-<li>toggle(): (不)带动画的切换显示/隐藏</li>
-</ol>
-<h2 id="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"><a href="#jQuery动画本质-在指定时间内不断改变元素样式值来实现的" class="headerlink" title="jQuery动画本质-在指定时间内不断改变元素样式值来实现的"></a>jQuery动画本质-在指定时间内不断改变元素样式值来实现的</h2><ol>
-<li>animate(): 自定义动画效果的动画</li>
-<li>stop(): 停止动画</li>
-</ol>
-<h1 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h1><h2 id="扩展jQuery函数对象的方法"><a href="#扩展jQuery函数对象的方法" class="headerlink" title="扩展jQuery函数对象的方法"></a>扩展jQuery函数对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">  xxx: fuction () &#123;&#125; &#x2F;&#x2F; this是$</span><br><span class="line">&#125;)</span><br><span class="line">$.xxx()</span><br></pre></td></tr></table></figure>
-
-<h2 id="扩展jQuery对象的方法"><a href="#扩展jQuery对象的方法" class="headerlink" title="扩展jQuery对象的方法"></a>扩展jQuery对象的方法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  xxx: function()&#123;&#125;  &#x2F;&#x2F; this是jQuery对象</span><br><span class="line">&#125;)</span><br><span class="line">$obj.xxx()</span><br></pre></td></tr></table></figure>
-
-<p>#其他  </p>
-<h2 id="window-onload与-document-ready-的区别"><a href="#window-onload与-document-ready-的区别" class="headerlink" title="window-onload与-document-ready-的区别"></a>window-onload与-document-ready-的区别</h2><ul>
-<li>window.onload<ul>
-<li>包括页面的图片加载完后才会回调(晚)</li>
-<li>只能有一个监听回调</li>
-</ul>
-</li>
-<li>$(document).ready()<ul>
-<li>等同于: $(function(){})</li>
-<li>页面加载完就回调(早)</li>
-<li>可以有多个监听回调</li>
-</ul>
-</li>
-</ul>
+<p><strong><em>这下应该清净了吧，启动文件都没有了，应该不会再找上门了吧</em></strong></p>
 ]]></content>
       <categories>
-        <category>jQuery</category>
+        <category>后台服务器端</category>
       </categories>
       <tags>
-        <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>less</title>
-    <url>/2020/07/21/less/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>less是一门css的预处理语言</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
-<li>less是一门css的预处理语言<ul>
-<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
-<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
-<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
-<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
-</ul>
-</li>
-</ul>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li><p>变量，在变量中可以存储一个任意的值</p>
-<ul>
-<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
-</li>
-<li><p>变量的语法： @变量名</p>
-</li>
-<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
-</li>
-<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
-</li>
-<li><p>变量发生重名时，会优先使用比较近的变量</p>
-</li>
-<li><p>可以在变量声明前就使用变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
-</ul>
-</li>
-<li><p>子元素选择器&gt;</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>&amp; 表示外层(只向外一层)的父元素</p>
-</li>
-<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>mixin 混合</p>
-<ul>
-<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
-<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
-</ul>
-</li>
-<li><p>在混合函数中可以直接设置变量</p>
-</li>
-<li><p>还可以调用混合函数，按顺序传递参数</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
-</li>
-<li><p>加深颜色darken(颜色，百分比)</p>
-</li>
-</ul>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
-<li><p>@import用来将其他的less引入到当前的less</p>
-</li>
-<li><p>在less中所有的数值都可以直接进行运算</p>
-</li>
-<li><p>easy  less配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端三大块</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-        <tag>less</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客挂载到GitHub</title>
-    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<ul>
-<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
-<li>博客挂载到GitHub上的步骤：<ol>
-<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
-<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
-<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
-<li>github仓库配置里source选择master分支</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-<li>绑定域名<ol>
-<li>阿里云域名-&gt;解析-&gt;添加解析</li>
-<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
-<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
-<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
+        <tag>阿里云服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -7191,6 +7272,232 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 ]]></content>
   </entry>
   <entry>
+    <title>博客挂载到GitHub</title>
+    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<ul>
+<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
+<li>博客挂载到GitHub上的步骤：<ol>
+<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
+<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
+<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
+<li>github仓库配置里source选择master分支</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+<li>绑定域名<ol>
+<li>阿里云域名-&gt;解析-&gt;添加解析</li>
+<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
+<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
+<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>节流和防抖动</title>
+    <url>/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+
+<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
+<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
+<li><strong>节流是固定时间内只触发一次函数</strong></li>
+<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/throttling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
+<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/debounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>节流</tag>
+        <tag>防抖动</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Grunt</title>
+    <url>/2020/07/18/Grunt/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li>什么是项目构建？<ul>
+<li>编译项目中的js,sass,less</li>
+<li>合并js/css等资源文件</li>
+<li>压缩js/css/html等资源文件</li>
+<li>js语法的检查</li>
+</ul>
+</li>
+<li>构建工具的作用？<ul>
+<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
+</ul>
+</li>
+<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
+<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
+<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
+<li>常用功能:<ul>
+<li><strong>合并文件</strong>(js/css)</li>
+<li><strong>压缩文件</strong>(js/css)</li>
+<li><strong>语法检查</strong>(js)</li>
+<li><strong>less/sass预编译处理</strong> </li>
+</ul>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>举例创建一个简单的应用grunt_test</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
+<p>node -v</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
+<p>npm install -g grunt-cli </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
+<p>npm install grunt –save-dev</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
+<p>grunt  //提示 Warning: Task “default” not found</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
+<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
+<pre><code>// 1. 初始化插件配置
+grunt.initConfig({
+    //主要编码处
+});
+
+// 2. 加载插件任务
+// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+
+// 3. 注册构建任务
+grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
+<p>  npm install grunt-contrib-concat –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code> concat: {
+   options: { //可选项配置
+     separator: &apos;;&apos;   //使用;连接合并
+   },
+   build: { //此名称任意
+     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
+     dest: &quot;build/js/built.js&quot; //输出的js文件
+   }
+ }
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个built.js
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
+uglify : {
+  options: {  //不是必须的
+    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
+    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
+  },
+  build: {
+    files: {
+      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个压缩的js文件
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
+<p>   {</p>
+<pre><code>&quot;curly&quot;: true,
+&quot;eqeqeq&quot;: true,
+&quot;eqnull&quot;: true,
+&quot;expr&quot; : true,
+&quot;immed&quot;: true,
+&quot;newcap&quot;: true,
+&quot;noempty&quot;: true,
+&quot;noarg&quot;: true,
+&quot;regexp&quot;: true,
+&quot;browser&quot;: true,
+&quot;devel&quot;: true,
+&quot;node&quot;: true,
+&quot;boss&quot;: false,
+
+//不能使用未定义的变量
+&quot;undef&quot;: true,
+//语句后面必须有分号
+&quot;asi&quot;: false,
+//预定义不检查的全局变量
+&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>jshint : {
+  options: {
+    jshintrc : &apos;.jshintrc&apos; //指定配置文件
+  },
+  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>cssmin:{
+  options: {
+    shorthandCompacting: false,//快速压缩
+    roundingPrecision: -1//精确度
+  },
+  build: {
+    files: {
+        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt    //在build/css/下生成output.min.css
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
+watch : {
+  scripts : {
+    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
+    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
+    options : {spawn : false}  
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
+改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
+```</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>自动化构建工具</category>
+      </categories>
+      <tags>
+        <tag>Grunt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>性能优化</title>
     <url>/2020/08/09/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p>-</p>
@@ -7346,133 +7653,5 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>服务器竟然被挖矿程序攻击！？</title>
-    <url>/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>今天一大早醒来，洗漱了吃完饭，准备接着进度学习呢，突然手机短信提示服务器安全紧急事件：挖矿程序，上云服务控制台一顿找才发现服务器的cpu竟然爆了，平时服务器就放个博客，cpu利用率也才10%都不到，于是开始着手解决这个问题</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="挖矿程序是什么？"><a href="#挖矿程序是什么？" class="headerlink" title="挖矿程序是什么？"></a>挖矿程序是什么？</h1><ul>
-<li><p>挖矿是跟区块链以及虚拟币有关系，虚拟币是挖矿挖出来的，每间隔一段时间，比特币或者以太坊虚拟币就会在他们的区块链系统上生成一个块的随机代码，网络上的所有服务器都可以去找这个随机代码，也就是挖矿的过程对这个随机代码进行挖掘，谁挖到这个代码就会产生一个区块链的块，那么比特币跟以太坊就会奖励找到随机代码的人，奖励一定数量的虚拟币，那么挖矿的人就会有动力去挖矿，去维护整个区块链节点的网络正常运行，挖矿需要计算哈希值需要服务器的处理能力，所以有些攻击者利用入侵别人服务器来给自己挖矿，获取利润。</p>
-</li>
-<li><p>简单的来说就是别人利用你服务器的漏洞植入一段程序，然后用你的服务器帮他挖矿来帮他谋求利益</p>
-</li>
-</ul>
-<h1 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h1><ol>
-<li><strong>找到占用率高的进程并杀死</strong></li>
-</ol>
-<ul>
-<li>首先我们用 top 指令来查看服务器的进程<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/1.png" alt></li>
-<li>发现cpu占用率爆满</li>
-<li>然后我们找到占有率最高的进程，找到他的pid</li>
-<li>然后把该进程kill掉  kill -9 pid</li>
-<li>然后cpu恢复了平静<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/2.png" alt></li>
-</ul>
-<ol start="2">
-<li><strong>查看是否有定时任务</strong></li>
-</ol>
-<ul>
-<li>我等待了半个小时发现挖矿程序并没有卷土重来</li>
-<li>但是为了以防万一我还是把备用方案做好</li>
-<li>挖矿程序一般都有定时任务，查看定时任务得去crontab文件里找<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;crontab</span><br><span class="line">一般在下面会有可疑的任务，根据任务找到脚本，并且删掉他</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="3">
-<li><strong>删除残余文件</strong></li>
-</ol>
-<ul>
-<li>cd /proc/进程号</li>
-<li>删除路径下的所有文件</li>
-</ul>
-<p><strong><em>不得不说阿里云安全售卖的那些服务并不是没有道理的，原来我他给我提示的那些风险警告并不是没用的，我一直以为是他为了售卖自己的产品故意安排这么多漏洞的，这会见识到了</em></strong></p>
-<h1 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h1><ul>
-<li>我太天真了，他又来了，这回是在凌晨4点启动的<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/721.png" alt></li>
-<li>我收到危险提示短信后，去服务器查看服务器进程<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/7211.png" alt></li>
-<li>果然有人在用我的服务器挖矿</li>
-<li>这次我没有直接杀死进程，而是先找到他的进程文件<br><img src="/2020/07/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%A2%AB%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%EF%BC%81%EF%BC%9F/72111.png" alt></li>
-<li>发现了他的启动程序在/home/git/xmr64下</li>
-<li>然后杀死进程</li>
-<li>删除rm -f启动程序</li>
-<li>删除rm -rf进程残留文件</li>
-</ul>
-<p><strong><em>这下应该清净了吧，启动文件都没有了，应该不会再找上门了吧</em></strong></p>
-]]></content>
-      <categories>
-        <category>后台服务器端</category>
-      </categories>
-      <tags>
-        <tag>阿里云服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>节流和防抖动</title>
-    <url>/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
-<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
-<li><strong>节流是固定时间内只触发一次函数</strong></li>
-<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/throttling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
-<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/debounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>节流</tag>
-        <tag>防抖动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue实战之电商数据可视化平台</title>
-    <url>/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br> 本次项目主要是对数据的可视化展示，前端应用ECharts对数据进行可视化</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p>支持两套主题，图标的主题可以在echarts官网diy<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/1.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/2.png" alt></p>
-<h2 id="组件展示"><a href="#组件展示" class="headerlink" title="组件展示"></a>组件展示</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/11.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/22.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/33.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/44.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/55.png" alt><br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/77.png" alt></p>
-<h2 id="多端联动效果"><a href="#多端联动效果" class="headerlink" title="多端联动效果"></a>多端联动效果</h2><p><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/88.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
-<li>Node+KOA2<ul>
-<li>KOA2是express原班人马打造的，express的异步处理是用的回调函数，但是KOA2使用的是async/await</li>
-<li>KOA2最大的特点是独特的中间件控制流程，是一个典型的洋葱模型<br><img src="/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/99.png" alt></li>
-<li>这种中间件可能还不仅仅只有一个，可能会存在多个，比如上图所示, 它就存在三层中间件，这三<br>层中间件在处理请求的过程以及它调用的顺序为:<ul>
-<li>当一个请求到达咱们的服务器，最先最先处理这个请求的是第一层中间件</li>
-<li>第一层的中间件在处理这个请求之后，它会把这个请求给第二层的中间件</li>
-<li>第二层的中间件在处理这个请求之后，它会把这个请求给第三层的中间件</li>
-<li>第三层中间件内部并没有中间件了, 所以第三层中间件在处理完所有的代码之后，这个请求又会到了第二层的中间件，所以第二层中间件对这个请求经过了两次的处处理第二层的中间件在处理完这个请求之后，又到了第一层的中间件, 所以第一层的中间件也对这个请求经过了两次的处理</li>
-<li>这个调用顺序就是洋葱模型, 中间件对请求的处理有一种先进后出的感觉，请求最先到达第一层中间件，而最后也是第一层中间件对请求再次处理了一下</li>
-</ul>
-</li>
-<li><strong><em>根据这个特性，本次项目设置了三个中间件，一个用来记录请求的总耗时，一个用来设置响应头，最后一个根据url读取相应文件的信息</em></strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
-<li>Vue+ECharts<ul>
-<li>本次echarts的配置项进行了分离，分别是默认基础配置项，数据配置项，分辨率适配项，先进行单独图表组件的开发，最终将组件进行合并</li>
-</ul>
-</li>
-</ul>
-<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><ul>
-<li>WebSocket 可以保持着浏览器和客户端之间的长连接， 通过WebSocket 可以实现数据由后端推送到前端，保证了数据传输的实时</li>
-<li>通过建立长连接，客户端发送数据给服务端，服务端返回数据，从而实现多端联动的效果</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
 </search>
