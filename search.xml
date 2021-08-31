@@ -87,6 +87,164 @@
       </tags>
   </entry>
   <entry>
+    <title>Ajax</title>
+    <url>/2020/07/16/Ajax/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>页面的局部刷新技术</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
+<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
+</li>
+<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
+</li>
+<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
+<ul>
+<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
+<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
+<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
+<li>DOM实现动态显示和交互</li>
+<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
+<li>使用JS进行绑定和处理数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
+<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
+</ul>
+<ol>
+<li><p>onreadystatechang事件处理函数</p>
+<ul>
+<li>该函数由服务器触发，而不是用户</li>
+<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
+</ul>
+</li>
+<li><p>open(method,url,asynch)方法</p>
+<ul>
+<li>open运行用一个Ajax调用向服务器发送请求</li>
+<li>method：请求的类型<ul>
+<li>GET从服务器检索一个文件，不需要发送任何数据</li>
+<li>POST向服务器发送数据</li>
+</ul>
+</li>
+<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
+<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
+</ul>
+</li>
+<li><p>send方法</p>
+<ul>
+<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
+<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
+<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
+</ul>
+</li>
+<li><p>sendRequestHeader(header,value)</p>
+<ul>
+<li>首部信息用来声明一个请求时GET还是POST</li>
+<li>header首部的名字，value首部的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
+<li><p>readyState</p>
+<ul>
+<li>表示Ajax请求的当前状态<ul>
+<li>0表示初始化，还没有调用open方法</li>
+<li>1表示正在加载，open方法已调用，send方法还没调用</li>
+<li>2表示已加载完毕，send方法已调用，请求开始了</li>
+<li>3表示交互中，服务器正在发送响应</li>
+<li>4表示完成，响应发送完毕</li>
+</ul>
+</li>
+<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
+<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
+</ul>
+</li>
+<li><p>status</p>
+<ul>
+<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
+<li>常用状态码及其含义：<ul>
+<li>404没找到页面</li>
+<li>403禁止访问</li>
+<li>500内部服务器错误</li>
+<li>200一切正常</li>
+<li>304没有被修改</li>
+</ul>
+</li>
+<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
+</ul>
+</li>
+<li><p>responseText</p>
+<ul>
+<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
+<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
+</ul>
+</li>
+<li><p>responseXML</p>
+<ul>
+<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
+<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
+<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
+</ul>
+<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
+<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
+<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
+<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
+<li><p>load(url, [data], [callback])</p>
+<ul>
+<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
+<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
+<li>url:待装入 HTML 网页网址。</li>
+<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
+<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>jQuery.get(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP GET 请求载入信息</li>
+<li>url:待载入页面的URL地址</li>
+<li>data:待发送 Key/value 参数</li>
+<li>callback:载入成功时回调函数</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default</li>
+</ul>
+</li>
+<li><p>jQuery.post(url, [data], [callback], [type])</p>
+<ul>
+<li>通过远程 HTTP POST 请求载入信息</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:发送成功时回调函数。</li>
+<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
+</ul>
+</li>
+<li><p>jQuery.getJSON(url, [data], [callback])</p>
+<ul>
+<li>通过 HTTP GET 请求载入 JSON 数据</li>
+<li>url:发送请求地址。</li>
+<li>data:待发送 Key/value 参数。</li>
+<li>callback:载入成功时回调函数。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ajax</category>
+      </categories>
+      <tags>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES6-ES11</title>
     <url>/2020/07/14/ES6-ES11/</url>
     <content><![CDATA[<blockquote>
@@ -425,6 +583,280 @@
       </tags>
   </entry>
   <entry>
+    <title>Gulp</title>
+    <url>/2020/07/18/Gulp/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h1><ul>
+<li>中文主页: <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a></li>
+<li>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></li>
+<li>能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务</li>
+<li>gulp更高效(异步多任务), 更易于使用, 插件高质量</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>举例创建一个简单的应用gulp_test<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|- dist&#x2F;&#x2F;放打包生成的文件</span><br><span class="line">|- src</span><br><span class="line">  |- js</span><br><span class="line">  |- css</span><br><span class="line">  |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js-----gulp配置文件</span><br><span class="line">|- package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;gulp_test&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li>安装nodejs, 查看版本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></li>
+<li>安装gulp:<ul>
+<li>全局安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure></li>
+<li>局部安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp@3.9.1 --save-dev </span><br><span class="line">&#x2F;&#x2F;以下指令都是3.9版本的，4.0以上版本指令与3.9不同</span><br></pre></td></tr></table></figure></li>
+<li>配置编码: gulpfile.js<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;引入gulp模块</span><br><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">&#x2F;&#x2F;定义默认任务</span><br><span class="line">gulp.task(&#39;任务名&#39;, function() &#123;</span><br><span class="line">  &#x2F;&#x2F; 将你的任务的任务代码放在这</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;任务&#39;])&#x2F;&#x2F;异步执行</span><br></pre></td></tr></table></figure></li>
+<li>构建命令: <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
+<h2 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h2></li>
+<li>相关插件:<ul>
+<li>gulp-concat : 合并文件(js/css)</li>
+<li>gulp-uglify : 压缩js文件</li>
+<li>gulp-rename : 文件重命名</li>
+<li>gulp-less : 编译less</li>
+<li>gulp-clean-css : 压缩css</li>
+<li>gulp-livereload : 实时自动编译刷新</li>
+</ul>
+</li>
+<li><strong>重要API</strong><ul>
+<li>gulp.src(filePath/pathArr) : <ul>
+<li>指向指定路径的所有文件, 返回文件流对象</li>
+<li>用于读取文件</li>
+</ul>
+</li>
+<li>gulp.dest(dirPath/pathArr)<ul>
+<li>指向指定的所有文件夹</li>
+<li>用于向文件夹中输出文件</li>
+</ul>
+</li>
+<li>gulp.task(name, [deps], fn) <ul>
+<li>定义一个任务</li>
+</ul>
+</li>
+<li>gulp.watch() <ul>
+<li>监视文件的变化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="处理js"><a href="#处理js" class="headerlink" title="处理js"></a>处理js</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var concat &#x3D; require(&#39;gulp-concat&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var rename &#x3D; require(&#39;gulp-rename&#39;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;minifyjs&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;js&#x2F;*.js&#39;) &#x2F;&#x2F;找到操作的源文件，将文件读取到gulp的内存</span><br><span class="line">        .pipe(concat(&#39;built.js&#39;)) &#x2F;&#x2F;合并到临时文件     </span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;临时生成到目标文件夹</span><br><span class="line">        .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;)) &#x2F;&#x2F;重命名（后缀名+min）  </span><br><span class="line">        .pipe(uglify())    &#x2F;&#x2F;压缩</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;));&#x2F;&#x2F;生成到目标文件夹</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>页面引入js浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;dist&#x2F;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp</li>
+</ul>
+<h2 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var less &#x3D; require(&#39;gulp-less&#39;);</span><br><span class="line">var cleanCSS &#x3D; require(&#39;gulp-clean-css&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;less处理任务</span><br><span class="line">gulp.task(&#39;lessTask&#39;, function () &#123;</span><br><span class="line">return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe(less())               &#x2F;&#x2F;编译less文件为css文件</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#39;));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;css处理任务, 指定依赖的任务,当lessTask执行完在执行该任务</span><br><span class="line">gulp.task(&#39;cssTask&#39;,[&#39;lessTask&#39;], function () &#123;</span><br><span class="line"></span><br><span class="line">return gulp.src(&#39;src&#x2F;css&#x2F;*.css&#39;)</span><br><span class="line">    .pipe(concat(&#39;built.css&#39;))</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;))</span><br><span class="line">    .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;))</span><br><span class="line">    .pipe(cleanCSS(&#123;compatibility: &#39;ie8&#39;&#125;)) &#x2F;&#x2F;兼容到ie8</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>页面引入css浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;dist&#x2F;css&#x2F;built.min.css&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp</li>
+</ul>
+<h2 id="处理html"><a href="#处理html" class="headerlink" title="处理html"></a>处理html</h2><ul>
+<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">&#x2F;&#x2F;压缩html任务</span><br><span class="line">gulp.task(&#39;htmlMinify&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;index.html&#39;)</span><br><span class="line">        .pipe(htmlmin(&#123;collapseWhitespace: true&#125;))&#x2F;&#x2F;清除空格</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;, &#39;htmlMinify&#39;]);</span><br></pre></td></tr></table></figure></li>
+<li>修改页面引入  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;built.min.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打包测试: gulp    </li>
+</ul>
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><ul>
+<li>下载插件  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure></li>
+<li>配置编码:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var livereload &#x3D; require(&#39;gulp-livereload&#39;);</span><br><span class="line">        </span><br><span class="line">&#x2F;&#x2F;所有的pipe</span><br><span class="line">.pipe(livereload());</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;    </span><br><span class="line">&#x2F;&#x2F;开启监视</span><br><span class="line">livereload.listen();</span><br><span class="line">&#x2F;&#x2F;监视指定的文件, 并指定对应的处理任务</span><br><span class="line">gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;minifyjs&#39;])</span><br><span class="line">gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;,&#39;src&#x2F;less&#x2F;*.less&#39;], [&#39;cssTask&#39;,&#39;lessTask&#39;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="热加载-实时加载"><a href="#热加载-实时加载" class="headerlink" title="热加载(实时加载)"></a>热加载(实时加载)</h2><ul>
+<li>下载插件：gulp-connect<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、npm install gulp-connect --save-dev</span><br><span class="line"></span><br><span class="line">2、注册 热加载的任务 server，注意依赖build任务 </span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;&#125;</span><br><span class="line"></span><br><span class="line">3、注册热加载的任务</span><br><span class="line">    &#x2F;&#x2F;配置加载的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">            root : &#39;dist&#x2F;&#39;,&#x2F;&#x2F;监视的源目标文件路径</span><br><span class="line">            livereload : true,&#x2F;&#x2F;是否实时刷新</span><br><span class="line">            port : 5000&#x2F;&#x2F;开启端口号</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 自动开启链接</span><br><span class="line">    open(&#39;http:&#x2F;&#x2F;localhost:5000&#39;);</span><br><span class="line">    &#x2F;&#x2F;npm install open --save-dev</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 监视目标文件</span><br><span class="line">    gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;js&#39;]);</span><br><span class="line">    gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;, &#39;src&#x2F;css&#x2F;*.less&#39;], [&#39;cssMin&#39;, &#39;less&#39;]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><ul>
+<li>打包加载gulp插件</li>
+<li>前提：将插件下载好。</li>
+<li>下载打包插件： gulp-load-plugins</li>
+<li>npm install gulp-load-plugins –save-dev</li>
+<li>引入： var $ = require(‘gulp-load-plugins’)();！！！引入的插件是个方法，必须记住调用。</li>
+<li>其他的插件不用再引入了</li>
+<li>使用方法：  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 所有的插件用 $ 引出，其他插件的方法名统一为插件的功能名字(即插件名字的最后一部分)：如：concat,connect,cssmin...</span><br><span class="line">gulp.task(&#39;less&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe($.less())&#x2F;&#x2F;将less转换为less</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#x2F;&#39;))</span><br><span class="line">    &#x2F;&#x2F;将转换为less的文件输出到src下</span><br><span class="line">    .pipe($.livereload())&#x2F;&#x2F;实时刷新</span><br><span class="line">    .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>自动化构建工具</category>
+      </categories>
+      <tags>
+        <tag>Gulp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Grunt</title>
+    <url>/2020/07/18/Grunt/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li>什么是项目构建？<ul>
+<li>编译项目中的js,sass,less</li>
+<li>合并js/css等资源文件</li>
+<li>压缩js/css/html等资源文件</li>
+<li>js语法的检查</li>
+</ul>
+</li>
+<li>构建工具的作用？<ul>
+<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
+</ul>
+</li>
+<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
+<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
+<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
+<li>常用功能:<ul>
+<li><strong>合并文件</strong>(js/css)</li>
+<li><strong>压缩文件</strong>(js/css)</li>
+<li><strong>语法检查</strong>(js)</li>
+<li><strong>less/sass预编译处理</strong> </li>
+</ul>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>举例创建一个简单的应用grunt_test</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
+<p>node -v</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
+<p>npm install -g grunt-cli </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
+<p>npm install grunt –save-dev</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
+<p>grunt  //提示 Warning: Task “default” not found</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
+<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
+<pre><code>// 1. 初始化插件配置
+grunt.initConfig({
+    //主要编码处
+});
+
+// 2. 加载插件任务
+// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+
+// 3. 注册构建任务
+grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
+<p>  npm install grunt-contrib-concat –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code> concat: {
+   options: { //可选项配置
+     separator: &apos;;&apos;   //使用;连接合并
+   },
+   build: { //此名称任意
+     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
+     dest: &quot;build/js/built.js&quot; //输出的js文件
+   }
+ }
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个built.js
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
+uglify : {
+  options: {  //不是必须的
+    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
+    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
+  },
+  build: {
+    files: {
+      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个压缩的js文件
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
+<p>   {</p>
+<pre><code>&quot;curly&quot;: true,
+&quot;eqeqeq&quot;: true,
+&quot;eqnull&quot;: true,
+&quot;expr&quot; : true,
+&quot;immed&quot;: true,
+&quot;newcap&quot;: true,
+&quot;noempty&quot;: true,
+&quot;noarg&quot;: true,
+&quot;regexp&quot;: true,
+&quot;browser&quot;: true,
+&quot;devel&quot;: true,
+&quot;node&quot;: true,
+&quot;boss&quot;: false,
+
+//不能使用未定义的变量
+&quot;undef&quot;: true,
+//语句后面必须有分号
+&quot;asi&quot;: false,
+//预定义不检查的全局变量
+&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>jshint : {
+  options: {
+    jshintrc : &apos;.jshintrc&apos; //指定配置文件
+  },
+  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>cssmin:{
+  options: {
+    shorthandCompacting: false,//快速压缩
+    roundingPrecision: -1//精确度
+  },
+  build: {
+    files: {
+        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt    //在build/css/下生成output.min.css
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
+watch : {
+  scripts : {
+    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
+    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
+    options : {spawn : false}  
+  }
+}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
+改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
+```</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>自动化构建工具</category>
+      </categories>
+      <tags>
+        <tag>Grunt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git&amp;Github</title>
     <url>/2020/07/17/Git-Github/</url>
     <content><![CDATA[<blockquote>
@@ -609,109 +1041,6 @@
       <tags>
         <tag>Git</tag>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Gulp</title>
-    <url>/2020/07/18/Gulp/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h1><ul>
-<li>中文主页: <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a></li>
-<li>gulp是与grunt功能类似的<strong>前端项目构建</strong>工具, 也是基于Nodejs的自动<strong>任务运行器</strong></li>
-<li>能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务</li>
-<li>gulp更高效(异步多任务), 更易于使用, 插件高质量</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>举例创建一个简单的应用gulp_test<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|- dist&#x2F;&#x2F;放打包生成的文件</span><br><span class="line">|- src</span><br><span class="line">  |- js</span><br><span class="line">  |- css</span><br><span class="line">  |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js-----gulp配置文件</span><br><span class="line">|- package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;gulp_test&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-<li>安装nodejs, 查看版本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></li>
-<li>安装gulp:<ul>
-<li>全局安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure></li>
-<li>局部安装gulp<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp@3.9.1 --save-dev </span><br><span class="line">&#x2F;&#x2F;以下指令都是3.9版本的，4.0以上版本指令与3.9不同</span><br></pre></td></tr></table></figure></li>
-<li>配置编码: gulpfile.js<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;引入gulp模块</span><br><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">&#x2F;&#x2F;定义默认任务</span><br><span class="line">gulp.task(&#39;任务名&#39;, function() &#123;</span><br><span class="line">  &#x2F;&#x2F; 将你的任务的任务代码放在这</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;任务&#39;])&#x2F;&#x2F;异步执行</span><br></pre></td></tr></table></figure></li>
-<li>构建命令: <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
-<h2 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h2></li>
-<li>相关插件:<ul>
-<li>gulp-concat : 合并文件(js/css)</li>
-<li>gulp-uglify : 压缩js文件</li>
-<li>gulp-rename : 文件重命名</li>
-<li>gulp-less : 编译less</li>
-<li>gulp-clean-css : 压缩css</li>
-<li>gulp-livereload : 实时自动编译刷新</li>
-</ul>
-</li>
-<li><strong>重要API</strong><ul>
-<li>gulp.src(filePath/pathArr) : <ul>
-<li>指向指定路径的所有文件, 返回文件流对象</li>
-<li>用于读取文件</li>
-</ul>
-</li>
-<li>gulp.dest(dirPath/pathArr)<ul>
-<li>指向指定的所有文件夹</li>
-<li>用于向文件夹中输出文件</li>
-</ul>
-</li>
-<li>gulp.task(name, [deps], fn) <ul>
-<li>定义一个任务</li>
-</ul>
-</li>
-<li>gulp.watch() <ul>
-<li>监视文件的变化</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="处理js"><a href="#处理js" class="headerlink" title="处理js"></a>处理js</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var concat &#x3D; require(&#39;gulp-concat&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var rename &#x3D; require(&#39;gulp-rename&#39;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;minifyjs&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;js&#x2F;*.js&#39;) &#x2F;&#x2F;找到操作的源文件，将文件读取到gulp的内存</span><br><span class="line">        .pipe(concat(&#39;built.js&#39;)) &#x2F;&#x2F;合并到临时文件     </span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;临时生成到目标文件夹</span><br><span class="line">        .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;)) &#x2F;&#x2F;重命名（后缀名+min）  </span><br><span class="line">        .pipe(uglify())    &#x2F;&#x2F;压缩</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#x2F;js&#39;));&#x2F;&#x2F;生成到目标文件夹</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>页面引入js浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;dist&#x2F;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp</li>
-</ul>
-<h2 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var less &#x3D; require(&#39;gulp-less&#39;);</span><br><span class="line">var cleanCSS &#x3D; require(&#39;gulp-clean-css&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;less处理任务</span><br><span class="line">gulp.task(&#39;lessTask&#39;, function () &#123;</span><br><span class="line">return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe(less())               &#x2F;&#x2F;编译less文件为css文件</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#39;));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;css处理任务, 指定依赖的任务,当lessTask执行完在执行该任务</span><br><span class="line">gulp.task(&#39;cssTask&#39;,[&#39;lessTask&#39;], function () &#123;</span><br><span class="line"></span><br><span class="line">return gulp.src(&#39;src&#x2F;css&#x2F;*.css&#39;)</span><br><span class="line">    .pipe(concat(&#39;built.css&#39;))</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;))</span><br><span class="line">    .pipe(rename(&#123;suffix: &#39;.min&#39;&#125;))</span><br><span class="line">    .pipe(cleanCSS(&#123;compatibility: &#39;ie8&#39;&#125;)) &#x2F;&#x2F;兼容到ie8</span><br><span class="line">    .pipe(gulp.dest(&#39;dist&#x2F;css&#39;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>页面引入css浏览测试 : index.html  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;dist&#x2F;css&#x2F;built.min.css&quot;&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp</li>
-</ul>
-<h2 id="处理html"><a href="#处理html" class="headerlink" title="处理html"></a>处理html</h2><ul>
-<li>下载插件:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">&#x2F;&#x2F;压缩html任务</span><br><span class="line">gulp.task(&#39;htmlMinify&#39;, function() &#123;</span><br><span class="line">    return gulp.src(&#39;index.html&#39;)</span><br><span class="line">        .pipe(htmlmin(&#123;collapseWhitespace: true&#125;))&#x2F;&#x2F;清除空格</span><br><span class="line">        .pipe(gulp.dest(&#39;dist&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(&#39;default&#39;, [&#39;minifyjs&#39;, &#39;cssTask&#39;, &#39;htmlMinify&#39;]);</span><br></pre></td></tr></table></figure></li>
-<li>修改页面引入  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;built.min.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;built.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
-<li>打包测试: gulp    </li>
-</ul>
-<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><ul>
-<li>下载插件  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure></li>
-<li>配置编码:  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var livereload &#x3D; require(&#39;gulp-livereload&#39;);</span><br><span class="line">        </span><br><span class="line">&#x2F;&#x2F;所有的pipe</span><br><span class="line">.pipe(livereload());</span><br><span class="line"></span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;    </span><br><span class="line">&#x2F;&#x2F;开启监视</span><br><span class="line">livereload.listen();</span><br><span class="line">&#x2F;&#x2F;监视指定的文件, 并指定对应的处理任务</span><br><span class="line">gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;minifyjs&#39;])</span><br><span class="line">gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;,&#39;src&#x2F;less&#x2F;*.less&#39;], [&#39;cssTask&#39;,&#39;lessTask&#39;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="热加载-实时加载"><a href="#热加载-实时加载" class="headerlink" title="热加载(实时加载)"></a>热加载(实时加载)</h2><ul>
-<li>下载插件：gulp-connect<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、npm install gulp-connect --save-dev</span><br><span class="line"></span><br><span class="line">2、注册 热加载的任务 server，注意依赖build任务 </span><br><span class="line">gulp.task(&#39;watch&#39;, [&#39;default&#39;], function () &#123;&#125;</span><br><span class="line"></span><br><span class="line">3、注册热加载的任务</span><br><span class="line">    &#x2F;&#x2F;配置加载的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">            root : &#39;dist&#x2F;&#39;,&#x2F;&#x2F;监视的源目标文件路径</span><br><span class="line">            livereload : true,&#x2F;&#x2F;是否实时刷新</span><br><span class="line">            port : 5000&#x2F;&#x2F;开启端口号</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 自动开启链接</span><br><span class="line">    open(&#39;http:&#x2F;&#x2F;localhost:5000&#39;);</span><br><span class="line">    &#x2F;&#x2F;npm install open --save-dev</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 监视目标文件</span><br><span class="line">    gulp.watch(&#39;src&#x2F;js&#x2F;*.js&#39;, [&#39;js&#39;]);</span><br><span class="line">    gulp.watch([&#39;src&#x2F;css&#x2F;*.css&#39;, &#39;src&#x2F;css&#x2F;*.less&#39;], [&#39;cssMin&#39;, &#39;less&#39;]);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><ul>
-<li>打包加载gulp插件</li>
-<li>前提：将插件下载好。</li>
-<li>下载打包插件： gulp-load-plugins</li>
-<li>npm install gulp-load-plugins –save-dev</li>
-<li>引入： var $ = require(‘gulp-load-plugins’)();！！！引入的插件是个方法，必须记住调用。</li>
-<li>其他的插件不用再引入了</li>
-<li>使用方法：  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 所有的插件用 $ 引出，其他插件的方法名统一为插件的功能名字(即插件名字的最后一部分)：如：concat,connect,cssmin...</span><br><span class="line">gulp.task(&#39;less&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;src&#x2F;less&#x2F;*.less&#39;)</span><br><span class="line">    .pipe($.less())&#x2F;&#x2F;将less转换为less</span><br><span class="line">    .pipe(gulp.dest(&#39;src&#x2F;css&#x2F;&#39;))</span><br><span class="line">    &#x2F;&#x2F;将转换为less的文件输出到src下</span><br><span class="line">    .pipe($.livereload())&#x2F;&#x2F;实时刷新</span><br><span class="line">    .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>自动化构建工具</category>
-      </categories>
-      <tags>
-        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -3696,71 +4025,24 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Vue实战之外卖平台</title>
-    <url>/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
+    <title>Vue实战之电商后台管理系统</title>
+    <url>/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+<p>序<br><br>纯前端的项目，后端接口是提供好的，这次用的element-ui来开发，功能好强大，都是封装好的组件，太方便了！</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
-<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
-<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
-<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
-<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
-<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
-<ul>
-<li>router：路由器页面跳转，开发单页应用</li>
-<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
-<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
-</ul>
-</li>
-<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
-<ul>
-<li>Bscroll: 实现页面滑动</li>
-<li>swiper：实现轮播图</li>
-<li>mint-ui：构建界面</li>
-<li>moment：处理日期格式</li>
-</ul>
-</li>
-<li><p>数据：ajax, axios, mock, vuex, postman</p>
-<ul>
-<li>ajax,axios: 实现前后台交互</li>
-<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
-<li>vuex：对数据进行全局的统一管理</li>
-<li>postman：测试后端接口</li>
-</ul>
-</li>
-</ul>
-<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
-<li>Node+Express <ul>
-<li>用express搭建后台路由</li>
-</ul>
-</li>
-<li>Mongodb+Mongoose<ul>
-<li>用mongoose操作mongodb数据库</li>
-</ul>
-</li>
-</ul>
-<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
-<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
-<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
-<ul>
-<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
-</ul>
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/login.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/welcome.png" alt></p>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/user.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/useredit.png" alt></p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/role.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/role2.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/right.png" alt></p>
+<h2 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/goods.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/categories.png" alt></p>
+<h2 id="订单管理"><a href="#订单管理" class="headerlink" title="订单管理"></a>订单管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/order.png" alt></p>
+<h2 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/echarts.png" alt></p>
 ]]></content>
       <categories>
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
-        <tag>Node.js</tag>
         <tag>Vue</tag>
-        <tag>Vuex</tag>
-        <tag>Mongoose</tag>
       </tags>
   </entry>
   <entry>
@@ -3795,7 +4077,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>viewmodel：实体模型，vue的实例</li>
 </ul>
 <h2 id="vue指令"><a href="#vue指令" class="headerlink" title="vue指令"></a>vue指令</h2><h3 id="v-text-v-html-指定标签体"><a href="#v-text-v-html-指定标签体" class="headerlink" title="v-text/v-html: 指定标签体"></a>v-text/v-html: 指定标签体</h3><ul>
-<li>v-text : 当作纯文本</li>
+<li>v-text : 当作纯文本，默认没有闪现属性   </li>
 <li>v-html : 将value作为html标签来解析</li>
 </ul>
 <h3 id="v-if-v-else-v-show-显示-隐藏元素"><a href="#v-if-v-else-v-show-显示-隐藏元素" class="headerlink" title="v-if v-else v-show: 显示/隐藏元素"></a>v-if v-else v-show: 显示/隐藏元素</h3><ul>
@@ -3836,7 +4118,12 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <li>ref=’xxx’</li>
 <li>读取得到标签对象: this.$refs.xxx</li>
 </ul>
-<h3 id="v-cloak-防止闪现-与css配合在解析之前匹配一个标签，解析后就不存在了-v-cloak-display-none"><a href="#v-cloak-防止闪现-与css配合在解析之前匹配一个标签，解析后就不存在了-v-cloak-display-none" class="headerlink" title="v-cloak:防止闪现,与css配合在解析之前匹配一个标签，解析后就不存在了:[v-cloak]{display:none}"></a>v-cloak:防止闪现,与css配合在解析之前匹配一个标签，解析后就不存在了:[v-cloak]{display:none}</h3><h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><ol>
+<h3 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h3><ul>
+<li>防止闪现(即在加载时会短暂的出现HTML代码)</li>
+<li>与css配合，在解析之前匹配一个标签，解析后就不存在了</li>
+<li>在需要匹配的标签内加v-cloak，并且对v-cloak添加样式{display:none}</li>
+</ul>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><ol>
 <li>注册全局指令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.directive(&#39;my-directive&#39;,function(el,binding)&#123; </span><br><span class="line">    &#x2F;&#x2F;指令名v-省略，el：指令属性所在的标签对象，binding:包含指令相关信息数据的对象</span><br><span class="line">    el.innerHTML&#x3D;binding.value.toupperCase()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>注册局部指令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">directives:&#123;</span><br><span class="line">&#39;my-directive&#39;:&#123;</span><br><span class="line">    bind(el,binding)&#123;</span><br><span class="line">        el.innerHTML&#x3D;binding.value.toupperCase()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>使用指令<br>v-my-directive=’xxx</li>
@@ -4238,27 +4525,6 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Vue实战之电商后台管理系统</title>
-    <url>/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>纯前端的项目，后端接口是提供好的，这次用的element-ui来开发，功能好强大，都是封装好的组件，太方便了！</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/login.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/welcome.png" alt></p>
-<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/user.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/useredit.png" alt></p>
-<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/role.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/role2.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/right.png" alt></p>
-<h2 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/goods.png" alt><br><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/categories.png" alt></p>
-<h2 id="订单管理"><a href="#订单管理" class="headerlink" title="订单管理"></a>订单管理</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/order.png" alt></p>
-<h2 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h2><p><img src="/2020/09/11/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/echarts.png" alt></p>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue实战之电商数据可视化平台</title>
     <url>/2021/07/12/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</url>
     <content><![CDATA[<blockquote>
@@ -4304,6 +4570,74 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
+    <title>Vue实战之外卖平台</title>
+    <url>/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>基于vue实现的一个外卖移动端项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/1.png" alt></p>
+<h2 id="商家详情页"><a href="#商家详情页" class="headerlink" title="商家详情页"></a>商家详情页</h2><h3 id="菜品列表"><a href="#菜品列表" class="headerlink" title="菜品列表"></a>菜品列表</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/2.2.png" alt></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/3.png" alt></p>
+<h3 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/4.png" alt></p>
+<h3 id="商家信息"><a href="#商家信息" class="headerlink" title="商家信息"></a>商家信息</h3><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/5.png" alt></p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/6.1.png" alt></p>
+<h2 id="登陆注册"><a href="#登陆注册" class="headerlink" title="登陆注册"></a>登陆注册</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/7.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/71.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/8.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/81.png" alt></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db1.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db2.png" alt><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/db3.png" alt></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>页面：vue, vue-router, vue-lazyload, styls</p>
+<ul>
+<li>router：路由器页面跳转，开发单页应用</li>
+<li>lazyload：图片懒加载，从接口获取图片数据有个过程用一个加载动画填补</li>
+<li>styls：css预编译器，不过真的不推荐这个，styls是用缩进控制来取代大括号小括号，有时候代码格式化就会导致一些样式失效，还是推荐less，两者语法大同小异</li>
+</ul>
+</li>
+<li><p>插件：better-scroll, swiper, mint-ui, moment</p>
+<ul>
+<li>Bscroll: 实现页面滑动</li>
+<li>swiper：实现轮播图</li>
+<li>mint-ui：构建界面</li>
+<li>moment：处理日期格式</li>
+</ul>
+</li>
+<li><p>数据：ajax, axios, mock, vuex, postman</p>
+<ul>
+<li>ajax,axios: 实现前后台交互</li>
+<li>mock：模拟数据库，拦截Ajax请求返回自定义格式的数据</li>
+<li>vuex：对数据进行全局的统一管理</li>
+<li>postman：测试后端接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li>Node+Express <ul>
+<li>用express搭建后台路由</li>
+</ul>
+</li>
+<li>Mongodb+Mongoose<ul>
+<li>用mongoose操作mongodb数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p><strong><em>这个项目是跟着视频教程做的，主要是想找个项目练手来巩固一下知识，静态页面是直接拿的别人的，不得不说自己做静态页面还是比较花时间的，以后再找点时间来练练</em></strong><br></p>
+<p><strong><em>这次主要是想知道一个全栈项目的具体的工作流程，后端怎么读数据，怎么定义接口。怎么把数据发送出去等等，还有前端怎么实现一些动画效果，怎么拿到数据，怎么对数据进行处理，怎么渲染到页面上等等</em></strong><br></p>
+<p><strong><em>这次的项目本来教的是后端从json文件中获取数据，然后我加了一些改动，把json文件数据插到数据库，然后在从数据库里面读取，还有一些从接口里读到的数据，我能实现的，也都搞到数据库里</em></strong><br><br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/211.png" alt><br><br><strong><em>项目其实最后没有做完，还有支付和订单没有完成，教程也到这里就结束了，以前了解过用支付宝的接口，后面如果有时间的话考虑再把项目完善一下，到这里我也能算上接触到前端的一名小白了吧哈哈哈，虽然还有很多东西没学 ( ╥﹏╥ )</em></strong></p>
+<ul>
+<li>最后放一个小玩意（这个比较简单就不另写博客<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。）<br>(<a href="http://www.xyx6.top:8080/Vuemusic/" target="_blank" rel="noopener">http://www.xyx6.top:8080/Vuemusic/</a>)<br><img src="/2020/07/30/Vue%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/music.png" alt><h1 id="taking-my-time-step-by-step"><a href="#taking-my-time-step-by-step" class="headerlink" title="taking my time,step by step!"></a>taking my time,step by step!</h1></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>Node.js</tag>
+        <tag>Vue</tag>
+        <tag>Vuex</tag>
+        <tag>Mongoose</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue生命周期函数</title>
     <url>/2020/07/23/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>-</p>
@@ -4331,6 +4665,40 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       <tags>
         <tag>Vue</tag>
         <tag>Vue生命周期</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/07/02/hello%20world/</url>
+    <content><![CDATA[<blockquote>
+<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Git</li>
+<li>Nginx</li>
+<li>Nodejs</li>
+<li>搭载环境<ol>
+<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
+<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
+<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>hexo<ol>
+<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
+<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -4577,31 +4945,102 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/07/02/hello%20world/</url>
+    <title>less</title>
+    <url>/2020/07/21/less/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>偶尔有天在B站上刷到一段视频，内容是up主用hexo快速的搭建个人博客，虽然说作为软件专业的学生用这种快速的网站生成器实属有点说不过去，但是俗话说得好：强撸灰飞湮灭，要是真的手撸出来个人网站，一来按我这个渣渣水平都到猴年马月去了，二来就是想在学习的过程中记录下来一些东西来复习，所以出此下策才有了这个网站。</p>
+<p>序<br><br>less是一门css的预处理语言</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li>Git</li>
-<li>Nginx</li>
-<li>Nodejs</li>
-<li>搭载环境<ol>
-<li>阿里云服务器(学生白嫖服务器，不用白不用，地址：<a href="https://developer.aliyun.com/adc/student/" target="_blank" rel="noopener">https://developer.aliyun.com/adc/student/</a>)</li>
-<li>域名（在万网根据个人喜欢挑选一个心仪的）</li>
-<li>还可以用Github来部署（不需要域名和服务器且免费，不要问我为什么不用，问就是我傲娇，嫌用github后缀名太吃藕）</li>
-</ol>
+<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
+<li>less是一门css的预处理语言<ul>
+<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
+<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
+<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
+<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
+</ul>
 </li>
 </ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li><p>变量，在变量中可以存储一个任意的值</p>
 <ul>
-<li>hexo<ol>
-<li>主角来了，hexo是基于node.js的一款轻量级的博客制作工具。它可以将我们在本地编写的markdown文档转化成html页面，然后我们将html页面上传到服务器上。</li>
-<li>hexo还支持切换主题的功能，在本地下载主题文件，可以通过修改theme配置文件和hexo的配置文件实现网页的个性化。</li>
+<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
+</li>
+<li><p>变量的语法： @变量名</p>
+</li>
+<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
+</li>
+<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
+</li>
+<li><p>变量发生重名时，会优先使用比较近的变量</p>
+</li>
+<li><p>可以在变量声明前就使用变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
+</ul>
+</li>
+<li><p>子元素选择器&gt;</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>&amp; 表示外层(只向外一层)的父元素</p>
+</li>
+<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>mixin 混合</p>
+<ul>
+<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
+<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
+</ul>
+</li>
+<li><p>在混合函数中可以直接设置变量</p>
+</li>
+<li><p>还可以调用混合函数，按顺序传递参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
+</li>
+<li><p>加深颜色darken(颜色，百分比)</p>
+</li>
+</ul>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
+<li><p>@import用来将其他的less引入到当前的less</p>
+</li>
+<li><p>在less中所有的数值都可以直接进行运算</p>
+</li>
+<li><p>easy  less配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端三大块</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>less</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客挂载到GitHub</title>
+    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<ul>
+<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
+<li>博客挂载到GitHub上的步骤：<ol>
+<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
+<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
+<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
+<li>github仓库配置里source选择master分支</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
+</ol>
+</li>
+<li>绑定域名<ol>
+<li>阿里云域名-&gt;解析-&gt;添加解析</li>
+<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
+<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
+<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
+<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
 </ol>
 </li>
 </ul>
-<p><strong><em>域名和服务器大概是在很久之前买的，买完以后就迎来了很多大大小小的考试，到最近一段时间才想起来还有这么茬事，就索性把这件事落实下来，整个过程还算顺利，已经有了大致的雏形，不过还有些小功能有待发掘，日后再一一填补上来。</em></strong></p>
 ]]></content>
       <categories>
         <category>日常</category>
@@ -5127,77 +5566,356 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>less</title>
-    <url>/2020/07/21/less/</url>
+    <title>小本本</title>
+    <url>/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</url>
     <content><![CDATA[<blockquote>
-<p>序<br><br>less是一门css的预处理语言</p>
+<p>序<br><br>用来记录一些繁杂的东西</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><ul>
-<li>less是一门css的预处理语言<ul>
-<li>less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式</li>
-<li>在less中添加了许多的新特性：像对变量的支持、对mixin的支持… …</li>
-<li>less的语法大体上和css语法一致，但是less中增添了许多对css的扩展，<br>  所以浏览器无法直接执行less代码，要执行必须向将less转换为css，然后再由浏览器执行</li>
-<li>在vscode中下载easy less插件，它可以将less准换成css，只需要.less和.css文件取相同的文件名即可</li>
+
+<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><ol>
+<li>定位<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父级开启定位 子级相对定位</span><br><span class="line">top：50%;</span><br><span class="line">left：50%;</span><br><span class="line">transform：translate(-50%,-50%); &#x2F;&#x2F;自身的一半</span><br></pre></td></tr></table></figure></li>
+<li>flex<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:flex;</span><br><span class="line">justify-content:center; 主轴分配空白</span><br><span class="line">align-item:center; 辅轴分配空白</span><br></pre></td></tr></table></figure></li>
+<li>table-cell<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:table-cell;</span><br><span class="line">vertical-align:middle;</span><br><span class="line">text-align:center;</span><br><span class="line">&#x2F;*父容器必须指定宽高 *&#x2F;</span><br><span class="line">height:500px;</span><br><span class="line">width:500px;</span><br><span class="line">子元素</span><br><span class="line">display:inline-block;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
+<li>通过 verticle-align:middle 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">vertical-align:middle;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过 display:flex 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 display:table-cell 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:table;</span><br><span class="line">子元素display：table-cell;</span><br></pre></td></tr></table></figure>
+
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
+<li><p>通过 margin: 0 auto; text-align: center 实现</p>
+</li>
+<li><p>通过 display:flex 实现</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">     flex-direction:column;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过 width:fit-content 实现</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">width:fit-content;</span><br><span class="line">margin: 0 auto ;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
+
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><ul>
+<li><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
+<h2 id="1-JSONP-跨域"><a href="#1-JSONP-跨域" class="headerlink" title="1. JSONP 跨域"></a>1. JSONP 跨域</h2></li>
+<li><p>jsonp 的原理就是利用&lt;script&gt;标签没有跨域限制，通过&lt;script&gt;标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span><br><span class="line">    script.src &#x3D; &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login?user&#x3D;admin&amp;callback&#x3D;handleCallback&#39;;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 回调执行函数</span><br><span class="line">    function handleCallback(res) &#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">handleCallback(&#123;&quot;success&quot;: true, &quot;user&quot;: &quot;admin&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-CORS-跨域资源共享"><a href="#2-CORS-跨域资源共享" class="headerlink" title="2. CORS 跨域资源共享"></a>2. CORS 跨域资源共享</h2><ul>
+<li>普通跨域请求：只服务端设置 Access-Control-Allow-Origin 即可，前端无须设置，若要带 cookie 请求：前后端都需要设置</li>
+<li>跨域到哪个服务器就在哪个服务器上配置响应头<br><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/cors.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest(); &#x2F;&#x2F; IE8&#x2F;9需用window.XDomainRequest兼容</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials &#x3D; true;</span><br><span class="line"></span><br><span class="line">xhr.open(&#39;post&#39;, &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login&#39;, true);</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line">xhr.send(&#39;user&#x3D;admin&#39;);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
+<li>利用 node + webpack + webpack-devserver 代理接口跨域。在开发环境下，由于 vue 渲染服务和接口代理服务都是 webpack-dev-server 同一个，所以页面与代理接口之间不再跨域，无须设置 headers 跨域信息了。</li>
+<li>不写请求的基础地址都是默认向本地址请求资源，在webpack加proxy配置代理目标的基础路径，就会把请求都代理到目标接口<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        proxy: [&#123;</span><br><span class="line">            context: &#39;&#x2F;login&#39;,</span><br><span class="line">            target: &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#39;,  &#x2F;&#x2F; 代理跨域目标接口</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">            cookieDomainRewrite: &#39;www.domain1.com&#39;  &#x2F;&#x2F; 可以为false，表示不修改</span><br><span class="line">        &#125;],</span><br><span class="line">        noInfo: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>TCP 面向连接（如打电话要先拨号建立连接）;UDP 是无连接的，即发送数据之前不需要建立连接</li>
+<li>TCP 提供可靠的服务。也就是说，通过 TCP 连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP 尽最大努力交付，即不保证可靠交付</li>
+<li>TCP 面向字节流，实际上是 TCP 把数据看成一连串无结构的字节流;UDP 是面向报文的，UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如 IP 电话，实时视频会议等）</li>
+<li>每一条 TCP 连接只能是点到点的;UDP 支持一对一，一对多，多对一和多对多的交互通信</li>
+<li>TCP 首部开销 20 字节;UDP 的首部开销小，只有 8 个字节</li>
+<li>TCP 的逻辑通信信道是全双工的可靠信道，UDP 则是不可靠信道</li>
+</ol>
+<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><ul>
+<li>第一次握手<ul>
+<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。</li>
+</ul>
+</li>
+<li>第二次握手<ul>
+<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。</li>
+</ul>
+</li>
+<li>第三次握手<ul>
+<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。</li>
 </ul>
 </li>
 </ul>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li><p>变量，在变量中可以存储一个任意的值</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ul>
+<li>第一次挥手<ul>
+<li>客户端发送一个FIN=M，用来关闭客户端到服务器端的数据传送，客户端进入FIN_WAIT_1状态。意思是说”我客户端没有数据要发给你了”，但是如果你服务器端还有数据没有发送完成，则不必急着关闭连接，可以继续发送数据。</li>
+</ul>
+</li>
+<li>第二次挥手<ul>
+<li>服务器端收到FIN后，先发送ack=M+1，告诉客户端，你的请求我收到了，但是我还没准备好，请继续你等我的消息。这个时候客户端就进入FIN_WAIT_2 状态，继续等待服务器端的FIN报文。</li>
+</ul>
+</li>
+<li>第三次挥手<ul>
+<li>当服务器端确定数据已发送完成，则向客户端发送FIN=N报文，告诉客户端，好了，我这边数据发完了，准备好关闭连接了。服务器端进入LAST_ACK状态。</li>
+</ul>
+</li>
+<li>第四次挥手<ul>
+<li>客户端收到FIN=N报文后，就知道可以关闭连接了，但是他还是不相信网络，怕服务器端不知道要关闭，所以发送ack=N+1后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。服务器端收到ACK后，就知道可以断开连接了。客户端等待了2MSL后依然没有收到回复，则证明服务器端已正常关闭，那好，我客户端也可以关闭连接了。最终完成了四次握手。</li>
+</ul>
+</li>
+</ul>
+<h1 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h1><ul>
+<li>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从 WWW 服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</li>
+<li>HTTPS：是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版，即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</li>
+<li>HTTPS 协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</li>
+</ul>
+<h2 id="HTTP-与-HTTPS-有什么区别？"><a href="#HTTP-与-HTTPS-有什么区别？" class="headerlink" title="HTTP 与 HTTPS 有什么区别？"></a>HTTP 与 HTTPS 有什么区别？</h2><ul>
+<li>HTTP 协议传输的数据都是未加密的，也就是明文的，因此使用 HTTP 协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了 SSL（Secure Sockets Layer）协议用于对 HTTP 协议传输的数据进行加密，从而就诞生了 HTTPS。简单来说，HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全。</li>
+</ul>
+<h1 id="两边固定中间自适应的布局"><a href="#两边固定中间自适应的布局" class="headerlink" title="两边固定中间自适应的布局"></a>两边固定中间自适应的布局</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float实现：</span><br><span class="line">&lt;div style&#x3D;&quot;width:100%; margin:0 auto;&quot;&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:200px; float:right; background-color:#960&quot;&gt;这是右侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:150px; float:left; background:#6FF&quot;&gt;这是左侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;margin-left:150px;margin-right:200px; background-color:#9F3&quot;&gt;中间内容，自适应宽度&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">flex实现</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left, .right &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    background:  #090;</span><br><span class="line">&#125;</span><br><span class="line">.middle &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: #f00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;middle&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输入-url-地址按下回车会发生什么"><a href="#输入-url-地址按下回车会发生什么" class="headerlink" title="输入 url 地址按下回车会发生什么"></a>输入 url 地址按下回车会发生什么</h1><p>1.输入 url 地址后，首先进行 DNS 解析，将相应的域名解析为 IP 地址； 2.客户端根据 IP 地址去寻找相应的服务器； 3.与服务器进行 TCP 的三次握手；</p>
 <ul>
-<li><p>并且我们可以在需要时，任意的修改变量中的值</p>
+<li><p>所谓三次握手就是客户端在请求与服务器相连接时，彼此共计发送了三次数据包，就好比以下的对话：<br>_ 首先，需要明确的是，三次握手是客户端先发起请求。<br>_ （第一次）客户端：hi，服务器，在吗？我想和你建立连接，你能收到我的消息吗？（此时客户端给服务端发送了一个数据包和发送序号，即 SYN=1，Seq=X）<br>_ （第二次）服务器：hi，客户端，我在呢，我收到你的消息了，我们可以建立连接，你能收到我答复的消息吗？（此时服务端发送 syn+ack 报文，并置发送序号为 Y，再确认序号为 X+1）<br>_ （第三次）客户端：我收到你的答复了，很开心能和你建立连接。（此时客户端发送 ack 报文，并置发送序号为 Z，再确认序号为 Y+1）</p>
+<p>4.客户端找到相应的资源库；</p>
+<p>5.根据资源库返回页面信息；</p>
+<p>6.浏览器根据自身的执行机制解析页面；</p>
+<p>7.最后服务器将解析信息返回给客户端，进行TCP的四次挥手</p>
 </li>
-<li><p>变量的语法： @变量名</p>
-</li>
-<li><p>作为变量时，如果是直接使用则以 @变量名 的形式使用即可</p>
-</li>
-<li><p>作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用</p>
-</li>
-<li><p>变量发生重名时，会优先使用比较近的变量</p>
-</li>
-<li><p>可以在变量声明前就使用变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@a:200px;</span><br><span class="line">@b:#bfa;</span><br><span class="line">@c:box6;</span><br><span class="line">.box5&#123;</span><br><span class="line">  </span><br><span class="line">width: @a;</span><br><span class="line">color:@b;</span><br><span class="line">&#125;</span><br><span class="line">.@&#123;c&#125;&#123;</span><br><span class="line">width: @a;</span><br><span class="line">background-image: url(&quot;@&#123;c&#125;&#x2F;1.png&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2></li>
+</ul>
+<h1 id="type-of-与-instance-of"><a href="#type-of-与-instance-of" class="headerlink" title="type of 与 instance of"></a>type of 与 instance of</h1><ul>
+<li>typeof 是判断参数是什么类型的实例，返回值为说明运算数类型的字符串。<ul>
+<li>返回值结果：“number”、“string”、“boolean”、“object”、“function”、“undefined”</li>
+<li>若参数为引用类型，始终返回“object”，对于 Array、null 始终返回“object”</li>
 </ul>
 </li>
-<li><p>子元素选择器&gt;</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.box1&#123;</span><br><span class="line">.box2&#123;&#125;</span><br><span class="line">&gt;.box3&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.box1 .box2 &#123;&#125;</span><br><span class="line">.box1 &gt; .box3 &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>&amp; 表示外层(只向外一层)的父元素</p>
+<li>instanceof 是用来判断一个对象在其原型链中是否存在一个构造函数的 prototype 属性<ul>
+<li>a instanceof b：判断 a 是否为 b 的实例，可以用于继承关系中</li>
+</ul>
 </li>
-<li><p>:extend() 对当前选择器扩展指定选择器的样式（选择器分组）</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2:extend(.p1)&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p1,</span><br><span class="line">.p2 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p2 &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>mixin 混合</p>
+</ul>
+<h1 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h1><ul>
+<li><p>html 加载时发生了什么</p>
 <ul>
-<li>直接对指定的样式进行引用，这里就相当于将p1的样式在这里进行了复制</li>
-<li>使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixins<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.p3&#123;</span><br><span class="line">.p1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.p4()&#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.p5&#123;</span><br><span class="line">    .p4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">.p3 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.p5 &#123;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="混合函数"><a href="#混合函数" class="headerlink" title="混合函数"></a>混合函数</h2></li>
-</ul>
+<li><p>在页面加载时，浏览器把获取到的HTML代码解析成1个DOM树，DOM树里包含了所有HTML标签，包括display:none隐藏，还有用JS动态添加的元素等。</p>
 </li>
-<li><p>在混合函数中可以直接设置变量</p>
-</li>
-<li><p>还可以调用混合函数，按顺序传递参数</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less:</span><br><span class="line">.test(@w:100px,@h:200px,@bg-color:red)&#123;</span><br><span class="line">width: @w;</span><br><span class="line">height: @h;</span><br><span class="line">border: 1px solid @bg-color;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">.test(300px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css:</span><br><span class="line">div &#123;</span><br><span class="line">width: 300px;</span><br><span class="line">height: 200px;</span><br><span class="line">border: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>平均值average()可以设置颜色为参数，取两个颜色中间的颜色</p>
-</li>
-<li><p>加深颜色darken(颜色，百分比)</p>
+<li><p>DOM Tree 和样式结构体 （浏览器把所有样式【用户定义的CSS和用户代理】解析成样式结构体） 组合后构建render tree, render tree类似于DOM tree，但区别很大，因为render tree能识别样式，render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现，而且不会影响呈现的，所以就不会包含到 render tree中。我自己简单的理解就是DOM Tree和我们写的CSS结合在一起之后，渲染出了render tree。</p>
 </li>
 </ul>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><ul>
-<li><p>@import用来将其他的less引入到当前的less</p>
 </li>
-<li><p>在less中所有的数值都可以直接进行运算</p>
+<li><p>什么是回流</p>
+<ul>
+<li>当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流，就是在页面第一次加载的时候，这时候是一定会发生回流的，因为要构建render tree。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。</li>
+</ul>
 </li>
-<li><p>easy  less配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;less.compile&quot;: &#123;</span><br><span class="line">        &quot;compress&quot;:  true,  &#x2F;&#x2F; 是否压缩</span><br><span class="line">        &quot;sourceMap&quot;: true,  &#x2F;&#x2F; 生成源码地图使less文件和css一一对应，调试的时候直接对应到less中的位置</span><br><span class="line">        &quot;out&quot;: true, &#x2F;&#x2F; 生成css文件</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>什么是重绘</p>
+<ul>
+<li>当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</li>
+</ul>
+</li>
+<li><p>区别：</p>
+<ol>
+<li>回流必将引起重绘，而重绘不一定会引起回流。</li>
+</ol>
+<ul>
+<li>比如：只有颜色改变的时候就只会发生重绘而不会引起回流</li>
+</ul>
+<ol start="2">
+<li>当页面布局和几何属性改变时就需要回流</li>
+</ol>
+<ul>
+<li>比如：添加或者删除可见的DOM元素，元素位置改变，元素尺寸改变——边距、填充、边框、宽度和高度，内容改变</li>
+</ul>
+</li>
+</ul>
+<h1 id="Session和Cookie的区别"><a href="#Session和Cookie的区别" class="headerlink" title="Session和Cookie的区别"></a>Session和Cookie的区别</h1><ol>
+<li><p>cookie数据存放在客户的浏览器上(客户端),session数据放在服务器上</p>
+<ul>
+<li><p>cookie不是很安全,别人可以分析存放在本地的cookie并进行cookie 欺骗,如果主要考虑到安全应当使用session</p>
+</li>
+<li><p>session会在一定时间内保存在服务器上.当访问增多,会比较占用你服务器的性能,如果主要考虑到减轻服务器性能方面,应当使用cookie</p>
+</li>
+</ul>
+</li>
+<li><p>单个cookie在客户端的限制是3K,就是说一个站点在客户端存放的cookie不能3K</p>
+<ul>
+<li>将登陆信息等重要信息存放为session;其他信息如果需要保留,可以放在 cookie 中</li>
+</ul>
+</li>
+<li><p>session不能区分路径,同一个用户在访问一个网站期间,所有的session在任何一个地方都可以访问到.而cookie中如果设置了路径参数,那么同一个网站中不同路径下的cookie互相是访问不到的.cookie只能是子路径访问父路径设置的cookie</p>
+</li>
+</ol>
+<h2 id="localStorage和sessionStorage区别"><a href="#localStorage和sessionStorage区别" class="headerlink" title="localStorage和sessionStorage区别"></a>localStorage和sessionStorage区别</h2><ul>
+<li><p>localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
+</li>
+<li><p>他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
+</li>
+<li><p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
+</li>
+<li><p>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
+</li>
+</ul>
+<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><ul>
+<li>token 也称作令牌，由uid+time+sign[+固定参数]</li>
+<li>token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</li>
+<li>token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中</li>
+<li>token认证流程<ul>
+<li>token 的认证流程与cookie很相似</li>
+<li>用户登录，成功后服务器返回Token给客户端。</li>
+<li>客户端收到数据后保存在客户端</li>
+<li>客户端再次访问服务器，将token放入headers中</li>
+<li>服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
+<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
+<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
+</ul>
+<h1 id="node中import和require的区别"><a href="#node中import和require的区别" class="headerlink" title="node中import和require的区别"></a>node中import和require的区别</h1><ul>
+<li>import和require都是被模块化所使用</li>
+<li>require是运行时调用，所以require理论上可以运用在代码的任何地方</li>
+<li>import是编译时调用，所以必须放在文件开头</li>
+</ul>
+<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p><a href="https://blog.csdn.net/qq_42992643/article/details/82959720" target="_blank" rel="noopener">https://blog.csdn.net/qq_42992643/article/details/82959720</a></p>
+<h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><ul>
+<li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
+<li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
+</ul>
+<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
+
+<ul>
+<li>js是单线程的，浏览器是多线程的</li>
+<li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
+<li>宏任务：setTimeout，setInterval，整体代码script，I/O</li>
+<li>微任务：Promise，process.nextTick</li>
+</ul>
+<h1 id="promise和async-await"><a href="#promise和async-await" class="headerlink" title="promise和async/await"></a>promise和async/await</h1><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><ul>
+<li>promice的思想就是每一个异步任务返回一个promise对象，该对象有一个then方法，通过.then()的方法可进行链式调用,允许指定回调函数，Promice的出现大大改善了异步变成的困境，避免出现回调地狱（数作为参数层层嵌套），嵌套层级得到改善。</li>
+<li>API<ul>
+<li>Promise.resolve()</li>
+<li>Promise.reject()</li>
+<li>Promise.prototype.then()</li>
+<li>Promise.prototype.catch()</li>
+<li>Promise.all()  // 所有的完成  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  function promiseDemo () &#123;</span><br><span class="line">    Promise.all([A, B]).then(function (res) &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;A,B</span><br><span class="line">A请求、B请求同时发,两条响应都收到后再执行then</span><br></pre></td></tr></table></figure></li>
+<li>Promise.race() // 竞速，完成一个即执行then  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function promiseDemo () &#123;</span><br><span class="line">    Promise.race([A, B]).then(function (res) &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Async-await"><a href="#Async-await" class="headerlink" title="Async/await"></a>Async/await</h2></li>
+</ul>
+</li>
+<li>Async/await建立于Promise之上</li>
+<li>async函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而await命令就是内部then命令的语法糖</li>
+<li>如果要实现并发多个请求，可以把函数存到数组中，在调用array.map实现</li>
+</ul>
+<h1 id="var-let-const的区别"><a href="#var-let-const的区别" class="headerlink" title="var,let,const的区别"></a>var,let,const的区别</h1><ul>
+<li>var声明变量存在变量提升，let/const不存在</li>
+<li>var不存在块级作用域。let和const存在块级作用域，顾名思义，就是只在当前代码块起作用</li>
+<li>var允许重复声明变量，后一个变量会覆盖前一个变量。let和const在同一作用域不允许重复声明变量，会报错（正常情况下三者都不能重复声明变量，但是编译器会忽略重复声明的var，所以var可以）</li>
+<li>const/let大部分特性一样，不同的是：<ul>
+<li>const声明时必须赋值且只能赋值一次，不能修改</li>
+<li>如果const声明的是复合类型数据，可以修改其属性</li>
+</ul>
+</li>
+</ul>
+<h1 id="flex-flex-1"><a href="#flex-flex-1" class="headerlink" title="flex/flex:1"></a>flex/flex:1</h1><ul>
+<li>flex属性= flex-grow(放大) + flex-shrink(缩小) + flex-basis(基础)</li>
+<li>flex：1实际是flex-grow:1表示父元素有剩余空间时是否放大</li>
+</ul>
+<h1 id="Vue双向绑定原理"><a href="#Vue双向绑定原理" class="headerlink" title="Vue双向绑定原理"></a>Vue双向绑定原理</h1><ul>
+<li>VUE的双向绑定通过数据劫持结合发布者-订阅者模式的方式来实现</li>
+<li>利用object.defineProperty（）重写对象的set方法和get方法。通过这两种方法对data中的数据进行监控，当修改数据值时，触发set；当访问数据值时，触发get。</li>
+<li>监控数据变化是为了更新页面，更新变化数据对应的DOM节点</li>
+<li>完成上述要求需要底层虚拟DOM的支持</li>
+<li>vue3中用proxy来监听数据，只需要监听对象，对象中的属性发生改变自动捕获。</li>
+</ul>
+<h1 id="Vue中的虚拟dom及diff算法"><a href="#Vue中的虚拟dom及diff算法" class="headerlink" title="Vue中的虚拟dom及diff算法"></a>Vue中的虚拟dom及diff算法</h1><ul>
+<li>vue2引入了虚拟dom，渲染速度比vue1提高了2-4倍，而且大大降低了内存消耗</li>
+<li>模板转换成视图的过程<ol>
+<li>将模板编译转换成渲染函数，执行渲染函数得到一个虚拟节点树</li>
+<li>对数据进行操作的时候，会触发监听函数，然后watch对象会将新旧虚拟节点进行对比，然后根据对比结果进行dom操作来更新视图</li>
+</ol>
+<ul>
+<li>简单点讲，在Vue的底层实现上，Vue将模板编译成虚拟DOM渲染函数。在状态改变时，Vue能够智能地计算出重新渲染组件的最小代价并应到DOM操作上<br><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E8%99%9A%E6%8B%9Fdom.jpg" alt></li>
+</ul>
+</li>
+<li>概念：<ol>
+<li>渲染函数：渲染函数是用来生成Virtual DOM的。Vue推荐使用模板来构建我们的应用界面，在底层实现中Vue会将模板编译成渲染函数</li>
+<li>VNode 虚拟节点：它可以代表一个真实的 dom 节点。通过 createElement 方法能将 VNode 渲染成 dom 节点。简单地说，vnode可以理解成节点描述对象，它描述了应该怎样去创建真实的DOM节点</li>
+<li>patch(也叫做patching算法)：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新。这点我们从单词含义就可以看出， patch本身就有补丁、修补的意思，其实际作用是在现有DOM上进行修改来实现更新视图的目的。</li>
+</ol>
+</li>
+<li>虚拟dom是什么？<ul>
+<li>虚拟dom是一颗以js对象（VNode节点）为基础的树，用对象属性来描述节点。它实际上是对真实dom的抽象，最后通过一系列操作可以使这棵树映射到真实环境上。虚拟dom就相当于缓存，介于cpu（JS）和硬盘（dom）之间,js只操作虚拟dom，最后再把变更的地方写入真实dom中。</li>
+<li>虚拟dom的最终目标是将虚拟节点渲染到视图上，如果直接用虚拟节点覆盖旧节点，会有很多不必要的dom操作，为了避免这种情况，虚拟dom在虚拟节点映射到视图的过程中，将虚拟节点与上一次的旧虚拟节点做对比，找到需要更新的节点进行dom操作，从而避免不必要的操作。</li>
+<li>其实虚拟DOM在Vue.js主要做了两件事：<ol>
+<li>提供与真实DOM节点所对应的虚拟节点vnode</li>
+<li>将虚拟节点vnode和旧虚拟节点oldVnode进行对比，然后更新视图</li>
+</ol>
+</li>
+<li>模板 → 渲染函数 → 虚拟DOM树 → 真实DOM</li>
+</ul>
+</li>
+<li>diff算法<ul>
+<li>为了实现高效的DOM操作，一套高效的虚拟DOM diff算法显得很有必要。我们通过patch 的核心—-diff 算法，找出本次DOM需要更新的节点来更新，其他的不更新。思想是仅在同级的vnode间做diff，递归地进行同级vnode的diff，最终实现整个DOM树的更新。</li>
+<li>diff 算法包括几个步骤：<ol>
+<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
+<li>把所记录的差异应用到所构建的真正的DOM树上，视图就更新了</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="computed和watch的区别"><a href="#computed和watch的区别" class="headerlink" title="computed和watch的区别"></a>computed和watch的区别</h1><ul>
+<li>computed是用于定义基于数据之上的数据；并且computed是有缓存的，在数据还没有变化时访问时，计算属性会立即返回缓存中之前计算的结果。</li>
+<li>watch是在某个数据变化时做一些事情，可以是调用函数，也可以像computed返回数据，而且监听的是一个参数，而computed可以依赖多个参数。</li>
+</ul>
+<h1 id="MVC-MVVM"><a href="#MVC-MVVM" class="headerlink" title="MVC/MVVM"></a>MVC/MVVM</h1><ul>
+<li>mvc用户对View的操作交给了Controller处理，在Controller中响应View的事件调用Model的接口对数据进行操作，一旦Model发生变化便通知相关视图进行更新。</li>
+<li>在原生的html+js中，可以将html看成view;js看成controller，负责处理用户与应用的交互，响应对view的操作（对事件的监听），调用Model对数据进行操作，完成model与view的同步（根据model的改变，通过选择器对view进行操作）;将js的ajax当做Model，也就是数据层，通过ajax从服务器获取数据。</li>
+<li>Model的对象不只包含数据，也有对属性（name）的监听事件</li>
+<li>MVVM与MVC最大的区别就是：它实现了View和Model的自动同步，也就是当Model的属性改变时，我们不用再自己手动操作Dom元素，来改变View的显示，而是改变属性后该属性对应View层显示会自动改变</li>
+<li>Vue实例中的data相当于Model层，而ViewModel层的核心是Vue中的双向数据绑定，即Model变化时VIew可以实时更新，View变化也能让Model发生变化</li>
+<li>MVVM比MVC精简很多，不仅简化了业务与界面的依赖，还解决了数据频繁更新的问题，不用再用选择器操作DOM元素</li>
+</ul>
+<h1 id="webpack-1"><a href="#webpack-1" class="headerlink" title="webpack"></a>webpack</h1><ul>
+<li>webpack有五大核心概念：<ol>
+<li>entry：指示从哪个文件开始打包</li>
+<li>output：指示打包的文件输出到哪里去</li>
+<li>loader：因为webpack本身只能打包js文件，所以需要loader把其他文件转化成js文件加载进来</li>
+<li>plugin：用于拓展webpack的功能，它可以执行更多的任务，从打包优化到压缩，一直到重新定义变量等</li>
+<li>model：model指示webpack使用的相应模式的配置，分为开发模式和生产模式</li>
+</ol>
+</li>
+</ul>
+<h1 id="Java和JavaScript"><a href="#Java和JavaScript" class="headerlink" title="Java和JavaScript"></a>Java和JavaScript</h1><ul>
+<li>Java和js的区别<ol>
+<li>Java是面向对象的语言，即使是简单的程序也需要设计对象，JavaScript是脚本语言，他是种基于对象和事件驱动的语言</li>
+<li>Java在执行之前必须编译，JavaScript不需要，可以有浏览器直接解释执行</li>
+<li>Java的所有变量在编译之前必须做声明，JavaScript不需要</li>
+<li>代码格式不一样</li>
+</ol>
+</li>
+<li>js怎么实现Java的继承<ol>
+<li>使用对象冒充（this.method）,将parent指向的对象赋给this.method,然后执行this.method，最后执行完再销毁就行了</li>
+<li>使用call方法，parent.call(this,父类对象)，改变this指向</li>
+<li>也可使用apply方法改变this指向</li>
+<li>原型链方式，父类的函数和变量放在原型对象上，子类通过实例化父类来继承函数和变量</li>
+</ol>
+</li>
+<li>js实现public和private<ul>
+<li>public<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;通过初始化实例变量来给对象添加public变量</span><br><span class="line">functin Container(param) &#123;   </span><br><span class="line">this.member &#x3D; param;   </span><br><span class="line">&#125;  </span><br><span class="line">var myContainer &#x3D; new Container(&#39;abc&#39;)，则myContainer.member为&#39;abc&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;函数通过加在原型链来实现public</span><br><span class="line">Container.prototype.stamp &#x3D; function (string) &#123;   </span><br><span class="line">return this.member + string;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Private<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">普通的var变量就是private</span><br><span class="line">private函数</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;private methd  </span><br><span class="line">function getSex()&#123;  </span><br><span class="line">    return sex;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">function getSalary()&#123;  </span><br><span class="line">    return salary;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">this.display &#x3D; function()&#123;  </span><br><span class="line">    document.write(this.getName() + &quot;---&quot; + this.getAge() + &quot;---&quot; + getSex() + &quot;----&quot; + getSalary());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 ]]></content>
-      <categories>
-        <category>前端三大块</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-        <tag>less</tag>
-      </tags>
   </entry>
   <entry>
     <title>jQuery</title>
@@ -6702,161 +7420,26 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>Ajax</title>
-    <url>/2020/07/16/Ajax/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>页面的局部刷新技术</p>
-</blockquote>
+    <title>节流和防抖动</title>
+    <url>/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
+    <content><![CDATA[<p>-</p>
 <a id="more"></a>
-<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><ul>
-<li><p>允许浏览器和服务器通信而无须刷新整个页面的技术</p>
-</li>
-<li><p>XMLHttpRequest:该对象是对JS的一个拓展，可使网页与服务器进行通信，是创建Ajax应用的最佳选择</p>
-</li>
-<li><p>Ajax实际上是几种技术以一种全新的方式聚合在一起：</p>
-<ul>
-<li>服务器端语言：服务器需要具备向浏览器发送特定信息的能力，Ajax与服务器端语言无关</li>
-<li>XMl是一种描述数据的格式，Ajax需要某种格式化的格式来在服务器和客户端之间传递信息，XML就是其中的一种选择</li>
-<li>XHTML使用扩展超媒体标记语言和CSS标准化呈现</li>
-<li>DOM实现动态显示和交互</li>
-<li>使用XMLHTTP组件XMLHttpRequest对象进行异步读取</li>
-<li>使用JS进行绑定和处理数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ul>
-<li>利用XMLHttpRequest实例与服务器进行通信包含三个关键的部分</li>
-</ul>
-<ol>
-<li><p>onreadystatechang事件处理函数</p>
-<ul>
-<li>该函数由服务器触发，而不是用户</li>
-<li>在Ajax执行过程中，服务器会通知客户端当前的通信状态，这依靠更新XMLHttpRequest对象的readyState来实现，改变readyState属性是服务器对客户端连接操作的一种方式，每次readyState属性的改变都会触发readystatechang事件</li>
-</ul>
-</li>
-<li><p>open(method,url,asynch)方法</p>
-<ul>
-<li>open运行用一个Ajax调用向服务器发送请求</li>
-<li>method：请求的类型<ul>
-<li>GET从服务器检索一个文件，不需要发送任何数据</li>
-<li>POST向服务器发送数据</li>
-</ul>
-</li>
-<li>url:路径，指向你所请求的服务器上的那个文件，通常会在url后附一个时间戳来清除浏览器缓存，不清除的话下次访问的页面还是上次请求的页面不会改变</li>
-<li>asynch：表示请求是否异步传输，默认值是true，在读取后面的脚本之前不需要等待服务器响应，指定false，当脚本处理过程经过这点时，会停下来等到Ajax请求完毕在继续执行</li>
-</ul>
-</li>
-<li><p>send方法</p>
-<ul>
-<li>open方法定义了Ajax请求的一些细节，send方法可为已经待命的请求发送指令</li>
-<li>如果用的是GET请求，不会发送任何数据，给send方法传递null即可</li>
-<li>如果是POST请求，则要为send方法提供参数，如果没用参数用null代替</li>
-</ul>
-</li>
-<li><p>sendRequestHeader(header,value)</p>
-<ul>
-<li>首部信息用来声明一个请求时GET还是POST</li>
-<li>header首部的名字，value首部的值</li>
-</ul>
-</li>
-</ol>
-<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><ol>
-<li><p>readyState</p>
-<ul>
-<li>表示Ajax请求的当前状态<ul>
-<li>0表示初始化，还没有调用open方法</li>
-<li>1表示正在加载，open方法已调用，send方法还没调用</li>
-<li>2表示已加载完毕，send方法已调用，请求开始了</li>
-<li>3表示交互中，服务器正在发送响应</li>
-<li>4表示完成，响应发送完毕</li>
-</ul>
-</li>
-<li>每次readyState的值发生改变时，都会触发readystatechang事件</li>
-<li>readystate值的变化会因浏览器的不同而有所差异，但是，当请求结束的时候，每个浏览器都会把readyState的值统一设置为4</li>
-</ul>
-</li>
-<li><p>status</p>
-<ul>
-<li>服务器发送的每一个响应都带有首部信息，三位数的状态码是最重要的首部信息</li>
-<li>常用状态码及其含义：<ul>
-<li>404没找到页面</li>
-<li>403禁止访问</li>
-<li>500内部服务器错误</li>
-<li>200一切正常</li>
-<li>304没有被修改</li>
-</ul>
-</li>
-<li>在XMLHttpRequest对象中，服务器发送的状态码都保存在status属性里，通过把这个值和200或304比较，可以确保服务器是否已发送了一个成功的响应</li>
-</ul>
-</li>
-<li><p>responseText</p>
-<ul>
-<li>该属性包含了从服务器发送的数据，他可以是一个html，json或普通文本，这取决于服务器发送的内容</li>
-<li>当readyState属性变成4时，responseText属性才可用，表示Ajax请求已经结束</li>
-</ul>
-</li>
-<li><p>responseXML</p>
-<ul>
-<li>如果服务器返回的是xml，那么数据存储在该属性中</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>若应用程序不需要与其他应用程序共享数据时，使用HTML来返回数据是最简单的</li>
-<li>如果数据要重用，JSON文件在性能和文件大小上都有优势</li>
-<li>如果远程应用程序未知时，XML文档是首选，因为XML是web服务领域的世界语</li>
-</ul>
-<h2 id="Ajax传输数据的三种方式："><a href="#Ajax传输数据的三种方式：" class="headerlink" title="Ajax传输数据的三种方式："></a>Ajax传输数据的三种方式：</h2><ol>
-<li>XML：笨重，解析困难，但是XML是通用的数据交换形式</li>
-<li>HTML:不需要解析就可以直接放到文档中，若仅仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼接完成</li>
-<li>JSON：小巧，有面向对象特征，且有json使用最广泛</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用ajax发送数据的五个步骤</span><br><span class="line">第一步：创建异步对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">第二步：设置请求方式和请求地址</span><br><span class="line">xhr.open(method,url,asynch);</span><br><span class="line"></span><br><span class="line">第三步：用send发送请求</span><br><span class="line">xhr.send(参数);</span><br><span class="line"></span><br><span class="line">第四步：监听状态变化</span><br><span class="line">xhr.onreadystatechang&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">第五步：让异步对象接收服务器的响应数据</span><br><span class="line">if(xhr.status &#x3D;&#x3D; 200 &amp;&amp; xhr.readyState &#x3D;&#x3D; 4)&#123; </span><br><span class="line">console.log(xhr.responseText);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="jQuery实现Ajax"><a href="#jQuery实现Ajax" class="headerlink" title="jQuery实现Ajax"></a>jQuery实现Ajax</h1><ol>
-<li><p>load(url, [data], [callback])</p>
-<ul>
-<li>载入远程 HTML 文件代码并插入至 DOM 中</li>
-<li>任何一个html节点都可以使用load方法加载ajax，结果直接插入HTML节点中</li>
-<li>url:待装入 HTML 网页网址。</li>
-<li>data:发送至服务器的 key/value 数据，没传数据默认get方法，否则为post</li>
-<li>callback:载入成功时回调函数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var $obj&#x3D;...;</span><br><span class="line">var url...;</span><br><span class="line">var args&#x3D;&#123;key:value&#125;;</span><br><span class="line">$obj.load(url, args, [callback])</span><br></pre></td></tr></table></figure>
+<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
+<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
+<li><strong>节流是固定时间内只触发一次函数</strong></li>
+<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/throttling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-</li>
-<li><p>jQuery.get(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP GET 请求载入信息</li>
-<li>url:待载入页面的URL地址</li>
-<li>data:待发送 Key/value 参数</li>
-<li>callback:载入成功时回调函数</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default</li>
+<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
+<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/debounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
 </ul>
-</li>
-<li><p>jQuery.post(url, [data], [callback], [type])</p>
-<ul>
-<li>通过远程 HTTP POST 请求载入信息</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:发送成功时回调函数。</li>
-<li>type:返回内容格式，xml, html, script, json, text, _default。</li>
-</ul>
-</li>
-<li><p>jQuery.getJSON(url, [data], [callback])</p>
-<ul>
-<li>通过 HTTP GET 请求载入 JSON 数据</li>
-<li>url:发送请求地址。</li>
-<li>data:待发送 Key/value 参数。</li>
-<li>callback:载入成功时回调函数。</li>
-</ul>
-</li>
-</ol>
 ]]></content>
-      <categories>
-        <category>Ajax</category>
-      </categories>
       <tags>
-        <tag>Ajax</tag>
+        <tag>节流</tag>
+        <tag>防抖动</tag>
       </tags>
   </entry>
   <entry>
@@ -6920,582 +7503,70 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
       </tags>
   </entry>
   <entry>
-    <title>小本本</title>
-    <url>/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>用来记录一些繁杂的东西</p>
-</blockquote>
+    <title>网络安全</title>
+    <url>/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>-</p>
 <a id="more"></a>
 
-<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><ol>
-<li>定位<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父级开启定位 子级相对定位</span><br><span class="line">top：50%;</span><br><span class="line">left：50%;</span><br><span class="line">transform：translate(-50%,-50%); &#x2F;&#x2F;自身的一半</span><br></pre></td></tr></table></figure></li>
-<li>flex<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:flex;</span><br><span class="line">justify-content:center; 主轴分配空白</span><br><span class="line">align-item:center; 辅轴分配空白</span><br></pre></td></tr></table></figure></li>
-<li>table-cell<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父容器</span><br><span class="line">display:table-cell;</span><br><span class="line">vertical-align:middle;</span><br><span class="line">text-align:center;</span><br><span class="line">&#x2F;*父容器必须指定宽高 *&#x2F;</span><br><span class="line">height:500px;</span><br><span class="line">width:500px;</span><br><span class="line">子元素</span><br><span class="line">display:inline-block;</span><br></pre></td></tr></table></figure>
-
-
+<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><ul>
+<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
+<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
+<li>它可以分为两类：反射型和持久型</li>
+<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
+<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
+<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
+<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
+</ul>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><ul>
+<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
 </li>
-</ol>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
-<li>通过 verticle-align:middle 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">vertical-align:middle;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>通过 display:flex 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>通过 display:table-cell 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:table;</span><br><span class="line">子元素display：table-cell;</span><br></pre></td></tr></table></figure>
-
-<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
-<li><p>通过 margin: 0 auto; text-align: center 实现</p>
+<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
 </li>
-<li><p>通过 display:flex 实现</p>
+<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">父元素display:flex;</span><br><span class="line">     flex-direction:column;</span><br><span class="line">子元素align-self:center;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>通过 width:fit-content 实现</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">width:fit-content;</span><br><span class="line">margin: 0 auto ;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
-
-<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><ul>
-<li><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
-<h2 id="1-JSONP-跨域"><a href="#1-JSONP-跨域" class="headerlink" title="1. JSONP 跨域"></a>1. JSONP 跨域</h2></li>
-<li><p>jsonp 的原理就是利用&lt;script&gt;标签没有跨域限制，通过&lt;script&gt;标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</p>
+<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span><br><span class="line">    script.src &#x3D; &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login?user&#x3D;admin&amp;callback&#x3D;handleCallback&#39;;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 回调执行函数</span><br><span class="line">    function handleCallback(res) &#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">handleCallback(&#123;&quot;success&quot;: true, &quot;user&quot;: &quot;admin&quot;&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-CORS-跨域资源共享"><a href="#2-CORS-跨域资源共享" class="headerlink" title="2. CORS 跨域资源共享"></a>2. CORS 跨域资源共享</h2><ul>
-<li>普通跨域请求：只服务端设置 Access-Control-Allow-Origin 即可，前端无须设置，若要带 cookie 请求：前后端都需要设置</li>
-<li>跨域到哪个服务器就在哪个服务器上配置响应头<br><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/cors.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest(); &#x2F;&#x2F; IE8&#x2F;9需用window.XDomainRequest兼容</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials &#x3D; true;</span><br><span class="line"></span><br><span class="line">xhr.open(&#39;post&#39;, &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#x2F;login&#39;, true);</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line">xhr.send(&#39;user&#x3D;admin&#39;);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
-<li>利用 node + webpack + webpack-devserver 代理接口跨域。在开发环境下，由于 vue 渲染服务和接口代理服务都是 webpack-dev-server 同一个，所以页面与代理接口之间不再跨域，无须设置 headers 跨域信息了。</li>
-<li>不写请求的基础地址都是默认向本地址请求资源，在webpack加proxy配置代理目标的基础路径，就会把请求都代理到目标接口<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;&#125;,</span><br><span class="line">    module: &#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        proxy: [&#123;</span><br><span class="line">            context: &#39;&#x2F;login&#39;,</span><br><span class="line">            target: &#39;http:&#x2F;&#x2F;www.domain2.com:8080&#39;,  &#x2F;&#x2F; 代理跨域目标接口</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">            cookieDomainRewrite: &#39;www.domain1.com&#39;  &#x2F;&#x2F; 可以为false，表示不修改</span><br><span class="line">        &#125;],</span><br><span class="line">        noInfo: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
-<li>TCP 面向连接（如打电话要先拨号建立连接）;UDP 是无连接的，即发送数据之前不需要建立连接</li>
-<li>TCP 提供可靠的服务。也就是说，通过 TCP 连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP 尽最大努力交付，即不保证可靠交付</li>
-<li>TCP 面向字节流，实际上是 TCP 把数据看成一连串无结构的字节流;UDP 是面向报文的，UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如 IP 电话，实时视频会议等）</li>
-<li>每一条 TCP 连接只能是点到点的;UDP 支持一对一，一对多，多对一和多对多的交互通信</li>
-<li>TCP 首部开销 20 字节;UDP 的首部开销小，只有 8 个字节</li>
-<li>TCP 的逻辑通信信道是全双工的可靠信道，UDP 则是不可靠信道</li>
-</ol>
-<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><ul>
-<li>第一次握手<ul>
-<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。</li>
-</ul>
-</li>
-<li>第二次握手<ul>
-<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。</li>
-</ul>
-</li>
-<li>第三次握手<ul>
-<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。</li>
-</ul>
-</li>
-</ul>
-<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ul>
-<li>第一次挥手<ul>
-<li>客户端发送一个FIN=M，用来关闭客户端到服务器端的数据传送，客户端进入FIN_WAIT_1状态。意思是说”我客户端没有数据要发给你了”，但是如果你服务器端还有数据没有发送完成，则不必急着关闭连接，可以继续发送数据。</li>
-</ul>
-</li>
-<li>第二次挥手<ul>
-<li>服务器端收到FIN后，先发送ack=M+1，告诉客户端，你的请求我收到了，但是我还没准备好，请继续你等我的消息。这个时候客户端就进入FIN_WAIT_2 状态，继续等待服务器端的FIN报文。</li>
-</ul>
-</li>
-<li>第三次挥手<ul>
-<li>当服务器端确定数据已发送完成，则向客户端发送FIN=N报文，告诉客户端，好了，我这边数据发完了，准备好关闭连接了。服务器端进入LAST_ACK状态。</li>
-</ul>
-</li>
-<li>第四次挥手<ul>
-<li>客户端收到FIN=N报文后，就知道可以关闭连接了，但是他还是不相信网络，怕服务器端不知道要关闭，所以发送ack=N+1后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。服务器端收到ACK后，就知道可以断开连接了。客户端等待了2MSL后依然没有收到回复，则证明服务器端已正常关闭，那好，我客户端也可以关闭连接了。最终完成了四次握手。</li>
-</ul>
-</li>
-</ul>
-<h1 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h1><ul>
-<li>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从 WWW 服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</li>
-<li>HTTPS：是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版，即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</li>
-<li>HTTPS 协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</li>
-</ul>
-<h2 id="HTTP-与-HTTPS-有什么区别？"><a href="#HTTP-与-HTTPS-有什么区别？" class="headerlink" title="HTTP 与 HTTPS 有什么区别？"></a>HTTP 与 HTTPS 有什么区别？</h2><ul>
-<li>HTTP 协议传输的数据都是未加密的，也就是明文的，因此使用 HTTP 协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了 SSL（Secure Sockets Layer）协议用于对 HTTP 协议传输的数据进行加密，从而就诞生了 HTTPS。简单来说，HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全。</li>
-</ul>
-<h1 id="两边固定中间自适应的布局"><a href="#两边固定中间自适应的布局" class="headerlink" title="两边固定中间自适应的布局"></a>两边固定中间自适应的布局</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float实现：</span><br><span class="line">&lt;div style&#x3D;&quot;width:100%; margin:0 auto;&quot;&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:200px; float:right; background-color:#960&quot;&gt;这是右侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;width:150px; float:left; background:#6FF&quot;&gt;这是左侧的内容 固定宽度&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div style&#x3D;&quot;margin-left:150px;margin-right:200px; background-color:#9F3&quot;&gt;中间内容，自适应宽度&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">flex实现</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left, .right &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    background:  #090;</span><br><span class="line">&#125;</span><br><span class="line">.middle &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: #f00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;middle&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="输入-url-地址按下回车会发生什么"><a href="#输入-url-地址按下回车会发生什么" class="headerlink" title="输入 url 地址按下回车会发生什么"></a>输入 url 地址按下回车会发生什么</h1><p>1.输入 url 地址后，首先进行 DNS 解析，将相应的域名解析为 IP 地址； 2.客户端根据 IP 地址去寻找相应的服务器； 3.与服务器进行 TCP 的三次握手；</p>
-<ul>
-<li><p>所谓三次握手就是客户端在请求与服务器相连接时，彼此共计发送了三次数据包，就好比以下的对话：<br>_ 首先，需要明确的是，三次握手是客户端先发起请求。<br>_ （第一次）客户端：hi，服务器，在吗？我想和你建立连接，你能收到我的消息吗？（此时客户端给服务端发送了一个数据包和发送序号，即 SYN=1，Seq=X）<br>_ （第二次）服务器：hi，客户端，我在呢，我收到你的消息了，我们可以建立连接，你能收到我答复的消息吗？（此时服务端发送 syn+ack 报文，并置发送序号为 Y，再确认序号为 X+1）<br>_ （第三次）客户端：我收到你的答复了，很开心能和你建立连接。（此时客户端发送 ack 报文，并置发送序号为 Z，再确认序号为 Y+1）</p>
-<p>4.客户端找到相应的资源库；</p>
-<p>5.根据资源库返回页面信息；</p>
-<p>6.浏览器根据自身的执行机制解析页面；</p>
-<p>7.最后服务器将解析信息返回给客户端，进行TCP的四次挥手</p>
-</li>
-</ul>
-<h1 id="type-of-与-instance-of"><a href="#type-of-与-instance-of" class="headerlink" title="type of 与 instance of"></a>type of 与 instance of</h1><ul>
-<li>typeof 是判断参数是什么类型的实例，返回值为说明运算数类型的字符串。<ul>
-<li>返回值结果：“number”、“string”、“boolean”、“object”、“function”、“undefined”</li>
-<li>若参数为引用类型，始终返回“object”，对于 Array、null 始终返回“object”</li>
-</ul>
-</li>
-<li>instanceof 是用来判断一个对象在其原型链中是否存在一个构造函数的 prototype 属性<ul>
-<li>a instanceof b：判断 a 是否为 b 的实例，可以用于继承关系中</li>
-</ul>
-</li>
-</ul>
-<h1 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h1><ul>
-<li><p>html 加载时发生了什么</p>
-<ul>
-<li><p>在页面加载时，浏览器把获取到的HTML代码解析成1个DOM树，DOM树里包含了所有HTML标签，包括display:none隐藏，还有用JS动态添加的元素等。</p>
-</li>
-<li><p>DOM Tree 和样式结构体 （浏览器把所有样式【用户定义的CSS和用户代理】解析成样式结构体） 组合后构建render tree, render tree类似于DOM tree，但区别很大，因为render tree能识别样式，render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现，而且不会影响呈现的，所以就不会包含到 render tree中。我自己简单的理解就是DOM Tree和我们写的CSS结合在一起之后，渲染出了render tree。</p>
-</li>
-</ul>
-</li>
-<li><p>什么是回流</p>
-<ul>
-<li>当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流，就是在页面第一次加载的时候，这时候是一定会发生回流的，因为要构建render tree。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。</li>
-</ul>
-</li>
-<li><p>什么是重绘</p>
-<ul>
-<li>当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</li>
-</ul>
-</li>
-<li><p>区别：</p>
 <ol>
-<li>回流必将引起重绘，而重绘不一定会引起回流。</li>
+<li>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</li>
+<li>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</li>
+<li>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</li>
 </ol>
-<ul>
-<li>比如：只有颜色改变的时候就只会发生重绘而不会引起回流</li>
-</ul>
-<ol start="2">
-<li>当页面布局和几何属性改变时就需要回流</li>
-</ol>
-<ul>
-<li>比如：添加或者删除可见的DOM元素，元素位置改变，元素尺寸改变——边距、填充、边框、宽度和高度，内容改变</li>
+<h1 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h1><ul>
+<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
+<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
+<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
+<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
+<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
 </ul>
 </li>
 </ul>
-<h1 id="Session和Cookie的区别"><a href="#Session和Cookie的区别" class="headerlink" title="Session和Cookie的区别"></a>Session和Cookie的区别</h1><ol>
-<li><p>cookie数据存放在客户的浏览器上(客户端),session数据放在服务器上</p>
-<ul>
-<li><p>cookie不是很安全,别人可以分析存放在本地的cookie并进行cookie 欺骗,如果主要考虑到安全应当使用session</p>
-</li>
-<li><p>session会在一定时间内保存在服务器上.当访问增多,会比较占用你服务器的性能,如果主要考虑到减轻服务器性能方面,应当使用cookie</p>
-</li>
+<h1 id="DDOS攻击"><a href="#DDOS攻击" class="headerlink" title="DDOS攻击"></a>DDOS攻击</h1><ul>
+<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
+<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
+<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
 </ul>
-</li>
-<li><p>单个cookie在客户端的限制是3K,就是说一个站点在客户端存放的cookie不能3K</p>
-<ul>
-<li>将登陆信息等重要信息存放为session;其他信息如果需要保留,可以放在 cookie 中</li>
-</ul>
-</li>
-<li><p>session不能区分路径,同一个用户在访问一个网站期间,所有的session在任何一个地方都可以访问到.而cookie中如果设置了路径参数,那么同一个网站中不同路径下的cookie互相是访问不到的.cookie只能是子路径访问父路径设置的cookie</p>
-</li>
-</ol>
-<h2 id="localStorage和sessionStorage区别"><a href="#localStorage和sessionStorage区别" class="headerlink" title="localStorage和sessionStorage区别"></a>localStorage和sessionStorage区别</h2><ul>
-<li><p>localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
-</li>
-<li><p>他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
-</li>
-<li><p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
-</li>
-<li><p>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
-</li>
-</ul>
-<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><ul>
-<li>token 也称作令牌，由uid+time+sign[+固定参数]</li>
-<li>token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</li>
-<li>token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中</li>
-<li>token认证流程<ul>
-<li>token 的认证流程与cookie很相似</li>
-<li>用户登录，成功后服务器返回Token给客户端。</li>
-<li>客户端收到数据后保存在客户端</li>
-<li>客户端再次访问服务器，将token放入headers中</li>
-<li>服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
-<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
-<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
-</ul>
-<h1 id="node中import和require的区别"><a href="#node中import和require的区别" class="headerlink" title="node中import和require的区别"></a>node中import和require的区别</h1><ul>
-<li>import和require都是被模块化所使用</li>
-<li>require是运行时调用，所以require理论上可以运用在代码的任何地方</li>
-<li>import是编译时调用，所以必须放在文件开头</li>
-</ul>
-<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p><a href="https://blog.csdn.net/qq_42992643/article/details/82959720" target="_blank" rel="noopener">https://blog.csdn.net/qq_42992643/article/details/82959720</a></p>
-<h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><ul>
-<li>浅克隆只是改变了指针的指向，没有开辟新的内存空间，改变值后原有的值也会发生改变</li>
-<li>深克隆是先把对象转化成json数据JSON.stringify(obj)，然后在解析成对象JSON.parse，完整JSON.parse(JSON.stringify(obj))，是开辟了新的内存空间存数据，改变值后原有值也不变。<strong><em>但是对函数、正则、时间对象、数字对象的时候会不好用,遇到他们时需要特殊处理来过滤</em></strong></li>
-</ul>
-<h1 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h1><p><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%AE%8F%E4%BB%BB%E5%8A%A1.png" alt></p>
-
-<ul>
-<li>js是单线程的，浏览器是多线程的</li>
-<li>先执行主线程，执行完主线程再执行微任务，最后执行宏任务</li>
-<li>宏任务：setTimeout，setInterval，整体代码script，I/O</li>
-<li>微任务：Promise，process.nextTick</li>
-</ul>
-<h1 id="promise和async-await"><a href="#promise和async-await" class="headerlink" title="promise和async/await"></a>promise和async/await</h1><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><ul>
-<li>promice的思想就是每一个异步任务返回一个promise对象，该对象有一个then方法，通过.then()的方法可进行链式调用,允许指定回调函数，Promice的出现大大改善了异步变成的困境，避免出现回调地狱（数作为参数层层嵌套），嵌套层级得到改善。</li>
-<li>API<ul>
-<li>Promise.resolve()</li>
-<li>Promise.reject()</li>
-<li>Promise.prototype.then()</li>
-<li>Promise.prototype.catch()</li>
-<li>Promise.all()  // 所有的完成  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  function promiseDemo () &#123;</span><br><span class="line">    Promise.all([A, B]).then(function (res) &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;A,B</span><br><span class="line">A请求、B请求同时发,两条响应都收到后再执行then</span><br></pre></td></tr></table></figure></li>
-<li>Promise.race() // 竞速，完成一个即执行then  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function promiseDemo () &#123;</span><br><span class="line">    Promise.race([A, B]).then(function (res) &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Async-await"><a href="#Async-await" class="headerlink" title="Async/await"></a>Async/await</h2></li>
-</ul>
-</li>
-<li>Async/await建立于Promise之上</li>
-<li>async函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而await命令就是内部then命令的语法糖</li>
-<li>如果要实现并发多个请求，可以把函数存到数组中，在调用array.map实现</li>
-</ul>
-<h1 id="var-let-const的区别"><a href="#var-let-const的区别" class="headerlink" title="var,let,const的区别"></a>var,let,const的区别</h1><ul>
-<li>var声明变量存在变量提升，let/const不存在</li>
-<li>var不存在块级作用域。let和const存在块级作用域，顾名思义，就是只在当前代码块起作用</li>
-<li>var允许重复声明变量，后一个变量会覆盖前一个变量。let和const在同一作用域不允许重复声明变量，会报错（正常情况下三者都不能重复声明变量，但是编译器会忽略重复声明的var，所以var可以）</li>
-<li>const/let大部分特性一样，不同的是：<ul>
-<li>const声明时必须赋值且只能赋值一次，不能修改</li>
-<li>如果const声明的是复合类型数据，可以修改其属性</li>
-</ul>
-</li>
-</ul>
-<h1 id="flex-flex-1"><a href="#flex-flex-1" class="headerlink" title="flex/flex:1"></a>flex/flex:1</h1><ul>
-<li>flex属性= flex-grow(放大) + flex-shrink(缩小) + flex-basis(基础)</li>
-<li>flex：1实际是flex-grow:1表示父元素有剩余空间时是否放大</li>
-</ul>
-<h1 id="Vue双向绑定原理"><a href="#Vue双向绑定原理" class="headerlink" title="Vue双向绑定原理"></a>Vue双向绑定原理</h1><ul>
-<li>VUE的双向绑定通过数据劫持结合发布者-订阅者模式的方式来实现</li>
-<li>利用object.defineProperty（）重写对象的set方法和get方法。通过这两种方法对data中的数据进行监控，当修改数据值时，触发set；当访问数据值时，触发get。</li>
-<li>监控数据变化是为了更新页面，更新变化数据对应的DOM节点</li>
-<li>完成上述要求需要底层虚拟DOM的支持</li>
-<li>vue3中用proxy来监听数据，只需要监听对象，对象中的属性发生改变自动捕获。</li>
-</ul>
-<h1 id="Vue中的虚拟dom及diff算法"><a href="#Vue中的虚拟dom及diff算法" class="headerlink" title="Vue中的虚拟dom及diff算法"></a>Vue中的虚拟dom及diff算法</h1><ul>
-<li>vue2引入了虚拟dom，渲染速度比vue1提高了2-4倍，而且大大降低了内存消耗</li>
-<li>模板转换成视图的过程<ol>
-<li>将模板编译转换成渲染函数，执行渲染函数得到一个虚拟节点树</li>
-<li>对数据进行操作的时候，会触发监听函数，然后watch对象会将新旧虚拟节点进行对比，然后根据对比结果进行dom操作来更新视图</li>
-</ol>
-<ul>
-<li>简单点讲，在Vue的底层实现上，Vue将模板编译成虚拟DOM渲染函数。在状态改变时，Vue能够智能地计算出重新渲染组件的最小代价并应到DOM操作上<br><img src="/2020/08/09/%E5%B0%8F%E6%9C%AC%E6%9C%AC/%E8%99%9A%E6%8B%9Fdom.jpg" alt></li>
-</ul>
-</li>
-<li>概念：<ol>
-<li>渲染函数：渲染函数是用来生成Virtual DOM的。Vue推荐使用模板来构建我们的应用界面，在底层实现中Vue会将模板编译成渲染函数</li>
-<li>VNode 虚拟节点：它可以代表一个真实的 dom 节点。通过 createElement 方法能将 VNode 渲染成 dom 节点。简单地说，vnode可以理解成节点描述对象，它描述了应该怎样去创建真实的DOM节点</li>
-<li>patch(也叫做patching算法)：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新。这点我们从单词含义就可以看出， patch本身就有补丁、修补的意思，其实际作用是在现有DOM上进行修改来实现更新视图的目的。</li>
-</ol>
-</li>
-<li>虚拟dom是什么？<ul>
-<li>虚拟dom是一颗以js对象（VNode节点）为基础的树，用对象属性来描述节点。它实际上是对真实dom的抽象，最后通过一系列操作可以使这棵树映射到真实环境上。虚拟dom就相当于缓存，介于cpu（JS）和硬盘（dom）之间,js只操作虚拟dom，最后再把变更的地方写入真实dom中。</li>
-<li>虚拟dom的最终目标是将虚拟节点渲染到视图上，如果直接用虚拟节点覆盖旧节点，会有很多不必要的dom操作，为了避免这种情况，虚拟dom在虚拟节点映射到视图的过程中，将虚拟节点与上一次的旧虚拟节点做对比，找到需要更新的节点进行dom操作，从而避免不必要的操作。</li>
-<li>其实虚拟DOM在Vue.js主要做了两件事：<ol>
-<li>提供与真实DOM节点所对应的虚拟节点vnode</li>
-<li>将虚拟节点vnode和旧虚拟节点oldVnode进行对比，然后更新视图</li>
-</ol>
-</li>
-<li>模板 → 渲染函数 → 虚拟DOM树 → 真实DOM</li>
-</ul>
-</li>
-<li>diff算法<ul>
-<li>为了实现高效的DOM操作，一套高效的虚拟DOM diff算法显得很有必要。我们通过patch 的核心—-diff 算法，找出本次DOM需要更新的节点来更新，其他的不更新。思想是仅在同级的vnode间做diff，递归地进行同级vnode的diff，最终实现整个DOM树的更新。</li>
-<li>diff 算法包括几个步骤：<ol>
-<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
-<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
-<li>把所记录的差异应用到所构建的真正的DOM树上，视图就更新了</li>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><ul>
+<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
+<li>解决方案 :<ol>
+<li>对用户的输入进行校验</li>
+<li>对主要信息加密</li>
 </ol>
 </li>
 </ul>
-</li>
+<h1 id="DNS挟持"><a href="#DNS挟持" class="headerlink" title="DNS挟持"></a>DNS挟持</h1><ul>
+<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
+<li>解决方案：手动指定DNS服务器地址</li>
 </ul>
-<h1 id="computed和watch的区别"><a href="#computed和watch的区别" class="headerlink" title="computed和watch的区别"></a>computed和watch的区别</h1><ul>
-<li>computed是用于定义基于数据之上的数据；并且computed是有缓存的，在数据还没有变化时访问时，计算属性会立即返回缓存中之前计算的结果。</li>
-<li>watch是在某个数据变化时做一些事情，可以是调用函数，也可以像computed返回数据，而且监听的是一个参数，而computed可以依赖多个参数。</li>
+<h1 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h1><ul>
+<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
+<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
 </ul>
-<h1 id="MVC-MVVM"><a href="#MVC-MVVM" class="headerlink" title="MVC/MVVM"></a>MVC/MVVM</h1><ul>
-<li>mvc用户对View的操作交给了Controller处理，在Controller中响应View的事件调用Model的接口对数据进行操作，一旦Model发生变化便通知相关视图进行更新。</li>
-<li>在原生的html+js中，可以将html看成view;js看成controller，负责处理用户与应用的交互，响应对view的操作（对事件的监听），调用Model对数据进行操作，完成model与view的同步（根据model的改变，通过选择器对view进行操作）;将js的ajax当做Model，也就是数据层，通过ajax从服务器获取数据。</li>
-<li>Model的对象不只包含数据，也有对属性（name）的监听事件</li>
-<li>MVVM与MVC最大的区别就是：它实现了View和Model的自动同步，也就是当Model的属性改变时，我们不用再自己手动操作Dom元素，来改变View的显示，而是改变属性后该属性对应View层显示会自动改变</li>
-<li>Vue实例中的data相当于Model层，而ViewModel层的核心是Vue中的双向数据绑定，即Model变化时VIew可以实时更新，View变化也能让Model发生变化</li>
-<li>MVVM比MVC精简很多，不仅简化了业务与界面的依赖，还解决了数据频繁更新的问题，不用再用选择器操作DOM元素</li>
-</ul>
-<h1 id="webpack-1"><a href="#webpack-1" class="headerlink" title="webpack"></a>webpack</h1><ul>
-<li>webpack有五大核心概念：<ol>
-<li>entry：指示从哪个文件开始打包</li>
-<li>output：指示打包的文件输出到哪里去</li>
-<li>loader：因为webpack本身只能打包js文件，所以需要loader把其他文件转化成js文件加载进来</li>
-<li>plugin：用于拓展webpack的功能，它可以执行更多的任务，从打包优化到压缩，一直到重新定义变量等</li>
-<li>model：model指示webpack使用的相应模式的配置，分为开发模式和生产模式</li>
-</ol>
-</li>
-</ul>
-<h1 id="Java和JavaScript"><a href="#Java和JavaScript" class="headerlink" title="Java和JavaScript"></a>Java和JavaScript</h1><ul>
-<li>Java和js的区别<ol>
-<li>Java是面向对象的语言，即使是简单的程序也需要设计对象，JavaScript是脚本语言，他是种基于对象和事件驱动的语言</li>
-<li>Java在执行之前必须编译，JavaScript不需要，可以有浏览器直接解释执行</li>
-<li>Java的所有变量在编译之前必须做声明，JavaScript不需要</li>
-<li>代码格式不一样</li>
-</ol>
-</li>
-<li>js怎么实现Java的继承<ol>
-<li>使用对象冒充（this.method）,将parent指向的对象赋给this.method,然后执行this.method，最后执行完再销毁就行了</li>
-<li>使用call方法，parent.call(this,父类对象)，改变this指向</li>
-<li>也可使用apply方法改变this指向</li>
-<li>原型链方式，父类的函数和变量放在原型对象上，子类通过实例化父类来继承函数和变量</li>
-</ol>
-</li>
-<li>js实现public和private<ul>
-<li>public<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;通过初始化实例变量来给对象添加public变量</span><br><span class="line">functin Container(param) &#123;   </span><br><span class="line">this.member &#x3D; param;   </span><br><span class="line">&#125;  </span><br><span class="line">var myContainer &#x3D; new Container(&#39;abc&#39;)，则myContainer.member为&#39;abc&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;函数通过加在原型链来实现public</span><br><span class="line">Container.prototype.stamp &#x3D; function (string) &#123;   </span><br><span class="line">return this.member + string;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Private<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">普通的var变量就是private</span><br><span class="line">private函数</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;private methd  </span><br><span class="line">function getSex()&#123;  </span><br><span class="line">    return sex;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">function getSalary()&#123;  </span><br><span class="line">    return salary;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">this.display &#x3D; function()&#123;  </span><br><span class="line">    document.write(this.getName() + &quot;---&quot; + this.getAge() + &quot;---&quot; + getSex() + &quot;----&quot; + getSalary());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
+<h1 id="控制台注入代码"><a href="#控制台注入代码" class="headerlink" title="控制台注入代码"></a>控制台注入代码</h1><ul>
+<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
+<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>博客挂载到GitHub</title>
-    <url>/2020/11/25/%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BD%E5%88%B0GitHub/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<ul>
-<li>由于阿里云半年学生免费的服务器即将到期，所以就把博客挂载到GitHub上，这样就不用担心服务器的问题了，毕竟对于一个学生党来说每个月服务器的维护费用还是挺高的，5555···</li>
-<li>博客挂载到GitHub上的步骤：<ol>
-<li>在GitHub上新建仓库，注意仓库名必须为 xxx.github.io 注意这里的xxx必须为你的Github用户名，否则后面访问时为404！</li>
-<li>下载部署到Github上的插件： cnpm install –save hexo-deployer-git</li>
-<li>修改_config.yml文件：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: 你的github上博客仓库的地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></li>
-<li>github仓库配置里source选择master分支</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-<li>绑定域名<ol>
-<li>阿里云域名-&gt;解析-&gt;添加解析</li>
-<li>设置主机记录@，记录类型为CNAME，记录值是xxx.github.io。表示将<a href="http://xyx6.top这个主域名映射xxx.github.io" target="_blank" rel="noopener">http://xyx6.top这个主域名映射xxx.github.io</a></li>
-<li>在博客的source文件夹下建立一个CNAME的文件,内容写入你的域名</li>
-<li>github仓库点击Setting，找到 Custom domain 添加域名后保存</li>
-<li>hexo clean-&gt;hexo g-&gt;hexo d</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>节流和防抖动</title>
-    <url>/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><ul>
-<li>节流(throttle)的意思就是水龙头关小点, 频率不要那么高</li>
-<li><strong>节流是固定时间内只触发一次函数</strong></li>
-<li>原理是通过判断是否到达一定时间来触发函数，若没到达规定时间则使用计时器延后，而下一事件重新设定计时器<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/throttling.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line">  let start</span><br><span class="line">  let now</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    now &#x3D; new Date().getTime()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果不是第一次, 并且时间间隔还没有过去wait毫秒就清除定时器重新计时</span><br><span class="line">    if (start &amp;&amp; now - start &lt; wait) &#123;      </span><br><span class="line">      if (timer) &#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer &#x3D; setTimeout (() &#x3D;&gt; &#123;</span><br><span class="line">        func()</span><br><span class="line">        start &#x3D; now</span><br><span class="line">      &#125;, wait)</span><br><span class="line">    &#x2F;&#x2F; 如果是第一次且时间间隔过了wait毫秒，就执行函数 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      func()</span><br><span class="line">      start &#x3D; now</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="防抖动"><a href="#防抖动" class="headerlink" title="防抖动"></a>防抖动</h1><ul>
-<li>维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发函数时就会取消之前的定时器，重新设置，这样一来只有最后一次操作会被触发<br><img src="/2020/08/09/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%8A%A8/debounce.png" alt><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function debounce (func, wait &#x3D; 0) &#123;</span><br><span class="line">  let timer</span><br><span class="line"> </span><br><span class="line">  return function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 如果触发函数就清除之前的定时器重新计时</span><br><span class="line">    &#x2F;&#x2F; 只有最后一次操作触发</span><br><span class="line">    if (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">      func()</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>节流和防抖动最大的区别就是，节流函数不管是事件触发的多频繁，都会保证在规定时间内一定会执行一次事件处理函数，而防抖动只是在最后一次事件后才只触发一次函数*</strong></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>节流</tag>
-        <tag>防抖动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Grunt</title>
-    <url>/2020/07/18/Grunt/</url>
-    <content><![CDATA[<blockquote>
-<p>序<br><br>使用构建工具去对 JS、CSS、HTML、LESS、IMG 等进行合并压缩构建到最后实现自动化构建项目。是前端工程师必备的技能之一</p>
-</blockquote>
-<a id="more"></a>
-
-<ul>
-<li>什么是项目构建？<ul>
-<li>编译项目中的js,sass,less</li>
-<li>合并js/css等资源文件</li>
-<li>压缩js/css/html等资源文件</li>
-<li>js语法的检查</li>
-</ul>
-</li>
-<li>构建工具的作用？<ul>
-<li>简化项目构建，自动化完成构建<h1 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h1></li>
-</ul>
-</li>
-<li><a href="https://www.gruntjs.net/" target="_blank" rel="noopener">Grunt中文官网</a></li>
-<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
-<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
-<li>常用功能:<ul>
-<li><strong>合并文件</strong>(js/css)</li>
-<li><strong>压缩文件</strong>(js/css)</li>
-<li><strong>语法检查</strong>(js)</li>
-<li><strong>less/sass预编译处理</strong> </li>
-</ul>
-</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><p>举例创建一个简单的应用grunt_test</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(去官网获取，注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 安装nodejs, 查看版本</span><br></pre></td></tr></table></figure>
-<p>node -v</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
-<p>npm install -g grunt-cli </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
-<p>npm install grunt –save-dev</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
-<p>grunt  //提示 Warning: Task “default” not found</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
-<p>  官网有详细介绍<br>  module.exports = function(grunt){</p>
-<pre><code>// 1. 初始化插件配置
-grunt.initConfig({
-    //主要编码处
-});
-
-// 2. 加载插件任务
-// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-
-// 3. 注册构建任务
-grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line"></span><br><span class="line">## Grunt插件介绍</span><br><span class="line">* grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">* 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">* 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line"></span><br><span class="line">## 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
-<p>  npm install grunt-contrib-concat –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code> concat: {
-   options: { //可选项配置
-     separator: &apos;;&apos;   //使用;连接合并
-   },
-   build: { //此名称任意
-     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
-     dest: &quot;build/js/built.js&quot; //输出的js文件
-   }
- }
- <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* **grunt执行任务是同步的**，插件顺序要放对</span><br><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个built.js
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">## 压缩js: 使用uglify插件</span><br><span class="line">  * 先合并后压缩 </span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
-uglify : {
-  options: {  //不是必须的
-    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
-    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
-  },
-  build: {
-    files: {
-      &apos;build/js/built.min.js&apos;: [&apos;build/js/built.js&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //会在build下生成一个压缩的js文件
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 编码: 创建.jshintrc</span><br></pre></td></tr></table></figure>
-<p>   {</p>
-<pre><code>&quot;curly&quot;: true,
-&quot;eqeqeq&quot;: true,
-&quot;eqnull&quot;: true,
-&quot;expr&quot; : true,
-&quot;immed&quot;: true,
-&quot;newcap&quot;: true,
-&quot;noempty&quot;: true,
-&quot;noarg&quot;: true,
-&quot;regexp&quot;: true,
-&quot;browser&quot;: true,
-&quot;devel&quot;: true,
-&quot;node&quot;: true,
-&quot;boss&quot;: false,
-
-//不能使用未定义的变量
-&quot;undef&quot;: true,
-//语句后面必须有分号
-&quot;asi&quot;: false,
-//预定义不检查的全局变量
-&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>jshint : {
-  options: {
-    jshintrc : &apos;.jshintrc&apos; //指定配置文件
-  },
-  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 压缩&#x2F;合并css文件：使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
-<pre><code>cssmin:{
-  options: {
-    shorthandCompacting: false,//快速压缩
-    roundingPrecision: -1//精确度
-  },
-  build: {
-    files: {
-        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
-    }
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt    //在build/css/下生成output.min.css
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 使用watch插件:(真正实现自动化-实时监控文件变化、调用相应的任务重新执行)</span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
-watch : {
-  scripts : {
-    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
-    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
-    options : {spawn : false}  
-  }
-}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
-grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
-grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
-改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
-grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
-```</code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>自动化构建工具</category>
-      </categories>
-      <tags>
-        <tag>Grunt</tag>
-      </tags>
   </entry>
   <entry>
     <title>性能优化</title>
@@ -7585,72 +7656,6 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
 <li>keep-alive可以缓存路由组件对象, 可以提高用户体验</li>
 </ul>
 </li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>网络安全</title>
-    <url>/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-
-<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><ul>
-<li>XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页注入可执行代码且成功地被浏览器 执行，达到攻击的目的，形成了一次有效XSS攻击。</li>
-<li>XSS一旦攻击成功，它可以获取用户的联系人列表，然后向联系人发送虚假诈骗信息，可以删除用户的日志等等，有时候还和其他攻击方式同时实施，比如SQL注入攻击服务器和数据库、Click劫持、相对链接劫持等实施钓鱼</li>
-<li>它可以分为两类：反射型和持久型</li>
-<li>反射型XSS攻击场景：用户点击嵌入恶意脚本的链接，攻击者可以获取用户的cookie信息或密码等重要信息，进行恶性操作</li>
-<li>解决方案：开启cookie的HttpOnly属性，禁止客户端JavaScript脚本读取cookie信息</li>
-<li>持久型XSS攻击场景：攻击者提交含有恶意脚本的请求（通常使用script标签），此脚本被保存在数据库中。用户再次浏览页面，包含恶意脚本的页面会自动执行脚本，从而达到攻击效果。这种攻击常见于论坛，博客等应用中</li>
-<li>解决方案：前端提交请求时对一些特殊字符进行转义，或者是后台存储数据时进行特殊字符转义</li>
-</ul>
-<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><ul>
-<li><p>CSRF，Cross-site request forgery，跨站请求伪造。这种方式是恶意网站利用浏览器的cookie或服务器的session策略，盗取用户信息，模拟用户向第三方网站发送恶意请求</p>
-</li>
-<li><p>http请求是无状态的，也就是说每次http请求都是独立的无关之前的操作的，但是每次http请求都会将本域下的所有cookie作为http请求头的一部分发送给服务端，所以服务端就根据请求中的cookie存放的sessionid去session对象中找到该用户数据<br><img src="/2020/08/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/csrf.png" alt></p>
-</li>
-<li><p>解决方案：提交请求中携带Token，并且每次请求的Token值都是合法的随机数</p>
-</li>
-<li><p><strong><em>CSRF 和 XSS 的区别</em></strong></p>
-</li>
-</ul>
-<ol>
-<li>CSRF是跨站请求伪造;  XSS是跨域脚本攻击。</li>
-<li>CSRF需要用户先登录网站A,获取cookie;  XSS不需要登录。</li>
-<li>CSRF是利用网站A本身的漏洞,去请求网站A的api;  XSS是向网站A注入JS代码,然后执行JS里的代码,篡改网站A的内容。（XSS利用的是站点内的信任用户，而CSRF则是通过伪装来自受信任用户的请求来利用受信任的网站。你可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义向第三方网站发送恶意请求。）</li>
-</ol>
-<h1 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h1><ul>
-<li>点击劫持（ClickJacking）是一种视觉上的欺骗手段。大概有两种方式，一是攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下点击透明的iframe页面；二是攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
-<li>解决方案： (X-Frame-Options)这个可以说是为了解决ClickJacking而生的<br>是一个HTTP响应头，在现代的浏览器中有一个较好的支持。它就是为了防御用iframe嵌套的点击劫持攻击，该响应头有三个值可选，分别是<ul>
-<li>DENY 表示页面不允许通过iframe的方式展示，（浏览器会拒绝当前页面加载的任何iframe）</li>
-<li>SAMEORIGIN 表示页面可以在相同域名下通过iframe的方式展示,（frame页面的地址只能为同源域名下的页面）</li>
-<li>ALLOW-FROM 表示页面可以在指定来源的iframe中展示</li>
-</ul>
-</li>
-</ul>
-<h1 id="DDOS攻击"><a href="#DDOS攻击" class="headerlink" title="DDOS攻击"></a>DDOS攻击</h1><ul>
-<li>DDOS：分布式拒绝服务攻击（Distributed Denial of Service），简单说就是发送大量请求是使服务器瘫痪。DDos攻击是在DOS攻击基础上的，可以通俗理解，dos是单挑，而ddos是群殴，因为现代技术的发展，dos攻击的杀伤力降低，所以出现了DDOS，攻击者借助公共网络，将大数量的计算机设备联合起来，向一个或多个目标进行攻击。</li>
-<li>最直接的方法增加带宽。但是攻击者用各地的电脑进行攻击，他的带宽不会耗费很多钱，但对于服务器来说，带宽非常昂贵。</li>
-<li>云服务提供商有自己的一套完整DDoS解决方案，并且能提供丰富的带宽资源</li>
-</ul>
-<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><ul>
-<li>攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来非法获取数据库信息以及对数据库进行操作</li>
-<li>解决方案 :<ol>
-<li>对用户的输入进行校验</li>
-<li>对主要信息加密</li>
-</ol>
-</li>
-</ul>
-<h1 id="DNS挟持"><a href="#DNS挟持" class="headerlink" title="DNS挟持"></a>DNS挟持</h1><ul>
-<li>页面输入url之后，获取原域名的DNS解析权，修改掉原先的ip地址，将DNS指向攻击者的ip地址。（即输入<a href="https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据" target="_blank" rel="noopener">https://www.baidu.com/时，出来的是别的页面）…后果：用户被诱骗到冒牌网站进行登录等操作导致泄露隐私数据</a></li>
-<li>解决方案：手动指定DNS服务器地址</li>
-</ul>
-<h1 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h1><ul>
-<li>攻击者会发送给受害者一个合法链接，当链接被点击时，用户被导向一个似是而非的非法网站，从而达到骗取用户信任、窃取用户资料的目的</li>
-<li>解决方案： 对所有的重定向操作进行审核,以避免重定向到一个危险的地方；重定向token,在合法的url上加上token,重定向时进行验证</li>
-</ul>
-<h1 id="控制台注入代码"><a href="#控制台注入代码" class="headerlink" title="控制台注入代码"></a>控制台注入代码</h1><ul>
-<li>不法分子通过各种提示诱骗用户在控制台做一些操作，从而获取用户信息。</li>
-<li>我们最好在控制台对用户进行友好的提示，不要轻易相信这种提示灯</li>
 </ul>
 ]]></content>
   </entry>
