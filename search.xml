@@ -8409,6 +8409,7 @@ var worker = new Worker(‘worker.js’);<br>worker.onMessage = function(event){
 <ol>
 <li>提升个人能力（学React，TS）</li>
 <li>体脂15%，屈臂臂围40</li>
+<li>扣篮（每年都有这个）</li>
 <li>崽崽长到10斤（好像快了，那就15斤）</li>
 <li>给崽换个大一点的窝</li>
 <li>家人朋友身体健康<br>
